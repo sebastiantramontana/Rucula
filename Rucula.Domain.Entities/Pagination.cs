@@ -1,6 +1,6 @@
-﻿namespace Rucula.DataAccess.Dtos
+﻿namespace Rucula.Domain.Entities
 {
-    public sealed record class PaginationDto(int PageNumber,
+    public sealed record class Pagination(int PageNumber,
                                           int PageCount,
                                           int PageSize,
                                           int TotalElementsCount);

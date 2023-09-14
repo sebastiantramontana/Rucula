@@ -5,10 +5,10 @@ namespace Rucula.DataAccess.Converters
 {
     internal class JsonToTitulosContentDtoConverter : IJsonConverter<TitulosContentDto>
     {
-        private readonly IJsonConverter<paginationDto> _paginationConverter;
+        private readonly IJsonConverter<PaginationDto> _paginationConverter;
         private readonly IJsonConverter<TituloDto> _tituloConverter;
 
-        public JsonToTitulosContentDtoConverter(IJsonConverter<paginationDto> paginationConverter, IJsonConverter<TituloDto> tituloConverter)
+        public JsonToTitulosContentDtoConverter(IJsonConverter<PaginationDto> paginationConverter, IJsonConverter<TituloDto> tituloConverter)
         {
             _paginationConverter = paginationConverter;
             _tituloConverter = tituloConverter;

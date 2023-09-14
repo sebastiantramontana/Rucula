@@ -3,6 +3,6 @@
     public sealed record class TituloDto(string Simbolo,
                                          double PrecioCompra,
                                          double PrecioVenta,
-                                         Parking Parking,
-                                         Moneda Moneda);
+                                         string Parking,
+                                         string Moneda);
 }

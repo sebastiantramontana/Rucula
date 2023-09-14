@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Rucula.Domain.Entities\Rucula.Domain.Entities.csproj" />
-  </ItemGroup>
-
 </Project>

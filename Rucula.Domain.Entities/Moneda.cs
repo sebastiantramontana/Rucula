@@ -1,4 +1,4 @@
-﻿namespace Rucula.DataAccess.Dtos
+﻿namespace Rucula.Domain.Entities
 {
     public enum Moneda
     {

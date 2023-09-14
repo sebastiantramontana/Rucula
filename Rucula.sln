@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rucula.DataAccess", "Rucula.DataAccess\Rucula.DataAccess.csproj", "{EA626495-CCF4-46E1-AC14-06CACD655C95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rucula.DataAccess", "Rucula.DataAccess\Rucula.DataAccess.csproj", "{EA626495-CCF4-46E1-AC14-06CACD655C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rucula.Domain.Entities", "Rucula.Domain.Entities\Rucula.Domain.Entities.csproj", "{B7053F5C-BBD3-4DBE-895B-CB2632E60F4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EA626495-CCF4-46E1-AC14-06CACD655C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA626495-CCF4-46E1-AC14-06CACD655C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA626495-CCF4-46E1-AC14-06CACD655C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7053F5C-BBD3-4DBE-895B-CB2632E60F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7053F5C-BBD3-4DBE-895B-CB2632E60F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7053F5C-BBD3-4DBE-895B-CB2632E60F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7053F5C-BBD3-4DBE-895B-CB2632E60F4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
