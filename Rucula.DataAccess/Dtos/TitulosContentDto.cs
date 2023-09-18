@@ -1,4 +1,4 @@
 ﻿namespace Rucula.DataAccess.Dtos
 {
-    public record class TitulosContentDto(PaginationDto PaginationDto, IEnumerable<TituloDto> Titulos);
+    public record class TitulosContentDto(PaginationDto Pagination, IEnumerable<TituloDto> Titulos);
 }

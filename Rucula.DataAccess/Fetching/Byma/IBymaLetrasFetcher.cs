@@ -1,6 +1,6 @@
 ﻿namespace Rucula.DataAccess.Fetching.Byma
 {
-    internal interface IBonosFetcher : IFetcher
+    internal interface IBymaLetrasFetcher : IFetcher
     {
     }
 }

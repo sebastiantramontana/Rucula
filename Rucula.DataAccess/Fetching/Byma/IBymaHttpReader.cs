@@ -4,6 +4,6 @@ namespace Rucula.DataAccess.Fetching.Byma
 {
     internal interface IBymaHttpReader
     {
-        Task<string> Read(IBymaHttpConfig config);
+        Task<string> Read(HttpRequestMessage request, HttpClientHandler handler);
     }
 }
