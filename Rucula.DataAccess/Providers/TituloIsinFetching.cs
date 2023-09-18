@@ -1,38 +1,39 @@
-﻿using Rucula.DataAccess.Converters;
+﻿using Rucula.DataAccess.Deserializers;
 using Rucula.DataAccess.Dtos;
 using Rucula.DataAccess.Fetching.Byma;
 using Rucula.DataAccess.Mappers;
+using Rucula.DataAccess.Providers;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Fetching
 {
-    internal class TituloIsinFetching : IFetching<TituloIsin>
+    internal class TituloIsinProvider : IProvider<TituloIsin>
     {
         private readonly IBymaLetrasFetcher _letrasFetcher;
         private readonly IBymaBonosFetcher _bonosFetcher;
         private readonly IBymaTituloDetailsFetcher _tituloDetailsFetcher;
-        private readonly IJsonConverter<TitulosContentDto> _jsonTituloConverter;
-        private readonly IJsonConverter<TituloDetailsContentDto> _jsonTituloDetailsConverter;
+        private readonly IJsonDeserializer<TitulosContentDto> _jsonTituloDeserializer;
+        private readonly IJsonDeserializer<TituloDetailsContentDto> _jsonTituloDetailsDeserializer;
         private readonly IMapper<TituloDto, Titulo> _tituloMapper;
 
-        public TituloIsinFetching(IBymaLetrasFetcher letrasFetcher,
+        public TituloIsinProvider(IBymaLetrasFetcher letrasFetcher,
                                   IBymaBonosFetcher bonosFetcher,
                                   IBymaTituloDetailsFetcher tituloDetailsFetcher,
-                                  IJsonConverter<TitulosContentDto> jsonTituloConverter,
-                                  IJsonConverter<TituloDetailsContentDto> jsonTituloDetailsConverter,
+                                  IJsonDeserializer<TitulosContentDto> jsonTituloDeserializer,
+                                  IJsonDeserializer<TituloDetailsContentDto> jsonTituloDetailsDeserializer,
                                   IMapper<TituloDto, Titulo> tituloMapper)
         {
             _letrasFetcher = letrasFetcher;
             _bonosFetcher = bonosFetcher;
             _tituloDetailsFetcher = tituloDetailsFetcher;
-            _jsonTituloConverter = jsonTituloConverter;
-            _jsonTituloDetailsConverter = jsonTituloDetailsConverter;
+            _jsonTituloDeserializer = jsonTituloDeserializer;
+            _jsonTituloDetailsDeserializer = jsonTituloDetailsDeserializer;
             _tituloMapper = tituloMapper;
         }
 
-        public async Task<IEnumerable<TituloIsin>> Fetch()
+        public async Task<IEnumerable<TituloIsin>> Get()
         {
             var titulos = await GetAllTitulos();
             var titulosValidos = CleanUpTitulos(titulos);
@@ -79,7 +80,7 @@ namespace Rucula.DataAccess.Fetching
         }
 
         private TituloDetailsContentDto ConvertToDetailsContent(string jsonContent)
-            => _jsonTituloDetailsConverter.Convert(JsonNode.Parse(jsonContent)!);
+            => _jsonTituloDetailsDeserializer.Deserialize(JsonNode.Parse(jsonContent)!);
 
         private TituloDetailsDto? GetNationalTitulo(IEnumerable<TituloDetailsDto> titulos)
             => titulos.FirstOrDefault(t => t.TipoObligacion == @"Valores Públicos Nacionales");
@@ -103,8 +104,8 @@ namespace Rucula.DataAccess.Fetching
         }
 
         private IEnumerable<TituloDto> ConvertContentToTitulos(string content)
-            => _jsonTituloConverter
-                .Convert(JsonNode.Parse(content)!)
+            => _jsonTituloDeserializer
+                .Deserialize(JsonNode.Parse(content)!)
                 .Titulos
                 .ToArray();
 

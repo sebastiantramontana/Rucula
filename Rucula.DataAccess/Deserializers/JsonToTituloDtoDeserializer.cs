@@ -1,18 +1,18 @@
 ﻿using Rucula.DataAccess.Dtos;
 using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Converters
+namespace Rucula.DataAccess.Deserializers
 {
-    internal class JsonToTituloDtoConverter : IJsonConverter<TituloDto>
+    internal class JsonToTituloDtoDeserializer : IJsonDeserializer<TituloDto>
     {
         private readonly IJsonValueReader _valueReader;
 
-        public JsonToTituloDtoConverter(IJsonValueReader valueReader)
+        public JsonToTituloDtoDeserializer(IJsonValueReader valueReader)
         {
             _valueReader = valueReader;
         }
 
-        public TituloDto Convert(JsonNode node)
+        public TituloDto Deserialize(JsonNode node)
         {
             var simbolo = _valueReader.GetValue<string>(node, "symbol");
             var precioCompra = _valueReader.GetValue<double>(node, "bidPrice");

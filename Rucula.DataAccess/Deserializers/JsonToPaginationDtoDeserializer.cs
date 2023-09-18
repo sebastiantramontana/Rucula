@@ -1,18 +1,18 @@
 ﻿using Rucula.DataAccess.Dtos;
 using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Converters
+namespace Rucula.DataAccess.Deserializers
 {
-    internal class JsonToPaginationDtoConverter : IJsonConverter<PaginationDto>
+    internal class JsonToPaginationDtoDeserializer : IJsonDeserializer<PaginationDto>
     {
         private readonly IJsonValueReader _valueReader;
 
-        public JsonToPaginationDtoConverter(IJsonValueReader valueReader)
+        public JsonToPaginationDtoDeserializer(IJsonValueReader valueReader)
         {
             _valueReader = valueReader;
         }
 
-        public PaginationDto Convert(JsonNode node)
+        public PaginationDto Deserialize(JsonNode node)
         {
             var pageNumber = _valueReader.GetValue<int>(node, "page_number");
             var pageCount = _valueReader.GetValue<int>(node, "page_count");

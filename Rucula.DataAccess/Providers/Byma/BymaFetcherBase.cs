@@ -1,4 +1,5 @@
 ﻿using Rucula.DataAccess.Fetching.Byma.Config;
+using Rucula.DataAccess.Providers;
 
 namespace Rucula.DataAccess.Fetching.Byma
 {

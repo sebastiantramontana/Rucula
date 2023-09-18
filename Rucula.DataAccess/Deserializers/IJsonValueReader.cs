@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Converters
+namespace Rucula.DataAccess.Deserializers
 {
     internal interface IJsonValueReader
     {

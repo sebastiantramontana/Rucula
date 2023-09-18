@@ -10,7 +10,7 @@ namespace PruebaConsola
             
         }
 
-        static IFetching<TituloIsin> CreateTituloIsinFetcher()
+        static IProvider<TituloIsin> CreateTituloIsinFetcher()
         {
             var fetcher = new TituloIsinFetching();
         }

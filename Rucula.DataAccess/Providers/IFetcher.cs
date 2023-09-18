@@ -1,4 +1,4 @@
-﻿namespace Rucula.DataAccess.Fetching
+﻿namespace Rucula.DataAccess.Providers
 {
     internal interface IFetcher
     {
