@@ -8,7 +8,7 @@
                                    DateOnly Vencimiento,
                                    Blue Blue)
     {
-        public double CotizacionCcl => TituloCable.PrecioCompra / TituloPeso.PrecioVenta;
+        public double CotizacionCcl => TituloPeso.PrecioVenta / TituloCable.PrecioCompra;
         public double? CotizacionCclMepBlue => Blue.PrecioCompra * PorcentajeArbitrajeCclMep;
         public double? PorcentajeArbitrajeCclMepBlue => PasarAPorcentaje(CotizacionCclMepBlue / CotizacionCcl);
         public double? PorcentajeArbitrajeCclMep => PasarAPorcentaje(CotizacionCcl / TituloMep?.PrecioVenta);
