@@ -2,13 +2,13 @@
 {
     public record class TituloIsin(string CodigoIsin,
                                    string Denominacion,
-                                   Titulo TituloCable,
-                                   Titulo TituloPeso,
+                                   Titulo? TituloCable,
+                                   Titulo? TituloPeso,
                                    Titulo? TituloMep,
                                    DateOnly Vencimiento,
                                    Blue Blue)
     {
-        public double CotizacionCcl => TituloPeso.PrecioVenta / TituloCable.PrecioCompra;
+        public double? CotizacionCcl => TituloPeso?.PrecioVenta / TituloCable?.PrecioCompra;
         public double? CotizacionCclMepBlue => Blue.PrecioCompra * PorcentajeArbitrajeCclMep;
         public double? PorcentajeArbitrajeCclMepBlue => PasarAPorcentaje(CotizacionCclMepBlue / CotizacionCcl);
         public double? PorcentajeArbitrajeCclMep => PasarAPorcentaje(CotizacionCcl / TituloMep?.PrecioVenta);

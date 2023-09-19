@@ -36,8 +36,7 @@ namespace Rucula.DataAccess.Fetching
         public async Task<IEnumerable<TituloIsin>> Get()
         {
             var titulos = await GetAllTitulos();
-            var titulosValidos = CleanUpTitulos(titulos);
-            var details = await GetTitulosDetails(titulosValidos);
+            var details = await GetTitulosDetails(titulos);
 
             return CreateTitulosIsin(details);
         }
@@ -47,14 +46,11 @@ namespace Rucula.DataAccess.Fetching
             return details
                 .Where(d => d.TituloDetails is not null)
                 .GroupBy(d => d.TituloDetails!)
-                .Where(g =>
-                        g.Any(t => t.Titulo.Moneda == "EXT") &&
-                        g.Any(t => t.Titulo.Moneda == "ARS"))
                 .Select(g => new TituloIsin(
                     g.Key.CodigoIsin,
                     g.Key.Denominacion,
-                    GetTitulo(g, "EXT")!,
-                    GetTitulo(g, "ARS")!,
+                    GetTitulo(g, "EXT"),
+                    GetTitulo(g, "ARS"),
                     GetTitulo(g, "USD"),
                     DateOnly.FromDateTime(DateTime.Parse(g.Key.FechaVencimiento)),
                     new Blue(0.0, 0.0)));
@@ -96,9 +92,6 @@ namespace Rucula.DataAccess.Fetching
 
         private TituloDetailsDto? GetNationalTitulo(IEnumerable<TituloDetailsDto> titulos)
             => titulos.FirstOrDefault(t => t.TipoObligacion == @"Valores Públicos Nacionales");
-
-        private IEnumerable<TituloDto> CleanUpTitulos(IEnumerable<TituloDto> titulos)
-            => titulos.Where(t => t.PrecioCompra > 0.0 && t.PrecioVenta > 0.0);
 
         private async Task<IEnumerable<TituloDto>> GetAllTitulos()
         {

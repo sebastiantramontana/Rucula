@@ -18,7 +18,7 @@ namespace PruebaConsola
 
             foreach (var titulo in titulos.OrderByDescending(t => t.CotizacionCcl))
             {
-                Console.WriteLine($"{titulo.TituloCable.Simbolo}/{titulo.TituloPeso.Simbolo}: {titulo.CotizacionCcl}");
+                Console.WriteLine($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.CotizacionCcl}");
             }
         }
     }
