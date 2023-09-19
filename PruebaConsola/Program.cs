@@ -16,7 +16,7 @@ namespace PruebaConsola
 
             var titulos = await provider.Get();
 
-            foreach(var titulo in titulos)
+            foreach(var titulo in titulos.OrderByDescending(t=>t.CotizacionCcl))
             {
                 Console.WriteLine(titulo.CodigoIsin);
             }
