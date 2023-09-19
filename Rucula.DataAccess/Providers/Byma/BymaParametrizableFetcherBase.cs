@@ -13,7 +13,12 @@ namespace Rucula.DataAccess.Fetching.Byma
             _bymaHttpReader = bymaHttpReader;
         }
 
-        public Task<string> Fetch(string parameters)
-            => _bymaHttpReader.Read(_parametrizableBymaHttpConfig.CreateRequest(parameters), _parametrizableBymaHttpConfig.Handler);
+        public async Task<string> Fetch(string parameters)
+        {
+            using var request = _parametrizableBymaHttpConfig.CreateRequest(parameters);
+            using var handler = _parametrizableBymaHttpConfig.CreateHandler();
+
+            return await _bymaHttpReader.Read(request, handler);
+        }
     }
 }

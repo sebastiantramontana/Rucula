@@ -1,16 +1,21 @@
-﻿using System.Net.Http.Headers;
-
-namespace Rucula.DataAccess.Fetching.Byma.Config
+﻿namespace Rucula.DataAccess.Fetching.Byma.Config
 {
     internal abstract class BymaHttpConfigBase : IBymaHttpConfig
     {
+        private readonly string _url;
+        private readonly string _jsonContent;
+        private readonly IRequestFactory _requestFactory;
+        private readonly IHandlerFactory _handlerFactory;
+
         protected BymaHttpConfigBase(string url, string jsonContent, IRequestFactory requestFactory, IHandlerFactory handlerFactory)
         {
-            Request = requestFactory.CreateRequest(url, jsonContent);
-            Handler = handlerFactory.CreateHandler();
+            _url = url;
+            _jsonContent = jsonContent;
+            _requestFactory = requestFactory;
+            _handlerFactory = handlerFactory;
         }
 
-        public HttpRequestMessage Request { get; }
-        public HttpClientHandler Handler { get; }
+        public HttpRequestMessage CreateRequest() => _requestFactory.CreateRequest(_url, _jsonContent);
+        public HttpClientHandler CreateHandler() => _handlerFactory.CreateHandler();
     }
 }

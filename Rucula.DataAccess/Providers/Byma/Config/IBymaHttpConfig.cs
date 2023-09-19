@@ -2,7 +2,7 @@
 {
     internal interface IBymaHttpConfig
     {
-        HttpRequestMessage Request { get; }
-        HttpClientHandler Handler { get; }
+        HttpRequestMessage CreateRequest();
+        HttpClientHandler CreateHandler();
     }
 }

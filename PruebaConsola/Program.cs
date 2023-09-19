@@ -6,7 +6,7 @@ namespace PruebaConsola
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var servicesCollection = new ServiceCollection();
             Rucula.DataAccess.IoC.Registrar.Register(servicesCollection);
@@ -14,7 +14,7 @@ namespace PruebaConsola
 
             var provider = services.GetRequiredService<IProvider<TituloIsin>>();
 
-            var titulos = provider.Get().Result;
+            var titulos = await provider.Get();
 
             foreach(var titulo in titulos)
             {
