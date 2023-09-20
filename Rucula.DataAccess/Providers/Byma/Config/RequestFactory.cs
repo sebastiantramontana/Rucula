@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Headers;
 
-namespace Rucula.DataAccess.Fetching.Byma.Config
+namespace Rucula.DataAccess.Providers.Byma.Config
 {
     internal class RequestFactory : IRequestFactory
     {

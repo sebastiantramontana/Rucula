@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rucula.DataAccess.Deserializers;
 using Rucula.DataAccess.Dtos;
-using Rucula.DataAccess.Fetching;
-using Rucula.DataAccess.Fetching.Byma;
-using Rucula.DataAccess.Fetching.Byma.Config;
 using Rucula.DataAccess.Mappers;
+using Rucula.DataAccess.Providers;
+using Rucula.DataAccess.Providers.Byma;
+using Rucula.DataAccess.Providers.Byma.Config;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.IoC
 {
-    public static class Registrar
+    public static class DataAccessRegistrar
     {
         public static void Register(IServiceCollection serviceCollection)
         {
@@ -35,7 +35,9 @@ namespace Rucula.DataAccess.IoC
         private static void RegisterProviders(IServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddSingleton<IProvider<TituloIsin>, TituloIsinProvider>();
+                .AddSingleton<IProvider<TituloIsin>, TituloIsinProvider>()
+                .AddSingleton<ITitulosProvider, TitulosProvider>()
+                .AddSingleton<IProvider<Titulo>, TitulosProvider>();
         }
 
         private static void RegisterFetchers(IServiceCollection serviceCollection)

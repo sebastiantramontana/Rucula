@@ -1,6 +1,4 @@
-﻿using Rucula.DataAccess.Providers;
-
-namespace Rucula.DataAccess.Fetching.Byma
+﻿namespace Rucula.DataAccess.Providers.Byma
 {
     internal interface IBymaBonosFetcher : IFetcher
     {

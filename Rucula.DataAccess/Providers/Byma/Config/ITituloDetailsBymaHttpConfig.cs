@@ -1,4 +1,4 @@
-﻿namespace Rucula.DataAccess.Fetching.Byma.Config
+﻿namespace Rucula.DataAccess.Providers.Byma.Config
 {
     internal interface ITituloDetailsBymaHttpConfig : IParametrizableBymaHttpConfig
     {

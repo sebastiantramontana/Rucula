@@ -4,8 +4,8 @@ namespace Rucula.Domain.Abstractions
 {
     public interface ITitulosService
     {
-        IEnumerable<Titulo> GetAllTitulos();
-        IEnumerable<TituloIsin> GetAllTitulosIsin();
-        IEnumerable<TituloIsin> GetPrunedTitulosIsin();
+        Task<IEnumerable<Titulo>> GetAllTitulos();
+        Task<IEnumerable<TituloIsin>> GetAllTitulosIsin();
+        Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin();
     }
 }

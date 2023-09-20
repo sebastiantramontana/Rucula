@@ -1,6 +1,6 @@
-﻿using Rucula.DataAccess.Fetching.Byma.Config;
+﻿using Rucula.DataAccess.Providers.Byma.Config;
 
-namespace Rucula.DataAccess.Fetching.Byma
+namespace Rucula.DataAccess.Providers.Byma
 {
     internal abstract class BymaParametrizableFetcherBase : IParametrizableFetcher
     {

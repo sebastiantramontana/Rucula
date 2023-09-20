@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities;
+using Rucula.Domain.Implementations.IoC;
 
 namespace PruebaConsola
 {
@@ -9,12 +10,14 @@ namespace PruebaConsola
         static async Task Main(string[] args)
         {
             var servicesCollection = new ServiceCollection();
-            Rucula.DataAccess.IoC.Registrar.Register(servicesCollection);
+            DataAccessRegistrar.Register(servicesCollection);
+            DomainRegistrar.Register(servicesCollection);
+
             var services = servicesCollection.BuildServiceProvider();
 
-            var provider = services.GetRequiredService<IProvider<TituloIsin>>();
+            var service = services.GetRequiredService<ITitulosService>();
 
-            var titulos = await provider.Get();
+            var titulos = await service.GetCclRankingTitulosIsin();
 
             foreach (var titulo in titulos.OrderByDescending(t => t.CotizacionCcl))
             {

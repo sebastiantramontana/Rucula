@@ -3,25 +3,40 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations
 {
-    public class TitulosService : ITitulosService
+    internal class TitulosService : ITitulosService
     {
-        public TitulosService()
+        private readonly IProvider<Titulo> _titulosProvider;
+        private readonly IProvider<TituloIsin> _tituloIsinProvider;
+
+        public TitulosService(IProvider<Titulo> titulosProvider, IProvider<TituloIsin> tituloIsinProvider)
         {
+            _titulosProvider = titulosProvider;
+            _tituloIsinProvider = tituloIsinProvider;
         }
 
-        public IEnumerable<Titulo> GetAllTitulos()
+        public Task<IEnumerable<Titulo>> GetAllTitulos()
         {
-            throw new NotImplementedException();
+            return _titulosProvider.Get();
         }
 
-        public IEnumerable<TituloIsin> GetAllTitulosIsin()
+        public Task<IEnumerable<TituloIsin>> GetAllTitulosIsin()
         {
-            throw new NotImplementedException();
+            return _tituloIsinProvider.Get();
         }
 
-        public IEnumerable<TituloIsin> GetPrunedTitulosIsin()
+        public async Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin()
         {
-            throw new NotImplementedException();
+            var allTitulosIsin = await _tituloIsinProvider.Get();
+
+            return allTitulosIsin
+                    .Where(t =>
+                        IsTituloUseful(t.TituloCable) &&
+                        IsTituloUseful(t.TituloPeso) &&
+                        t.Vencimiento > DateOnly.FromDateTime(DateTime.Today))
+                    .OrderByDescending(t => t.CotizacionCcl);
         }
+
+        private bool IsTituloUseful(Titulo? titulo)
+            => titulo is not null && (titulo.PrecioCompra > 0.0 || titulo.PrecioVenta > 0.0);
     }
 }

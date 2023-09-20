@@ -1,6 +1,4 @@
-﻿using Rucula.DataAccess.Fetching.Byma.Config;
-
-namespace Rucula.DataAccess.Fetching.Byma
+﻿namespace Rucula.DataAccess.Providers.Byma
 {
     internal class BymaHttpReader : IBymaHttpReader
     {
