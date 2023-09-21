@@ -5,8 +5,8 @@
         public HttpClientHandler CreateHandler()
             => new HttpClientHandler
             {
-                CheckCertificateRevocationList = false,
-                ServerCertificateCustomValidationCallback = (a, b, c, d) => true,
+                //CheckCertificateRevocationList = false,
+                //ServerCertificateCustomValidationCallback = (a, b, c, d) => true,
                 ClientCertificateOptions = ClientCertificateOption.Manual
             };
     }

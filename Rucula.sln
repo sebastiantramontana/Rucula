@@ -11,7 +11,30 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rucula.Domain.Abstractions"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaConsola", "PruebaConsola\PruebaConsola.csproj", "{1B29200C-3B6E-47E0-B016-10590890CB69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rucula.Domain.Implementations", "Rucula.Domain.Implementations\Rucula.Domain.Implementations.csproj", "{4F193AE6-DF1C-49F3-9125-D65B75E9E699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rucula.Domain.Implementations", "Rucula.Domain.Implementations\Rucula.Domain.Implementations.csproj", "{4F193AE6-DF1C-49F3-9125-D65B75E9E699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rucula.WebAssembly", "Rucula.WebAssembly\Rucula.WebAssembly.csproj", "{C2B52D4D-DEBA-4001-B82D-7AF434AF423B}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Rucula.FrontEnd", "Rucula.FrontEnd\", "{25DDF62D-6F42-4E46-B4FE-767482402C1F}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61253"
+		Debug.AspNetCompiler.PhysicalPath = "Rucula.FrontEnd\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61253\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61253"
+		Release.AspNetCompiler.PhysicalPath = "Rucula.FrontEnd\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61253\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61253"
+		SlnRelativePath = "Rucula.FrontEnd\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +62,14 @@ Global
 		{4F193AE6-DF1C-49F3-9125-D65B75E9E699}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F193AE6-DF1C-49F3-9125-D65B75E9E699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F193AE6-DF1C-49F3-9125-D65B75E9E699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B52D4D-DEBA-4001-B82D-7AF434AF423B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B52D4D-DEBA-4001-B82D-7AF434AF423B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B52D4D-DEBA-4001-B82D-7AF434AF423B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B52D4D-DEBA-4001-B82D-7AF434AF423B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25DDF62D-6F42-4E46-B4FE-767482402C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DDF62D-6F42-4E46-B4FE-767482402C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25DDF62D-6F42-4E46-B4FE-767482402C1F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DDF62D-6F42-4E46-B4FE-767482402C1F}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

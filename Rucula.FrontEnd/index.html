@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+    <title>Rucula</title>
+    <meta charset="UTF-8" />
+    <script>
+        window.onload = async function () {
+            await Blazor.start();
+        };
+
+        async function ShowTitulos() {
+            let titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
+
+            for (let i = 0; i < titulos.length; i++) {
+                console.log(titulos[i].codigoIsin);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Rucula</h1>
+    <button onclick="ShowTitulos();">Probar Titulos</button>
+
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+</body>
+
+</html>

@@ -30,12 +30,8 @@ namespace Rucula.DataAccess.Providers
         {
             var letrasTask = await GetLetras();
             var bonosTask = await GetBonos();
-            //var titulosArray = await Task.WhenAll(letrasTask, bonosTask).ConfigureAwait(false);
-
+            
             return letrasTask.Concat(bonosTask);
-            //return titulosArray
-            //    .SelectMany(t => t)
-            //    .ToArray();
         }
 
         public Task<IEnumerable<Titulo>> GetBonos()
