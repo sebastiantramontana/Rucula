@@ -3,6 +3,5 @@
     internal interface IBymaHttpConfig
     {
         HttpRequestMessage CreateRequest();
-        HttpClientHandler CreateHandler();
     }
 }

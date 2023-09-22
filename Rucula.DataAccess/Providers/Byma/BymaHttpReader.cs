@@ -9,9 +9,9 @@
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> Read(HttpRequestMessage request, HttpClientHandler handler)
+        public async Task<string> Read(HttpRequestMessage request)
         {
-            var client = _httpClientFactory.CreateClient();
+            using var client = _httpClientFactory.CreateClient();
             using var msg = await client.SendAsync(request).ConfigureAwait(false);
             return await msg.Content.ReadAsStringAsync().ConfigureAwait(false);
         }

@@ -13,6 +13,7 @@ namespace PruebaConsola
             DataAccessRegistrar.Register(servicesCollection);
             DomainRegistrar.Register(servicesCollection);
 
+            servicesCollection.AddHttpClient();
             var services = servicesCollection.BuildServiceProvider();
 
             var service = services.GetRequiredService<ITitulosService>();

@@ -16,9 +16,7 @@ namespace Rucula.DataAccess.Providers.Byma
         public async Task<string> Fetch(string parameters)
         {
             using var request = _parametrizableBymaHttpConfig.CreateRequest(parameters);
-            using var handler = _parametrizableBymaHttpConfig.CreateHandler();
-
-            return await _bymaHttpReader.Read(request, handler);
+            return await _bymaHttpReader.Read(request);
         }
     }
 }

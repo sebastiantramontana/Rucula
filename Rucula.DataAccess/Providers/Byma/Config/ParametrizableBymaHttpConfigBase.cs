@@ -4,17 +4,12 @@
     {
         private readonly string _url;
         private readonly IRequestFactory _requestFactory;
-        private readonly IHandlerFactory _handlerFactory;
 
-        protected ParametrizableBymaHttpConfigBase(string url, IRequestFactory requestFactory, IHandlerFactory handlerFactory)
+        protected ParametrizableBymaHttpConfigBase(string url, IRequestFactory requestFactory)
         {
             _url = url;
             _requestFactory = requestFactory;
-            _handlerFactory = handlerFactory;
         }
-
-        public HttpClientHandler CreateHandler()
-            => _handlerFactory.CreateHandler();
 
         public HttpRequestMessage CreateRequest(string parameters)
             => _requestFactory.CreateRequest(_url, parameters);

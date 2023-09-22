@@ -28,8 +28,7 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<ILetrasBymaHttpConfig, LetrasBymaHttpConfig>()
                 .AddSingleton<IBonosBymaHttpConfig, BonosBymaHttpConfig>()
                 .AddSingleton<IBymaHttpReader, BymaHttpReader>()
-                .AddSingleton<IRequestFactory, RequestFactory>()
-                .AddSingleton<IHandlerFactory, HandlerFactory>();
+                .AddSingleton<IRequestFactory, RequestFactory>();
         }
 
         private static void RegisterProviders(IServiceCollection serviceCollection)

@@ -2,6 +2,6 @@
 {
     internal interface IBymaHttpReader
     {
-        Task<string> Read(HttpRequestMessage request, HttpClientHandler handler);
+        Task<string> Read(HttpRequestMessage request);
     }
 }
