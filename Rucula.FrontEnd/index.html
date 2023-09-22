@@ -7,147 +7,13 @@
     <title>Rucula</title>
     <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
 
-    <script>
-        window.onload = async function () {
-            await Blazor.start();
-        };
-
-        async function ShowTitulos() {
-            let titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
-
-            for (let i = 0; i < titulos.length; i++) {
-                console.log(titulos[i].codigoIsin);
-            }
-        };
-    </script>
+    <script src="main.js" type="module"></script>
 </head>
 <body class="items-center justify-center">
     <div class="container">
-        <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-            <thead class="text-white">
-                <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                    <th class="p-3 text-left">Simbolo AR$</th>
-                    <th class="p-3 text-left">AR$</th>
-                    <th class="p-3 text-left">Simbolo Cable</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Simbolo MEP</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Blue Compra</th>
-                    <th class="p-3 text-left">Blue Venta</th>
-                    <th class="p-3 text-left">Cotización CCL</th>
-                    <th class="p-3 text-left">CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">%&nbsp;CCL&#8702;MEP</th>
-                    <th class="p-3 text-left">% Rulo MEP->Blue</th>
-                </tr>
-                <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                    <th class="p-3 text-left">Simbolo AR$</th>
-                    <th class="p-3 text-left">AR$</th>
-                    <th class="p-3 text-left">Simbolo Cable</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Simbolo MEP</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Blue Compra</th>
-                    <th class="p-3 text-left">Blue Venta</th>
-                    <th class="p-3 text-left">Cotización CCL</th>
-                    <th class="p-3 text-left">CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL->MEP</th>
-                    <th class="p-3 text-left">% Rulo MEP->Blue</th>
-                </tr>
-                <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                    <th class="p-3 text-left">Simbolo AR$</th>
-                    <th class="p-3 text-left">AR$</th>
-                    <th class="p-3 text-left">Simbolo Cable</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Simbolo MEP</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Blue Compra</th>
-                    <th class="p-3 text-left">Blue Venta</th>
-                    <th class="p-3 text-left">Cotización CCL</th>
-                    <th class="p-3 text-left">CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL&arrow;MEP</th>
-                    <th class="p-3 text-left">% Rulo MEP->Blue</th>
-                </tr>
-                <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                    <th class="p-3 text-left">Simbolo AR$</th>
-                    <th class="p-3 text-left">AR$</th>
-                    <th class="p-3 text-left">Simbolo Cable</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Simbolo MEP</th>
-                    <th class="p-3 text-left">US$</th>
-                    <th class="p-3 text-left">Blue Compra</th>
-                    <th class="p-3 text-left">Blue Venta</th>
-                    <th class="p-3 text-left">Cotización CCL</th>
-                    <th class="p-3 text-left">CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL->MEP->Blue</th>
-                    <th class="p-3 text-left">% CCL->MEP</th>
-                    <th class="p-3 text-left">% Rulo MEP->Blue</th>
-                </tr>
-            </thead>
-            <tbody class="flex-1 sm:flex-none">
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO13X3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">58,22</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3C</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">0,121</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3D</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">65,11</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">710</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">720</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">735</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">769</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">2</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">4</td>
-                </tr>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO13X3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">58,22</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3C</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">0,121</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3D</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">65,11</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">710</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">720</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">735</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">769</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">2</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">4</td>
-                </tr>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO13X3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">58,22</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3C</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">0,121</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3D</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">65,11</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">710</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">720</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">735</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">769</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">2</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">4</td>
-                </tr>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO13X3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">58,22</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3C</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">0,121</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">SO3D</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">65,11</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">710</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">720</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">735</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">769</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">2</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">3</td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">4</td>
-                </tr>
-            </tbody>
+        <table id="tabla-titulos" class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+            <thead class="text-white"></thead>
+            <tbody class="flex-1 sm:flex-none"></tbody>
         </table>
     </div>
     <button onclick="ShowTitulos();">Probar Titulos</button>
@@ -178,3 +44,38 @@
     </style>
 </body>
 </html>
+
+<template id="titulos-table-header-template">
+    <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+        <th class="p-3 text-left">Simbolo&nbsp;AR$</th>
+        <th class="p-3 text-left">AR$</th>
+        <th class="p-3 text-left">Simbolo&nbsp;Cable</th>
+        <th class="p-3 text-left">US$</th>
+        <th class="p-3 text-left">Simbolo&nbsp;MEP</th>
+        <th class="p-3 text-left">US$</th>
+        <th class="p-3 text-left">Blue&nbsp;Compra</th>
+        <th class="p-3 text-left">Blue&nbsp;Venta</th>
+        <th class="p-3 text-left">Cotización&nbsp;CCL</th>
+        <th class="p-3 text-left">CCL&#8702;MEP&#8702;Blue</th>
+        <th class="p-3 text-left">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
+        <th class="p-3 text-left">%&nbsp;CCL&#8702;MEP</th>
+        <th class="p-3 text-left">%&nbsp;Rulo&nbsp;MEP&#8702;Blue</th>
+    </tr>
+</template>
+<template id="titulos-table-row-template">
+    <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+        <td id="symbol-pesos" class="border-grey-light border hover:bg-gray-100 p-3">SO13X3</td>
+        <td id="cotizacion-pesos" class="border-grey-light border hover:bg-gray-100 p-3">58,22</td>
+        <td id="symbol-cable" class="border-grey-light border hover:bg-gray-100 p-3">SO3C</td>
+        <td id="cotizacion-cable" class="border-grey-light border hover:bg-gray-100 p-3">0,121</td>
+        <td id="symbol-mep"  class="border-grey-light border hover:bg-gray-100 p-3">SO3D</td>
+        <td id="cotizacion-mep" class="border-grey-light border hover:bg-gray-100 p-3">65,11</td>
+        <td id="blue-compra" class="border-grey-light border hover:bg-gray-100 p-3">710</td>
+        <td id="blue-venta" class="border-grey-light border hover:bg-gray-100 p-3">720</td>
+        <td id="ccl" class="border-grey-light border hover:bg-gray-100 p-3">735</td>
+        <td id="ccl-mep-blue" class="border-grey-light border hover:bg-gray-100 p-3">769</td>
+        <td id="porc-ccl-mep-blue" class="border-grey-light border hover:bg-gray-100 p-3">2</td>
+        <td id="porc-ccl-mep" class="border-grey-light border hover:bg-gray-100 p-3">3</td>
+        <td id="porc-mep-blue" class="border-grey-light border hover:bg-gray-100 p-3">4</td>
+    </tr>
+</template>
