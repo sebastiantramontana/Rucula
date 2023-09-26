@@ -12,25 +12,28 @@ namespace Rucula.DataAccess.Providers
         private readonly IBymaTituloDetailsFetcher _tituloDetailsFetcher;
         private readonly IJsonDeserializer<TituloDetailsContentDto> _jsonTituloDetailsDeserializer;
         private readonly IProvider<Titulo> _titulosProvider;
+        private readonly IDolarBlueProvider _dolarBlueProvider;
 
         public TituloIsinProvider(IBymaTituloDetailsFetcher tituloDetailsFetcher,
                                   IJsonDeserializer<TituloDetailsContentDto> jsonTituloDetailsDeserializer,
-                                  IProvider<Titulo> titulosProvider)
+                                  IProvider<Titulo> titulosProvider,
+                                  IDolarBlueProvider dolarBlueProvider)
         {
             _tituloDetailsFetcher = tituloDetailsFetcher;
             _jsonTituloDetailsDeserializer = jsonTituloDetailsDeserializer;
             _titulosProvider = titulosProvider;
+            _dolarBlueProvider = dolarBlueProvider;
         }
 
         public async Task<IEnumerable<TituloIsin>> Get()
         {
             var titulos = await _titulosProvider.Get();
             var details = await GetTitulosDetails(titulos);
-
-            return CreateTitulosIsin(details);
+            var blue = await _dolarBlueProvider.GetCurrentBlue();
+            return CreateTitulosIsin(details, blue);
         }
 
-        private IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetailsDto? TituloDetails)> details)
+        private IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetailsDto? TituloDetails)> details, Blue blue)
         {
             return details
                 .Where(d => d.TituloDetails is not null && (d.Titulo.PrecioCompra > 0.0 || d.Titulo.PrecioVenta > 0.0))
@@ -42,7 +45,7 @@ namespace Rucula.DataAccess.Providers
                     GetTitulo(g, Moneda.Peso),
                     GetTitulo(g, Moneda.DolarMep),
                     DateOnly.FromDateTime(DateTime.Parse(g.Key.FechaVencimiento)),
-                    new Blue(0.0, 0.0)));
+                    blue));
         }
 
         private Titulo? GetTitulo(IGrouping<TituloDetailsDto, (Titulo Titulo, TituloDetailsDto? TituloDetails)> tuples, Moneda moneda)

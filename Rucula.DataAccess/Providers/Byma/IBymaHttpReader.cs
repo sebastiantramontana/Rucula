@@ -1,7 +1,6 @@
 ﻿namespace Rucula.DataAccess.Providers.Byma
 {
-    internal interface IBymaHttpReader
+    internal interface IBymaHttpReader : IHttpReader
     {
-        Task<string> Read(HttpRequestMessage request);
     }
 }

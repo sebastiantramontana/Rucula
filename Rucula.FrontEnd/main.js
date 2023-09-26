@@ -3,7 +3,13 @@
 addEventListener("load", async () => {
     await Blazor.start();
 
-    const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
+    try {
+        const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
+    }
+    catch (error) {
+        alert(`error: ${error}`);
+    }
+
     const tabla = document.getElementById("tabla-titulos");
 
     fillTitulosTable(tabla, titulos);
