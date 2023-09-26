@@ -1,23 +1,12 @@
 <!DOCTYPE html>
-<html lang="es-ar">
+<html lang="es-ar" class="dark">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rucula</title>
-    <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="main.js" type="module"></script>
-</head>
-<body class="items-center justify-center">
-    <div class="container">
-        <table id="tabla-titulos" class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-            <thead class="text-white"></thead>
-            <tbody class="flex-1 sm:flex-none"></tbody>
-        </table>
-    </div>
-    <button onclick="ShowTitulos();">Probar Titulos</button>
-    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <style>
         html,
         body {
@@ -41,41 +30,64 @@
         th:not(:last-child) {
             border-bottom: 2px solid rgba(0, 0, 0, .1);
         }
+
+        .bg-dolar {
+            background-color: #506436;
+        }
     </style>
+</head>
+<body class="items-center justify-center bg-white dark:bg-[#32382e]">
+    <header>
+        <div class="bg-dolar w-full h-24">
+            <img class="h-auto w-64 py-4 pl-2" src="img/logo-marca.svg" alt=" R&uacute;cula" />
+        </div>
+    </header>
+    <main>
+        <div class="h-screen flex w-5/6 h-auto justify-center">
+            <table id="tabla-titulos" class="w-full flex flex-row flex-no-wrap rounded-lg overflow-hidden sm:shadow-lg my-5">
+                <thead class="text-white"></thead>
+                <tbody class="text-black dark:text-white flex-1 sm:flex-none"></tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <div></div>
+    </footer>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
 </body>
 </html>
 
 <template id="titulos-table-header-template">
-    <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-        <th class="p-3 text-left">Simbolo&nbsp;AR$</th>
-        <th class="p-3 text-left">AR$</th>
-        <th class="p-3 text-left">Simbolo&nbsp;Cable</th>
-        <th class="p-3 text-left">US$</th>
-        <th class="p-3 text-left">Simbolo&nbsp;MEP</th>
-        <th class="p-3 text-left">US$</th>
-        <th class="p-3 text-left">Blue&nbsp;Compra</th>
-        <th class="p-3 text-left">Blue&nbsp;Venta</th>
-        <th class="p-3 text-left">Cotización&nbsp;CCL</th>
-        <th class="p-3 text-left">CCL&#8702;MEP&#8702;Blue</th>
-        <th class="p-3 text-left">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
-        <th class="p-3 text-left">%&nbsp;CCL&#8702;MEP</th>
-        <th class="p-3 text-left">%&nbsp;Rulo&nbsp;MEP&#8702;Blue</th>
+    <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+        <th class="border-grey-light dark:border-black border bg-sky-400 p-3 text-left">Simbolo&nbsp;Pesos</th>
+        <th class="border-grey-light dark:border-black border bg-sky-400 p-3 text-left">AR$</th>
+        <th class="border-grey-light dark:border-black border bg-emerald-800 p-3 text-left">Simbolo&nbsp;Cable</th>
+        <th class="border-grey-light dark:border-black border bg-emerald-800 p-3 text-left">US$</th>
+        <th class="border-grey-light dark:border-black border bg-teal-700 p-3 text-left">Simbolo&nbsp;MEP</th>
+        <th class="border-grey-light dark:border-black border bg-teal-700 p-3 text-left">US$</th>
+        <th class="border-grey-light dark:border-black border bg-blue-950 p-3 text-left">Blue&nbsp;Compra&nbsp;AR$</th>
+        <th class="border-grey-light dark:border-black border bg-blue-950 p-3 text-left">Blue&nbsp;Venta&nbsp;AR$</th>
+        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">Cotización&nbsp;CCL</th>
+        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">CCL&#8702;MEP&#8702;Blue</th>
+        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
+        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;CCL&#8702;MEP</th>
+        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;Rulo&nbsp;MEP&#8702;Blue</th>
     </tr>
 </template>
 <template id="titulos-table-row-template">
-    <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-        <td id="symbol-pesos" class="border-grey-light border hover:bg-gray-100 p-3">SO13X3</td>
-        <td id="cotizacion-pesos" class="border-grey-light border hover:bg-gray-100 p-3">58,22</td>
-        <td id="symbol-cable" class="border-grey-light border hover:bg-gray-100 p-3">SO3C</td>
-        <td id="cotizacion-cable" class="border-grey-light border hover:bg-gray-100 p-3">0,121</td>
-        <td id="symbol-mep"  class="border-grey-light border hover:bg-gray-100 p-3">SO3D</td>
-        <td id="cotizacion-mep" class="border-grey-light border hover:bg-gray-100 p-3">65,11</td>
-        <td id="blue-compra" class="border-grey-light border hover:bg-gray-100 p-3">710</td>
-        <td id="blue-venta" class="border-grey-light border hover:bg-gray-100 p-3">720</td>
-        <td id="ccl" class="border-grey-light border hover:bg-gray-100 p-3">735</td>
-        <td id="ccl-mep-blue" class="border-grey-light border hover:bg-gray-100 p-3">769</td>
-        <td id="porc-ccl-mep-blue" class="border-grey-light border hover:bg-gray-100 p-3">2</td>
-        <td id="porc-ccl-mep" class="border-grey-light border hover:bg-gray-100 p-3">3</td>
-        <td id="porc-mep-blue" class="border-grey-light border hover:bg-gray-100 p-3">4</td>
+    <tr class="odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+        <td id="symbol-pesos" class="border-grey-light dark:border-black border p-3 text-left">&nbsp;</td>
+        <td id="cotizacion-pesos" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="symbol-cable" class="border-grey-light dark:border-black border p-3 text-left">&nbsp;</td>
+        <td id="cotizacion-cable" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="symbol-mep" class="border-grey-light dark:border-black border p-3 text-left">&nbsp;</td>
+        <td id="cotizacion-mep" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="blue-compra" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="blue-venta" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="ccl" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="ccl-mep-blue" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="porc-ccl-mep-blue" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="porc-ccl-mep" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
+        <td id="porc-mep-blue" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
     </tr>
 </template>
