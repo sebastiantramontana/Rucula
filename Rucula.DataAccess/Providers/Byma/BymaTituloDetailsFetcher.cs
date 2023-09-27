@@ -1,11 +1,11 @@
-﻿using Rucula.DataAccess.Providers.Byma.Config;
+﻿using Rucula.DataAccess.Providers.Byma.RequestFactories;
 
 namespace Rucula.DataAccess.Providers.Byma
 {
     internal class BymaTituloDetailsFetcher : BymaParametrizableFetcherBase, IBymaTituloDetailsFetcher
     {
-        public BymaTituloDetailsFetcher(ITituloDetailsBymaHttpConfig tituloDetailsBymaHttpConfig, IBymaHttpReader bymaHttpReader)
-            : base(tituloDetailsBymaHttpConfig, bymaHttpReader)
+        public BymaTituloDetailsFetcher(ITituloDetailsRequestFactory tituloDetailsRequestFactory, IBymaHttpReader bymaHttpReader)
+            : base(tituloDetailsRequestFactory, bymaHttpReader)
         {
         }
     }

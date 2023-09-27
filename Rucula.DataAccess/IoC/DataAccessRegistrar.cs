@@ -5,7 +5,7 @@ using Rucula.DataAccess.Mappers;
 using Rucula.DataAccess.Providers;
 using Rucula.DataAccess.Providers.Ambito;
 using Rucula.DataAccess.Providers.Byma;
-using Rucula.DataAccess.Providers.Byma.Config;
+using Rucula.DataAccess.Providers.Byma.RequestFactories;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 
@@ -19,17 +19,17 @@ namespace Rucula.DataAccess.IoC
             RegisterProviders(serviceCollection);
             RegisterReaders(serviceCollection);
             RegisterFetchers(serviceCollection);
-            RegisterConfigs(serviceCollection);
+            RegisterRequestFactories(serviceCollection);
             RegisterMappers(serviceCollection);
         }
 
-        private static void RegisterConfigs(IServiceCollection serviceCollection)
+        private static void RegisterRequestFactories(IServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddSingleton<ITituloDetailsBymaHttpConfig, TituloDetailsBymaHttpConfig>()
-                .AddSingleton<ILetrasBymaHttpConfig, LetrasBymaHttpConfig>()
-                .AddSingleton<IBonosBymaHttpConfig, BonosBymaHttpConfig>()
-                .AddSingleton<IRequestFactory, RequestFactory>();
+                .AddSingleton<IBymaRequestFactory, BymaRequestFactory>()
+                .AddSingleton<ITituloDetailsRequestFactory, TituloDetailsRequestFactory>()
+                .AddSingleton<ILetrasRequestFactory, LetrasRequestFactory>()
+                .AddSingleton<IBonosRequestFactory, BonosRequestFactory>();
         }
 
         private static void RegisterReaders(IServiceCollection serviceCollection)

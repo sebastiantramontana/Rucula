@@ -1,8 +1,9 @@
 ﻿using System.Net.Http.Headers;
 
-namespace Rucula.DataAccess.Providers.Byma.Config
+namespace Rucula.DataAccess.Providers.Byma.RequestFactories
 {
-    internal class RequestFactory : IRequestFactory
+
+    internal class BymaRequestFactory : IBymaRequestFactory
     {
         public HttpRequestMessage CreateRequest(string url, string parameters)
         {

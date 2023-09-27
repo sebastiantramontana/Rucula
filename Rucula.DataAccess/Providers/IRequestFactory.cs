@@ -1,4 +1,4 @@
-﻿namespace Rucula.DataAccess.Providers.Byma.Config
+﻿namespace Rucula.DataAccess.Providers
 {
     internal interface IRequestFactory
     {
