@@ -3,14 +3,17 @@
 addEventListener("load", async () => {
     await Blazor.start();
 
-    try {
-        const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
-    }
-    catch (error) {
-        alert(`error: ${error}`);
-    }
+    const dolarBlue = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetDolarBlue');
+    ShowDolarBlue(dolarBlue);
 
-    const tabla = document.getElementById("tabla-titulos");
-
-    fillTitulosTable(tabla, titulos);
+    const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
+    fillTitulosTable(titulos);
 });
+
+function ShowDolarBlue(dolarBlue) {
+    const dolarBlueCompra = document.getElementById("dolar-blue-compra");
+    const dolarBlueVenta = document.getElementById("dolar-blue-venta");
+
+    dolarBlueCompra.innerHTML = dolarBlue.precioCompra;
+    dolarBlueVenta.innerHTML = dolarBlue.precioVenta;
+}

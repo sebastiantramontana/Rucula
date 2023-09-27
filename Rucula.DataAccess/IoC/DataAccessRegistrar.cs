@@ -42,9 +42,10 @@ namespace Rucula.DataAccess.IoC
         private static void RegisterProviders(IServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddSingleton<IProvider<TituloIsin>, TituloIsinProvider>()
+                //.AddSingleton<IProvider<TituloIsin>, TituloIsinProvider>()
                 .AddSingleton<ITitulosProvider, TitulosProvider>()
                 .AddSingleton<IProvider<Titulo>, TitulosProvider>()
+                .AddSingleton<ITituloDetailsProvider, TituloDetailsProvider>()
                 .AddSingleton<IDolarBlueProvider, DolarBlueProvider>();
         }
 
@@ -61,6 +62,7 @@ namespace Rucula.DataAccess.IoC
         {
             serviceCollection
                 .AddSingleton<IMapper<TituloDto, Titulo>, TituloMapper>()
+                .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
                 .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>();
         }
 

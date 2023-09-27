@@ -1,4 +1,6 @@
-﻿export default function fillTitulosTable(table, titulos) {
+﻿export default function fillTitulosTable(titulos) {
+    const table = document.getElementById("tabla-titulos");
+
     CreateTableHeader(table, titulos);
     FillTitulosRows(table, titulos);
 }
@@ -14,20 +16,22 @@ function FillTitulosRows(table, titulos) {
 
 function AddNewRow(tbody, templateRow, titulo) {
     const clonedRow = templateRow.cloneNode(true);
+    const numFormater = new Intl.NumberFormat('es-AR', {
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3,
+    });
 
     WriteCell(clonedRow, "symbol-pesos", titulo.tituloPeso.simbolo);
-    WriteCell(clonedRow, "cotizacion-pesos", titulo.tituloPeso.precioVenta);
+    WriteCell(clonedRow, "cotizacion-pesos", numFormater.format(titulo.tituloPeso.precioVenta));
     WriteCell(clonedRow, "symbol-cable", titulo.tituloCable.simbolo);
-    WriteCell(clonedRow, "cotizacion-cable", titulo.tituloCable.precioCompra);
+    WriteCell(clonedRow, "cotizacion-cable", numFormater.format(titulo.tituloCable.precioCompra));
     WriteCell(clonedRow, "symbol-mep", titulo.tituloMep.simbolo);
-    WriteCell(clonedRow, "cotizacion-mep", titulo.tituloMep.precioVenta);
-    WriteCell(clonedRow, "blue-compra", titulo.blue.precioCompra);
-    WriteCell(clonedRow, "blue-venta", titulo.blue.precioVenta);
-    WriteCell(clonedRow, "ccl", titulo.cotizacionCcl);
-    WriteCell(clonedRow, "ccl-mep-blue", titulo.cotizacionCclMepBlue);
-    WriteCell(clonedRow, "porc-ccl-mep-blue", titulo.porcentajeArbitrajeCclMepBlue);
-    WriteCell(clonedRow, "porc-ccl-mep", titulo.porcentajeArbitrajeCclMep);
-    WriteCell(clonedRow, "porc-mep-blue", titulo.porcentajeRuloMepBlue);
+    WriteCell(clonedRow, "cotizacion-mep", numFormater.format(titulo.tituloMep.precioVenta));
+    WriteCell(clonedRow, "ccl", numFormater.format(titulo.cotizacionCcl));
+    WriteCell(clonedRow, "ccl-mep-blue", numFormater.format(titulo.cotizacionCclMepBlue));
+    WriteCell(clonedRow, "porc-ccl-mep-blue", numFormater.format(titulo.porcentajeArbitrajeCclMepBlue));
+    WriteCell(clonedRow, "porc-ccl-mep", numFormater.format(titulo.porcentajeArbitrajeCclMep));
+    WriteCell(clonedRow, "porc-mep-blue", numFormater.format(titulo.porcentajeRuloMepBlue));
 
     tbody.appendChild(clonedRow);
 }

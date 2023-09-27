@@ -9,8 +9,8 @@ namespace Rucula.WebAssembly
 {
     public class Program
     {
-        private static IJSRuntime _jsRuntime;
         private static ITitulosService _titulosService;
+        private static IDolarBlueProvider _dolarBlueProvider;
 
         public static async Task Main(string[] args)
         {
@@ -33,8 +33,13 @@ namespace Rucula.WebAssembly
         [JSInvokable]
         public static async Task<IEnumerable<TituloIsin>> GetTitulosRanking()
         {
-            //return await Task.FromResult(new TituloIsin[] { new TituloIsin("pepepe", "qeqeqeq", null, null, null, new DateOnly(), new Blue(0, 0)) });
             return await _titulosService.GetCclRankingTitulosIsin();
+        }
+
+        [JSInvokable]
+        public static async Task<Blue> GetDolarBlue()
+        {
+            return await _dolarBlueProvider.GetCurrentBlue();
         }
 
         private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
@@ -45,8 +50,8 @@ namespace Rucula.WebAssembly
 
         private static void InstanceServices(IServiceProvider serviceProvider)
         {
-            _jsRuntime = serviceProvider.GetRequiredService<IJSRuntime>();
             _titulosService = serviceProvider.GetRequiredService<ITitulosService>();
+            _dolarBlueProvider = serviceProvider.GetRequiredService<IDolarBlueProvider>();
         }
 
         private static void Register(IServiceCollection serviceCollection)
