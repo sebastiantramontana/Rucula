@@ -4,6 +4,7 @@ using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
+using System.Collections.Generic;
 
 namespace Rucula.WebAssembly
 {
@@ -33,7 +34,15 @@ namespace Rucula.WebAssembly
         [JSInvokable]
         public static async Task<IEnumerable<TituloIsin>> GetTitulosRanking()
         {
-            return await _titulosService.GetCclRankingTitulosIsin();
+            try
+            {
+                return await _titulosService.GetCclRankingTitulosIsin();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return Enumerable.Empty<TituloIsin>();
+            }
         }
 
         [JSInvokable]

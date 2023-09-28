@@ -34,6 +34,10 @@
         .bg-dolar {
             background-color: #506436;
         }
+
+        .bg-ccl {
+            background-color: #548217;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-white dark:bg-[#32382e]">
@@ -48,10 +52,14 @@
                 <thead class="text-white"></thead>
                 <tbody class="text-black dark:text-white flex-1 sm:flex-none"></tbody>
             </table>
-            <div>
-                <div>Dolar&nbsp;Blue</div>
-                <div><span>Compra: $</span><span id="dolar-blue-compra"></span></div>
-                <div><span>Venta: $</span><span id="dolar-blue-venta"></span></div>
+            <div class="flex w-fit dark:text-white text-black border border-sky-800 dark:border-sky-600 bg-sky-800 dark:bg-sky-600">
+                <div class="flex w-fit">
+                    <div class="p-2 font-medium">Dolar&nbsp;Blue</div>
+                </div>
+                <div class="flex">
+                    <span class="inline px-3 text-[10pt] w-16"><div class="flex justify-center w-full">Compra</div><div class="flex justify-center w-full" id="dolar-blue-compra"></div></span>
+                    <span class="inline px-3 text-[10pt] w-16"><div class="flex justify-center w-full">Venta</div><div class="flex justify-center w-full" id="dolar-blue-venta"></div></span>
+                </div>
             </div>
         </div>
     </main>
@@ -78,7 +86,7 @@
         <th class="border-grey-light dark:border-black border bg-emerald-800 p-3 text-left">US$</th>
         <th class="border-grey-light dark:border-black border bg-teal-700 p-3 text-left">Simbolo&nbsp;MEP</th>
         <th class="border-grey-light dark:border-black border bg-teal-700 p-3 text-left">US$</th>
-        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">Cotización&nbsp;CCL</th>
+        <th class="border-grey-light dark:border-black border bg-ccl p-3 text-left">Cotización&nbsp;CCL</th>
         <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">CCL&#8702;MEP&#8702;Blue</th>
         <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
         <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;CCL&#8702;MEP</th>

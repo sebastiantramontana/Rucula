@@ -23,7 +23,7 @@ namespace PruebaConsola
 
             var titulos = await service.GetCclRankingTitulosIsin();
 
-            foreach (var titulo in titulos.OrderByDescending(t => t.CotizacionCcl))
+            foreach (var titulo in titulos)
             {
                 Console.WriteLine($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.CotizacionCcl}");
             }

@@ -11,8 +11,8 @@
 
         public async Task<string> Read(HttpRequestMessage request)
         {
-            using var client = _httpClientFactory.CreateClient();
-            using var msg = await client.SendAsync(request).ConfigureAwait(false);
+            var client = _httpClientFactory.CreateClient();
+            var msg = await client.SendAsync(request).ConfigureAwait(false);
             return await msg.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
     }

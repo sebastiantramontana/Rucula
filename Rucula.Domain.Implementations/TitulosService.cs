@@ -30,15 +30,15 @@ namespace Rucula.Domain.Implementations
             return CreateTitulosIsin(details, blue);
         }
 
-        private async Task<IEnumerable<(Titulo Titulo, TituloDetails Details)>> GetUsefulTitulosDetails(IEnumerable<Titulo> titulos)
+        private async Task<IEnumerable<(Titulo Titulo, TituloDetails? Details)>> GetUsefulTitulosDetails(IEnumerable<Titulo> titulos)
         {
             var today = DateOnly.FromDateTime(DateTime.Today);
-            var detailsContentList = new List<(Titulo Titulo, TituloDetails Details)>();
+            var detailsContentList = new List<(Titulo Titulo, TituloDetails? Details)>();
 
             foreach (var t in titulos)
             {
                 var allDetails = await GetTituloDetails(t);
-                var usefulDetails = allDetails.First(d => IsDetailsUseful(d, today));
+                var usefulDetails = allDetails.FirstOrDefault(d => IsDetailsUseful(d, today));
                 detailsContentList.Add((t, usefulDetails));
             }
 
@@ -48,16 +48,17 @@ namespace Rucula.Domain.Implementations
         private Task<IEnumerable<TituloDetails>> GetTituloDetails(Titulo titulo)
             => _tituloDetailsProvider.GetTituloDetails(titulo.Simbolo);
 
-        private IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails TituloDetails)> details, Blue blue)
+        private IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails? TituloDetails)> details, Blue blue)
         {
             return details
+                .Where(d => d.TituloDetails is not null)
                 .GroupBy(d => d.TituloDetails!)
                 .Select(g => CreateTituloIsin(g, blue))
                 .Where(t => t.CotizacionCcl is not null)
                 .OrderByDescending(t => t.CotizacionCcl);
         }
 
-        private TituloIsin CreateTituloIsin(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails TituloDetails)> values, Blue blue)
+        private TituloIsin CreateTituloIsin(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails? TituloDetails)> values, Blue blue)
         {
             var isin = values.Key.CodigoIsin;
             var denominacion = values.Key.Denominacion;
@@ -84,7 +85,7 @@ namespace Rucula.Domain.Implementations
                        ruloMepBlue);
         }
 
-        private Titulo? GetTitulo(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails TituloDetails)> tuples, Moneda moneda)
+        private Titulo? GetTitulo(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails? TituloDetails)> tuples, Moneda moneda)
         {
             return tuples
                 .Select(t => t.Titulo)
@@ -101,21 +102,26 @@ namespace Rucula.Domain.Implementations
                 && titulo.Parking == Parking.CI;
 
         private double? CalculateCcl(Titulo? tituloPeso, Titulo? tituloCable)
-            => tituloPeso?.PrecioCompra / tituloCable?.PrecioVenta;
+            => Divide(tituloPeso?.PrecioCompra, tituloCable?.PrecioVenta);
 
         private double? CalculateCclMepBlue(Blue blue, Titulo? tituloPeso, Titulo? tituloCable, Titulo? tituloMep)
             => blue.PrecioCompra * CalculatePercentageCclMep(tituloPeso, tituloCable, tituloMep);
 
         private double? CalculatePercentageCclMepBlue(Blue blue, Titulo? tituloPeso, Titulo? tituloCable, Titulo? tituloMep)
-            => PasarAPorcentaje(CalculateCclMepBlue(blue, tituloPeso, tituloCable, tituloMep) / CalculateCcl(tituloPeso, tituloCable));
+            => ConvertToPercentaje(CalculateCclMepBlue(blue, tituloPeso, tituloCable, tituloMep) / CalculateCcl(tituloPeso, tituloCable));
 
         private double? CalculatePercentageCclMep(Titulo? tituloPeso, Titulo? tituloCable, Titulo? tituloMep)
-            => PasarAPorcentaje(CalculateCcl(tituloPeso, tituloCable) / tituloMep?.PrecioCompra);
+            => ConvertToPercentaje(Divide(CalculateCcl(tituloPeso, tituloCable), tituloMep?.PrecioCompra));
 
         private double? CalculatePercentageRuloMepBlue(Blue blue, Titulo? tituloMep)
-            => PasarAPorcentaje(blue.PrecioCompra / tituloMep?.PrecioCompra);
+            => ConvertToPercentaje(Divide(blue.PrecioCompra, tituloMep?.PrecioCompra));
 
-        private double? PasarAPorcentaje(double? valor)
+        private double? ConvertToPercentaje(double? valor)
             => 100 * valor - 100;
+
+        private double? Divide(double? value1, double? value2)
+            => value1.HasValue && value2.HasValue && value2.Value != 0
+                ? value1.Value / value2.Value
+                : null;
     }
 }
