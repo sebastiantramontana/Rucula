@@ -4,14 +4,13 @@ using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
-using System.Collections.Generic;
 
 namespace Rucula.WebAssembly
 {
     public class Program
     {
-        private static ITitulosService _titulosService;
-        private static IDolarBlueProvider _dolarBlueProvider;
+        private static ITitulosService? _titulosService;
+        private static IDolarBlueProvider? _dolarBlueProvider;
 
         public static async Task Main(string[] args)
         {
@@ -39,7 +38,7 @@ namespace Rucula.WebAssembly
         {
             try
             {
-                return await _titulosService.GetCclRankingTitulosIsin();
+                return await _titulosService!.GetCclRankingTitulosIsin();
             }
             catch (Exception ex)
             {
@@ -51,7 +50,7 @@ namespace Rucula.WebAssembly
         [JSInvokable]
         public static async Task<Blue> GetDolarBlue()
         {
-            return await _dolarBlueProvider.GetCurrentBlue();
+            return await _dolarBlueProvider!.GetCurrentBlue();
         }
 
         private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
