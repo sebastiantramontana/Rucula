@@ -9,6 +9,5 @@
                                    double? CotizacionCcl,
                                    double? CotizacionCclMepBlue,
                                    double? PorcentajeArbitrajeCclMepBlue,
-                                   double? PorcentajeArbitrajeCclMep,
-                                   double? PorcentajeRuloMepBlue);
+                                   double? PorcentajeArbitrajeCclMep);
 }

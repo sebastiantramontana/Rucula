@@ -1,49 +1,18 @@
 <!DOCTYPE html>
-<html lang="es-ar" class="dark">
+<html lang="es-ar">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rucula</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="main.js" type="module"></script>
-    <style>
-        html,
-        body {
-            height: 100%;
-        }
-
-        @media (min-width: 640px) {
-            table {
-                display: inline-table !important;
-            }
-
-            thead tr:not(:first-child) {
-                display: none;
-            }
-        }
-
-        td:not(:last-child) {
-            border-bottom: 0;
-        }
-
-        th:not(:last-child) {
-            border-bottom: 2px solid rgba(0, 0, 0, .1);
-        }
-
-        .bg-dolar {
-            background-color: #506436;
-        }
-
-        .bg-ccl {
-            background-color: #548217;
-        }
-    </style>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="images/favicon.png" rel="shortcut icon" sizes="98x98" />
 </head>
 <body class="flex flex-col min-h-screen bg-white dark:bg-[#32382e]">
     <header>
         <div class="bg-dolar w-full h-24">
-            <img class="h-auto w-64 py-4 pl-2" src="img/logo-marca.svg" alt=" R&uacute;cula" />
+            <img class="h-auto w-64 py-4 pl-2" src="images/logo-marca.svg" alt=" R&uacute;cula" />
         </div>
     </header>
     <main class="flex justify-center">
@@ -99,7 +68,6 @@
         <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">CCL&#8702;MEP&#8702;Blue</th>
         <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
         <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;CCL&#8702;MEP</th>
-        <th class="border-grey-light dark:border-black border bg-dolar p-3 text-left">%&nbsp;Rulo&nbsp;MEP&#8702;Blue</th>
     </tr>
 </template>
 <template id="titulos-table-row-template">
@@ -114,6 +82,5 @@
         <td id="ccl-mep-blue" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
         <td id="porc-ccl-mep-blue" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
         <td id="porc-ccl-mep" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
-        <td id="porc-mep-blue" class="border-grey-light dark:border-black border p-3 text-right">&nbsp;</td>
     </tr>
 </template>

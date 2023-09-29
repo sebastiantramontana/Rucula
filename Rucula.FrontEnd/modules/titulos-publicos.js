@@ -48,7 +48,6 @@ function AddNewRow(tbody, templateRow, titulo) {
     WriteCell(clonedRow, "ccl-mep-blue", numFormater.format(titulo.cotizacionCclMepBlue));
     WriteCell(clonedRow, "porc-ccl-mep-blue", numFormater.format(titulo.porcentajeArbitrajeCclMepBlue));
     WriteCell(clonedRow, "porc-ccl-mep", numFormater.format(titulo.porcentajeArbitrajeCclMep));
-    WriteCell(clonedRow, "porc-mep-blue", numFormater.format(titulo.porcentajeRuloMepBlue));
 
     tbody.appendChild(clonedRow);
 }

@@ -18,6 +18,9 @@ namespace Rucula.WebAssembly
             try
             {
                 var builder = CreateWebAssemblyBuilder(args);
+
+                builder.Logging.SetMinimumLevel(LogLevel.Warning);
+
                 await using var host = CreateWebAssemblyHost(builder);
 
                 Register(builder.Services);
