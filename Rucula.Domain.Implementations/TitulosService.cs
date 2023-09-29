@@ -67,9 +67,9 @@ namespace Rucula.Domain.Implementations
             var tituloMep = GetTitulo(values, Moneda.DolarMep);
             var fechaVencimiento = values.Key.FechaVencimiento;
             var ccl = CalculateCcl(tituloPeso, tituloCable);
-            var cclMepBlue = CalculateCclMepBlue(blue, tituloPeso, tituloCable, tituloMep);
-            var percCclMepBlue = CalculatePercentageCclMepBlue(blue, tituloPeso, tituloCable, tituloMep);
-            var percCclMep = CalculatePercentageCclMep(tituloPeso, tituloCable, tituloMep);
+            var cclMepBlue = CalculateCclMepBlue(blue, tituloMep, ccl);
+            var percCclMepBlue = CalculatePercentageCclMepBlue(cclMepBlue, ccl);
+            var percCclMep = CalculatePercentageCclMep(ccl, tituloMep);
             var ruloMepBlue = CalculatePercentageRuloMepBlue(blue, tituloMep);
 
             return new(isin,
@@ -104,14 +104,14 @@ namespace Rucula.Domain.Implementations
         private double? CalculateCcl(Titulo? tituloPeso, Titulo? tituloCable)
             => Divide(tituloPeso?.PrecioCompra, tituloCable?.PrecioVenta);
 
-        private double? CalculateCclMepBlue(Blue blue, Titulo? tituloPeso, Titulo? tituloCable, Titulo? tituloMep)
-            => blue.PrecioCompra * CalculatePercentageCclMep(tituloPeso, tituloCable, tituloMep);
+        private double? CalculateCclMepBlue(Blue blue, Titulo? tituloMep, double? ccl)
+            => blue.PrecioCompra * Divide(ccl, tituloMep?.PrecioCompra);
 
-        private double? CalculatePercentageCclMepBlue(Blue blue, Titulo? tituloPeso, Titulo? tituloCable, Titulo? tituloMep)
-            => ConvertToPercentaje(CalculateCclMepBlue(blue, tituloPeso, tituloCable, tituloMep) / CalculateCcl(tituloPeso, tituloCable));
+        private double? CalculatePercentageCclMepBlue(double? cclMepBlue, double? ccl)
+            => ConvertToPercentaje(Divide(cclMepBlue, ccl));
 
-        private double? CalculatePercentageCclMep(Titulo? tituloPeso, Titulo? tituloCable, Titulo? tituloMep)
-            => ConvertToPercentaje(Divide(CalculateCcl(tituloPeso, tituloCable), tituloMep?.PrecioCompra));
+        private double? CalculatePercentageCclMep(double? ccl, Titulo? tituloMep)
+            => ConvertToPercentaje(Divide(ccl, tituloMep?.PrecioCompra));
 
         private double? CalculatePercentageRuloMepBlue(Blue blue, Titulo? tituloMep)
             => ConvertToPercentaje(Divide(blue.PrecioCompra, tituloMep?.PrecioCompra));
