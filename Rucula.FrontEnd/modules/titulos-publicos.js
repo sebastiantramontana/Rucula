@@ -1,4 +1,21 @@
-﻿export default function fillTitulosTable(titulos) {
+﻿export default async function showTitulosPublicos() {
+    showLoadingIndicator();
+    const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
+    fillTitulosTable(titulos);
+    hideLoadingIndicator();
+}
+
+function showLoadingIndicator() {
+    let indicator = document.getElementById("titulos-publicos-loading-indicator");
+    indicator.style.display = "inline";
+}
+
+function hideLoadingIndicator() {
+    let indicator = document.getElementById("titulos-publicos-loading-indicator");
+    indicator.style.display = "none";
+}
+
+function fillTitulosTable(titulos) {
     const table = document.getElementById("tabla-titulos");
 
     CreateTableHeader(table, titulos);

@@ -1,19 +1,11 @@
-﻿import fillTitulosTable from "./modules/titulos-table.js";
+﻿import showTitulosPublicos from "./modules/titulos-publicos.js";
+import showDolarBlue from "./modules/dolar-blue.js";
 
 addEventListener("load", async () => {
     await Blazor.start();
 
-    const dolarBlue = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetDolarBlue');
-    ShowDolarBlue(dolarBlue);
-
-    const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
-    fillTitulosTable(titulos);
+    showDolarBlue();
+    showTitulosPublicos();
 });
 
-function ShowDolarBlue(dolarBlue) {
-    const dolarBlueCompra = document.getElementById("dolar-blue-compra");
-    const dolarBlueVenta = document.getElementById("dolar-blue-venta");
 
-    dolarBlueCompra.innerHTML = dolarBlue.precioCompra;
-    dolarBlueVenta.innerHTML = dolarBlue.precioVenta;
-}
