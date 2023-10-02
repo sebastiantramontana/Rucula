@@ -4,7 +4,7 @@ namespace Rucula.DataAccess.Providers.Byma
 {
     internal class BymaLetrasFetcher : BymaFetcherBase, IBymaLetrasFetcher
     {
-        public BymaLetrasFetcher(ILetrasRequestFactory letrasRequestFactory, IBymaHttpReader bymaHttpReader)
-            : base(letrasRequestFactory, bymaHttpReader) { }
+        public BymaLetrasFetcher(ILetrasRequestFactory letrasRequestFactory, IHttpReader httpReader)
+            : base(letrasRequestFactory, httpReader) { }
     }
 }

@@ -11,6 +11,7 @@ namespace Rucula.WebAssembly
     {
         private static ITitulosService? _titulosService;
         private static IDolarBlueProvider? _dolarBlueProvider;
+        private static IDolarCryptoProvider? _dolarCryptoProvider;
 
         public static async Task Main(string[] args)
         {
@@ -53,6 +54,12 @@ namespace Rucula.WebAssembly
             return await _dolarBlueProvider!.GetCurrentBlue();
         }
 
+        [JSInvokable]
+        public static async Task<DolarCrypto> GetDolarCrypto()
+        {
+            return await _dolarCryptoProvider!.GetCurrentDolarCrypto();
+        }
+
         private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
             => WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -63,6 +70,7 @@ namespace Rucula.WebAssembly
         {
             _titulosService = serviceProvider.GetRequiredService<ITitulosService>();
             _dolarBlueProvider = serviceProvider.GetRequiredService<IDolarBlueProvider>();
+            _dolarCryptoProvider = serviceProvider.GetRequiredService<IDolarCryptoProvider>();
         }
 
         private static void Register(IServiceCollection serviceCollection)

@@ -1,6 +1,6 @@
 ﻿namespace Rucula.DataAccess.Providers.Ambito
 {
-    internal interface IAmbitoHttpReader : IHttpReader
+    internal interface IAmbitoDolarCryptoFetcher : IFetcher
     {
     }
 }

@@ -5,19 +5,19 @@ namespace Rucula.DataAccess.Providers.Byma
     internal abstract class BymaFetcherBase : IFetcher
     {
         private readonly IFixedRequestFactory _fixedRequestFactory;
-        private readonly IBymaHttpReader _bymaHttpReader;
+        private readonly IHttpReader _httpReader;
 
-        protected BymaFetcherBase(IFixedRequestFactory fixedRequestFactory, IBymaHttpReader bymaHttpReader)
+        protected BymaFetcherBase(IFixedRequestFactory fixedRequestFactory, IHttpReader httpReader)
         {
             _fixedRequestFactory = fixedRequestFactory;
-            _bymaHttpReader = bymaHttpReader;
+            _httpReader = httpReader;
         }
 
         public async Task<string> Fetch()
         {
             using var request = _fixedRequestFactory.CreateRequest();
 
-            return await _bymaHttpReader.Read(request);
+            return await _httpReader.Read(request);
         }
     }
 }

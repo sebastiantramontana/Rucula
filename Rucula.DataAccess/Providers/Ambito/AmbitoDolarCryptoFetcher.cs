@@ -1,11 +1,11 @@
 ﻿namespace Rucula.DataAccess.Providers.Ambito
 {
-    internal class AmbitoBlueFetcher : IAmbitoBlueFetcher
+    internal class AmbitoDolarCryptoFetcher : IAmbitoDolarCryptoFetcher
     {
-        private const string Url = "https://mercados.ambito.com//dolar/informal/variacion";
+        private const string Url = "https://mercados.ambito.com//dolarcripto/variacion";
         private readonly IHttpReader _httpReader;
 
-        public AmbitoBlueFetcher(IHttpReader httpReader)
+        public AmbitoDolarCryptoFetcher(IHttpReader httpReader)
         {
             _httpReader = httpReader;
         }

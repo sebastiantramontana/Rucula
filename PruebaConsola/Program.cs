@@ -16,9 +16,12 @@ namespace PruebaConsola
             servicesCollection.AddHttpClient();
             var services = servicesCollection.BuildServiceProvider();
 
-            var blueService = services.GetRequiredService<IDolarBlueProvider>();
+            var blueProvider = services.GetRequiredService<IDolarBlueProvider>();
+            Console.WriteLine($"Blue: {await blueProvider.GetCurrentBlue()}");
 
-            Console.WriteLine($"Blue: {await blueService.GetCurrentBlue()}");
+            var cryptoProvider = services.GetRequiredService<IDolarCryptoProvider>();
+            Console.WriteLine($"Crypto: {await cryptoProvider.GetCurrentDolarCrypto()}");
+
             var service = services.GetRequiredService<ITitulosService>();
 
             var titulos = await service.GetCclRankingTitulosIsin();

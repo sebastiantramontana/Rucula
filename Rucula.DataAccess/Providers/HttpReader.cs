@@ -1,10 +1,10 @@
 ﻿namespace Rucula.DataAccess.Providers.Byma
 {
-    internal class BymaHttpReader : IBymaHttpReader
+    internal class HttpReader : IHttpReader
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public BymaHttpReader(IHttpClientFactory httpClientFactory)
+        public HttpReader(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

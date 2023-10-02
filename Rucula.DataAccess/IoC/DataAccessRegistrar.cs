@@ -35,18 +35,17 @@ namespace Rucula.DataAccess.IoC
         private static void RegisterReaders(IServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddSingleton<IBymaHttpReader, BymaHttpReader>()
-                .AddSingleton<IAmbitoHttpReader, AmbitoHttpReader>();
+                .AddSingleton<IHttpReader, HttpReader>();
         }
 
         private static void RegisterProviders(IServiceCollection serviceCollection)
         {
             serviceCollection
-                //.AddSingleton<IProvider<TituloIsin>, TituloIsinProvider>()
                 .AddSingleton<ITitulosProvider, TitulosProvider>()
                 .AddSingleton<IProvider<Titulo>, TitulosProvider>()
                 .AddSingleton<ITituloDetailsProvider, TituloDetailsProvider>()
-                .AddSingleton<IDolarBlueProvider, DolarBlueProvider>();
+                .AddSingleton<IDolarBlueProvider, DolarBlueProvider>()
+                .AddSingleton<IDolarCryptoProvider, DolarCryptoProvider>();
         }
 
         private static void RegisterFetchers(IServiceCollection serviceCollection)
@@ -55,7 +54,8 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<IBymaLetrasFetcher, BymaLetrasFetcher>()
                 .AddSingleton<IBymaBonosFetcher, BymaBonosFetcher>()
                 .AddSingleton<IBymaTituloDetailsFetcher, BymaTituloDetailsFetcher>()
-                .AddSingleton<IAmbitoBlueFetcher, AmbitoBlueFetcher>();
+                .AddSingleton<IAmbitoBlueFetcher, AmbitoBlueFetcher>()
+                .AddSingleton<IAmbitoDolarCryptoFetcher, AmbitoDolarCryptoFetcher>();
         }
 
         private static void RegisterMappers(IServiceCollection serviceCollection)
@@ -63,7 +63,8 @@ namespace Rucula.DataAccess.IoC
             serviceCollection
                 .AddSingleton<IMapper<TituloDto, Titulo>, TituloMapper>()
                 .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
-                .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>();
+                .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>()
+                .AddSingleton<IMapper<DolarCryptoDto, DolarCrypto>, DolarCryptoMapper>();
         }
 
         private static void RegisterDeserializers(IServiceCollection serviceCollection)
@@ -75,6 +76,7 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<IJsonDeserializer<TitulosContentDto>, JsonToTitulosContentDtoDeserializer>()
                 .AddSingleton<IJsonDeserializer<TituloDetailsDto>, JsonToTituloDetailsDtoDeserializer>()
                 .AddSingleton<IJsonDeserializer<BlueDto>, JsonToBlueDtoDeserializer>()
+                .AddSingleton<IJsonDeserializer<DolarCryptoDto>, JsonToDolarCryptoDtoDeserializer>()
                 .AddSingleton<IJsonValueReader, JsonValueReader>();
         }
     }
