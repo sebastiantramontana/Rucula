@@ -7,17 +7,20 @@ var dataIntervalId = null;
 addEventListener("load", async () => {
     await Blazor.start();
 
-    getAllData();
-    startTimerGettingData();
-    hookVisibilityEvent();
+    runGettingData();
+    hookVisibilityEventToRun();
 });
 
+function runGettingData() {
+    getAllData();
+    startTimerGettingData();
+}
 
-function hookVisibilityEvent() {
+function hookVisibilityEventToRun() {
     document.addEventListener("visibilitychange", (e) => {
 
         if (document.visibilityState === "visible")
-            startTimerGettingData();
+            runGettingData();
         else
             stopTimerGettingData();
     });
