@@ -6,6 +6,7 @@ using Rucula.DataAccess.Providers;
 using Rucula.DataAccess.Providers.Ambito;
 using Rucula.DataAccess.Providers.Byma;
 using Rucula.DataAccess.Providers.Byma.RequestFactories;
+using Rucula.DataAccess.Providers.WesternUnion;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 
@@ -45,7 +46,8 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<IProvider<Titulo>, TitulosProvider>()
                 .AddSingleton<ITituloDetailsProvider, TituloDetailsProvider>()
                 .AddSingleton<IDolarBlueProvider, DolarBlueProvider>()
-                .AddSingleton<IDolarCryptoProvider, DolarCryptoProvider>();
+                .AddSingleton<IDolarCryptoProvider, DolarCryptoProvider>()
+                .AddSingleton<IWesternUnionProvider, WesternUnionProvider>();
         }
 
         private static void RegisterFetchers(IServiceCollection serviceCollection)
@@ -55,7 +57,8 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<IBymaBonosFetcher, BymaBonosFetcher>()
                 .AddSingleton<IBymaTituloDetailsFetcher, BymaTituloDetailsFetcher>()
                 .AddSingleton<IAmbitoBlueFetcher, AmbitoBlueFetcher>()
-                .AddSingleton<IAmbitoDolarCryptoFetcher, AmbitoDolarCryptoFetcher>();
+                .AddSingleton<IAmbitoDolarCryptoFetcher, AmbitoDolarCryptoFetcher>()
+                .AddSingleton<IWesternUnionFetcher, WesternUnionFetcher>();
         }
 
         private static void RegisterMappers(IServiceCollection serviceCollection)
@@ -64,7 +67,8 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<IMapper<TituloDto, Titulo>, TituloMapper>()
                 .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
                 .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>()
-                .AddSingleton<IMapper<DolarCryptoDto, DolarCrypto>, DolarCryptoMapper>();
+                .AddSingleton<IMapper<DolarCryptoDto, DolarCrypto>, DolarCryptoMapper>()
+                .AddSingleton<IMapper<DolarWesternUnionDto, DolarWesternUnion>, DolarWesternUnionMapper>();
         }
 
         private static void RegisterDeserializers(IServiceCollection serviceCollection)
@@ -77,6 +81,7 @@ namespace Rucula.DataAccess.IoC
                 .AddSingleton<IJsonDeserializer<TituloDetailsDto>, JsonToTituloDetailsDtoDeserializer>()
                 .AddSingleton<IJsonDeserializer<BlueDto>, JsonToBlueDtoDeserializer>()
                 .AddSingleton<IJsonDeserializer<DolarCryptoDto>, JsonToDolarCryptoDtoDeserializer>()
+                .AddSingleton<IJsonDeserializer<DolarWesternUnionDto>, JsonToDolarWesternUnionDtoDeserializer>()
                 .AddSingleton<IJsonValueReader, JsonValueReader>();
         }
     }

@@ -12,6 +12,7 @@ namespace Rucula.WebAssembly
         private static ITitulosService? _titulosService;
         private static IDolarBlueProvider? _dolarBlueProvider;
         private static IDolarCryptoProvider? _dolarCryptoProvider;
+        private static IWesternUnionProvider? _westernUnionProvider;
 
         public static async Task Main(string[] args)
         {
@@ -49,16 +50,16 @@ namespace Rucula.WebAssembly
         }
 
         [JSInvokable]
-        public static async Task<Blue> GetDolarBlue()
-        {
-            return await _dolarBlueProvider!.GetCurrentBlue();
-        }
+        public static async Task<Blue> GetDolarBlue() 
+            => await _dolarBlueProvider!.GetCurrentBlue();
 
         [JSInvokable]
-        public static async Task<DolarCrypto> GetDolarCrypto()
-        {
-            return await _dolarCryptoProvider!.GetCurrentDolarCrypto();
-        }
+        public static async Task<DolarCrypto> GetDolarCrypto() 
+            => await _dolarCryptoProvider!.GetCurrentDolarCrypto();
+
+        [JSInvokable]
+        public static async Task<DolarWesternUnion> GetDolarWesternUnion() 
+            => await _westernUnionProvider!.GetCurrentDolarWesternUnion();
 
         private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
             => WebAssemblyHostBuilder.CreateDefault(args);
@@ -71,6 +72,7 @@ namespace Rucula.WebAssembly
             _titulosService = serviceProvider.GetRequiredService<ITitulosService>();
             _dolarBlueProvider = serviceProvider.GetRequiredService<IDolarBlueProvider>();
             _dolarCryptoProvider = serviceProvider.GetRequiredService<IDolarCryptoProvider>();
+            _westernUnionProvider = serviceProvider.GetRequiredService<IWesternUnionProvider>();
         }
 
         private static void Register(IServiceCollection serviceCollection)

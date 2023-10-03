@@ -1,10 +1,10 @@
 ﻿export default async function showDolarCrypto()
 {
     const dolarCrypto = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetDolarCrypto');
-    fillDolarBlue(dolarCrypto);
+    fillDolarCrypto(dolarCrypto);
 }
 
-function fillDolarBlue(dolarCrypto) {
+function fillDolarCrypto(dolarCrypto) {
     const dolarCryptoCompra = document.getElementById("dolar-crypto-compra");
     const dolarCryptoVenta = document.getElementById("dolar-crypto-venta");
 

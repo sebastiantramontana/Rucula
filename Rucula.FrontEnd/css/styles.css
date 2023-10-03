@@ -28,3 +28,7 @@ th:not(:last-child) {
 .bg-ccl {
     background-color: #548217;
 }
+
+.bg-wu {
+    background-color: #FAE000;
+}

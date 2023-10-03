@@ -1,6 +1,7 @@
 ﻿import showTitulosPublicos from "./modules/titulos-publicos.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
+import showDolarWesternUnion from "./modules/dolar-western-union.js";
 
 
 var dataIntervalId = null;
@@ -42,6 +43,7 @@ function stopTimerGettingData() {
 function getAllData() {
     showDolarBlue();
     showDolarCrypto();
+    showDolarWesternUnion();
     showTitulosPublicos();
 }
 

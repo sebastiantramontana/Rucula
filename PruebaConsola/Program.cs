@@ -22,6 +22,9 @@ namespace PruebaConsola
             var cryptoProvider = services.GetRequiredService<IDolarCryptoProvider>();
             Console.WriteLine($"Crypto: {await cryptoProvider.GetCurrentDolarCrypto()}");
 
+            var wuProvider = services.GetRequiredService<IWesternUnionProvider>();
+            Console.WriteLine($"WU: {await wuProvider.GetCurrentDolarWesternUnion()}");
+
             var service = services.GetRequiredService<ITitulosService>();
 
             var titulos = await service.GetCclRankingTitulosIsin();
