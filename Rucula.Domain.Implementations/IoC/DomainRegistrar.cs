@@ -7,7 +7,9 @@ namespace Rucula.Domain.Implementations.IoC
     {
         public static void Register(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<ITitulosService, TitulosService>();
+            serviceCollection
+                .AddSingleton<ITitulosService, TitulosService>()
+                .AddSingleton<IChoicesService, ChoicesService>();
         }
     }
 }

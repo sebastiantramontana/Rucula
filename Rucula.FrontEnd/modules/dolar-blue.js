@@ -1,10 +1,5 @@
-﻿export default async function showDolarBlue()
+﻿export default async function showDolarBlue(dolarBlue)
 {
-    const dolarBlue = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetDolarBlue');
-    fillDolarBlue(dolarBlue);
-}
-
-function fillDolarBlue(dolarBlue) {
     const dolarBlueCompra = document.getElementById("dolar-blue-compra");
     const dolarBlueVenta = document.getElementById("dolar-blue-venta");
 

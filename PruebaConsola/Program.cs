@@ -25,11 +25,12 @@ namespace PruebaConsola
             var wuProvider = services.GetRequiredService<IWesternUnionProvider>();
             Console.WriteLine($"WU: {await wuProvider.GetCurrentDolarWesternUnion()}");
 
-            var service = services.GetRequiredService<ITitulosService>();
+            var service = services.GetRequiredService<IChoicesService>();
+            var choices = await service.GetChoices();
 
-            var titulos = await service.GetCclRankingTitulosIsin();
+            Console.WriteLine($"Mejor opción: {choices.WinningChoice}");
 
-            foreach (var titulo in titulos)
+            foreach (var titulo in choices.RankingTitulos)
             {
                 Console.WriteLine($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.CotizacionCcl}");
             }

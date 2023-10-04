@@ -9,10 +9,7 @@ namespace Rucula.WebAssembly
 {
     public class Program
     {
-        private static ITitulosService? _titulosService;
-        private static IDolarBlueProvider? _dolarBlueProvider;
-        private static IDolarCryptoProvider? _dolarCryptoProvider;
-        private static IWesternUnionProvider? _westernUnionProvider;
+        private static IChoicesService? _choicesService;
 
         public static async Task Main(string[] args)
         {
@@ -36,30 +33,21 @@ namespace Rucula.WebAssembly
         }
 
         [JSInvokable]
-        public static async Task<IEnumerable<TituloIsin>> GetTitulosRanking()
+        public static async Task<ChoicesInfo> GetChoices()
         {
+            var choices = ChoicesInfo.NoChoices;
+
             try
             {
-                return await _titulosService!.GetCclRankingTitulosIsin();
+                choices = await _choicesService!.GetChoices();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return Enumerable.Empty<TituloIsin>();
             }
+
+            return choices;
         }
-
-        [JSInvokable]
-        public static async Task<Blue> GetDolarBlue() 
-            => await _dolarBlueProvider!.GetCurrentBlue();
-
-        [JSInvokable]
-        public static async Task<DolarCrypto> GetDolarCrypto() 
-            => await _dolarCryptoProvider!.GetCurrentDolarCrypto();
-
-        [JSInvokable]
-        public static async Task<DolarWesternUnion> GetDolarWesternUnion() 
-            => await _westernUnionProvider!.GetCurrentDolarWesternUnion();
 
         private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
             => WebAssemblyHostBuilder.CreateDefault(args);
@@ -69,10 +57,7 @@ namespace Rucula.WebAssembly
 
         private static void InstanceServices(IServiceProvider serviceProvider)
         {
-            _titulosService = serviceProvider.GetRequiredService<ITitulosService>();
-            _dolarBlueProvider = serviceProvider.GetRequiredService<IDolarBlueProvider>();
-            _dolarCryptoProvider = serviceProvider.GetRequiredService<IDolarCryptoProvider>();
-            _westernUnionProvider = serviceProvider.GetRequiredService<IWesternUnionProvider>();
+            _choicesService = serviceProvider.GetRequiredService<IChoicesService>();
         }
 
         private static void Register(IServiceCollection serviceCollection)

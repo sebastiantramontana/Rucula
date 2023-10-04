@@ -1,6 +1,5 @@
 ﻿using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
-using System.Linq;
 
 namespace Rucula.Domain.Implementations
 {
@@ -8,13 +7,11 @@ namespace Rucula.Domain.Implementations
     {
         private readonly ITitulosProvider _titulosProvider;
         private readonly ITituloDetailsProvider _tituloDetailsProvider;
-        private readonly IDolarBlueProvider _dolarBlueProvider;
 
-        public TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, IDolarBlueProvider dolarBlueProvider)
+        public TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider)
         {
             _titulosProvider = titulosProvider;
             _tituloDetailsProvider = tituloDetailsProvider;
-            _dolarBlueProvider = dolarBlueProvider;
         }
 
         public Task<IEnumerable<Titulo>> GetAllTitulos()
@@ -22,11 +19,10 @@ namespace Rucula.Domain.Implementations
             return _titulosProvider.Get();
         }
 
-        public async Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin()
+        public async Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin(Blue blue)
         {
             var titulos = await _titulosProvider.Get();
             var details = await GetUsefulTitulosDetails(titulos);
-            var blue = await _dolarBlueProvider.GetCurrentBlue();
             return CreateTitulosIsin(details, blue);
         }
 

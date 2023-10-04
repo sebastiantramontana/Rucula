@@ -5,6 +5,10 @@ import showDolarWesternUnion from "./modules/dolar-western-union.js";
 
 
 var dataIntervalId = null;
+const numberFormater = new Intl.NumberFormat('es-AR', {
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+});
 
 addEventListener("load", async () => {
     await Blazor.start();
@@ -40,10 +44,32 @@ function stopTimerGettingData() {
         clearInterval(dataIntervalId);
 }
 
-function getAllData() {
-    showDolarBlue();
-    showDolarCrypto();
-    showDolarWesternUnion();
-    showTitulosPublicos();
+async function getAllData() {
+    showLoadingIndicator();
+
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices');
+
+    showBestChoice(choices.winningChoice, numberFormater);
+    showDolarBlue(choices.blue);
+    showDolarCrypto(choices.dolarCrypto);
+    showDolarWesternUnion(choices.dolarWesternUnion);
+    showTitulosPublicos(choices.rankingTitulos, numberFormater);
+
+    hideLoadingIndicator();
+}
+
+function showLoadingIndicator() {
+    let indicator = document.getElementById("loading-indicator");
+    indicator.style.display = "inline";
+}
+
+function hideLoadingIndicator() {
+    let indicator = document.getElementById("loading-indicator");
+    indicator.style.display = "none";
+}
+
+function showBestChoice(winner, numberFormater) {
+    const bestChoice = document.getElementById("mejor-opcion");
+    bestChoice.innerHTML = `${winner.name}: ${numberFormater.format(winner.dolarPrice)}`;
 }
 

@@ -1,54 +1,33 @@
-﻿export default async function showTitulosPublicos() {
-    showLoadingIndicator();
-    const titulos = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetTitulosRanking');
-    fillTitulosTable(titulos);
-    hideLoadingIndicator();
-}
-
-function showLoadingIndicator() {
-    let indicator = document.getElementById("titulos-publicos-loading-indicator");
-    indicator.style.display = "inline";
-}
-
-function hideLoadingIndicator() {
-    let indicator = document.getElementById("titulos-publicos-loading-indicator");
-    indicator.style.display = "none";
-}
-
-function fillTitulosTable(titulos) {
+﻿export default async function showTitulosPublicos(titulos, numberFormater) {
     const table = document.getElementById("tabla-titulos");
 
     clearTableRows(table);
     createTableHeader(table, titulos);
-    fillTitulosRows(table, titulos);
+    fillTitulosRows(table, titulos, numberFormater);
 }
 
-function fillTitulosRows(table, titulos) {
+function fillTitulosRows(table, titulos, numberFormater) {
     const tbody = table.tBodies[0];
     const row = document.getElementById("titulos-table-row-template").content;
 
     for (let i = 0; i < titulos.length; i++) {
-        addNewRow(tbody, row, titulos[i]);
+        addNewRow(tbody, row, titulos[i], numberFormater);
     }
 }
 
-function addNewRow(tbody, templateRow, titulo) {
+function addNewRow(tbody, templateRow, titulo, numberFormater) {
     const clonedRow = templateRow.cloneNode(true);
-    const numFormater = new Intl.NumberFormat('es-AR', {
-        minimumFractionDigits: 3,
-        maximumFractionDigits: 3,
-    });
 
     writeCell(clonedRow, "symbol-pesos", titulo.tituloPeso.simbolo);
-    writeCell(clonedRow, "cotizacion-pesos", numFormater.format(titulo.tituloPeso.precioVenta));
+    writeCell(clonedRow, "cotizacion-pesos", numberFormater.format(titulo.tituloPeso.precioVenta));
     writeCell(clonedRow, "symbol-cable", titulo.tituloCable.simbolo);
-    writeCell(clonedRow, "cotizacion-cable", numFormater.format(titulo.tituloCable.precioCompra));
+    writeCell(clonedRow, "cotizacion-cable", numberFormater.format(titulo.tituloCable.precioCompra));
     writeCell(clonedRow, "symbol-mep", titulo.tituloMep.simbolo);
-    writeCell(clonedRow, "cotizacion-mep", numFormater.format(titulo.tituloMep.precioVenta));
-    writeCell(clonedRow, "ccl", numFormater.format(titulo.cotizacionCcl));
-    writeCell(clonedRow, "ccl-mep-blue", numFormater.format(titulo.cotizacionCclMepBlue));
-    writeCell(clonedRow, "porc-ccl-mep-blue", numFormater.format(titulo.porcentajeArbitrajeCclMepBlue));
-    writeCell(clonedRow, "porc-ccl-mep", numFormater.format(titulo.porcentajeArbitrajeCclMep));
+    writeCell(clonedRow, "cotizacion-mep", numberFormater.format(titulo.tituloMep.precioVenta));
+    writeCell(clonedRow, "ccl", numberFormater.format(titulo.cotizacionCcl));
+    writeCell(clonedRow, "ccl-mep-blue", numberFormater.format(titulo.cotizacionCclMepBlue));
+    writeCell(clonedRow, "porc-ccl-mep-blue", numberFormater.format(titulo.porcentajeArbitrajeCclMepBlue));
+    writeCell(clonedRow, "porc-ccl-mep", numberFormater.format(titulo.porcentajeArbitrajeCclMep));
 
     tbody.appendChild(clonedRow);
 }
