@@ -19,11 +19,11 @@ function addNewRow(tbody, templateRow, titulo, numberFormater) {
     const clonedRow = templateRow.cloneNode(true);
 
     writeCell(clonedRow, "symbol-pesos", titulo.tituloPeso.simbolo);
-    writeCell(clonedRow, "cotizacion-pesos", numberFormater.format(titulo.tituloPeso.precioVenta));
+    writeCell(clonedRow, "cotizacion-pesos", numberFormater.format(titulo.tituloPeso.precioCompra));
     writeCell(clonedRow, "symbol-cable", titulo.tituloCable.simbolo);
-    writeCell(clonedRow, "cotizacion-cable", numberFormater.format(titulo.tituloCable.precioCompra));
+    writeCell(clonedRow, "cotizacion-cable", numberFormater.format(titulo.tituloCable.precioVenta));
     writeCell(clonedRow, "symbol-mep", titulo.tituloMep.simbolo);
-    writeCell(clonedRow, "cotizacion-mep", numberFormater.format(titulo.tituloMep.precioVenta));
+    writeCell(clonedRow, "cotizacion-mep", numberFormater.format(titulo.tituloMep.precioCompra));
     writeCell(clonedRow, "ccl", numberFormater.format(titulo.cotizacionCcl));
     writeCell(clonedRow, "ccl-mep-blue", numberFormater.format(titulo.cotizacionCclMepBlue));
     writeCell(clonedRow, "porc-ccl-mep-blue", numberFormater.format(titulo.porcentajeArbitrajeCclMepBlue));

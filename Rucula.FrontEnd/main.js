@@ -2,7 +2,7 @@
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
-
+import showBestChoice from "./modules/best-choice.js";
 
 var dataIntervalId = null;
 const numberFormater = new Intl.NumberFormat('es-AR', {
@@ -66,10 +66,5 @@ function showLoadingIndicator() {
 function hideLoadingIndicator() {
     let indicator = document.getElementById("loading-indicator");
     indicator.style.display = "none";
-}
-
-function showBestChoice(winner, numberFormater) {
-    const bestChoice = document.getElementById("mejor-opcion");
-    bestChoice.innerHTML = `${winner.name}: ${numberFormater.format(winner.dolarPrice)}`;
 }
 
