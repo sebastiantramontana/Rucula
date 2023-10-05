@@ -4,7 +4,7 @@ import showDolarCrypto from "./modules/dolar-crypto.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
 import showBestChoice from "./modules/best-choice.js";
 
-var dataIntervalId = null;
+let dataIntervalId = null;
 const numberFormater = new Intl.NumberFormat('es-AR', {
     minimumFractionDigits: 3,
     maximumFractionDigits: 3,
@@ -44,7 +44,14 @@ function stopTimerGettingData() {
         clearInterval(dataIntervalId);
 }
 
+let isGettingData = false;
+
 async function getAllData() {
+    if (isGettingData)
+        return;
+
+    isGettingData = true;
+
     showLoadingIndicator();
 
     const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices');
@@ -56,6 +63,8 @@ async function getAllData() {
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     hideLoadingIndicator();
+
+    isGettingData = false;
 }
 
 function showLoadingIndicator() {
