@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rucula.DataAccess.Deserializers;
 using Rucula.DataAccess.Dtos;
+using Rucula.DataAccess.Globalization;
 using Rucula.DataAccess.Mappers;
 using Rucula.DataAccess.Providers;
 using Rucula.DataAccess.Providers.Ambito;
@@ -22,6 +23,7 @@ namespace Rucula.DataAccess.IoC
             RegisterFetchers(serviceCollection);
             RegisterRequestFactories(serviceCollection);
             RegisterMappers(serviceCollection);
+            RegisterGlobalization(serviceCollection);
         }
 
         private static void RegisterRequestFactories(IServiceCollection serviceCollection)
@@ -37,6 +39,12 @@ namespace Rucula.DataAccess.IoC
         {
             serviceCollection
                 .AddSingleton<IHttpReader, HttpReader>();
+        }
+
+        private static void RegisterGlobalization(IServiceCollection serviceCollection)
+        {
+            serviceCollection
+                .AddSingleton<ISpanishNumberConverter, SpanishNumberConverter>();
         }
 
         private static void RegisterProviders(IServiceCollection serviceCollection)

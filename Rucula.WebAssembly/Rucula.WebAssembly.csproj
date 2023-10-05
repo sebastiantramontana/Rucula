@@ -10,7 +10,7 @@
 		<BlazorEnableCompression>true</BlazorEnableCompression>
 		<PublishTrimmed>true</PublishTrimmed>
 		<TrimMode>full</TrimMode>
-		<InvariantGlobalization>false</InvariantGlobalization>
+		<InvariantGlobalization>true</InvariantGlobalization>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
