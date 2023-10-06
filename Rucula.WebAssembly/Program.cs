@@ -4,20 +4,12 @@ using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Rucula.WebAssembly
 {
     public class Program
     {
         private static IChoicesService? _choicesService;
-
-        [DynamicDependency(nameof(GetChoices))]
-        [DynamicDependency(nameof(Main))]
-        static Program()
-        {
-            _choicesService = null;
-        }
 
         public static async Task Main(string[] args)
         {
