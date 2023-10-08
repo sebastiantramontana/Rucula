@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js}"],
+    content: ["./Rucula.FrontEnd/**/*.{html,js}"],
   theme: {
     extend: {},
   },

@@ -32,4 +32,4 @@ _ReSharper*/
 packages/
 _framework/
 node_modules/
-Publish/tailwind/package*.*
+Publish/package*.*
