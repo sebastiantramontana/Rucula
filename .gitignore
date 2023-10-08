@@ -31,4 +31,5 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 _framework/
-Publish/
+node_modules/
+Publish/tailwind/package*.*
