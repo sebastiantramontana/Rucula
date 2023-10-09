@@ -1,5 +1,7 @@
-mkdir ../Release
-rem tailwind.cmd
-xcopy "../Rucula.Frontend/images" "../Release/images"
-xcopy "../Rucula.Frontend/modules" "../Release/modules"
-xcopy "../Rucula.Frontend/*.*" "../Release/*.*"
+mkdir "..\Release"
+pause "publicar wasm en Release"
+start archivosEstaticos.cmd
+start tailwind.cmd
+start apache.cmd
+pause "Quitar cdn de tailwindcss!"
+exit
