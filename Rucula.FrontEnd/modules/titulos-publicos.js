@@ -18,23 +18,27 @@ function fillTitulosRows(table, titulos, numberFormater) {
 function addNewRow(tbody, templateRow, titulo, numberFormater) {
     const clonedRow = templateRow.cloneNode(true);
 
-    writeCell(clonedRow, "symbol-pesos", titulo.tituloPeso.simbolo);
-    writeCell(clonedRow, "cotizacion-pesos", numberFormater.format(titulo.tituloPeso.precioCompra));
-    writeCell(clonedRow, "symbol-cable", titulo.tituloCable.simbolo);
-    writeCell(clonedRow, "cotizacion-cable", numberFormater.format(titulo.tituloCable.precioVenta));
-    writeCell(clonedRow, "symbol-mep", titulo.tituloMep.simbolo);
-    writeCell(clonedRow, "cotizacion-mep", numberFormater.format(titulo.tituloMep.precioCompra));
-    writeCell(clonedRow, "ccl", numberFormater.format(titulo.cotizacionCcl));
-    writeCell(clonedRow, "ccl-mep-blue", numberFormater.format(titulo.cotizacionCclMepBlue));
-    writeCell(clonedRow, "porc-ccl-mep-blue", numberFormater.format(titulo.porcentajeArbitrajeCclMepBlue));
-    writeCell(clonedRow, "porc-ccl-mep", numberFormater.format(titulo.porcentajeArbitrajeCclMep));
+    writeCell(clonedRow, "symbol-pesos", titulo?.tituloPeso?.simbolo);
+    writeCell(clonedRow, "cotizacion-pesos", format(numberFormater, titulo?.tituloPeso?.precioCompra));
+    writeCell(clonedRow, "symbol-cable", titulo?.tituloCable?.simbolo);
+    writeCell(clonedRow, "cotizacion-cable", format(numberFormater, titulo?.tituloCable?.precioVenta));
+    writeCell(clonedRow, "symbol-mep", titulo?.tituloMep?.simbolo);
+    writeCell(clonedRow, "cotizacion-mep", format(numberFormater, titulo?.tituloMep?.precioCompra));
+    writeCell(clonedRow, "ccl", format(numberFormater, titulo?.cotizacionCcl));
+    writeCell(clonedRow, "ccl-mep-blue", format(numberFormater, titulo?.cotizacionCclMepBlue));
+    writeCell(clonedRow, "porc-ccl-mep-blue", format(numberFormater, titulo?.porcentajeArbitrajeCclMepBlue));
+    writeCell(clonedRow, "porc-ccl-mep", format(numberFormater, titulo?.porcentajeArbitrajeCclMep));
 
     tbody.appendChild(clonedRow);
 }
 
+function format(formatter, value) {
+    return (value) ? formatter.format(value) : "";
+}
+
 function writeCell(row, cellId, data) {
     const cell = row.getElementById(cellId);
-    cell.innerHTML = data;
+    cell.innerHTML = data ?? "";
 }
 
 function createTableHeader(table, titulos) {
