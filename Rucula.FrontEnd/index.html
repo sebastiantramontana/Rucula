@@ -31,10 +31,23 @@
                     </span>
                 </div>
             </div>
-            <div class="w-full text-white font-medium place-content-center grid">Títulos Públicos</div>
-            <table id="tabla-titulos" class="w-full flex flex-row flex-nowrap rounded-lg overflow-hidden sm:shadow-lg my-5">
-                <thead class="text-white"></thead>
-                <tbody class="text-black dark:text-white flex-1 sm:flex-none"></tbody>
+            <div class="w-full text-white bg-dolar border-grey-light dark:border-black border-x font-medium place-content-center grid">Títulos Públicos</div>
+            <table id="tabla-titulos" class="w-full border-collapse rounded-lg sm:shadow-lg mb-5 mt-0">
+                <thead class="hidden sm:table-header-group text-white">
+                    <tr class="mb-0 text-sm text-left">
+                        <th class="border-grey-light dark:border-black border bg-sky-400 p-3">Símbolo&nbsp;Pesos</th>
+                        <th class="border-grey-light dark:border-black border bg-sky-400 p-3">AR$</th>
+                        <th class="border-grey-light dark:border-black border bg-emerald-800 p-3">Símbolo&nbsp;Cable</th>
+                        <th class="border-grey-light dark:border-black border bg-emerald-800 p-3">US$</th>
+                        <th class="border-grey-light dark:border-black border bg-teal-700 p-3">Símbolo&nbsp;MEP</th>
+                        <th class="border-grey-light dark:border-black border bg-teal-700 p-3">US$</th>
+                        <th class="border-grey-light dark:border-black border bg-ccl p-3">Cotización&nbsp;CCL</th>
+                        <th class="border-grey-light dark:border-black border bg-dolar p-3">CCL&#8702;MEP&#8702;Blue</th>
+                        <th class="border-grey-light dark:border-black border bg-dolar p-3">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
+                        <th class="border-grey-light dark:border-black border bg-dolar p-3">%&nbsp;CCL&#8702;MEP</th>
+                    </tr>
+                </thead>
+                <tbody class="text-black dark:text-white"></tbody>
             </table>
             <div class="grid grid-flow-row-dense grid-cols-1 grid-rows-3 sm:grid-cols-3 sm:grid-rows-3 gap-4">
                 <div class="grid grid-flow-row-dense grid-cols-2 grid-rows-1 text-white border border-black bg-sky-800">
@@ -89,31 +102,17 @@
 </body>
 </html>
 
-<template id="titulos-table-header-template">
-    <tr class="flex flex-col flex-nowrap sm:table-row rounded-lg sm:rounded-none mb-2 sm:mb-0 text-sm text-left flex-none">
-        <th class="border-grey-light dark:border-black border bg-sky-400 p-3 flex-none">Simbolo&nbsp;Pesos</th>
-        <th class="border-grey-light dark:border-black border bg-sky-400 p-3 flex-none">AR$</th>
-        <th class="border-grey-light dark:border-black border bg-emerald-800 p-3 flex-none">Simbolo&nbsp;Cable</th>
-        <th class="border-grey-light dark:border-black border bg-emerald-800 p-3 flex-none">US$</th>
-        <th class="hidden sm:table-cell border-grey-light dark:border-black border bg-teal-700 p-3 flex-none">Simbolo&nbsp;MEP</th>
-        <th class="hidden sm:table-cell border-grey-light dark:border-black border bg-teal-700 p-3 flex-none">US$</th>
-        <th class="border-grey-light dark:border-black border bg-ccl p-3 flex-none">Cotización&nbsp;CCL</th>
-        <th class="hidden sm:table-cell border-grey-light dark:border-black border bg-dolar p-3 flex-none">CCL&#8702;MEP&#8702;Blue</th>
-        <th class="hidden sm:table-cell border-grey-light dark:border-black border bg-dolar p-3 flex-none">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
-        <th class="hidden sm:table-cell border-grey-light dark:border-black border bg-dolar p-3 flex-none">%&nbsp;CCL&#8702;MEP</th>
-    </tr>
-</template>
 <template id="titulos-table-row-template">
-    <tr class="odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 flex flex-col flex-nowrap sm:table-row mb-2 sm:mb-0 text-left text-sm flex-none">
-        <td id="symbol-pesos" class="border-grey-light dark:border-black border p-3 flex-none">&nbsp;</td>
-        <td id="cotizacion-pesos" class="border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
-        <td id="symbol-cable" class="border-grey-light dark:border-black border p-3 flex-none">&nbsp;</td>
-        <td id="cotizacion-cable" class="border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
-        <td id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 flex-none">&nbsp;</td>
-        <td id="cotizacion-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
-        <td id="ccl" class="border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
-        <td id="ccl-mep-blue" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
-        <td id="porc-ccl-mep-blue" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
-        <td id="porc-ccl-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 flex-none sm:text-right">&nbsp;</td>
+    <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-right text-sm">
+        <td data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
+        <td data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
+        <td data-label="US$" id="cotizacion-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="Símbolo&nbsp;MEP" id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-left">&nbsp;</td>
+        <td data-label="US$" id="cotizacion-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
+        <td data-label="Cotización&nbsp;CCL" id="ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="CCL&#8702;MEP&#8702;Blue" id="ccl-mep-blue" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
+        <td data-label="%&nbsp;CCL&#8702;MEP&#8702;Blue" id="porc-ccl-mep-blue" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
+        <td data-label="%&nbsp;CCL&#8702;MEP" id="porc-ccl-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
     </tr>
 </template>

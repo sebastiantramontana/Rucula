@@ -1,4 +1,4 @@
-﻿export default async function showDolarBlue(dolarBlue)
+﻿export default function showDolarBlue(dolarBlue)
 {
     const dolarBlueCompra = document.getElementById("dolar-blue-compra");
     const dolarBlueVenta = document.getElementById("dolar-blue-venta");

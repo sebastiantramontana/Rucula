@@ -1,8 +1,7 @@
-﻿export default async function showTitulosPublicos(titulos, numberFormater) {
+﻿export default function showTitulosPublicos(titulos, numberFormater) {
     const table = document.getElementById("tabla-titulos");
 
     clearTableRows(table);
-    createTableHeader(table, titulos);
     fillTitulosRows(table, titulos, numberFormater);
 }
 
@@ -41,19 +40,11 @@ function writeCell(row, cellId, data) {
     cell.innerHTML = data ?? "";
 }
 
-function createTableHeader(table, titulos) {
-    const thead = table.tHead;
-    const header = document.getElementById("titulos-table-header-template").content;
-
-    for (let i = 0; i < titulos.length; i++) {
-        thead.appendChild(header.cloneNode(true));
-    }
-}
-
 function clearTableRows(table) {
-    const rows = table.rows;
+    const rows = table.tBodies[0].rows;
+    const count = rows.length;
 
-    for (let i = 0; i < rows.length; i++)
+    for (let i = 0; i < count; i++)
         table.deleteRow(-1);
 }
 
