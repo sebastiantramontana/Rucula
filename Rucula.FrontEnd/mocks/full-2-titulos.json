@@ -1,0 +1,78 @@
+{
+  "blue": {
+    "precioCompra": 940,
+    "precioVenta": 990
+  },
+  "dolarCrypto": {
+    "precioCompra": 853.85,
+    "precioVenta": 910.19
+  },
+  "dolarWesternUnion": { "price": 850 },
+  "rankingTitulos": [
+    {
+      "codigoIsin": "ARARGE520E22",
+      "denominacion": "LETRA DEL TESORO NACIONAL EN PESOS A DESCUENTO CON VENCIMIENTO 31 DE OCTUBRE DE 2023",
+      "tituloCable": {
+        "simbolo": "MOCK1C",
+        "precioCompra": 0.115,
+        "precioVenta": 0.116,
+        "parking": 0,
+        "moneda": 2
+      },
+      "tituloPeso": {
+        "simbolo": "MOCK1",
+        "precioCompra": 98.93,
+        "precioVenta": 98.94,
+        "parking": 0,
+        "moneda": 0
+      },
+      "tituloMep": {
+        "simbolo": "MOCK1D",
+        "precioCompra": 0.117,
+        "precioVenta": 0.118,
+        "parking": 0,
+        "moneda": 1
+      },
+      "vencimiento": "2023-10-31",
+      "cotizacionCcl": 852.8448275862069,
+      "cotizacionCclMepBlue": 948.0076221743585,
+      "porcentajeArbitrajeCclMepBlue": 11.158277744087329,
+      "porcentajeArbitrajeCclMep": 0.8518746993998434
+    },
+    {
+      "codigoIsin": "ARARGE520DT9",
+      "denominacion": "LETRA DEL TESORO NACIONAL EN PESOS AJUSTADA POR CER A DESCUENTO CON VENCIMIENTO 23 DE NOVIEMBRE DE 2023",
+      "tituloCable": {
+        "simbolo": "MOCK2C",
+        "precioCompra": 0.172,
+        "precioVenta": 0.176,
+        "parking": 0,
+        "moneda": 2
+      },
+      "tituloPeso": {
+        "simbolo": "MOCK2",
+        "precioCompra": 149.749,
+        "precioVenta": 149.75,
+        "parking": 0,
+        "moneda": 0
+      },
+      "tituloMep": {
+        "simbolo": "MOCK2D",
+        "precioCompra": 0.176,
+        "precioVenta": 0.178,
+        "parking": 0,
+        "moneda": 1
+      },
+      "vencimiento": "2023-11-23",
+      "cotizacionCcl": 850.8465909090909,
+      "cotizacionCclMepBlue": 939.9937228714524,
+      "porcentajeArbitrajeCclMepBlue": 10.477462437395673,
+      "porcentajeArbitrajeCclMep": -0.0006677796327210217
+    }
+  ],
+  "winningChoice": {
+    "name": "Dolar Crypto",
+    "info": "",
+    "dolarPrice": 853.85
+  }
+}

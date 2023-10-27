@@ -9,7 +9,7 @@ namespace Rucula.WebAssembly
 {
     public class Program
     {
-        private static IChoicesService? _choicesService;
+        private static IChoicesService _choicesService = default!;
 
         public static async Task Main(string[] args)
         {
@@ -39,7 +39,7 @@ namespace Rucula.WebAssembly
 
             try
             {
-                choices = await _choicesService!.GetChoices();
+                choices = await _choicesService.GetChoices();
             }
             catch (Exception ex)
             {

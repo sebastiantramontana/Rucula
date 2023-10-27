@@ -1,0 +1,17 @@
+{
+  "blue": {
+    "precioCompra": 940,
+    "precioVenta": 990
+  },
+  "dolarCrypto": {
+    "precioCompra": 853.85,
+    "precioVenta": 910.19
+  },
+  "dolarWesternUnion": { "price": 850 },
+  "rankingTitulos": [],
+  "winningChoice": {
+    "name": "Dolar Crypto",
+    "info": "",
+    "dolarPrice": 853.85
+  }
+}

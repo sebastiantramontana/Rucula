@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-
 	<PropertyGroup>
+		<AssemblyName>Rucula.WebAssembly</AssemblyName>
 		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -23,21 +23,12 @@
 		<BuiltInComInteropSupport>false</BuiltInComInteropSupport>
 		<CustomResourceTypesSupport>false</CustomResourceTypesSupport>
 	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<DebugType>none</DebugType>
-	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Rucula.DataAccess\Rucula.DataAccess.csproj" />
-		<ProjectReference Include="..\Rucula.Domain.Implementations\Rucula.Domain.Implementations.csproj" />
-		<TrimmerRootAssembly Include="Rucula.DataAccess" />
-		<TrimmerRootAssembly Include="Rucula.Domain.Implementations" />
-		<TrimmerRootAssembly Include="Rucula.WebAssembly" />
+	  <ProjectReference Include="..\Rucula.Domain.Entities\Rucula.Domain.Entities.csproj" />
 	</ItemGroup>
 </Project>
