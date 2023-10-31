@@ -19,21 +19,3 @@ body {
 .bg-wu {
     background-color: #FAE000;
 }
-
-#tabla-titulos:has(tbody:empty) > caption {
-    display: table-caption;
-}
-
-#tabla-titulos:has(not:(tbody:empty)) > caption {
-    display: none;
-}
-
-#tabla-titulos > thead {
-    display: none;
-}
-
-@media (min-width: 640px) {
-    #tabla-titulos:has(not:(tbody:empty)) > thead {
-        display: table-header-group;
-    }
-}
