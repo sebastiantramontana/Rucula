@@ -10,8 +10,8 @@
     display: none;
 }
 
-@media screen (min-width: 640px) {
-    #tabla-titulos:has(not:(tbody:empty)) > thead {
+@media screen and (min-width: 640px) {
+    #tabla-titulos:not(:has(tbody:empty)) > thead {
         display: table-header-group;
     }
 }
