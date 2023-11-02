@@ -2,7 +2,7 @@
     display: table-caption;
 }
 
-#tabla-titulos:has(not:(tbody:empty)) > caption {
+#tabla-titulos:not(:has(tbody:empty)) > caption {
     display: none;
 }
 
