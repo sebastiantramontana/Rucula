@@ -1,9 +1,5 @@
-﻿namespace WasmViewUpdater.Model.Building
+﻿namespace WasmViewUpdater.Model.Building.Finalizables
 {
-    public interface IFinalizableValueModel : IModel, IValueModel<IFinalizableValueModel>
-    {
-    }
-
     public interface IFinalizableTableRowModel<TEntity> : IModel, IValueModel<IFinalizableTableRowModel<TEntity>>, IModelBuilder<TEntity, IFinalizableTableRowModel<TEntity>>
     {
     }

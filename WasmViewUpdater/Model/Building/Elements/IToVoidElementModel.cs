@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Model.Building
+﻿namespace WasmViewUpdater.Model.Building.Elements
 {
     public interface IToVoidElementModel<TFinalizable>
         where TFinalizable : IModel

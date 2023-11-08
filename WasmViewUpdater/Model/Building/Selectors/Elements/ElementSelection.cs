@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Model.Selectors
+﻿namespace WasmViewUpdater.Model.Building.Selectors.Elements
 {
     internal enum ElementSelection
     {
