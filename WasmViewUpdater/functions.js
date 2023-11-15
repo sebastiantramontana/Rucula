@@ -1,4 +1,6 @@
-﻿const viewUpdaterUpdates = {};
+﻿//Functions for update
+
+const viewUpdaterUpdates = {};
 
 const viewUpdaterCreateUpdateFunction = viewUpdaterCreateUpdateFunction || ((funcName, code) => {
     const func = new Function("entity", code);
@@ -10,6 +12,8 @@ const viewUpdaterExecuteUpdateFunction = viewUpdaterExecuteUpdateFunction || ((f
     func(entity);
 });
 
+
+//Function for HTML Elements
 const viewUpdaterGetElementById = viewUpdaterGetElementById || ((parent, id) => [parent.getElementById(id)]);
 
 const viewUpdaterGetAllElementsByQuerySelector
