@@ -1,5 +1,7 @@
-﻿using WasmViewUpdater.Model.Building.Selectors.Elements;
-using WasmViewUpdater.Model.Building.Selectors.TableRows;
+﻿using WasmViewUpdater.Modeling;
+using WasmViewUpdater.Modeling.Building;
+using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Model.Building
 {
@@ -20,14 +22,14 @@ namespace WasmViewUpdater.Model.Building
             {
                 modelBuilder
                     .Value(a => a.Name)
-                        .ToVoidElement(ById("algo-name"))
+                        .ToElement(ById("algo-name"))
                         .ToAttribute("alt"),
 
                 modelBuilder
                     .Value(a => a.Edad)
                         .ToContainerElement(FromTemplate("otro-template-id").AddTo(ById( "parent-to-add-id")).ById("child-target-id"))
                             .ToContent()
-                        .ToVoidElement(ByQuerySelector(".p-otro > img"))
+                        .ToElement(ByQuerySelector(".p-otro > img"))
                             .ToAttribute("data-otro"),
 
                 modelBuilder
@@ -36,10 +38,10 @@ namespace WasmViewUpdater.Model.Building
                     .FillRows(_rowSelectionFactory.FromTemplate("row-template-id"))
                         .Value(m=>m.Name)
                             .ToContainerElement(ById( "cell-mascota-nombre-id")).ToContent()
-                            .ToVoidElement(ById("anchor--cell-mascota-nombre-id")).ToAttribute("href")
+                            .ToElement(ById("anchor--cell-mascota-nombre-id")).ToAttribute("href")
                             .ToContainerElement(ById("another-anchor--cell-mascota-nombre-id")).ToAttribute("href")
                         .Value(m=>m.IsDespulgado)
-                            .ToVoidElement(ById("some-despulgado-id")).ToAttribute("data-despulgado")
+                            .ToElement(ById("some-despulgado-id")).ToAttribute("data-despulgado")
                         .Collection(m=>m.Vacunas)
                         .ToTable(ById("inner-table-vacunas"))
                         .FillRows(_rowSelectionFactory.FromTemplate("row-template-vacunas-id"))

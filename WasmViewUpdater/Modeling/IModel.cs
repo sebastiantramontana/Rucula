@@ -1,7 +1,6 @@
-﻿namespace WasmViewUpdater.Model
+﻿namespace WasmViewUpdater.Modeling
 {
     public interface IModel
     {
-
     }
 }

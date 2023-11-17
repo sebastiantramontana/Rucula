@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Model.Building.Selectors.TableRows
+﻿namespace WasmViewUpdater.Modeling.Building.Selectors.TableRows
 {
     public interface IRowSelection
     {

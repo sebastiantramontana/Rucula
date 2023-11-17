@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WasmViewUpdater.Model;
+using WasmViewUpdater.Modeling;
 
 namespace WasmViewUpdater
 {
