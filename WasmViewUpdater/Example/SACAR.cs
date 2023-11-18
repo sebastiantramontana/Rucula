@@ -16,41 +16,37 @@ namespace WasmViewUpdater.Model.Building
             _rowSelectionFactory = rowSelectionFactory;
         }
 
-        public IEnumerable<IModel> Configure(IModelBuilder<Persona> modelBuilder)
+        public IModelBuilder<Persona> Configure(IModelBuilder<Persona> modelBuilder)
         {
-            var models = new List<IModel>
-            {
-                modelBuilder
-                    .Value(a => a.Name)
-                        .ToElement(ById("algo-name"))
-                        .ToAttribute("alt"),
+            modelBuilder
+                .Value(a => a.Name)
+                    .ToElement(ById("algo-name"))
+                    .ToAttribute("alt");
 
-                modelBuilder
-                    .Value(a => a.Edad)
-                        .ToContainerElement(FromTemplate("otro-template-id").AddTo(ById( "parent-to-add-id")).ById("child-target-id"))
-                            .ToContent()
-                        .ToElement(ByQuerySelector(".p-otro > img"))
-                            .ToAttribute("data-otro"),
+            modelBuilder
+                .Value(a => a.Edad)
+                    .ToContainerElement(FromTemplate("otro-template-id").AddTo(ById("parent-to-add-id")).ById("child-target-id"))
+                        .ToContent()
+                    .ToElement(ByQuerySelector(".p-otro > img"))
+                        .ToAttribute("data-otro");
 
-                modelBuilder
-                    .Collection(a => a.Mascotas)
-                    .ToTable(ById("mascotas-id"))
-                    .FillRows(_rowSelectionFactory.FromTemplate("row-template-id"))
-                        .Value(m=>m.Name)
-                            .ToContainerElement(ById( "cell-mascota-nombre-id")).ToContent()
-                            .ToElement(ById("anchor--cell-mascota-nombre-id")).ToAttribute("href")
-                            .ToContainerElement(ById("another-anchor--cell-mascota-nombre-id")).ToAttribute("href")
-                        .Value(m=>m.IsDespulgado)
-                            .ToElement(ById("some-despulgado-id")).ToAttribute("data-despulgado")
-                        .Collection(m=>m.Vacunas)
-                        .ToTable(ById("inner-table-vacunas"))
-                        .FillRows(_rowSelectionFactory.FromTemplate("row-template-vacunas-id"))
-                            .Value(v=>v.Name).ToContainerElement(ById("div-vacuna-id")).ToContent()
-                            .Value(v=>v.DateApplied).ToContainerElement(ById("span-vacuna-id")).ToContent()
-            };
+            modelBuilder
+                .Collection(a => a.Mascotas)
+                .ToTable(ById("mascotas-id"))
+                .FillRows(_rowSelectionFactory.FromTemplate("row-template-id"))
+                    .Value(m => m.Name)
+                        .ToContainerElement(ById("cell-mascota-nombre-id")).ToContent()
+                        .ToElement(ById("anchor--cell-mascota-nombre-id")).ToAttribute("href")
+                        .ToContainerElement(ById("another-anchor--cell-mascota-nombre-id")).ToAttribute("href")
+                    .Value(m => m.IsDespulgado)
+                        .ToElement(ById("some-despulgado-id")).ToAttribute("data-despulgado")
+                    .Collection(m => m.Vacunas)
+                    .ToTable(ById("inner-table-vacunas"))
+                    .FillRows(_rowSelectionFactory.FromTemplate("row-template-vacunas-id"))
+                        .Value(v => v.Name).ToContainerElement(ById("div-vacuna-id")).ToContent()
+                        .Value(v => v.DateApplied).ToContainerElement(ById("span-vacuna-id")).ToContent();
 
-
-            return models;
+            return modelBuilder;
         }
 
         private IElementSelector ById(string id) => _selectorFactory.ById(id);

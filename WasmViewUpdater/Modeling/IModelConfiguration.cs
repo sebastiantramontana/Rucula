@@ -5,6 +5,6 @@ namespace WasmViewUpdater.Modeling
 
     public interface IModelConfiguration<TEntity>
     {
-        IEnumerable<IModel> Configure(IModelBuilder<TEntity> modelBuilder);
+        IModelBuilder<TEntity> Configure(IModelBuilder<TEntity> modelBuilder);
     }
 }

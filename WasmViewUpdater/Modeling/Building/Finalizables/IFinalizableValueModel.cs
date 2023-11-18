@@ -1,6 +1,6 @@
 ﻿namespace WasmViewUpdater.Modeling.Building.Finalizables
 {
-    public interface IFinalizableValueModel : IModel, IBuildingValueModel<IFinalizableValueModel>
+    public interface IFinalizableValueModel : IBuildingValueModel<IFinalizableValueModel>
     {
     }
 }
