@@ -1,10 +1,11 @@
 ﻿using WasmViewUpdater.Modeling.Building;
+using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Modeling
 {
-
     public interface IModelConfiguration<TEntity>
     {
-        IModelBuilder<TEntity> Configure(IModelBuilder<TEntity> modelBuilder);
+        internal IModelBuilder<TEntity> Configure(IModelBuilder<TEntity> modelBuilder, IElementSelectorFactory elementSelectorFactory, IRowSelectionFactory rowSelectionFactory);
     }
 }
