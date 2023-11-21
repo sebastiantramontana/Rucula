@@ -1,8 +1,7 @@
-﻿using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Finalizables;
+﻿using WasmViewUpdater.Modeling.Building.Finalizables;
 using WasmViewUpdater.Modeling.Models;
 
-namespace WasmViewUpdater.Modeling.Building;
+namespace WasmViewUpdater.Modeling.Building.Elements;
 
 internal class ToFinalizableValueElementModel
     : IToContainerElementModel<IFinalizableValueModel>, IToElementModel<IFinalizableValueModel>

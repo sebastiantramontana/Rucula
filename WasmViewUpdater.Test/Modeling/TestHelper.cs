@@ -26,7 +26,7 @@ namespace WasmViewUpdater.Test.Modeling
         public static ElementPlace CreateContentElementPlace()
             => new(ElementPlacing.Content);
 
-        public static void AssertValueModel(ValueModel actualValueModel, ValueModel expectedValueModel)
+        public static void AssertValueModel(ValueModel actualValueModel, ValueModel expectedValueModel, bool canPlaceBeNull)
         {
             Assert.Multiple(() =>
             {
@@ -36,35 +36,28 @@ namespace WasmViewUpdater.Test.Modeling
 
             for (int i = 0; i < expectedValueModel.TargetElements.Count(); i++)
             {
-                AssertTargetElement(actualValueModel.TargetElements.ElementAt(i), expectedValueModel.TargetElements.ElementAt(i));
+                AssertTargetElement(actualValueModel.TargetElements.ElementAt(i), expectedValueModel.TargetElements.ElementAt(i), canPlaceBeNull);
             }
         }
 
-        public static void AssertTargetElement(TargetElement actualTargetElement, TargetElement expectedTargetElement)
+        public static void AssertTargetElement(TargetElement actualTargetElement, TargetElement expectedTargetElement, bool canPlaceBeNull)
         {
-            AssertPlace(actualTargetElement.Place, expectedTargetElement.Place);
+            AssertPlace(actualTargetElement.Place, expectedTargetElement.Place, canPlaceBeNull);
             AssertSelector(actualTargetElement.Selector, expectedTargetElement.Selector);
             Assert.That(actualTargetElement.Parent.ValueFunc, Is.EqualTo(expectedTargetElement.Parent.ValueFunc));
         }
 
-        public static void AssertPlace(ElementPlace actualPlace, ElementPlace expectedPlace)
+        public static void AssertPlace(ElementPlace actualPlace, ElementPlace expectedPlace, bool canPlaceBeNull)
         {
-            Assert.Multiple(() =>
-            {
-                Assert.That(actualPlace.ElementPlacing, Is.EqualTo(expectedPlace.ElementPlacing));
-                Assert.That(actualPlace.Value, Is.EqualTo(expectedPlace.Value));
-            });
+            if (canPlaceBeNull)
+                Assert.That(actualPlace, Is.Null.And.EqualTo(expectedPlace).Or.Not.Null.And.EqualTo(expectedPlace));
+            else
+                Assert.That(actualPlace, Is.EqualTo(expectedPlace).And.Not.Null);
         }
 
         public static void AssertSelector(ElementSelector actualSelector, ElementSelector expectedSelector)
         {
-            Assert.Multiple(() =>
-            {
-                Assert.That(actualSelector.SelectionBy, Is.EqualTo(expectedSelector.SelectionBy));
-                Assert.That(actualSelector.Parent, Is.EqualTo(expectedSelector.Parent));
-                Assert.That(actualSelector.Value, Is.EqualTo(expectedSelector.Value));
-            });
+            Assert.That(actualSelector, Is.EqualTo(expectedSelector));
         }
-
     }
 }

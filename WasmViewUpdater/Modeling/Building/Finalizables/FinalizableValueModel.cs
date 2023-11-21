@@ -1,7 +1,6 @@
-﻿using WasmViewUpdater.Modeling.Building.Finalizables;
-using WasmViewUpdater.Modeling.Models;
+﻿using WasmViewUpdater.Modeling.Models;
 
-namespace WasmViewUpdater.Modeling.Building;
+namespace WasmViewUpdater.Modeling.Building.Finalizables;
 
 internal class FinalizableValueModel : BuildingValueModel, IFinalizableValueModel
 {
