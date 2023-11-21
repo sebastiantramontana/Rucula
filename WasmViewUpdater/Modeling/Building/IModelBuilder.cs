@@ -48,13 +48,13 @@ internal class ModelBuilder<TEntity> : IModelBuilder<TEntity>
             _valueModel = valueModel;
         }
 
-        public IToContainerElementModel<IFinalizableValueModel> ToContainerElement(IElementSelector selector)
+        public IToContainerElementModel<IFinalizableValueModel> ToContainerElement(ElementSelector selector)
             => new ToFinalizableValueElementModel(AddNewTargetElement(selector));
 
-        public IToElementModel<IFinalizableValueModel> ToElement(IElementSelector selector)
+        public IToElementModel<IFinalizableValueModel> ToElement(ElementSelector selector)
             => new ToFinalizableValueElementModel(AddNewTargetElement(selector));
 
-        private TargetElement AddNewTargetElement(IElementSelector selector)
+        private TargetElement AddNewTargetElement(ElementSelector selector)
         {
             var newTargetElement = new TargetElement(selector, _valueModel);
             _valueModel.TargetElements = _valueModel.TargetElements.Append(newTargetElement);

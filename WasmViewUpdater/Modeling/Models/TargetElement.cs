@@ -2,9 +2,9 @@
 
 namespace WasmViewUpdater.Modeling.Models
 {
-    internal record class TargetElement(IElementSelector selector, ValueModel parent)
+    internal record class TargetElement(ElementSelector selector, ValueModel parent)
     {
-        public IElementSelector Selector { get; } = selector;
+        public ElementSelector Selector { get; } = selector;
         public ValueModel Parent { get; } = parent;
         public ElementPlace Place { get; set; } = default!;
     }

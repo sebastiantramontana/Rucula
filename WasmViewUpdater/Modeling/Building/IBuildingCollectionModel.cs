@@ -5,6 +5,6 @@ namespace WasmViewUpdater.Modeling.Building
 {
     public interface IBuildingCollectionModel<TEntity>
     {
-        IToTableModel<TEntity> ToTable(IElementSelector selector);
+        IToTableModel<TEntity> ToTable(ElementSelector selector);
     }
 }

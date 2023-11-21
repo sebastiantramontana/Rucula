@@ -2,8 +2,8 @@
 {
     public interface IElementSelectorFactory
     {
-        IElementSelector ById(string id);
+        ElementSelector ById(string id);
         IFromTemplateSelector FromTemplate(string templateId);
-        IElementSelector ByQuerySelector(string querySelector);
+        ElementSelector ByQuerySelector(string querySelector);
     }
 }

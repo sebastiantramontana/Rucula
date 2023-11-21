@@ -17,9 +17,9 @@ namespace WasmViewUpdater.Modeling
             return Configure(modelBuilder);
         }
 
-        protected IElementSelector ById(string id) => _elementSelectorFactory.ById(id);
+        protected ElementSelector ById(string id) => _elementSelectorFactory.ById(id);
         protected IFromTemplateSelector FromTemplate(string templateId) => _elementSelectorFactory.FromTemplate(templateId);
-        protected IElementSelector ByQuerySelector(string querySelector) => _elementSelectorFactory.ByQuerySelector(querySelector);
+        protected ElementSelector ByQuerySelector(string querySelector) => _elementSelectorFactory.ByQuerySelector(querySelector);
         protected IRowSelection RowFromTemplate(string templateId) => _rowSelectionFactory.FromTemplate(templateId);
         public abstract IModelBuilder<TEntity> Configure(IModelBuilder<TEntity> modelBuilder);
     }

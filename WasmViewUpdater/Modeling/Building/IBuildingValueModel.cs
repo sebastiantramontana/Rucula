@@ -5,7 +5,7 @@ namespace WasmViewUpdater.Modeling.Building
 {
     public interface IBuildingValueModel<TFinalizable>
     {
-        IToElementModel<TFinalizable> ToElement(IElementSelector selector);
-        IToContainerElementModel<TFinalizable> ToContainerElement(IElementSelector selector);
+        IToElementModel<TFinalizable> ToElement(ElementSelector selector);
+        IToContainerElementModel<TFinalizable> ToContainerElement(ElementSelector selector);
     }
 }

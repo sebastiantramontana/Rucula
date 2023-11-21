@@ -2,6 +2,6 @@
 {
     public interface IFromTemplateSelector
     {
-        IElementSelectorFactory AddTo(IElementSelector selector);
+        IElementSelectorFactory AddTo(ElementSelector selector);
     }
 }

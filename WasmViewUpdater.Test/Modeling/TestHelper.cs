@@ -6,17 +6,10 @@ namespace WasmViewUpdater.Test.Modeling
 {
     internal static class TestHelper
     {
-        public static Mock<IElementSelector> MockSelector(ElementSelection selection, string value, string parent)
-        {
-            var selectorMock = new Mock<IElementSelector>();
-            selectorMock.Setup(s => s.SelectionBy).Returns(selection);
-            selectorMock.Setup(s => s.Value).Returns(value);
-            selectorMock.Setup(s => s.Parent).Returns(parent);
+        public static ElementSelector CreateSelector(ElementSelection selectionBy, string value, string parent)
+            => new(selectionBy, value, parent);
 
-            return selectorMock;
-        }
-
-        public static ValueModel CreateValueModel(Delegate valueFunc, IEnumerable<(IElementSelector Selector, ElementPlace Place)> targetElementsData)
+        public static ValueModel CreateValueModel(Delegate valueFunc, IEnumerable<(ElementSelector Selector, ElementPlace Place)> targetElementsData)
         {
             var valueModel = new ValueModel(valueFunc);
             valueModel.TargetElements = targetElementsData.Select((data) => CreateTargetElement(data.Selector, valueModel, data.Place)).ToArray();
@@ -24,7 +17,7 @@ namespace WasmViewUpdater.Test.Modeling
             return valueModel;
         }
 
-        public static TargetElement CreateTargetElement(IElementSelector selector, ValueModel valueModel, ElementPlace place)
+        public static TargetElement CreateTargetElement(ElementSelector selector, ValueModel valueModel, ElementPlace place)
             => new(selector, valueModel) { Place = place };
 
         public static ElementPlace CreateAttributeElementPlace(string value)
@@ -63,7 +56,7 @@ namespace WasmViewUpdater.Test.Modeling
             });
         }
 
-        public static void AssertSelector(IElementSelector actualSelector, IElementSelector expectedSelector)
+        public static void AssertSelector(ElementSelector actualSelector, ElementSelector expectedSelector)
         {
             Assert.Multiple(() =>
             {
