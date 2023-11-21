@@ -4,5 +4,6 @@
     {
         internal ElementSelection SelectionBy { get; }
         internal string Value { get; }
+        internal string Parent { get; }
     }
 }

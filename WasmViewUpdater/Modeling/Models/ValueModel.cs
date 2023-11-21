@@ -1,4 +1,7 @@
-﻿namespace WasmViewUpdater.Modeling.Models
+﻿namespace WasmViewUpdater.Modeling.Models;
+
+internal class ValueModel(Delegate valueFunc)
 {
-    internal record class ValueModel(Delegate ValueFunc, string ParentNode, IEnumerable<TargetElement> TargetElements);
+    public Delegate ValueFunc { get; set; } = valueFunc;
+    public IEnumerable<TargetElement> TargetElements { get; set; } = Enumerable.Empty<TargetElement>();
 }

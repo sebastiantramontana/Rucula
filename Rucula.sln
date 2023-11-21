@@ -38,7 +38,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Rucula.FrontEnd", "Rucula.F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rucula.WebAssembly.Mock", "Rucula.WebAssembly.Mock\Rucula.WebAssembly.Mock.csproj", "{6CE64982-2377-4E26-88AC-E97465FEB2EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasmViewUpdater", "WasmViewUpdater\WasmViewUpdater.csproj", "{BEDD0672-1ACB-44D0-BEBA-B55F8F733573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmViewUpdater", "WasmViewUpdater\WasmViewUpdater.csproj", "{BEDD0672-1ACB-44D0-BEBA-B55F8F733573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasmViewUpdater.Test", "WasmViewUpdater.Test\WasmViewUpdater.Test.csproj", "{101A85A8-F331-452B-A21C-53D535FDFD29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{BEDD0672-1ACB-44D0-BEBA-B55F8F733573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEDD0672-1ACB-44D0-BEBA-B55F8F733573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEDD0672-1ACB-44D0-BEBA-B55F8F733573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{101A85A8-F331-452B-A21C-53D535FDFD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{101A85A8-F331-452B-A21C-53D535FDFD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{101A85A8-F331-452B-A21C-53D535FDFD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{101A85A8-F331-452B-A21C-53D535FDFD29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
