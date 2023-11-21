@@ -3,7 +3,7 @@ using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Modeling.Models
 {
-    internal class CollectionTableModel(Delegate collectionFunc)
+    internal record class CollectionTableModel(Delegate collectionFunc)
     {
         internal Delegate CollectionFunc { get; } = collectionFunc;
         internal IElementSelector TableSelector { get; set; } = default!;

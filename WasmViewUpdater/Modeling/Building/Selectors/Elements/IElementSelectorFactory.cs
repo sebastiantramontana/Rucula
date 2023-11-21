@@ -6,9 +6,4 @@
         IFromTemplateSelector FromTemplate(string templateId);
         IElementSelector ByQuerySelector(string querySelector);
     }
-
-    public interface IFromTemplateSelector
-    {
-        IElementSelectorFactory AddTo(IElementSelector selector);
-    }
 }
