@@ -2,10 +2,10 @@
 
 namespace WasmViewUpdater.Modeling.Building;
 
-public interface IFinalizableModelBuilder<TEntity, TFinalizable>
+public interface IFinalizableModelBuilder<TViewModel, TFinalizable>
 {
     internal IEnumerable<ValueModel> Values { get; }
     internal IEnumerable<CollectionTableModel> CollectionTables { get; }
-    IBuildingValueModel<TFinalizable> Value<TReturn>(Func<TEntity, TReturn> func);
-    IBuildingCollectionModel<TReturn> Collection<TReturn>(Func<TEntity, IEnumerable<TReturn>> func);
+    IBuildingValueModel<TFinalizable> Value<TReturn>(Func<TViewModel, TReturn> func);
+    IBuildingCollectionModel<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func);
 }

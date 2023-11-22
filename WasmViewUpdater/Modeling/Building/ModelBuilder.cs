@@ -3,7 +3,7 @@ using WasmViewUpdater.Modeling.Models;
 
 namespace WasmViewUpdater.Modeling.Building;
 
-internal class ModelBuilder<TEntity> : IModelBuilder<TEntity>
+internal class ModelBuilder<TViewModel> : IModelBuilder<TViewModel>
 {
     private readonly ICollection<ValueModel> _values;
     private readonly ICollection<CollectionTableModel> _collections;
@@ -14,17 +14,17 @@ internal class ModelBuilder<TEntity> : IModelBuilder<TEntity>
         _collections = new List<CollectionTableModel>();
     }
 
-    IEnumerable<ValueModel> IFinalizableModelBuilder<TEntity, IFinalizableValueModel>.Values => _values;
-    IEnumerable<CollectionTableModel> IFinalizableModelBuilder<TEntity, IFinalizableValueModel>.CollectionTables => _collections;
+    IEnumerable<ValueModel> IFinalizableModelBuilder<TViewModel, IFinalizableValueModel>.Values => _values;
+    IEnumerable<CollectionTableModel> IFinalizableModelBuilder<TViewModel, IFinalizableValueModel>.CollectionTables => _collections;
 
-    public IBuildingCollectionModel<TReturn> Collection<TReturn>(Func<TEntity, IEnumerable<TReturn>> func)
+    public IBuildingCollectionModel<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)
     {
         _collections.Add(new CollectionTableModel(func));
 
         return default!;
     }
 
-    public IBuildingValueModel<IFinalizableValueModel> Value<TReturn>(Func<TEntity, TReturn> func)
+    public IBuildingValueModel<IFinalizableValueModel> Value<TReturn>(Func<TViewModel, TReturn> func)
     {
         var newValueModel = new ValueModel(func);
         _values.Add(newValueModel);

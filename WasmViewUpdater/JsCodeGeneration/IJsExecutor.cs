@@ -1,7 +1,7 @@
 ﻿namespace WasmViewUpdater.JsGeneration
 {
-    internal interface IJsExecutor<TEntity>
+    internal interface IJsExecutor<TViewModel>
     {
-        void Execute(TEntity entity);
+        void Execute(TViewModel viewModel);
     }
 }

@@ -3,8 +3,8 @@ using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Modeling.Building.Elements
 {
-    public interface IToTableModel<TEntity>
+    public interface IToTableModel<TViewModel>
     {
-        IFinalizableTableRowModel<TEntity> FillRows(IRowSelection rowSelection);
+        IFinalizableTableRowModel<TViewModel> FillRows(IRowSelection rowSelection);
     }
 }

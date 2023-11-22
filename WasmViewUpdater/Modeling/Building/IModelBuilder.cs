@@ -2,6 +2,6 @@
 
 namespace WasmViewUpdater.Modeling.Building;
 
-public interface IModelBuilder<TEntity> : IFinalizableModelBuilder<TEntity, IFinalizableValueModel>
+public interface IModelBuilder<TViewModel> : IFinalizableModelBuilder<TViewModel, IFinalizableValueModel>
 {
 }

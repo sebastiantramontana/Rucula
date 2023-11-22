@@ -4,8 +4,8 @@ using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Modeling
 {
-    public interface IModelConfiguration<TEntity>
+    public interface IModelConfiguration<TViewModel>
     {
-        internal IModelBuilder<TEntity> Configure(IModelBuilder<TEntity> modelBuilder, IElementSelectorFactory elementSelectorFactory, IRowSelectionFactory rowSelectionFactory);
+        internal IModelBuilder<TViewModel> Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorFactory elementSelectorFactory, IRowSelectionFactory rowSelectionFactory);
     }
 }

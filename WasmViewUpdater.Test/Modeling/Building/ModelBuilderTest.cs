@@ -11,14 +11,14 @@ namespace WasmViewUpdater.Test.Modeling.Building
         [Test]
         public void BuildModelValuesTest()
         {
-            IModelBuilder<EntityTest> sut = new ModelBuilder<EntityTest>();
+            IModelBuilder<ViewModelTest> sut = new ModelBuilder<ViewModelTest>();
 
             var selector1 = TestHelper.CreateSelector(ElementSelection.Id, "test-id", "document");
             var selector2 = TestHelper.CreateSelector(ElementSelection.QuerySelector, ".test > p", "document");
             var selector3 = TestHelper.CreateSelector(ElementSelection.Template, "template-id", "parent-element-id");
 
-            var func1 = (EntityTest e) => e.Name;
-            var func2 = (EntityTest e) => e.Age;
+            var func1 = (ViewModelTest e) => e.Name;
+            var func2 = (ViewModelTest e) => e.Age;
 
             var expectedValue1 = CreateExpectedValue1();
             var expectedValue2 = CreateExpectedValue2();

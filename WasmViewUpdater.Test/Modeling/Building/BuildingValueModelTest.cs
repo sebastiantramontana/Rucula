@@ -28,7 +28,7 @@ namespace WasmViewUpdater.Test.Modeling.Building
             var selector2 = TestHelper.CreateSelector(ElementSelection.QuerySelector, ".test > p", "document");
             var selector3 = TestHelper.CreateSelector(ElementSelection.Template, "template-id", "parent-element-id");
 
-            var func1 = (EntityTest e) => e.Name;
+            var func1 = (ViewModelTest e) => e.Name;
 
             var actualvalue = TestHelper.CreateValueModel(func1,
                 [

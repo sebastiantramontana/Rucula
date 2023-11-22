@@ -1,19 +1,21 @@
-﻿//Functions for update
+﻿"use strict";
+
+//Functions for update
 
 const viewUpdaterUpdates = {};
 
 const viewUpdaterCreateUpdateFunction = viewUpdaterCreateUpdateFunction || ((funcName, code) => {
-    const func = new Function("entity", code);
+    const func = new Function("vm", code);
     viewUpdaterUpdates[funcName] = func;
 });
 
-const viewUpdaterExecuteUpdateFunction = viewUpdaterExecuteUpdateFunction || ((funcName, entity) => {
+const viewUpdaterExecuteUpdateFunction = viewUpdaterExecuteUpdateFunction || ((funcName, vm) => {
     const func = viewUpdaterUpdates[funcName];
-    func(entity);
+    func(vm);
 });
 
-
 //Function for HTML Elements
+
 const viewUpdaterGetElementById = viewUpdaterGetElementById || ((parent, id) => [parent.getElementById(id)]);
 
 const viewUpdaterGetAllElementsByQuerySelector

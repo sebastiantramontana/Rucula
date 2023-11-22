@@ -3,8 +3,8 @@ using WasmViewUpdater.Modeling.Models;
 
 namespace WasmViewUpdater.JsGeneration
 {
-    internal interface IJsGenerator<TEntity>
+    internal interface IJsGenerator<TViewModel>
     {
-        IJsExecutor<TEntity> GenerateJsCode(IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables);
+        IJsExecutor<TViewModel> GenerateJsCode(IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables);
     }
 }
