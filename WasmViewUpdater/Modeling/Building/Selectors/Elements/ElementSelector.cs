@@ -1,8 +1,10 @@
 ﻿namespace WasmViewUpdater.Modeling.Building.Selectors.Elements
 {
-    public record class ElementSelector
+    public abstract record class ElementSelector
     {
-        internal ElementSelector(ElementSelection selectionBy, string value, string parent)
+        internal static readonly ElementSelector DocumentElement = new ElementObjectSelector("document", null);
+
+        internal ElementSelector(ElementSelection selectionBy, string value, ElementSelector? parent)
         {
             SelectionBy = selectionBy;
             Value = value;
@@ -11,6 +13,6 @@
 
         internal ElementSelection SelectionBy { get; }
         internal string Value { get; } = string.Empty;
-        internal string Parent { get; } = string.Empty;
+        internal ElementSelector? Parent { get; }
     }
 }

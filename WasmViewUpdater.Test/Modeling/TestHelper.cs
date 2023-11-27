@@ -6,9 +6,6 @@ namespace WasmViewUpdater.Test.Modeling
 {
     internal static class TestHelper
     {
-        public static ElementSelector CreateSelector(ElementSelection selectionBy, string value, string parent)
-            => new(selectionBy, value, parent);
-
         public static ValueModel CreateValueModel(Delegate valueFunc, IEnumerable<(ElementSelector Selector, ElementPlace Place)> targetElementsData)
         {
             var valueModel = new ValueModel(valueFunc);

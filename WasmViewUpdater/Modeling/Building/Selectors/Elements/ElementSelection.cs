@@ -4,6 +4,7 @@
     {
         Id,
         QuerySelector,
-        Template
+        Template,
+        ElementObject
     }
 }

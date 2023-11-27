@@ -14,9 +14,13 @@ namespace WasmViewUpdater.Model.Building
 
             modelBuilder
                 .Value(a => a.Edad)
-                    .ToContainerElement(FromTemplate("otro-template-id").AddTo(ById("parent-to-add-id")).ById("child-target-id"))
+                    .ToContainerElement(
+                            FromTemplate("otro-template-id")
+                                .AppendTo(ById("parent-to-add-id"))
+                                .ById("child-target-id"))
                         .ToContent()
-                    .ToElement(ByQuerySelector(".p-otro > img"))
+                    .ToElement(
+                            ByQuerySelector(".p-otro > img"))
                         .ToAttribute("data-otro");
 
             modelBuilder
