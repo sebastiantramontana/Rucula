@@ -4,7 +4,7 @@
     {
         internal static readonly ElementSelector DocumentElement = new ElementObjectSelector("document", null);
 
-        internal ElementSelector(ElementSelection selectionBy, string value, ElementSelector? parent)
+        private protected ElementSelector(ElementSelection selectionBy, string value, ElementSelector? parent)
         {
             SelectionBy = selectionBy;
             Value = value;

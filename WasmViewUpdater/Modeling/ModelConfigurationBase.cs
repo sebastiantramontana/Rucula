@@ -21,7 +21,7 @@ namespace WasmViewUpdater.Modeling
         protected ElementSelector ById(string id) => _elementSelectorBuilder.ById(id);
         protected IFromTemplateSelectorBuilder FromTemplate(string templateId) => _elementSelectorBuilder.FromTemplate(templateId);
         protected ElementSelector ByQuerySelector(string querySelector) => _elementSelectorBuilder.ByQuerySelector(querySelector);
-        protected IRowSelection RowFromTemplate(string templateId) => _rowSelectionBuilder.FromTemplate(templateId);
+        protected RowSelector RowFromTemplate(string templateId) => _rowSelectionBuilder.FromTemplate(templateId);
         public abstract IModelBuilder<TViewModel> Configure(IModelBuilder<TViewModel> modelBuilder);
     }
 }

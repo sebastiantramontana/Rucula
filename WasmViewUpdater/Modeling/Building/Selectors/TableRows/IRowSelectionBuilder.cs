@@ -2,8 +2,6 @@
 {
     public interface IRowSelectionBuilder
     {
-        IRowSelection FromTemplate(string templateId);
-        IRowSelection CopyFirstRow();
-        IRowSelection CopyLasttRow();
+        RowSelector FromTemplate(string templateId);
     }
 }
