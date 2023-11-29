@@ -8,7 +8,7 @@ internal class ToTableModel<TViewModel> : IToTableModel<TViewModel>
 {
     private readonly CollectionTableModel _collectionTableModel;
 
-    public ToTableModel(CollectionTableModel collectionTableModel)
+    internal ToTableModel(CollectionTableModel collectionTableModel)
     {
         _collectionTableModel = collectionTableModel;
     }
@@ -16,7 +16,11 @@ internal class ToTableModel<TViewModel> : IToTableModel<TViewModel>
     public IFinalizableTableRowModel<TViewModel> FillRows(RowSelector rowSelection)
     {
         _collectionTableModel.RowSelection = rowSelection;
-        return new FinalizableTableRowModel<TViewModel>();
+
+        var finalizableTableRowModel = new FinalizableTableRowModel<TViewModel>();
+        _collectionTableModel.ModelBuilderData = finalizableTableRowModel;
+
+        return finalizableTableRowModel;
     }
 }
 

@@ -13,14 +13,15 @@ internal abstract class ModelBuilderBase<TViewModel, TFinalizable> : IFinalizabl
         _collections = new List<CollectionTableModel>();
     }
 
-    IEnumerable<ValueModel> IFinalizableModelBuilder<TViewModel, TFinalizable>.Values => _values;
-    IEnumerable<CollectionTableModel> IFinalizableModelBuilder<TViewModel, TFinalizable>.CollectionTables => _collections;
+    IEnumerable<ValueModel> IModelBuilderData.Values => _values;
+    IEnumerable<CollectionTableModel> IModelBuilderData.CollectionTables => _collections;
 
     public IBuildingCollectionModel<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)
     {
-        _collections.Add(new CollectionTableModel(func));
+        var newCollection = new CollectionTableModel(func);
+        _collections.Add(newCollection);
 
-        return default!;
+        return new BuildingCollectionModel<TReturn>(newCollection);
     }
 
     public IBuildingValueModel<TFinalizable> Value<TReturn>(Func<TViewModel, TReturn> func)
