@@ -1,4 +1,5 @@
-﻿using WasmViewUpdater.Modeling;
+﻿using NUnit.Framework.Constraints;
+using WasmViewUpdater.Modeling;
 using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders;
@@ -33,31 +34,53 @@ internal class PersonaConfigurationTest
             (new ElementQuerySelector(".p-otro > img"), TestHelper.CreateAttributeElementPlace("data-otro"))
         });
 
-        //var tableRowSelector = new TemplateRowSelector("row-template-id");
-
-        //var collection = TestHelper.CreateCollectionTableModel(
-        //    (Persona p) => p.Mascotas,
-        //    new ElementIdSelector("mascotas-id", ElementSelector.DocumentElement),
-        //    tableRowSelector,
-        //    TestHelper.CreateValueModel((Mascota m) => m.Name,new (ElementSelector, ElementPlace)[]
-        //    {
-        //        (new ElementIdSelector("cell-mascota-nombre-id",tableRowSelector),TestHelper.CreateContentElementPlace())
-        //    }),
-        //    new[]
-        //    {
-
-        //    }
+        var collection = TestHelper.CreateCollectionTableModel(
+            (Persona p) => p.Mascotas,
+            new ElementIdSelector("mascotas-table-id"),
+            new TemplateRowSelector("row-template-id"),
+            new[]
+            {
+                TestHelper.CreateValueModel((Mascota m) => m.Name, new (ElementSelector, ElementPlace)[]
+                {
+                    (new ElementIdSelector("cell-mascota-nombre-id"),TestHelper.CreateContentElementPlace()),
+                    (new ElementIdSelector("anchor-cell-mascota-nombre-id"),TestHelper.CreateAttributeElementPlace("href")),
+                    (new ElementIdSelector("another-anchor-cell-mascota-nombre-id"),TestHelper.CreateContentElementPlace()),
+                }),
+                TestHelper.CreateValueModel((Mascota m) => m.IsDespulgado, new (ElementSelector, ElementPlace)[]
+                {
+                    (new ElementIdSelector("some-despulgado-id"),TestHelper.CreateAttributeElementPlace("data-despulgado")),
+                })
+            },
+            new[]
+            {
+                TestHelper.CreateCollectionTableModel(
+                (Mascota m) => m.Vacunas,
+                new ElementIdSelector("inner-table-vacunas"),
+                new TemplateRowSelector("row-template-vacunas-id"),
+                new[]
+                {
+                    TestHelper.CreateValueModel((Vacuna v) => v.Name, new (ElementSelector, ElementPlace)[]
+                    {
+                        (new ElementIdSelector("div-vacuna-id"),TestHelper.CreateContentElementPlace())
+                    }),
+                    TestHelper.CreateValueModel((Vacuna v) => v.DateApplied, new (ElementSelector, ElementPlace)[]
+                    {
+                        (new ElementIdSelector("span-vacuna-id"),TestHelper.CreateContentElementPlace())
+                    })
+                },
+                Enumerable.Empty<CollectionTableModel>())
+            });
 
 
         /*
          * modelBuilder
             .Collection(a => a.Mascotas)
-            .ToTable(ById("mascotas-id"))
+            .ToTable(ById("mascotas-table-id"))
             .FillRows(RowFromTemplate("row-template-id"))
                 .Value(m => m.Name)
                     .ToContainerElement(ById("cell-mascota-nombre-id")).ToContent()
-                    .ToElement(ById("anchor--cell-mascota-nombre-id")).ToAttribute("href")
-                    .ToContainerElement(ById("another-anchor--cell-mascota-nombre-id")).ToAttribute("href")
+                    .ToElement(ById("anchor-cell-mascota-nombre-id")).ToAttribute("href")
+                    .ToContainerElement(ById("another-anchor-cell-mascota-nombre-id")).ToAttribute("href")
                 .Value(m => m.IsDespulgado)
                     .ToElement(ById("some-despulgado-id")).ToAttribute("data-despulgado")
                 .Collection(m => m.Vacunas)
@@ -71,6 +94,7 @@ internal class PersonaConfigurationTest
 
         TestHelper.AssertValueModel(newModelBuilder.Values.ElementAt(0), value1, false);
         TestHelper.AssertValueModel(newModelBuilder.Values.ElementAt(1), value2, false);
+        TestHelper.AssertCollectionTableModel(newModelBuilder.CollectionTables.ElementAt(0), collection);
     }
 
 

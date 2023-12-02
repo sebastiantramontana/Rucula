@@ -13,7 +13,7 @@ internal class ToTableModel<TViewModel> : IToTableModel<TViewModel>
         _collectionTableModel = collectionTableModel;
     }
 
-    public IFinalizableTableRowModel<TViewModel> FillRows(RowSelector rowSelection)
+    public IFinalizableTableRowModel<TViewModel> RowsFrom(RowSelector rowSelection)
     {
         _collectionTableModel.RowSelector = rowSelection;
 

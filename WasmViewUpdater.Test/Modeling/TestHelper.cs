@@ -42,6 +42,14 @@ namespace WasmViewUpdater.Test.Modeling
         public static ElementPlace CreateContentElementPlace()
             => new ContentElementPlace();
 
+        public static void AssertCollectionTableModel(CollectionTableModel actualCollection, CollectionTableModel expectedCollection)
+        {
+            AssertDelegate(actualCollection.CollectionFunc, expectedCollection.CollectionFunc);
+            AssertSelector(actualCollection.TableSelector, expectedCollection.TableSelector);
+            AssertRowSelector(actualCollection.RowSelector, expectedCollection.RowSelector);
+            AssertModelBuilderData(actualCollection.ModelBuilderData, expectedCollection.ModelBuilderData);
+        }
+
         public static void AssertValueModel(ValueModel actualValueModel, ValueModel expectedValueModel, bool canPlaceBeNull)
         {
             Assert.Multiple(() =>
@@ -74,6 +82,27 @@ namespace WasmViewUpdater.Test.Modeling
         public static void AssertSelector(ElementSelector actualSelector, ElementSelector expectedSelector)
         {
             Assert.That(actualSelector, Is.EqualTo(expectedSelector));
+        }
+
+        public static void AssertRowSelector(RowSelector actualSelector, RowSelector expectedSelector)
+        {
+            Assert.That(actualSelector, Is.EqualTo(expectedSelector));
+        }
+
+        public static void AssertModelBuilderData(IModelBuilderData actualModelBuilderData, IModelBuilderData expectedModelBuilderData)
+        {
+            Assert.That(actualModelBuilderData.Values.Count(), Is.EqualTo(expectedModelBuilderData.Values.Count()));
+            Assert.That(actualModelBuilderData.CollectionTables.Count(), Is.EqualTo(expectedModelBuilderData.CollectionTables.Count()));
+
+            for (int i = 0; i < actualModelBuilderData.Values.Count(); i++)
+            {
+                AssertValueModel(actualModelBuilderData.Values.ElementAt(i), expectedModelBuilderData.Values.ElementAt(i), false);
+            }
+
+            for (int i = 0; i < actualModelBuilderData.CollectionTables.Count(); i++)
+            {
+                AssertCollectionTableModel(actualModelBuilderData.CollectionTables.ElementAt(i), expectedModelBuilderData.CollectionTables.ElementAt(i));
+            }
         }
 
         private static void AssertDelegate(Delegate actual, Delegate expected)

@@ -5,6 +5,6 @@ namespace WasmViewUpdater.Modeling.Building.Elements
 {
     public interface IToTableModel<TViewModel>
     {
-        IFinalizableTableRowModel<TViewModel> FillRows(RowSelector rowSelection);
+        IFinalizableTableRowModel<TViewModel> RowsFrom(RowSelector rowSelection);
     }
 }
