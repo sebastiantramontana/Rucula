@@ -1,10 +1,9 @@
-﻿using WasmViewUpdater.Modeling;
-using WasmViewUpdater.Modeling.Models;
+﻿using WasmViewUpdater.Modeling.Building;
 
 namespace WasmViewUpdater.JsGeneration
 {
     internal interface IJsGenerator<TViewModel>
     {
-        IJsExecutor<TViewModel> GenerateJsCode(IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables);
+        IJsExecutor<TViewModel> GenerateJsCode(IModelBuilderData modelBuilderData);
     }
 }

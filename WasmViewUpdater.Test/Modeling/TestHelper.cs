@@ -1,6 +1,10 @@
 ﻿using Moq;
+using System.Linq.Expressions;
+using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 using WasmViewUpdater.Modeling.Models;
+using WasmViewUpdater.Test.Example;
 
 namespace WasmViewUpdater.Test.Modeling
 {
@@ -14,20 +18,35 @@ namespace WasmViewUpdater.Test.Modeling
             return valueModel;
         }
 
+        public static CollectionTableModel CreateCollectionTableModel(Delegate collectionFunc, ElementSelector tableSelector, RowSelector rowSelector, IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables)
+            => new(collectionFunc)
+            {
+                TableSelector = tableSelector,
+                RowSelector = rowSelector,
+                ModelBuilderData = new ModelBuilderDataFake(values, collectionTables)
+            };
+
+
+        public static ElementTemplateSelector CreateElementTemplateSelectorToId(string templateId, string elementToAppendId, string toChildElementId)
+            => new(templateId, new ElementIdSelector(elementToAppendId)) { TargetChildElement = new ElementIdSelector(toChildElementId) };
+
+        public static ElementTemplateSelector CreateElementTemplateSelectorToQuery(string templateId, string elementToAppendQuerySelector)
+            => new(templateId, new ElementQuerySelector(elementToAppendQuerySelector));
+
         public static TargetElement CreateTargetElement(ElementSelector selector, ValueModel valueModel, ElementPlace place)
             => new(selector, valueModel) { Place = place };
 
-        public static ElementPlace CreateAttributeElementPlace(string value)
-            => new(ElementPlacing.Attribute, value);
+        public static ElementPlace CreateAttributeElementPlace(string attribute)
+            => new AttributeElementPlace(attribute);
 
         public static ElementPlace CreateContentElementPlace()
-            => new(ElementPlacing.Content);
+            => new ContentElementPlace();
 
         public static void AssertValueModel(ValueModel actualValueModel, ValueModel expectedValueModel, bool canPlaceBeNull)
         {
             Assert.Multiple(() =>
             {
-                Assert.That(actualValueModel.ValueFunc, Is.EqualTo(expectedValueModel.ValueFunc));
+                AssertDelegate(actualValueModel.ValueFunc, expectedValueModel.ValueFunc);
                 Assert.That(actualValueModel.TargetElements.Count(), Is.EqualTo(expectedValueModel.TargetElements.Count()));
             });
 
@@ -41,7 +60,7 @@ namespace WasmViewUpdater.Test.Modeling
         {
             AssertPlace(actualTargetElement.Place, expectedTargetElement.Place, canPlaceBeNull);
             AssertSelector(actualTargetElement.Selector, expectedTargetElement.Selector);
-            Assert.That(actualTargetElement.Parent.ValueFunc, Is.EqualTo(expectedTargetElement.Parent.ValueFunc));
+            AssertDelegate(actualTargetElement.Parent.ValueFunc, expectedTargetElement.Parent.ValueFunc);
         }
 
         public static void AssertPlace(ElementPlace actualPlace, ElementPlace expectedPlace, bool canPlaceBeNull)
@@ -56,5 +75,19 @@ namespace WasmViewUpdater.Test.Modeling
         {
             Assert.That(actualSelector, Is.EqualTo(expectedSelector));
         }
+
+        private static void AssertDelegate(Delegate actual, Delegate expected)
+        {
+            CollectionAssert.AreEqual(GetDelegateIL(expected), GetDelegateIL(actual));
+        }
+
+        private static byte[] GetDelegateIL(Delegate d)
+            => d.Method.GetMethodBody()?.GetILAsByteArray()!;
+    }
+
+    internal class ModelBuilderDataFake(IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables) : IModelBuilderData
+    {
+        IEnumerable<ValueModel> IModelBuilderData.Values { get; } = values;
+        IEnumerable<CollectionTableModel> IModelBuilderData.CollectionTables { get; } = collectionTables;
     }
 }

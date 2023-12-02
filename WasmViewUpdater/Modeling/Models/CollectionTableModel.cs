@@ -7,7 +7,7 @@ namespace WasmViewUpdater.Modeling.Models
     internal record class CollectionTableModel(Delegate CollectionFunc)
     {
         internal ElementSelector TableSelector { get; set; } = default!;
-        internal RowSelector RowSelection { get; set; } = default!;
+        internal RowSelector RowSelector { get; set; } = default!;
         internal IModelBuilderData ModelBuilderData { get; set; } = default!;
     }
 }

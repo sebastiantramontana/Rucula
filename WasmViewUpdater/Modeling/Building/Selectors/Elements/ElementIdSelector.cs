@@ -2,8 +2,8 @@
 {
     internal record class ElementIdSelector : ElementSelector
     {
-        internal ElementIdSelector(string elementId, ElementSelector? parent)
-            : base(ElementSelection.Id, elementId, parent)
+        internal ElementIdSelector(string elementId)
+            : base(ElementSelection.Id, elementId)
         {
         }
     }

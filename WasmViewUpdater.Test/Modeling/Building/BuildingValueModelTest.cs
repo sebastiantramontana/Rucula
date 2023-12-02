@@ -26,9 +26,9 @@ namespace WasmViewUpdater.Test.Modeling.Building
         private void TestAddingNewTargetValueToValueModel<TReturn>(Func<BuildingValueModel, Func<ElementSelector, TReturn>> getActFunc)
             where TReturn : IToElementModel<IFinalizableValueModel>
         {
-            var selector1 = new ElementIdSelector("test-id", ElementSelector.DocumentElement);
-            var selector2 = new ElementQuerySelector(".test > p", ElementSelector.DocumentElement);
-            var selector3 = new ElementTemplateSelector("template-id", new ElementIdSelector("element-to-append-id", ElementSelector.DocumentElement));
+            var selector1 = new ElementIdSelector("test-id");
+            var selector2 = new ElementQuerySelector(".test > p");
+            var selector3 = new ElementTemplateSelector("template-id", new ElementIdSelector("element-to-append-id"));
 
             var func1 = (ViewModelTest e) => e.Name;
 

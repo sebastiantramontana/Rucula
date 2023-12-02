@@ -2,21 +2,16 @@
 {
     internal class ElementSelectorBuilder : IElementSelectorBuilder
     {
-        private readonly ElementSelector _parent;
-
-        public ElementSelectorBuilder(ElementSelector parent)
-            => _parent = parent;
-
         public ElementSelector ByElementObject(string objectName)
-            => new ElementObjectSelector(objectName, _parent);
+            => new ElementObjectSelector(objectName);
 
         public ElementSelector ById(string elementId)
-            => new ElementIdSelector(elementId, _parent);
+            => new ElementIdSelector(elementId);
 
         public ElementSelector ByQuerySelector(string querySelector)
-            => new ElementQuerySelector(querySelector, _parent);
+            => new ElementQuerySelector(querySelector);
 
-        public IFromTemplateSelectorBuilder FromTemplate(string templateId)
-            => new FromTemplateSelectorBuilder(templateId);
+        public IAppendToTemplateSelectorBuilder FromTemplate(string templateId)
+            => new AppendToTemplateSelectorBuilder(templateId);
     }
 }

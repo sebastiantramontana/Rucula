@@ -15,7 +15,7 @@ internal class ToTableModel<TViewModel> : IToTableModel<TViewModel>
 
     public IFinalizableTableRowModel<TViewModel> FillRows(RowSelector rowSelection)
     {
-        _collectionTableModel.RowSelection = rowSelection;
+        _collectionTableModel.RowSelector = rowSelection;
 
         var finalizableTableRowModel = new FinalizableTableRowModel<TViewModel>();
         _collectionTableModel.ModelBuilderData = finalizableTableRowModel;

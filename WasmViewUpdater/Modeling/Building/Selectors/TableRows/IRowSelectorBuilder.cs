@@ -1,6 +1,6 @@
 ﻿namespace WasmViewUpdater.Modeling.Building.Selectors.TableRows
 {
-    public interface IRowSelectionBuilder
+    public interface IRowSelectorBuilder
     {
         RowSelector FromTemplate(string templateId);
     }

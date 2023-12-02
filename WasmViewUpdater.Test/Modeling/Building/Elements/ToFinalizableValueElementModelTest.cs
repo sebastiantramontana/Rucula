@@ -25,7 +25,7 @@ namespace WasmViewUpdater.Test.Modeling.Building
 
         private void TestPlace(ElementPlace expectedPlace, Func<ToFinalizableValueElementModel, IFinalizableValueModel> actFunc)
         {
-            var selector = new ElementTemplateSelector("template-id", new ElementIdSelector("append-to-element-id", ElementSelector.DocumentElement));
+            var selector = new ElementTemplateSelector("template-id", new ElementIdSelector("append-to-element-id"));
             var valueModel = TestHelper.CreateValueModel((ViewModelTest e) => e.Weigth, [(selector, default!)]);
             var actualTargetElement = valueModel.TargetElements.Single();
             var sut = new ToFinalizableValueElementModel(actualTargetElement);

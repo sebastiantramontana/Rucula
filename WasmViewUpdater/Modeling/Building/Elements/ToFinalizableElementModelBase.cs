@@ -13,10 +13,10 @@ internal abstract class ToFinalizableElementModelBase<TFinalizable>
     }
 
     public TFinalizable ToAttribute(string attribute)
-        => CreateFinalizable(new ElementPlace(ElementPlacing.Attribute, attribute));
+        => CreateFinalizable(new AttributeElementPlace(attribute));
 
     public TFinalizable ToContent()
-        => CreateFinalizable(new ElementPlace(ElementPlacing.Content));
+        => CreateFinalizable(new ContentElementPlace());
 
     private TFinalizable CreateFinalizable(ElementPlace place)
     {

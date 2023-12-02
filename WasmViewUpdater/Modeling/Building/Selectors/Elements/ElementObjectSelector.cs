@@ -2,8 +2,8 @@
 {
     internal record class ElementObjectSelector : ElementSelector
     {
-        internal ElementObjectSelector(string objectName, ElementSelector? parent)
-            : base(ElementSelection.ElementObject, objectName, parent)
+        internal ElementObjectSelector(string objectName)
+            : base(ElementSelection.ElementObject, objectName)
         {
         }
     }

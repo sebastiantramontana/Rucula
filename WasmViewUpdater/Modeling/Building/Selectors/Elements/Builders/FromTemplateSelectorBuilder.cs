@@ -1,18 +1,18 @@
 ﻿namespace WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders
 {
-    internal class FromTemplateSelectorBuilder : IFromTemplateSelectorBuilder
+    internal class AppendToTemplateSelectorBuilder : IAppendToTemplateSelectorBuilder
     {
         private readonly string _templateId;
 
-        internal FromTemplateSelectorBuilder(string templateId)
+        internal AppendToTemplateSelectorBuilder(string templateId)
         {
             _templateId = templateId;
         }
 
-        public IElementSelectorBuilder AppendTo(ElementSelector selector)
+        public IToChildTemplateSelectorBuilder AppendTo(ElementSelector appendToSelector)
         {
-            var templateElementSelector = new ElementTemplateSelector(_templateId, selector);
-            return new ElementSelectorBuilder(templateElementSelector);
+            var templateElementSelector = new ElementTemplateSelector(_templateId, appendToSelector);
+            return new ToChildTemplateSelectorBuilder(templateElementSelector);
         }
     }
 }

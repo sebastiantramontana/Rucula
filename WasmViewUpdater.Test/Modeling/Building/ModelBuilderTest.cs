@@ -13,9 +13,9 @@ namespace WasmViewUpdater.Test.Modeling.Building
         {
             IModelBuilder<ViewModelTest> sut = new ModelBuilder<ViewModelTest>();
 
-            var selector1 = new ElementIdSelector("test-id", ElementSelector.DocumentElement);
-            var selector2 = new ElementQuerySelector(".test > p", ElementSelector.DocumentElement);
-            var selector3 = new ElementTemplateSelector("template-id", new ElementIdSelector("element-to-append-id", ElementSelector.DocumentElement));
+            var selector1 = new ElementIdSelector("test-id");
+            var selector2 = new ElementQuerySelector(".test > p");
+            var selector3 = new ElementTemplateSelector("template-id", new ElementIdSelector("element-to-append-id"));
 
             var func1 = (ViewModelTest e) => e.Name;
             var func2 = (ViewModelTest e) => e.Age;

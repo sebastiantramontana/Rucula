@@ -2,8 +2,8 @@
 {
     internal record class ElementQuerySelector : ElementSelector
     {
-        internal ElementQuerySelector(string querySelector, ElementSelector? parent)
-            : base(ElementSelection.QuerySelector, querySelector, parent)
+        internal ElementQuerySelector(string querySelector)
+            : base(ElementSelection.QuerySelector, querySelector)
         {
         }
     }
