@@ -4,20 +4,20 @@ using WasmViewUpdater.Modeling.Models;
 
 namespace WasmViewUpdater.Modeling.Building.Elements;
 
-internal class ToTableModel<TViewModel> : IToTableModel<TViewModel>
+internal class TableRowsBuilder<TViewModel> : ITableRowsBuilder<TViewModel>
 {
     private readonly CollectionTableModel _collectionTableModel;
 
-    internal ToTableModel(CollectionTableModel collectionTableModel)
+    internal TableRowsBuilder(CollectionTableModel collectionTableModel)
     {
         _collectionTableModel = collectionTableModel;
     }
 
-    public IFinalizableTableRowModel<TViewModel> RowsFrom(RowSelector rowSelection)
+    public IFinalizableTableRowBuilder<TViewModel> RowsFrom(RowSelector rowSelection)
     {
         _collectionTableModel.RowSelector = rowSelection;
 
-        var finalizableTableRowModel = new FinalizableTableRowModel<TViewModel>();
+        var finalizableTableRowModel = new FinalizableTableRowBuilder<TViewModel>();
         _collectionTableModel.ModelBuilderData = finalizableTableRowModel;
 
         return finalizableTableRowModel;

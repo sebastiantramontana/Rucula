@@ -1,9 +1,7 @@
-using Moq;
 using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Elements;
 using WasmViewUpdater.Modeling.Building.Finalizables;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders;
 
 namespace WasmViewUpdater.Test.Modeling.Building
 {
@@ -14,17 +12,17 @@ namespace WasmViewUpdater.Test.Modeling.Building
         [Test]
         public void ToContainerElementTest()
         {
-            TestAddingNewTargetValueToValueModel<IToContainerElementModel<IFinalizableValueModel>>((sut) => sut.ToContainerElement);
+            TestAddingNewTargetValueToValueModel<IELementContentBuilder<IFinalizableElementBuilder>>((sut) => sut.ToContainerElement);
         }
 
         [Test]
         public void ToElementTest()
         {
-            TestAddingNewTargetValueToValueModel<IToElementModel<IFinalizableValueModel>>((sut) => sut.ToElement);
+            TestAddingNewTargetValueToValueModel<IElementAttributeBuilder<IFinalizableElementBuilder>>((sut) => sut.ToElement);
         }
 
-        private void TestAddingNewTargetValueToValueModel<TReturn>(Func<BuildingValueModel, Func<ElementSelector, TReturn>> getActFunc)
-            where TReturn : IToElementModel<IFinalizableValueModel>
+        private void TestAddingNewTargetValueToValueModel<TReturn>(Func<ValueElementBuilder, Func<ElementSelector, TReturn>> getActFunc)
+            where TReturn : IElementAttributeBuilder<IFinalizableElementBuilder>
         {
             var selector1 = new ElementIdSelector("test-id");
             var selector2 = new ElementQuerySelector(".test > p");
@@ -45,7 +43,7 @@ namespace WasmViewUpdater.Test.Modeling.Building
                     (selector3, default!),
                 ]);
 
-            var sut = new BuildingValueModel(actualvalue);
+            var sut = new ValueElementBuilder(actualvalue);
 
             var result = getActFunc(sut).Invoke(selector3);
 

@@ -7,7 +7,7 @@ namespace WasmViewUpdater.Test.Modeling.Building
 {
     [Parallelizable(ParallelScope.All)]
     [TestFixture]
-    public class ToFinalizableValueElementModelTest
+    public class ValueElementPlaceBuilderTest
     {
         [Test]
         public void ContentPlaceTest()
@@ -23,12 +23,12 @@ namespace WasmViewUpdater.Test.Modeling.Building
             TestPlace(expectedPlace, sut => sut.ToAttribute("data-weight"));
         }
 
-        private void TestPlace(ElementPlace expectedPlace, Func<ToFinalizableValueElementModel, IFinalizableValueModel> actFunc)
+        private void TestPlace(ElementPlace expectedPlace, Func<ValueElementPlaceBuilder, IFinalizableElementBuilder> actFunc)
         {
             var selector = new ElementTemplateSelector("template-id", new ElementIdSelector("append-to-element-id"));
             var valueModel = TestHelper.CreateValueModel((ViewModelTest e) => e.Weigth, [(selector, default!)]);
             var actualTargetElement = valueModel.TargetElements.Single();
-            var sut = new ToFinalizableValueElementModel(actualTargetElement);
+            var sut = new ValueElementPlaceBuilder(actualTargetElement);
 
             var result = actFunc(sut);
 

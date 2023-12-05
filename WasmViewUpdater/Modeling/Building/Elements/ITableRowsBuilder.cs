@@ -3,8 +3,8 @@ using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Modeling.Building.Elements
 {
-    public interface IToTableModel<TViewModel>
+    public interface ITableRowsBuilder<TViewModel>
     {
-        IFinalizableTableRowModel<TViewModel> RowsFrom(RowSelector rowSelection);
+        IFinalizableTableRowBuilder<TViewModel> RowsFrom(RowSelector rowSelection);
     }
 }

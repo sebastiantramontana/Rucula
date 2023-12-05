@@ -4,19 +4,19 @@ using WasmViewUpdater.Modeling.Models;
 
 namespace WasmViewUpdater.Modeling.Building;
 
-internal class BuildingCollectionModel<TViewModel> : IBuildingCollectionModel<TViewModel>
+internal class TableBuilder<TViewModel> : ITableBuilder<TViewModel>
 {
     private readonly CollectionTableModel _collectionTableModel;
 
-    public BuildingCollectionModel(CollectionTableModel collectionTableModel)
+    public TableBuilder(CollectionTableModel collectionTableModel)
     {
         _collectionTableModel = collectionTableModel;
     }
 
-    public IToTableModel<TViewModel> ToTable(ElementSelector selector)
+    public ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)
     {
         _collectionTableModel.TableSelector = selector;
-        return new ToTableModel<TViewModel>(_collectionTableModel);
+        return new TableRowsBuilder<TViewModel>(_collectionTableModel);
     }
 }
 

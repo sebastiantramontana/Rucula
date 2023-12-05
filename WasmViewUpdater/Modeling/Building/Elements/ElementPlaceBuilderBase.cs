@@ -2,12 +2,12 @@
 
 namespace WasmViewUpdater.Modeling.Building.Elements;
 
-internal abstract class ToFinalizableElementModelBase<TFinalizable>
-    : IToContainerElementModel<TFinalizable>, IToElementModel<TFinalizable>
+internal abstract class ElementPlaceBuilderBase<TFinalizable>
+    : IELementContentBuilder<TFinalizable>, IElementAttributeBuilder<TFinalizable>
 {
     private readonly TargetElement _targetElement;
 
-    protected ToFinalizableElementModelBase(TargetElement targetElement)
+    protected ElementPlaceBuilderBase(TargetElement targetElement)
     {
         _targetElement = targetElement;
     }

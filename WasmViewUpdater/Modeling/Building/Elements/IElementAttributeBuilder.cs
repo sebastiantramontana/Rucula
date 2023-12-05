@@ -1,6 +1,6 @@
 ﻿namespace WasmViewUpdater.Modeling.Building.Elements
 {
-    public interface IToElementModel<TFinalizable>
+    public interface IElementAttributeBuilder<TFinalizable>
     {
         TFinalizable ToAttribute(string attribute);
     }

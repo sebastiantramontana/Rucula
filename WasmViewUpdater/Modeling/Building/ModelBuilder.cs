@@ -3,8 +3,8 @@ using WasmViewUpdater.Modeling.Models;
 
 namespace WasmViewUpdater.Modeling.Building;
 
-internal class ModelBuilder<TViewModel> : ModelBuilderBase<TViewModel, IFinalizableValueModel>, IModelBuilder<TViewModel>
+internal class ModelBuilder<TViewModel> : ModelBuilderBase<TViewModel, IFinalizableElementBuilder>, IModelBuilder<TViewModel>
 {
-    protected override IBuildingValueModel<IFinalizableValueModel> CreateBuildingValueModel(ValueModel valueModel)
-        => new BuildingValueModel(valueModel);
+    protected override IElementBuilder<IFinalizableElementBuilder> CreateElementBuilder(ValueModel valueModel)
+        => new ValueElementBuilder(valueModel);
 }
