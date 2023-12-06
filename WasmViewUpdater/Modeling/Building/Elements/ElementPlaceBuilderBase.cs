@@ -3,7 +3,7 @@
 namespace WasmViewUpdater.Modeling.Building.Elements;
 
 internal abstract class ElementPlaceBuilderBase<TFinalizable>
-    : IELementContentBuilder<TFinalizable>, IElementAttributeBuilder<TFinalizable>
+    : IELementContentBuilder<TFinalizable>
 {
     private readonly TargetElement _targetElement;
 
