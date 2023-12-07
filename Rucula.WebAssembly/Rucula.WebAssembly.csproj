@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-
 	<PropertyGroup>
+		<AssemblyName>Rucula.WebAssembly</AssemblyName>
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>

@@ -35,6 +35,8 @@ namespace Rucula.DataAccess.Providers
                 .TitulosDetails;
 
         private IEnumerable<TituloDetails> MapToTituloDetails(IEnumerable<TituloDetailsDto> dtos)
-            => dtos.Select(dto => _tituloDetailsMapper.Map(dto));
+            => dtos
+                .Where(dto => !string.IsNullOrWhiteSpace(dto.FechaVencimiento))
+                .Select(dto => _tituloDetailsMapper.Map(dto));
     }
 }
