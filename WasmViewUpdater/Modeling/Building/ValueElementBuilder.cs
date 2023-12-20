@@ -4,7 +4,7 @@ using WasmViewUpdater.Modeling.Models;
 
 namespace WasmViewUpdater.Modeling.Building;
 
-internal class ValueElementBuilder : ElementBuilderBase<IFinalizableElementBuilder>, IElementBuilder<IFinalizableElementBuilder>
+internal class ValueElementBuilder : ElementBuilderBase<IFinalizableElementBuilder>
 {
     public ValueElementBuilder(ValueModel valueModel)
         : base(valueModel)
