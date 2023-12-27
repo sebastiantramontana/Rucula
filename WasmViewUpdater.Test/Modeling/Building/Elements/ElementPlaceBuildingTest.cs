@@ -2,13 +2,12 @@ using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Elements;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
 using WasmViewUpdater.Modeling.Models;
-using WasmViewUpdater.Test.Example;
 
 namespace WasmViewUpdater.Test.Modeling.Building
 {
     [Parallelizable(ParallelScope.All)]
     [TestFixture]
-    public class ValueElementPlaceBuilderTest
+    public class ElementPlaceBuildingTest
     {
         [Test]
         public void ContentPlaceTest()

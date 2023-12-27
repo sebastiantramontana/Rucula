@@ -1,10 +1,7 @@
-﻿using Moq;
-using System.Linq.Expressions;
-using WasmViewUpdater.Modeling.Building;
+﻿using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
 using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 using WasmViewUpdater.Modeling.Models;
-using WasmViewUpdater.Test.Example;
 
 namespace WasmViewUpdater.Test.Modeling
 {
