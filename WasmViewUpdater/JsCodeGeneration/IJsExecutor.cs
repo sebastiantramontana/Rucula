@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.JsGeneration
+﻿namespace Vitraux.JsCodeGeneration
 {
     internal interface IJsExecutor<TViewModel>
     {

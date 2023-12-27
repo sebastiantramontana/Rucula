@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Modeling.Building.Selectors.Elements
+﻿namespace Vitraux.Modeling.Building.Selectors.Elements
 {
     public abstract record class ElementSelector
     {

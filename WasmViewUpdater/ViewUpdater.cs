@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater
+﻿namespace Vitraux
 {
 
     internal class ViewUpdater<T> : IViewUpdater<T>

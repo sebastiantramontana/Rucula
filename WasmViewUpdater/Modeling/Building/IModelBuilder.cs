@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Modeling.Building;
+﻿namespace Vitraux.Modeling.Building;
 
 public interface IModelBuilder<TViewModel> : IModelBuilderData
 {

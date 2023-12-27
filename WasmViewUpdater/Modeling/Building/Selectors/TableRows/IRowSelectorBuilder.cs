@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Modeling.Building.Selectors.TableRows
+﻿namespace Vitraux.Modeling.Building.Selectors.TableRows
 {
     public interface IRowSelectorBuilder
     {

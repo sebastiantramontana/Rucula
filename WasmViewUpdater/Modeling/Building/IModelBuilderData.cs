@@ -1,6 +1,6 @@
-﻿using WasmViewUpdater.Modeling.Models;
+﻿using Vitraux.Modeling.Models;
 
-namespace WasmViewUpdater.Modeling.Building;
+namespace Vitraux.Modeling.Building;
 
 public interface IModelBuilderData
 {

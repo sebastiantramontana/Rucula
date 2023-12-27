@@ -1,9 +1,9 @@
-﻿using WasmViewUpdater.Modeling.Building;
-using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
+﻿using Vitraux.Modeling.Building.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Building.Selectors.TableRows;
+using Vitraux.Modeling.Models;
 
-namespace WasmViewUpdater.Modeling.Models;
+namespace Vitraux.Modeling.Building;
 
 internal class CollectionTableModelBuilder<TViewModel> : ITableBuilder<TViewModel>, ITableRowsBuilder<TViewModel>
 {

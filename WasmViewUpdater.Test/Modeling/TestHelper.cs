@@ -1,9 +1,9 @@
-﻿using WasmViewUpdater.Modeling.Building;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
-using WasmViewUpdater.Modeling.Models;
+﻿using Vitraux.Modeling.Building;
+using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Building.Selectors.TableRows;
+using Vitraux.Modeling.Models;
 
-namespace WasmViewUpdater.Test.Modeling
+namespace Vitraux.Test.Modeling
 {
     internal static class TestHelper
     {

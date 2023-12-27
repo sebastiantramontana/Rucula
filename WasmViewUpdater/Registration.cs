@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WasmViewUpdater.Modeling;
+using Vitraux.Modeling;
 
-namespace WasmViewUpdater
+namespace Vitraux
 {
     public static class Registration
     {

@@ -1,6 +1,6 @@
-﻿using WasmViewUpdater.Modeling.Building;
+﻿using Vitraux.Modeling.Building;
 
-namespace WasmViewUpdater.JsGeneration
+namespace Vitraux.JsCodeGeneration
 {
     internal interface IJsGenerator<TViewModel>
     {

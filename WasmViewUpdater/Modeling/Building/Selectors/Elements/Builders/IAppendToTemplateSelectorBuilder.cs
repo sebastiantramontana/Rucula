@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders
+﻿namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
 {
     public interface IAppendToTemplateSelectorBuilder
     {

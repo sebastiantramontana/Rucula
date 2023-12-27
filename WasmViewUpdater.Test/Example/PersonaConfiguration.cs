@@ -1,7 +1,7 @@
-﻿using WasmViewUpdater.Modeling;
-using WasmViewUpdater.Modeling.Building;
+﻿using Vitraux.Modeling;
+using Vitraux.Modeling.Building;
 
-namespace WasmViewUpdater.Test.Example;
+namespace Vitraux.Test.Example;
 
 public class PersonaConfiguration : ModelConfigurationBase<Persona>
 {

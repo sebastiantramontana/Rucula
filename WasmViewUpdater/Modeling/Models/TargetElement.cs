@@ -1,6 +1,6 @@
-﻿using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+﻿using Vitraux.Modeling.Building.Selectors.Elements;
 
-namespace WasmViewUpdater.Modeling.Models
+namespace Vitraux.Modeling.Models
 {
     internal record class TargetElement(ElementSelector Selector, ValueModel Parent)
     {

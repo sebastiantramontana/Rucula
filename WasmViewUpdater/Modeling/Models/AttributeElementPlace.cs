@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Modeling.Models
+﻿namespace Vitraux.Modeling.Models
 {
     internal record class AttributeElementPlace : ElementPlace
     {

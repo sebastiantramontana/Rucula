@@ -1,8 +1,8 @@
-﻿using WasmViewUpdater.Modeling.Building;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders;
-using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
+﻿using Vitraux.Modeling.Building;
+using Vitraux.Modeling.Building.Selectors.Elements.Builders;
+using Vitraux.Modeling.Building.Selectors.TableRows;
 
-namespace WasmViewUpdater.Modeling
+namespace Vitraux.Modeling
 {
     public interface IModelConfiguration<TViewModel>
     {

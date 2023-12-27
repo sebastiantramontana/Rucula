@@ -1,13 +1,13 @@
-﻿using WasmViewUpdater.Modeling;
-using WasmViewUpdater.Modeling.Building;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders;
-using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
-using WasmViewUpdater.Modeling.Models;
-using WasmViewUpdater.Test.Example;
-using WasmViewUpdater.Test.Modeling;
+﻿using Vitraux.Modeling;
+using Vitraux.Modeling.Building;
+using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements.Builders;
+using Vitraux.Modeling.Building.Selectors.TableRows;
+using Vitraux.Modeling.Models;
+using Vitraux.Test.Example;
+using Vitraux.Test.Modeling;
 
-namespace WasmViewUpdater.Test;
+namespace Vitraux.Test;
 
 [TestFixture]
 internal class PersonaConfigurationTest

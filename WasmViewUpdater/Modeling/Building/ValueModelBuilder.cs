@@ -1,8 +1,8 @@
-﻿using WasmViewUpdater.Modeling.Building;
-using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+﻿using Vitraux.Modeling.Building.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Models;
 
-namespace WasmViewUpdater.Modeling.Models;
+namespace Vitraux.Modeling.Building;
 
 internal class ValueModelBuilder<TViewModel> : IElementBuilder<TViewModel>, IELementContentBuilder<TViewModel>
 {

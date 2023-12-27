@@ -1,4 +1,6 @@
-﻿namespace WasmViewUpdater.Modeling.Building.Selectors.Elements.Builders
+﻿using Vitraux.Modeling.Building.Selectors.Elements;
+
+namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
 {
     internal class ElementSelectorBuilder : IElementSelectorBuilder
     {

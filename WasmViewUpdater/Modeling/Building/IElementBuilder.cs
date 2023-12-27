@@ -1,7 +1,7 @@
-﻿using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+﻿using Vitraux.Modeling.Building.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements;
 
-namespace WasmViewUpdater.Modeling.Building;
+namespace Vitraux.Modeling.Building;
 
 public interface IElementBuilder<TViewModel>
 {

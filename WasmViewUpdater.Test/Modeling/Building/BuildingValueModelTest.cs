@@ -1,10 +1,9 @@
-using WasmViewUpdater.Modeling.Building;
-using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Selectors.Elements;
-using WasmViewUpdater.Modeling.Models;
-using WasmViewUpdater.Test.Example;
+using Vitraux.Modeling.Building;
+using Vitraux.Modeling.Building.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Test.Example;
 
-namespace WasmViewUpdater.Test.Modeling.Building
+namespace Vitraux.Test.Modeling.Building
 {
     [Parallelizable(ParallelScope.All)]
     [TestFixture]

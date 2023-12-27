@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Modeling.Building.Elements
+﻿namespace Vitraux.Modeling.Building.Elements
 {
     public interface IELementContentBuilder<TViewModel> : IElementAttributeBuilder<TViewModel>
     {

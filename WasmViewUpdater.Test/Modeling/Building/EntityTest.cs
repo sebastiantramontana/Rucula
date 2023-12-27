@@ -1,4 +1,4 @@
-﻿namespace WasmViewUpdater.Test.Modeling.Building
+﻿namespace Vitraux.Test.Modeling.Building
 {
     public class ViewModelTest
     {
