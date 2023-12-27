@@ -1,7 +1,8 @@
+using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Finalizables;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
 using WasmViewUpdater.Modeling.Models;
+using WasmViewUpdater.Test.Example;
 
 namespace WasmViewUpdater.Test.Modeling.Building
 {
@@ -23,17 +24,18 @@ namespace WasmViewUpdater.Test.Modeling.Building
             TestPlace(expectedPlace, sut => sut.ToAttribute("data-weight"));
         }
 
-        private void TestPlace(ElementPlace expectedPlace, Func<ValueElementPlaceBuilder, IFinalizableElementBuilder> actFunc)
+        private void TestPlace(ElementPlace expectedPlace, Func<IELementContentBuilder<ViewModelTest>, IFinalizableBuilder<ViewModelTest>> actFunc)
         {
+            var valueModel = new ValueModel((ViewModelTest e) => e.Weigth);
+            var modelBuilder = new ModelBuilder<ViewModelTest>();
+            var valueModelBuilder = new ValueModelBuilder<ViewModelTest>(valueModel, modelBuilder);
             var selector = new ElementTemplateSelector("template-id", new ElementIdSelector("append-to-element-id"));
-            var valueModel = TestHelper.CreateValueModel((ViewModelTest e) => e.Weigth, [(selector, default!)]);
-            var actualTargetElement = valueModel.TargetElements.Single();
-            var sut = new ValueElementPlaceBuilder(actualTargetElement);
+            var sut = valueModelBuilder.ToContainerElement(selector);
 
             var result = actFunc(sut);
 
             Assert.That(result, Is.Not.Null);
-            TestHelper.AssertPlace(actualTargetElement.Place, expectedPlace, false);
+            TestHelper.AssertPlace(valueModel.TargetElements.Single().Place, expectedPlace, false);
         }
     }
 }

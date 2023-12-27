@@ -3,8 +3,8 @@ using WasmViewUpdater.Modeling.Building.Selectors.Elements;
 
 namespace WasmViewUpdater.Modeling.Building;
 
-public interface IElementBuilder<TFinalizable>
+public interface IElementBuilder<TViewModel>
 {
-    IElementAttributeBuilder<TFinalizable> ToElement(ElementSelector selector);
-    IELementContentBuilder<TFinalizable> ToContainerElement(ElementSelector selector);
+    IElementAttributeBuilder<TViewModel> ToElement(ElementSelector selector);
+    IELementContentBuilder<TViewModel> ToContainerElement(ElementSelector selector);
 }

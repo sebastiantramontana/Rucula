@@ -6,6 +6,6 @@ namespace WasmViewUpdater.Modeling
 {
     public interface IModelConfiguration<TViewModel>
     {
-        internal IModelBuilder<TViewModel> Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder);
+        internal void Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder);
     }
 }

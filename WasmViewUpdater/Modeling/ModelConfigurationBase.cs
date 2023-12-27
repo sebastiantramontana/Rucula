@@ -10,18 +10,18 @@ namespace WasmViewUpdater.Modeling
         private IElementSelectorBuilder _elementSelectorBuilder = default!;
         private IRowSelectorBuilder _rowSelectionBuilder = default!;
 
-        IModelBuilder<TViewModel> IModelConfiguration<TViewModel>.Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder)
+        void IModelConfiguration<TViewModel>.Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder)
         {
             _elementSelectorBuilder = elementSelectorBuilder;
             _rowSelectionBuilder = rowSelectionBuilder;
 
-            return Configure(modelBuilder);
+            Configure(modelBuilder);
         }
 
         protected ElementSelector ById(string id) => _elementSelectorBuilder.ById(id);
         protected IAppendToTemplateSelectorBuilder FromTemplate(string templateId) => _elementSelectorBuilder.FromTemplate(templateId);
         protected ElementSelector ByQuerySelector(string querySelector) => _elementSelectorBuilder.ByQuerySelector(querySelector);
         protected RowSelector Template(string templateId) => _rowSelectionBuilder.FromTemplate(templateId);
-        protected abstract IModelBuilder<TViewModel> Configure(IModelBuilder<TViewModel> modelBuilder);
+        protected abstract void Configure(IModelBuilder<TViewModel> modelBuilder);
     }
 }

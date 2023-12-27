@@ -1,7 +1,8 @@
 ﻿namespace WasmViewUpdater.Modeling.Building.Elements
 {
-    public interface IElementAttributeBuilder<TFinalizable>
+
+    public interface IElementAttributeBuilder<TViewModel>
     {
-        TFinalizable ToAttribute(string attribute);
+        IFinalizableBuilder<TViewModel> ToAttribute(string attribute);
     }
 }

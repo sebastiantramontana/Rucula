@@ -1,7 +1,8 @@
 using WasmViewUpdater.Modeling.Building;
 using WasmViewUpdater.Modeling.Building.Elements;
-using WasmViewUpdater.Modeling.Building.Finalizables;
 using WasmViewUpdater.Modeling.Building.Selectors.Elements;
+using WasmViewUpdater.Modeling.Models;
+using WasmViewUpdater.Test.Example;
 
 namespace WasmViewUpdater.Test.Modeling.Building
 {
@@ -12,17 +13,17 @@ namespace WasmViewUpdater.Test.Modeling.Building
         [Test]
         public void ToContainerElementTest()
         {
-            TestAddingNewTargetValueToValueModel<IELementContentBuilder<IFinalizableElementBuilder>>((sut) => sut.ToContainerElement);
+            TestAddingNewTargetValueToValueModel<Persona, IELementContentBuilder<Persona>>((sut) => sut.ToContainerElement);
         }
 
         [Test]
         public void ToElementTest()
         {
-            TestAddingNewTargetValueToValueModel<IElementAttributeBuilder<IFinalizableElementBuilder>>((sut) => sut.ToElement);
+            TestAddingNewTargetValueToValueModel<Persona, IElementAttributeBuilder<Persona>>((sut) => sut.ToElement);
         }
 
-        private void TestAddingNewTargetValueToValueModel<TReturn>(Func<ValueElementBuilder, Func<ElementSelector, TReturn>> getActFunc)
-            where TReturn : IElementAttributeBuilder<IFinalizableElementBuilder>
+        private void TestAddingNewTargetValueToValueModel<TViewModel, TReturn>(Func<ValueModelBuilder<TViewModel>, Func<ElementSelector, TReturn>> getActFunc)
+            where TReturn : IElementAttributeBuilder<TViewModel>
         {
             var selector1 = new ElementIdSelector("test-id");
             var selector2 = new ElementQuerySelector(".test > p");
@@ -43,7 +44,8 @@ namespace WasmViewUpdater.Test.Modeling.Building
                     (selector3, default!),
                 ]);
 
-            var sut = new ValueElementBuilder(actualvalue);
+            var modelBuilder = new ModelBuilder<TViewModel>();
+            var sut = new ValueModelBuilder<TViewModel>(actualvalue, modelBuilder);
 
             var result = getActFunc(sut).Invoke(selector3);
 

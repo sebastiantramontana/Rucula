@@ -1,10 +1,9 @@
-﻿using WasmViewUpdater.Modeling.Building.Finalizables;
-using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
+﻿using WasmViewUpdater.Modeling.Building.Selectors.TableRows;
 
 namespace WasmViewUpdater.Modeling.Building.Elements
 {
     public interface ITableRowsBuilder<TViewModel>
     {
-        IFinalizableTableRowBuilder<TViewModel> RowsFrom(RowSelector rowSelection);
+        IModelBuilder<TViewModel> RowsFrom(RowSelector rowSelection);
     }
 }
