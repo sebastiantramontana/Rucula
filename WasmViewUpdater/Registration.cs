@@ -5,11 +5,11 @@ namespace Vitraux
 {
     public static class Registration
     {
-        public static void AddViewUpdater<T, TModelConfiguration>(this ServiceCollection serviceCollection)
-            where TModelConfiguration : class, IModelConfiguration<T>
+        public static void AddHtmlUpdater<TViewModel, TModelConfiguration>(this ServiceCollection serviceCollection)
+            where TModelConfiguration : class, IModelConfiguration<TViewModel>
         {
-            serviceCollection.AddSingleton<IViewUpdater<T>, ViewUpdater<T>>();
-            serviceCollection.AddSingleton<IModelConfiguration<T>, TModelConfiguration>();
+            serviceCollection.AddSingleton<IHtmlUpdater<TViewModel>, HtmlUpdater<TViewModel>>();
+            serviceCollection.AddSingleton<IModelConfiguration<TViewModel>, TModelConfiguration>();
         }
     }
 }
