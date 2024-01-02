@@ -11,7 +11,7 @@ internal class FinalizableValueModelBuilder<TViewModel> : IFinalizableBuilder<TV
     private readonly IModelBuilder<TViewModel> _innerModelBuilder;
     private readonly IElementBuilder<TViewModel> _innerElementBuilder;
 
-    public FinalizableValueModelBuilder(IModelBuilder<TViewModel> innerModelBuilder, IElementBuilder<TViewModel> innerElementBuilder)
+    internal FinalizableValueModelBuilder(IModelBuilder<TViewModel> innerModelBuilder, IElementBuilder<TViewModel> innerElementBuilder)
     {
         _values = innerModelBuilder.Values.ToList();
         _collections = innerModelBuilder.CollectionTables.ToList();
@@ -25,7 +25,6 @@ internal class FinalizableValueModelBuilder<TViewModel> : IFinalizableBuilder<TV
     public IElementBuilder<TViewModel> Value<TReturn>(Func<TViewModel, TReturn> func)
         => _innerModelBuilder.Value(func);
 
-    //TODO: revisar
     public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)
         => _innerModelBuilder.Collection(func);
 

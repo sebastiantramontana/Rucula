@@ -31,17 +31,17 @@ namespace Vitraux.Test.Modeling.Building
             var func1 = (ViewModelTest e) => e.Name;
 
             var actualvalue = TestHelper.CreateValueModel(func1,
-                [
-                    (selector1, TestHelper.CreateContentElementPlace()),
-                    (selector2, TestHelper.CreateAttributeElementPlace("data-name")),
-                ]);
+            [
+                TestHelper.CreateTargetElement(selector1, TestHelper.CreateContentElementPlace()),
+                TestHelper.CreateTargetElement(selector2, TestHelper.CreateAttributeElementPlace("data-name"))
+            ]);
 
             var expectedValue = TestHelper.CreateValueModel(func1,
-                [
-                    (selector1, TestHelper.CreateContentElementPlace()),
-                    (selector2, TestHelper.CreateAttributeElementPlace("data-name")),
-                    (selector3, default!),
-                ]);
+            [
+                TestHelper.CreateTargetElement(selector1, TestHelper.CreateContentElementPlace()),
+                TestHelper.CreateTargetElement(selector2, TestHelper.CreateAttributeElementPlace("data-name")),
+                TestHelper.CreateTargetElement(selector3, default!),
+            ]);
 
             var modelBuilder = new ModelBuilder<TViewModel>();
             var sut = new ValueModelBuilder<TViewModel>(actualvalue, modelBuilder);

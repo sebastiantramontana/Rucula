@@ -2,7 +2,7 @@
 
 namespace Vitraux.Modeling.Models
 {
-    internal record class TargetElement(ElementSelector Selector, ValueModel Parent)
+    internal record class TargetElement(ElementSelector Selector)
     {
         internal ElementPlace Place { get; set; } = default!;
     }

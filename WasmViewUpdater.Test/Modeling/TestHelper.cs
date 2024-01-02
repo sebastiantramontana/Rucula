@@ -7,13 +7,11 @@ namespace Vitraux.Test.Modeling
 {
     internal static class TestHelper
     {
-        public static ValueModel CreateValueModel(Delegate valueFunc, IEnumerable<(ElementSelector Selector, ElementPlace Place)> targetElementsData)
-        {
-            var valueModel = new ValueModel(valueFunc);
-            valueModel.TargetElements = targetElementsData.Select((data) => CreateTargetElement(data.Selector, valueModel, data.Place)).ToArray();
-
-            return valueModel;
-        }
+        public static ValueModel CreateValueModel(Delegate valueFunc, IEnumerable<TargetElement> targetElements)
+            => new ValueModel(valueFunc)
+            {
+                TargetElements = targetElements.ToArray()
+            };
 
         public static CollectionTableModel CreateCollectionTableModel(Delegate collectionFunc, ElementSelector tableSelector, RowSelector rowSelector, IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables)
             => new(collectionFunc)
@@ -30,8 +28,8 @@ namespace Vitraux.Test.Modeling
         public static ElementTemplateSelector CreateElementTemplateSelectorToQuery(string templateId, string elementToAppendQuerySelector)
             => new(templateId, new ElementQuerySelector(elementToAppendQuerySelector));
 
-        public static TargetElement CreateTargetElement(ElementSelector selector, ValueModel valueModel, ElementPlace place)
-            => new(selector, valueModel) { Place = place };
+        public static TargetElement CreateTargetElement(ElementSelector selector, ElementPlace place)
+            => new(selector) { Place = place };
 
         public static ElementPlace CreateAttributeElementPlace(string attribute)
             => new AttributeElementPlace(attribute);
@@ -65,7 +63,6 @@ namespace Vitraux.Test.Modeling
         {
             AssertPlace(actualTargetElement.Place, expectedTargetElement.Place, canPlaceBeNull);
             AssertSelector(actualTargetElement.Selector, expectedTargetElement.Selector);
-            AssertDelegate(actualTargetElement.Parent.ValueFunc, expectedTargetElement.Parent.ValueFunc);
         }
 
         public static void AssertPlace(ElementPlace actualPlace, ElementPlace expectedPlace, bool canPlaceBeNull)

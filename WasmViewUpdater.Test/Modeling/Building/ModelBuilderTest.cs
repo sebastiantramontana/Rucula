@@ -43,15 +43,15 @@ namespace Vitraux.Test.Modeling.Building
             ValueModel CreateExpectedValue1()
                 => TestHelper.CreateValueModel(func1,
                     [
-                        (selector1, TestHelper.CreateContentElementPlace()),
-                        (selector2, TestHelper.CreateAttributeElementPlace("data-name")),
-                        (selector3, TestHelper.CreateContentElementPlace())
+                        TestHelper.CreateTargetElement(selector1, TestHelper.CreateContentElementPlace()),
+                        TestHelper.CreateTargetElement(selector2, TestHelper.CreateAttributeElementPlace("data-name")),
+                        TestHelper.CreateTargetElement(selector3, TestHelper.CreateContentElementPlace())
                     ]);
 
             ValueModel CreateExpectedValue2()
                 => TestHelper.CreateValueModel(func2,
                     [
-                        (selector2, TestHelper.CreateAttributeElementPlace("data-age"))
+                        TestHelper.CreateTargetElement(selector2, TestHelper.CreateAttributeElementPlace("data-age"))
                     ]);
         }
     }

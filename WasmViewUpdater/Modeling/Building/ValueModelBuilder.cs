@@ -18,28 +18,27 @@ internal class ValueModelBuilder<TViewModel> : IElementBuilder<TViewModel>, IELe
     }
 
     public IElementAttributeBuilder<TViewModel> ToElement(ElementSelector selector)
-    {
-        _currentTargetElement = new TargetElement(selector, _valueModel);
-        _valueModel.TargetElements = _valueModel.TargetElements.Append(_currentTargetElement);
-        return this;
-    }
+        => AddNewTargetElement(selector);
 
     public IELementContentBuilder<TViewModel> ToContainerElement(ElementSelector selector)
-    {
-        _currentTargetElement = new TargetElement(selector, _valueModel);
-        _valueModel.TargetElements = _valueModel.TargetElements.Append(_currentTargetElement);
-        return this;
-    }
+        => AddNewTargetElement(selector);
 
     public IFinalizableBuilder<TViewModel> ToAttribute(string attribute)
+        => CreateFinalizableBuilder(new AttributeElementPlace(attribute));
+
+    public IFinalizableBuilder<TViewModel> ToContent()
+        => CreateFinalizableBuilder(new ContentElementPlace());
+
+    private IFinalizableBuilder<TViewModel> CreateFinalizableBuilder(ElementPlace elementPlace)
     {
-        _currentTargetElement.Place = new AttributeElementPlace(attribute);
+        _currentTargetElement.Place = elementPlace;
         return new FinalizableValueModelBuilder<TViewModel>(_modelBuilder, this);
     }
 
-    public IFinalizableBuilder<TViewModel> ToContent()
+    private IELementContentBuilder<TViewModel> AddNewTargetElement(ElementSelector selector)
     {
-        _currentTargetElement.Place = new ContentElementPlace();
-        return new FinalizableValueModelBuilder<TViewModel>(_modelBuilder, this);
+        _currentTargetElement = new TargetElement(selector);
+        _valueModel.TargetElements = _valueModel.TargetElements.Append(_currentTargetElement);
+        return this;
     }
 }
