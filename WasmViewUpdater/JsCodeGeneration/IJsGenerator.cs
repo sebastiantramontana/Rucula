@@ -1,9 +1,8 @@
 ﻿using Vitraux.Modeling.Building;
 
-namespace Vitraux.JsCodeGeneration
+namespace Vitraux.JsCodeGeneration;
+
+internal interface IJsGenerator<TViewModel>
 {
-    internal interface IJsGenerator<TViewModel>
-    {
-        IJsExecutor<TViewModel> GenerateJsCode(IModelBuilderData modelBuilderData);
-    }
+    string GenerateJsCode(IModelBuilderData modelBuilderData);
 }

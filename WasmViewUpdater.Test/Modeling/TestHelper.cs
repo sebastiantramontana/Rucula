@@ -110,6 +110,8 @@ namespace Vitraux.Test.Modeling
 
     internal class ModelBuilderDataFake(IEnumerable<ValueModel> values, IEnumerable<CollectionTableModel> collectionTables) : IModelBuilderData
     {
+        public QueryElementStrategy QueryElementStrategy { get; set; }
+        public bool TrackChanges { get; set; }
         IEnumerable<ValueModel> IModelBuilderData.Values { get; } = values;
         IEnumerable<CollectionTableModel> IModelBuilderData.CollectionTables { get; } = collectionTables;
     }

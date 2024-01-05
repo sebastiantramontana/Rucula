@@ -10,7 +10,7 @@ using Vitraux.Test.Modeling;
 namespace Vitraux.Test;
 
 [TestFixture]
-internal class PersonaConfigurationTest
+public class PersonaConfigurationTest
 {
     [Test]
     public void Test()

@@ -6,4 +6,6 @@ public interface IModelBuilderData
 {
     internal IEnumerable<ValueModel> Values { get; }
     internal IEnumerable<CollectionTableModel> CollectionTables { get; }
+    QueryElementStrategy QueryElementStrategy { get; set; }
+    bool TrackChanges { get; set; }
 }

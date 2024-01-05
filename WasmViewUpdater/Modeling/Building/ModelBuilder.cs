@@ -16,6 +16,9 @@ internal class ModelBuilder<TViewModel> : IModelBuilder<TViewModel>
     IEnumerable<ValueModel> IModelBuilderData.Values => _values;
     IEnumerable<CollectionTableModel> IModelBuilderData.CollectionTables => _collections;
 
+    public QueryElementStrategy QueryElementStrategy { get; set; } = QueryElementStrategy.OneTimeOnInit;
+    public bool TrackChanges { get; set; } = false;
+
     public IElementBuilder<TViewModel> Value<TReturn>(Func<TViewModel, TReturn> func)
     {
         var valueModel = new ValueModel(func);

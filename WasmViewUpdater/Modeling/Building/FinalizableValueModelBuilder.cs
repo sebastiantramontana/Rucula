@@ -22,6 +22,18 @@ internal class FinalizableValueModelBuilder<TViewModel> : IFinalizableBuilder<TV
     IEnumerable<ValueModel> IModelBuilderData.Values => _values;
     IEnumerable<CollectionTableModel> IModelBuilderData.CollectionTables => _collections;
 
+    public QueryElementStrategy QueryElementStrategy
+    {
+        get => _innerModelBuilder.QueryElementStrategy;
+        set => _innerModelBuilder.QueryElementStrategy = value;
+    }
+
+    public bool TrackChanges
+    {
+        get => _innerModelBuilder.TrackChanges;
+        set => _innerModelBuilder.TrackChanges = value;
+    }
+
     public IElementBuilder<TViewModel> Value<TReturn>(Func<TViewModel, TReturn> func)
         => _innerModelBuilder.Value(func);
 
