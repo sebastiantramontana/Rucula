@@ -4,32 +4,59 @@ const vitraux = {
     vms: {},
     storedElements: {},
 
-    getElementById(parent, id, elementObjectName) {
-        const element = this.storedElements[parent][elementObjectName]
-            ?? this.storeElementById(parent, id, elementObjectName);
+    getElementById(parent, id) {
+        const element = parent.getElementById(id);
+        return element;
+    },
+
+    getStoredElementById(parentObj, parentObjName, id, elementObjectName) {
+        const element = this.storedElements[parentObjName][elementObjectName]
+            ?? this.storeElementById(parentObj, parentObjName, id, elementObjectName);
 
         return [element];
     },
 
-    storeElementById(parent, id, elementObjectName) {
-        const element = parent.getElementById(id);
-        this.storedElements[parent][elementObjectName] = element;
+    storeElementById(parentObj, parentObjName, id, elementObjectName) {
+        const element = this.getElementById(parentObj, id);
+        this.storedElements[parentObjName][elementObjectName] = element;
 
         return element;
     },
 
-    getElementsByQuerySelector(parent, querySelector, elementsObjectName) {
-        const elements = this.storedElements[parent][elementsObjectName]
-            ?? storeElementsByQuerySelector(parent, querySelector, elementsObjectName);
+    getElementsByQuerySelector(parent, querySelector) {
+        return parent.querySelectorAll(querySelector);
+    },
+
+    getStoredElementsByQuerySelector(parentObj, parentObjName, querySelector, elementsObjectName) {
+        const elements = this.storedElements[parentObjName][elementsObjectName]
+            ?? this.storeElementsByQuerySelector(parentObj, parentObjName, querySelector, elementsObjectName);
 
         return elements;
     },
 
-    storeElementsByQuerySelector(parent, querySelector, elementsObjectName) {
-        elements = parent.querySelectorAll(querySelector);
-        this.storedElements[parent][elementsObjectName] = elements;
+    storeElementsByQuerySelector(parentObj, parentObjName, querySelector, elementsObjectName) {
+        elements = this.getElementsByQuerySelector(parentObj, querySelector);
+        this.storedElements[parentObjName][elementsObjectName] = elements;
 
         return elements;
+    },
+
+    getElementByTemplate(id) {
+        return document.getElementById(id).content;
+    },
+
+    getStoredElementByTemplate(id, elementsObjectName) {
+        const elements = this.storedElements["document"][elementsObjectName]
+            ?? this.storeElementByTemplate(id, elementsObjectName);
+
+        return elements;
+    },
+
+    storeElementByTemplate(id, elementsObjectName) {
+        element = this.getElementsByTemplate(id);
+        this.storedElements["document"][elementsObjectName] = element;
+
+        return [element];
     },
 
     setElementsContent(elements, content) {

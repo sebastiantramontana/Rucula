@@ -22,17 +22,17 @@ namespace Vitraux.Test.JsCodeGeneration
                                             """;
 
         const string expectedCodeOnDemand = """
-                                            const element1 = vitraux.getElementById(document,'algo-name');
-                                            'TODO: Get element from template OneTimeOnDemand'
-                                            const element3 = vitraux.getElementsByQuerySelector(document,'.p-otro > img');
-                                            const element4 = vitraux.getElementById(document,'mascotas-table-id');
+                                            const element1 = vitraux.getStoredElementById(document, 'document', 'algo-name', 'element1');
+                                            const element2 = vitraux.getStoredElementByTemplate('otro-template-id', 'element2');
+                                            const element3 = vitraux.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element3');
+                                            const element4 = vitraux.getStoredElementById(document, 'document', 'mascotas-table-id', 'element4');
                                             """;
 
         const string expectedCodeAlways = """
-                                          const element1 = document.getElementById('algo-name');
-                                          'TODO: Get element from template Always'
-                                          const element3 = document.querySelectorAll('.p-otro > img');
-                                          const element4 = document.getElementById('mascotas-table-id');
+                                          const element1 = [vitraux.getElementById(document,'algo-name')];
+                                          const element2 = [vitraux.getElementByTemplate('otro-template-id')];
+                                          const element3 = vitraux.getElementsByQuerySelector(document,'.p-otro > img');
+                                          const element4 = [vitraux.getElementById(document,'mascotas-table-id')];
                                           """;
 
         [Test]
