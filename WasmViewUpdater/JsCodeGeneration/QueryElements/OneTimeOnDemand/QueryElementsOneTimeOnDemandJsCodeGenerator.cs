@@ -2,13 +2,13 @@
 
 namespace Vitraux.JsCodeGeneration.QueryElements.OneTimeOnDemand;
 
-internal class QueryElementsOneTimeOnDemandJsCodeGenerator(IJsQueryElementsOneTimeOnDemandGeneratorFactory jsQueryElementsGeneratorFactory)
-    : QueryElementsJsCodeGeneratorBase, IQueryElementsOneTimeOnDemandJsCodeGenerator
+internal class QueryElementsOneTimeOnDemandJsCodeGenerator(
+    IQueryElementsJsCodeBuilder builder,
+    IQueryElementsDeclaringOneTimeOnDemandJsCodeGenerator generator)
+    : IQueryElementsOneTimeOnDemandJsCodeGenerator
 {
-    protected override string GenerateJsCodeLine(string elementName, string parentObjectName, ElementSelector selector)
-        => jsQueryElementsGeneratorFactory
-            .GetInstance(selector)
-            .GenerateJsCode(elementName, parentObjectName, selector);
+    public string GenerateJsCode(IEnumerable<ElementSelector> selectors, string parentObjectName)
+        => builder.BuildJsCode(generator, selectors, parentObjectName);
 }
 
 

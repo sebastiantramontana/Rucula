@@ -41,20 +41,10 @@ namespace Vitraux.Test.JsCodeGeneration
         [TestCase(QueryElementStrategy.Always, expectedCodeAlways)]
         public void GenerateCodeTest(QueryElementStrategy queryElementStrategy, string expectedCode)
         {
-            var onInitDeclaringGenerator = new QueryElementsDeclaringOneTimeOnInitJsCodeGenerator();
-            var onInitGenerator = new QueryElementsOneTimeOnInitJsCodeGenerator(onInitDeclaringGenerator);
-
-            var declaringOneTimeOnDemandByIdGenerator = new QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator();
-            var declaringOneTimeOnDemandByQuerySelectorGenerator = new QueryElementsDeclaringOneTimeOnDemandByQuerySelectorJsCodeGenerator();
-            var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator();
-            var onDemandGeneratorFactory = new JsQueryElementsOneTimeOnDemandGeneratorFactory(declaringOneTimeOnDemandByIdGenerator, declaringOneTimeOnDemandByQuerySelectorGenerator, declaringOneTimeOnDemandByTemplateGenerator);
-            var onDemandGenerator = new QueryElementsOneTimeOnDemandJsCodeGenerator(onDemandGeneratorFactory);
-
-            var declaringAlwaysByIdGenerator = new QueryElementsDeclaringAlwaysByIdJsCodeGenerator();
-            var declaringAlwaysByQuerySelectorGenerator = new QueryElementsDeclaringAlwaysByQuerySelectorJsCodeGenerator();
-            var declaringAlwaysByTemplateGenerator = new QueryElementsDeclaringAlwaysByTemplateJsCodeGenerator();
-            var alwaysGeneratorFactory = new JsQueryElementsAlwaysGeneratorFactory(declaringAlwaysByIdGenerator, declaringAlwaysByQuerySelectorGenerator, declaringAlwaysByTemplateGenerator);
-            var onAlwaysGenerator = new QueryElementsAlwaysJsCodeGenerator(alwaysGeneratorFactory);
+            var builder = new QueryElementsJsCodeBuilder();
+            var onInitGenerator = CreateOnInitGenerator(builder);
+            var onDemandGenerator = CreateOnDemandGenerator(builder);
+            var onAlwaysGenerator = CreateAlwaysGenerator(builder);
 
             var generatorByStrategyFactory = new QueryElementsJsCodeGeneratorByStrategyFactory(onInitGenerator, onDemandGenerator, onAlwaysGenerator);
             var sut = new JsGenerator<Persona>(generatorByStrategyFactory);
@@ -66,6 +56,32 @@ namespace Vitraux.Test.JsCodeGeneration
             var code = sut.GenerateJsCode(modelBuilder);
 
             Assert.That(code, Is.EqualTo(expectedCode));
+        }
+
+        private IQueryElementsOneTimeOnInitJsCodeGenerator CreateOnInitGenerator(IQueryElementsJsCodeBuilder builder)
+        {
+            var onInitDeclaringGenerator = new QueryElementsDeclaringOneTimeOnInitJsCodeGenerator();
+            return new QueryElementsOneTimeOnInitJsCodeGenerator(builder, onInitDeclaringGenerator);
+        }
+
+        private static IQueryElementsOneTimeOnDemandJsCodeGenerator CreateOnDemandGenerator(IQueryElementsJsCodeBuilder builder)
+        {
+            var declaringOneTimeOnDemandByIdGenerator = new QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator();
+            var declaringOneTimeOnDemandByQuerySelectorGenerator = new QueryElementsDeclaringOneTimeOnDemandByQuerySelectorJsCodeGenerator();
+            var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator();
+            var onDemandGeneratorFactory = new JsQueryElementsOneTimeOnDemandGeneratorFactory(declaringOneTimeOnDemandByIdGenerator, declaringOneTimeOnDemandByQuerySelectorGenerator, declaringOneTimeOnDemandByTemplateGenerator);
+            var declaringOneTimeOnDemandGenerator = new QueryElementsDeclaringOneTimeOnDemandJsCodeGenerator(onDemandGeneratorFactory);
+            return new QueryElementsOneTimeOnDemandJsCodeGenerator(builder, declaringOneTimeOnDemandGenerator);
+        }
+
+        private static IQueryElementsAlwaysJsCodeGenerator CreateAlwaysGenerator(IQueryElementsJsCodeBuilder builder)
+        {
+            var declaringAlwaysByIdGenerator = new QueryElementsDeclaringAlwaysByIdJsCodeGenerator();
+            var declaringAlwaysByQuerySelectorGenerator = new QueryElementsDeclaringAlwaysByQuerySelectorJsCodeGenerator();
+            var declaringAlwaysByTemplateGenerator = new QueryElementsDeclaringAlwaysByTemplateJsCodeGenerator();
+            var alwaysGeneratorFactory = new JsQueryElementsDeclaringAlwaysGeneratorFactory(declaringAlwaysByIdGenerator, declaringAlwaysByQuerySelectorGenerator, declaringAlwaysByTemplateGenerator);
+            var declaringAlwaysGenerator = new QueryElementsDeclaringAlwaysCodeGenerator(alwaysGeneratorFactory);
+            return new QueryElementsAlwaysJsCodeGenerator(declaringAlwaysGenerator, builder);
         }
     }
 }

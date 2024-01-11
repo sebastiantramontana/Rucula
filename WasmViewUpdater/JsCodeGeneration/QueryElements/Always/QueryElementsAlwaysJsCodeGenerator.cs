@@ -2,13 +2,13 @@
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Always;
 
-internal class QueryElementsAlwaysJsCodeGenerator(IJsQueryElementsAlwaysGeneratorFactory jsQueryElementsGeneratorFactory)
-    : QueryElementsJsCodeGeneratorBase, IQueryElementsAlwaysJsCodeGenerator
+internal class QueryElementsAlwaysJsCodeGenerator(
+    IQueryElementsDeclaringAlwaysCodeGenerator generator,
+    IQueryElementsJsCodeBuilder builder)
+    : IQueryElementsAlwaysJsCodeGenerator
 {
-    protected override string GenerateJsCodeLine(string elementName, string parentObjectName, ElementSelector selector)
-        => jsQueryElementsGeneratorFactory
-            .GetInstance(selector)
-            .GenerateJsCode(elementName, parentObjectName, selector);
+    public string GenerateJsCode(IEnumerable<ElementSelector> selectors, string parentObjectName)
+        => builder.BuildJsCode(generator, selectors, parentObjectName);
 }
 
 

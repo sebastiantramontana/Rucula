@@ -2,7 +2,7 @@
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Always;
 
-internal interface IJsQueryElementsAlwaysGeneratorFactory
+internal interface IJsQueryElementsDeclaringAlwaysGeneratorFactory
 {
     IQueryElementsDeclaringJsCodeGenerator GetInstance(ElementSelector elementSelector);
 }

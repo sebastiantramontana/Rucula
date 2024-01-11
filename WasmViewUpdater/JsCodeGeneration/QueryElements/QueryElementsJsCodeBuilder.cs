@@ -3,9 +3,9 @@ using Vitraux.Modeling.Building.Selectors.Elements;
 
 namespace Vitraux.JsCodeGeneration.QueryElements;
 
-internal abstract class QueryElementsJsCodeGeneratorBase : IQueryElementsJsCodeGenerator
+internal class QueryElementsJsCodeBuilder : IQueryElementsJsCodeBuilder
 {
-    public string GenerateJsCode(IEnumerable<ElementSelector> selectors, string parentObjectName)
+    public string BuildJsCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, IEnumerable<ElementSelector> selectors, string parentObjectName)
     {
         const string ElementNamePrefix = "element";
         var numberPosfix = 1;
@@ -15,7 +15,7 @@ internal abstract class QueryElementsJsCodeGeneratorBase : IQueryElementsJsCodeG
         foreach (var selector in selectors)
         {
             var elementName = ElementNamePrefix + numberPosfix;
-            var code = GenerateJsCodeLine(elementName, parentObjectName, selector);
+            var code = declaringJsCodeGenerator.GenerateJsCode(elementName, parentObjectName, selector);
 
             stringBuilder.AppendLine(code);
             numberPosfix++;
@@ -23,8 +23,6 @@ internal abstract class QueryElementsJsCodeGeneratorBase : IQueryElementsJsCodeG
 
         return stringBuilder.ToString();
     }
-
-    protected abstract string GenerateJsCodeLine(string elementName, string parentObjectName, ElementSelector selector);
 }
 
 

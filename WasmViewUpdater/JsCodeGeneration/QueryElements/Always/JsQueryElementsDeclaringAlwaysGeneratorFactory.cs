@@ -2,10 +2,10 @@
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Always;
 
-internal class JsQueryElementsAlwaysGeneratorFactory(
+internal class JsQueryElementsDeclaringAlwaysGeneratorFactory(
     IQueryElementsDeclaringAlwaysByIdJsCodeGenerator jsQueryElementsByIdGenerator,
     IQueryElementsDeclaringAlwaysByQuerySelectorJsCodeGenerator jsQueryElementsByQuerySelectorGenerator,
-    IQueryElementsDeclaringAlwaysByTemplateJsCodeGenerator jsQueryElementsByTemplateGenerator) : IJsQueryElementsAlwaysGeneratorFactory
+    IQueryElementsDeclaringAlwaysByTemplateJsCodeGenerator jsQueryElementsByTemplateGenerator) : IJsQueryElementsDeclaringAlwaysGeneratorFactory
 {
     public IQueryElementsDeclaringJsCodeGenerator GetInstance(ElementSelector elementSelector)
         => elementSelector.SelectionBy switch
