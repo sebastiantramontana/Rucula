@@ -1,8 +1,9 @@
 ﻿using Vitraux.JsCodeGeneration;
 using Vitraux.JsCodeGeneration.QueryElements;
-using Vitraux.JsCodeGeneration.QueryElements.Always;
-using Vitraux.JsCodeGeneration.QueryElements.OneTimeOnDemand;
-using Vitraux.JsCodeGeneration.QueryElements.OneTimeOnInit;
+using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
+using Vitraux.JsCodeGeneration.QueryElements.Strategies.Always;
+using Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnDemand;
+using Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit;
 using Vitraux.Modeling;
 using Vitraux.Modeling.Building;
 using Vitraux.Modeling.Building.Selectors.Elements.Builders;
@@ -15,24 +16,24 @@ namespace Vitraux.Test.JsCodeGeneration
     public class JsGeneratorTest
     {
         const string expectedCodeOnInit = """
+                                            const element0 = vitraux.elements.document.element0;
                                             const element1 = vitraux.elements.document.element1;
                                             const element2 = vitraux.elements.document.element2;
                                             const element3 = vitraux.elements.document.element3;
-                                            const element4 = vitraux.elements.document.element4;
                                             """;
 
         const string expectedCodeOnDemand = """
-                                            const element1 = vitraux.getStoredElementById(document, 'document', 'algo-name', 'element1');
-                                            const element2 = vitraux.getStoredElementByTemplate('otro-template-id', 'element2');
-                                            const element3 = vitraux.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element3');
-                                            const element4 = vitraux.getStoredElementById(document, 'document', 'mascotas-table-id', 'element4');
+                                            const element0 = vitraux.getStoredElementById(document, 'document', 'algo-name', 'element0');
+                                            const element1 = vitraux.getStoredElementByTemplate('otro-template-id', 'element1');
+                                            const element2 = vitraux.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
+                                            const element3 = vitraux.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
                                             """;
 
         const string expectedCodeAlways = """
-                                          const element1 = [vitraux.getElementById(document,'algo-name')];
-                                          const element2 = [vitraux.getElementByTemplate('otro-template-id')];
-                                          const element3 = vitraux.getElementsByQuerySelector(document,'.p-otro > img');
-                                          const element4 = [vitraux.getElementById(document,'mascotas-table-id')];
+                                          const element0 = [vitraux.getElementById(document,'algo-name')];
+                                          const element1 = [vitraux.getElementByTemplate('otro-template-id')];
+                                          const element2 = vitraux.getElementsByQuerySelector(document,'.p-otro > img');
+                                          const element3 = [vitraux.getElementById(document,'mascotas-table-id')];
                                           """;
 
         [Test]
@@ -42,9 +43,10 @@ namespace Vitraux.Test.JsCodeGeneration
         public void GenerateCodeTest(QueryElementStrategy queryElementStrategy, string expectedCode)
         {
             var builder = new QueryElementsJsCodeBuilder();
-            var onInitGenerator = CreateOnInitGenerator(builder);
-            var onDemandGenerator = CreateOnDemandGenerator(builder);
-            var onAlwaysGenerator = CreateAlwaysGenerator(builder);
+            var elementNamesGenerator = new ElementNamesGenerator();
+            var onInitGenerator = CreateOnInitGenerator(builder, elementNamesGenerator);
+            var onDemandGenerator = CreateOnDemandGenerator(builder, elementNamesGenerator);
+            var onAlwaysGenerator = CreateAlwaysGenerator(builder, elementNamesGenerator);
 
             var generatorByStrategyFactory = new QueryElementsJsCodeGeneratorByStrategyFactory(onInitGenerator, onDemandGenerator, onAlwaysGenerator);
             var sut = new JsGenerator<Persona>(generatorByStrategyFactory);
@@ -58,30 +60,30 @@ namespace Vitraux.Test.JsCodeGeneration
             Assert.That(code, Is.EqualTo(expectedCode));
         }
 
-        private IQueryElementsOneTimeOnInitJsCodeGenerator CreateOnInitGenerator(IQueryElementsJsCodeBuilder builder)
+        private IQueryElementsOneTimeOnInitJsCodeGenerator CreateOnInitGenerator(IQueryElementsJsCodeBuilder builder, IElementNamesGenerator elementNamesGenerator)
         {
             var onInitDeclaringGenerator = new QueryElementsDeclaringOneTimeOnInitJsCodeGenerator();
-            return new QueryElementsOneTimeOnInitJsCodeGenerator(builder, onInitDeclaringGenerator);
+            return new QueryElementsOneTimeOnInitJsCodeGenerator(builder, onInitDeclaringGenerator, elementNamesGenerator);
         }
 
-        private static IQueryElementsOneTimeOnDemandJsCodeGenerator CreateOnDemandGenerator(IQueryElementsJsCodeBuilder builder)
+        private static IQueryElementsOneTimeOnDemandJsCodeGenerator CreateOnDemandGenerator(IQueryElementsJsCodeBuilder builder, IElementNamesGenerator elementNamesGenerator)
         {
             var declaringOneTimeOnDemandByIdGenerator = new QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator();
             var declaringOneTimeOnDemandByQuerySelectorGenerator = new QueryElementsDeclaringOneTimeOnDemandByQuerySelectorJsCodeGenerator();
             var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator();
             var onDemandGeneratorFactory = new JsQueryElementsOneTimeOnDemandGeneratorFactory(declaringOneTimeOnDemandByIdGenerator, declaringOneTimeOnDemandByQuerySelectorGenerator, declaringOneTimeOnDemandByTemplateGenerator);
             var declaringOneTimeOnDemandGenerator = new QueryElementsDeclaringOneTimeOnDemandJsCodeGenerator(onDemandGeneratorFactory);
-            return new QueryElementsOneTimeOnDemandJsCodeGenerator(builder, declaringOneTimeOnDemandGenerator);
+            return new QueryElementsOneTimeOnDemandJsCodeGenerator(builder, declaringOneTimeOnDemandGenerator, elementNamesGenerator);
         }
 
-        private static IQueryElementsAlwaysJsCodeGenerator CreateAlwaysGenerator(IQueryElementsJsCodeBuilder builder)
+        private static IQueryElementsAlwaysJsCodeGenerator CreateAlwaysGenerator(IQueryElementsJsCodeBuilder builder, IElementNamesGenerator elementNamesGenerator)
         {
             var declaringAlwaysByIdGenerator = new QueryElementsDeclaringAlwaysByIdJsCodeGenerator();
             var declaringAlwaysByQuerySelectorGenerator = new QueryElementsDeclaringAlwaysByQuerySelectorJsCodeGenerator();
             var declaringAlwaysByTemplateGenerator = new QueryElementsDeclaringAlwaysByTemplateJsCodeGenerator();
             var alwaysGeneratorFactory = new JsQueryElementsDeclaringAlwaysGeneratorFactory(declaringAlwaysByIdGenerator, declaringAlwaysByQuerySelectorGenerator, declaringAlwaysByTemplateGenerator);
             var declaringAlwaysGenerator = new QueryElementsDeclaringAlwaysCodeGenerator(alwaysGeneratorFactory);
-            return new QueryElementsAlwaysJsCodeGenerator(declaringAlwaysGenerator, builder);
+            return new QueryElementsAlwaysJsCodeGenerator(declaringAlwaysGenerator, builder, elementNamesGenerator);
         }
     }
 }

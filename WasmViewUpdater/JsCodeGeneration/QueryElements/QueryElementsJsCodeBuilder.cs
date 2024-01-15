@@ -1,28 +1,17 @@
 ﻿using System.Text;
-using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 
 namespace Vitraux.JsCodeGeneration.QueryElements;
 
 internal class QueryElementsJsCodeBuilder : IQueryElementsJsCodeBuilder
 {
-    public string BuildJsCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, IEnumerable<ElementSelector> selectors, string parentObjectName)
-    {
-        const string ElementNamePrefix = "element";
-        var numberPosfix = 1;
+    public string BuildJsCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, IEnumerable<ElementObjectName> generatedElements, string parentObjectName)
+        => generatedElements
+            .Aggregate(new StringBuilder(), (sb, element) => sb.AppendLine(BuildElementDeclarationCode(declaringJsCodeGenerator, element, parentObjectName)))
+            .ToString();
 
-        var stringBuilder = new StringBuilder();
-
-        foreach (var selector in selectors)
-        {
-            var elementName = ElementNamePrefix + numberPosfix;
-            var code = declaringJsCodeGenerator.GenerateJsCode(elementName, parentObjectName, selector);
-
-            stringBuilder.AppendLine(code);
-            numberPosfix++;
-        }
-
-        return stringBuilder.ToString();
-    }
+    private static string BuildElementDeclarationCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, ElementObjectName element, string parentObjectName)
+        => declaringJsCodeGenerator.GenerateJsCode(element.Name, parentObjectName, element.AssociatedSelector);
 }
 
 

@@ -1,10 +1,10 @@
-﻿using Vitraux.Modeling.Building.Selectors.Elements;
+﻿using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 
 namespace Vitraux.JsCodeGeneration.QueryElements;
 
 internal interface IQueryElementsJsCodeBuilder
 {
-    string BuildJsCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, IEnumerable<ElementSelector> selectors, string parentObjectName);
+    string BuildJsCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, IEnumerable<ElementObjectName> selectors, string parentObjectName);
 }
 
 

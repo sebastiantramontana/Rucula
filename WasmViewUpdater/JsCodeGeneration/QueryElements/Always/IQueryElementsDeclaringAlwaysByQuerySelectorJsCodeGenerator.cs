@@ -1,3 +1,0 @@
-﻿namespace Vitraux.JsCodeGeneration.QueryElements.Always;
-
-internal interface IQueryElementsDeclaringAlwaysByQuerySelectorJsCodeGenerator : IQueryElementsDeclaringJsCodeGenerator { }

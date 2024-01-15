@@ -1,3 +1,0 @@
-﻿namespace Vitraux.JsCodeGeneration.QueryElements.OneTimeOnDemand;
-
-internal interface IQueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator : IQueryElementsDeclaringJsCodeGenerator { }
