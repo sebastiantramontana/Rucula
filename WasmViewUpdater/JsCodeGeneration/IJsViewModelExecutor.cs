@@ -1,6 +1,6 @@
 ﻿namespace Vitraux.JsCodeGeneration
 {
-    internal interface IJsExecutor<TViewModel>
+    internal interface IJsViewModelExecutor<TViewModel>
     {
         void Execute(TViewModel viewModel);
     }

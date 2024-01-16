@@ -12,11 +12,10 @@ internal class JsGenerator<TViewModel>(IQueryElementsJsCodeGeneratorByStrategyFa
         var rootObject = "document";
         var selectors = GroupSelectors(modelBuilderData);
 
-        var queryElementsCode = queryElementsJsCodeGeneratorFactory
-                                    .GetInstance(modelBuilderData.QueryElementStrategy)
-                                    .GenerateJsCode(selectors, rootObject);
-
-        return queryElementsCode.Trim(); ;
+        return queryElementsJsCodeGeneratorFactory
+                .GetInstance(modelBuilderData.QueryElementStrategy)
+                .GenerateJsCode(selectors, rootObject)
+                .Trim();
     }
 
     private IEnumerable<ElementSelector> GroupSelectors(IModelBuilderData modelBuilderData)

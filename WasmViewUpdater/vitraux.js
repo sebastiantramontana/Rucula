@@ -4,6 +4,11 @@ const vitraux = {
     vms: {},
     storedElements: {},
 
+    ExecuteCode(code) {
+        const func = new Function(code);
+        func();
+    },
+
     getElementById(parent, id) {
         const element = parent.getElementById(id);
         return element;
