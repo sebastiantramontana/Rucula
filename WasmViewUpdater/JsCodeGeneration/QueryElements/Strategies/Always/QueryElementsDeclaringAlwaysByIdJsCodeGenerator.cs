@@ -5,5 +5,5 @@ namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.Always;
 internal class QueryElementsDeclaringAlwaysByIdJsCodeGenerator : IQueryElementsDeclaringAlwaysByIdJsCodeGenerator
 {
     public string GenerateJsCode(string elementObjectName, string parentObjectName, ElementSelector selector)
-        => $"const {elementObjectName} = [vitraux.getElementById({parentObjectName},'{selector.Value}')];";
+        => $"const {elementObjectName} = [globalThis.vitraux.storedElements.getElementById({parentObjectName},'{selector.Value}')];";
 }

@@ -19,31 +19,31 @@ namespace Vitraux.Test.JsCodeGeneration
     public class JsGeneratorTest
     {
         const string expectedCodeOnInit = """
-                                            const element0 = vitraux.elements.document.element0;
-                                            const element1 = vitraux.elements.document.element1;
-                                            const element2 = vitraux.elements.document.element2;
-                                            const element3 = vitraux.elements.document.element3;
+                                            const element0 = globalThis.vitraux.storedElements.elements.document.element0;
+                                            const element1 = globalThis.vitraux.storedElements.elements.document.element1;
+                                            const element2 = globalThis.vitraux.storedElements.elements.document.element2;
+                                            const element3 = globalThis.vitraux.storedElements.elements.document.element3;
                                             """;
 
         const string expectedCodeOnDemand = """
-                                            const element0 = vitraux.getStoredElementById(document, 'document', 'algo-name', 'element0');
-                                            const element1 = vitraux.getStoredElementByTemplate('otro-template-id', 'element1');
-                                            const element2 = vitraux.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
-                                            const element3 = vitraux.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
+                                            const element0 = globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'algo-name', 'element0');
+                                            const element1 = globalThis.vitraux.storedElements.getStoredElementByTemplate('otro-template-id', 'element1');
+                                            const element2 = globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
+                                            const element3 = globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
                                             """;
 
         const string expectedCodeAlways = """
-                                          const element0 = [vitraux.getElementById(document,'algo-name')];
-                                          const element1 = [vitraux.getElementByTemplate('otro-template-id')];
-                                          const element2 = vitraux.getElementsByQuerySelector(document,'.p-otro > img');
-                                          const element3 = [vitraux.getElementById(document,'mascotas-table-id')];
+                                          const element0 = [globalThis.vitraux.storedElements.getElementById(document,'algo-name')];
+                                          const element1 = [globalThis.vitraux.storedElements.getElementByTemplate('otro-template-id')];
+                                          const element2 = globalThis.vitraux.storedElements.getElementsByQuerySelector(document,'.p-otro > img');
+                                          const element3 = [globalThis.vitraux.storedElements.getElementById(document,'mascotas-table-id')];
                                           """;
 
         const string expectedExecutedCodeForOnInit = """
-                                                    vitraux.getStoredElementById(document, 'document', 'algo-name', 'element0');
-                                                    vitraux.getStoredElementByTemplate('otro-template-id', 'element1');
-                                                    vitraux.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
-                                                    vitraux.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
+                                                    globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'algo-name', 'element0');
+                                                    globalThis.vitraux.storedElements.getStoredElementByTemplate('otro-template-id', 'element1');
+                                                    globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
+                                                    globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
                                                     """;
 
         [Test]
