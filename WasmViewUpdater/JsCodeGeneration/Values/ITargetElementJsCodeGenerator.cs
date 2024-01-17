@@ -1,0 +1,9 @@
+﻿using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
+using Vitraux.Modeling.Models;
+
+namespace Vitraux.JsCodeGeneration.Values;
+
+internal interface ITargetElementJsCodeGenerator
+{
+    string GenerateJsCode(TargetElement targetElement, IEnumerable<ElementObjectName> associatedElements, string valueObjectName);
+}

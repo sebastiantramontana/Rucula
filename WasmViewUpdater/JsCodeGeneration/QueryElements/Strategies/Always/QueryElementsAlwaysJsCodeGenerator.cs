@@ -1,16 +1,14 @@
 ﻿using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
-using Vitraux.Modeling.Building.Selectors.Elements;
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.Always;
 
 internal class QueryElementsAlwaysJsCodeGenerator(
     IQueryElementsDeclaringAlwaysCodeGenerator generator,
-    IQueryElementsJsCodeBuilder builder,
-    IElementNamesGenerator elementNamesGenerator)
+    IQueryElementsJsCodeBuilder builder)
     : IQueryElementsAlwaysJsCodeGenerator
 {
-    public string GenerateJsCode(IEnumerable<ElementSelector> selectors, string parentObjectName)
-        => builder.BuildJsCode(generator, elementNamesGenerator.Generate(selectors), parentObjectName);
+    public string GenerateJsCode(IEnumerable<ElementObjectName> elements, string parentObjectName)
+        => builder.BuildJsCode(generator, elements, parentObjectName);
 }
 
 
