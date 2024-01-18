@@ -5,6 +5,5 @@
         ElementSelector ById(string elementId);
         IAppendToTemplateSelectorBuilder FromTemplate(string templateId);
         ElementSelector ByQuerySelector(string querySelector);
-        ElementSelector ByElementObject(string objectName);
     }
 }

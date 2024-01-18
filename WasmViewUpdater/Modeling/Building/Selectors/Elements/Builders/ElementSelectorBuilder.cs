@@ -4,9 +4,6 @@ namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
 {
     internal class ElementSelectorBuilder : IElementSelectorBuilder
     {
-        public ElementSelector ByElementObject(string objectName)
-            => new ElementObjectSelector(objectName);
-
         public ElementSelector ById(string elementId)
             => new ElementIdSelector(elementId);
 
