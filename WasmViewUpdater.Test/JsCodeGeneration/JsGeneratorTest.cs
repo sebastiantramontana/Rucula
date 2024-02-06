@@ -20,41 +20,41 @@ namespace Vitraux.Test.JsCodeGeneration
     public class JsGeneratorTest
     {
         const string expectedCodeOnInit = """
-                                            const element0 = globalThis.vitraux.storedElements.elements.document.element0;
-                                            const element1 = globalThis.vitraux.storedElements.elements.document.element1;
-                                            const element2 = globalThis.vitraux.storedElements.elements.document.element2;
-                                            const element3 = globalThis.vitraux.storedElements.elements.document.element3;
+                                            const elements0 = globalThis.vitraux.storedElements.elements.document.elements0;
+                                            const elements1 = globalThis.vitraux.storedElements.elements.document.elements1;
+                                            const elements2 = globalThis.vitraux.storedElements.elements.document.elements2;
+                                            const elements3 = globalThis.vitraux.storedElements.elements.document.elements3;
                                             """;
 
         const string expectedCodeOnDemand = """
-                                            const element0 = globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'algo-name', 'element0');
-                                            const element1 = globalThis.vitraux.storedElements.getStoredElementByTemplate('otro-template-id', 'element1');
-                                            const element2 = globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
-                                            const element3 = globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
+                                            const elements0 = globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'algo-name', 'elements0');
+                                            const elements1 = globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('otro-template-id', 'elements1');
+                                            const elements2 = globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'elements2');
+                                            const elements3 = globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'mascotas-table-id', 'elements3');
                                             """;
 
         const string expectedCodeAlways = """
-                                          const element0 = [globalThis.vitraux.storedElements.getElementById(document,'algo-name')];
-                                          const element1 = [globalThis.vitraux.storedElements.getElementByTemplate('otro-template-id')];
-                                          const element2 = globalThis.vitraux.storedElements.getElementsByQuerySelector(document,'.p-otro > img');
-                                          const element3 = [globalThis.vitraux.storedElements.getElementById(document,'mascotas-table-id')];
+                                          const elements0 = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'algo-name');
+                                          const elements1 = globalThis.vitraux.storedElements.getElementByTemplateAsArray('otro-template-id');
+                                          const elements2 = globalThis.vitraux.storedElements.getElementsByQuerySelector(document,'.p-otro > img');
+                                          const elements3 = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'mascotas-table-id');
                                           """;
 
         const string expectedExecutedCodeForOnInit = """
-                                                    globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'algo-name', 'element0');
-                                                    globalThis.vitraux.storedElements.getStoredElementByTemplate('otro-template-id', 'element1');
-                                                    globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'element2');
-                                                    globalThis.vitraux.storedElements.getStoredElementById(document, 'document', 'mascotas-table-id', 'element3');
+                                                    globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'algo-name', 'elements0');
+                                                    globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('otro-template-id', 'elements1');
+                                                    globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'elements2');
+                                                    globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'mascotas-table-id', 'elements3');
                                                     """;
 
         const string expectedCodeValues = """
                                         if(vm.value0) {
-                                            globalThis.vitraux.updating.setElementsAttribute(element0, 'alt', vm.value0);
+                                            globalThis.vitraux.updating.setElementsAttribute(elements0, 'alt', vm.value0);
                                         }
 
                                         if(vm.value1) {
-                                            globalThis.vitraux.updating.setElementsContent(element1, vm.value1);
-                                            globalThis.vitraux.updating.setElementsAttribute(element2, 'data-otro', vm.value1);
+                                            globalThis.vitraux.updating.setElementsContent(elements1, vm.value1);
+                                            globalThis.vitraux.updating.setElementsAttribute(elements2, 'data-otro', vm.value1);
                                         }
                                         """;
 

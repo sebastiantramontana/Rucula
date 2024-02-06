@@ -5,5 +5,5 @@ namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit.Elemen
 internal class StorageElementJsLineGeneratorByTemplate : IStorageElementJsLineGeneratorByTemplate
 {
     public string Generate(ElementObjectName elementObjectName)
-        => $"globalThis.vitraux.storedElements.getStoredElementByTemplate('{elementObjectName.AssociatedSelector.Value}', '{elementObjectName.Name}');";
+        => $"globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('{elementObjectName.AssociatedSelector.Value}', '{elementObjectName.Name}');";
 }

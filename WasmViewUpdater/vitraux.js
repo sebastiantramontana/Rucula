@@ -4,23 +4,26 @@ globalThis.vitraux = {
 
     storedElements: {
         elements: {},
-        getElementById(parent, id) {
-            const element = parent.getElementById(id);
-            return element;
-        },
-
-        getStoredElementById(parentObj, parentObjName, id, elementObjectName) {
-            const element = this.elements[parentObjName][elementObjectName]
-                ?? this.storeElementById(parentObj, parentObjName, id, elementObjectName);
+        getElementByIdAsArray(parent, id) {
+            const element = parent.getElementById
+                ? parent.getElementById(id)
+                : parent.querySelector("#".concat(id));
 
             return [element];
         },
 
-        storeElementById(parentObj, parentObjName, id, elementObjectName) {
-            const element = this.getElementById(parentObj, id);
-            this.elements[parentObjName][elementObjectName] = element;
+        getStoredElementByIdAsArray(parentObj, parentObjName, id, elementObjectName) {
+            const elementArray = this.elements[parentObjName][elementObjectName]
+                ?? this.storeElementByIdAsArray(parentObj, parentObjName, id, elementObjectName);
 
-            return element;
+            return elementArray;
+        },
+
+        storeElementByIdAsArray(parentObj, parentObjName, id, elementObjectName) {
+            const elementArray = this.getElementByIdAsArray(parentObj, id);
+            this.elements[parentObjName][elementObjectName] = elementArray;
+
+            return elementArray;
         },
 
         getElementsByQuerySelector(parent, querySelector) {
@@ -41,19 +44,19 @@ globalThis.vitraux = {
             return elements;
         },
 
-        getElementByTemplate(id) {
+        getElementByTemplateAsArray(id) {
             return document.getElementById(id).content;
         },
 
-        getStoredElementByTemplate(id, elementsObjectName) {
+        getStoredElementByTemplateAsArray(id, elementsObjectName) {
             const elements = this.elements["document"][elementsObjectName]
-                ?? this.storeElementByTemplate(id, elementsObjectName);
+                ?? this.storeElementByTemplateAsArray(id, elementsObjectName);
 
             return elements;
         },
 
-        storeElementByTemplate(id, elementsObjectName) {
-            element = this.getElementsByTemplate(id);
+        storeElementByTemplateAsArray(id, elementsObjectName) {
+            element = this.getElementByTemplateAsArray(id);
             this.elements["document"][elementsObjectName] = element;
 
             return [element];
