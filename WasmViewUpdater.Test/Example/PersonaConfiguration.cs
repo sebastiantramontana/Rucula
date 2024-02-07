@@ -15,7 +15,7 @@ public class PersonaConfiguration : ModelConfigurationBase<Persona>
                 .ToContainerElement(
                         FromTemplate("otro-template-id")
                             .AppendTo(ById("parent-to-add-id"))
-                            .ToChild(ById("child-target-id")))
+                            .ToChild(TemplateChildById("child-target-id")))
                     .ToContent()
                 .ToElement(ByQuerySelector(".p-otro > img"))
                     .ToAttribute("data-otro")

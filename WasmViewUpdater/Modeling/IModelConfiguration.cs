@@ -6,6 +6,9 @@ namespace Vitraux.Modeling
 {
     public interface IModelConfiguration<TViewModel>
     {
-        internal void Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder);
+        internal void Configure(IModelBuilder<TViewModel> modelBuilder,
+                                IElementSelectorBuilder elementSelectorBuilder,
+                                IRowSelectorBuilder rowSelectionBuilder,
+                                ITemplateChildElementSelectorBuilder templateChildElementSelectorBuilder);
     }
 }

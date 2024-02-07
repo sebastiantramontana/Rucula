@@ -1,4 +1,4 @@
-﻿namespace Vitraux.Modeling.Building.Selectors.Elements
+﻿namespace Vitraux.Modeling.Building.Selectors.Elements.Templates
 {
     internal record class ElementTemplateSelector : ElementSelector
     {
@@ -6,9 +6,10 @@
             : base(ElementSelection.Template, templateId)
         {
             ElementToAppend = elementToAppend;
+            TargetChildElement = new NoChildTemplateChildElementSelector();
         }
 
         public ElementSelector ElementToAppend { get; }
-        public ElementSelector TargetChildElement { get; set; } = default!;
+        public TemplateChildElementSelector TargetChildElement { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Vitraux.Modeling.Building;
 using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements.Templates;
 using Vitraux.Modeling.Building.Selectors.TableRows;
 using Vitraux.Modeling.Models;
 
@@ -23,7 +24,7 @@ namespace Vitraux.Test.Modeling
 
 
         public static ElementTemplateSelector CreateElementTemplateSelectorToId(string templateId, string elementToAppendId, string toChildElementId)
-            => new(templateId, new ElementIdSelector(elementToAppendId)) { TargetChildElement = new ElementIdSelector(toChildElementId) };
+            => new(templateId, new ElementIdSelector(elementToAppendId)) { TargetChildElement = new TemplateChildElementIdSelector(toChildElementId) };
 
         public static ElementTemplateSelector CreateElementTemplateSelectorToQuery(string templateId, string elementToAppendQuerySelector)
             => new(templateId, new ElementQuerySelector(elementToAppendQuerySelector));

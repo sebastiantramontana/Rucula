@@ -47,16 +47,16 @@ namespace Vitraux.Test.JsCodeGeneration
                                                     globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'mascotas-table-id', 'elements3');
                                                     """;
 
-        const string expectedCodeValues = """
-                                        if(vm.value0) {
-                                            globalThis.vitraux.updating.setElementsAttribute(elements0, 'alt', vm.value0);
-                                        }
+        const string expectedCodeForValues = """
+                                            if(vm.value0) {
+                                                globalThis.vitraux.updating.setElementsAttribute(elements0, 'alt', vm.value0);
+                                            }
 
-                                        if(vm.value1) {
-                                            globalThis.vitraux.updating.setElementsContent(elements1, vm.value1);
-                                            globalThis.vitraux.updating.setElementsAttribute(elements2, 'data-otro', vm.value1);
-                                        }
-                                        """;
+                                            if(vm.value1) {
+                                                globalThis.vitraux.updating.setElementsContent(elements1, vm.value1);
+                                                globalThis.vitraux.updating.setElementsAttribute(elements2, 'data-otro', vm.value1);
+                                            }
+                                            """;
 
         [Test]
         [TestCase(QueryElementStrategy.OneTimeOnInit, expectedCodeOnInit)]
@@ -70,11 +70,11 @@ namespace Vitraux.Test.JsCodeGeneration
             var personaConfig = new PersonaConfiguration() as IModelConfiguration<Persona>;
 
             var modelBuilder = new ModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
-            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder());
+            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new TemplateChildElementSelectorBuilder());
 
             var code = sut.GenerateJsCode(modelBuilder);
 
-            var expectedCode = expectedQueryElementsCode + Environment.NewLine + Environment.NewLine + expectedCodeValues;
+            var expectedCode = expectedQueryElementsCode + Environment.NewLine + Environment.NewLine + expectedCodeForValues;
             Assert.That(code, Is.EqualTo(expectedCode));
 
             if (queryElementStrategy == QueryElementStrategy.OneTimeOnInit)

@@ -1,4 +1,6 @@
-﻿namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
+﻿using Vitraux.Modeling.Building.Selectors.Elements.Templates;
+
+namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
 {
     internal class ToChildTemplateSelectorBuilder : IToChildTemplateSelectorBuilder
     {
@@ -9,7 +11,7 @@
             _templateSelector = templateSelector;
         }
 
-        public ElementSelector ToChild(ElementSelector childSelector)
+        public ElementSelector ToChild(TemplateChildElementSelector childSelector)
         {
             _templateSelector.TargetChildElement = childSelector;
             return _templateSelector;

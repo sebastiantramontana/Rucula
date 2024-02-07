@@ -1,5 +1,6 @@
 using Vitraux.Modeling.Building;
 using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Building.Selectors.Elements.Templates;
 using Vitraux.Modeling.Models;
 
 namespace Vitraux.Test.Modeling.Building
