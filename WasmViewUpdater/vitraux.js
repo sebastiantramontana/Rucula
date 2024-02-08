@@ -45,7 +45,7 @@ globalThis.vitraux = {
         },
 
         getElementByTemplateAsArray(id) {
-            return document.getElementById(id).content;
+            return [document.getElementById(id).content];
         },
 
         getStoredElementByTemplateAsArray(id, elementsObjectName) {
@@ -59,7 +59,18 @@ globalThis.vitraux = {
             element = this.getElementByTemplateAsArray(id);
             this.elements["document"][elementsObjectName] = element;
 
-            return [element];
+            return element;
+        },
+        QueryTemplateChildNoChild(templateContent) {
+            return templateContent;
+        },
+
+        QueryTemplateChildById(templateContent, id) {
+            return globalThis.vitraux.storedElements.getElementByIdAsArray(templateContent, id);
+        },
+
+        QueryTemplateChildByQuerySelector(templateContent, querySelector) {
+            return globalThis.vitraux.storedElements.getElementsByQuerySelector(templateContent, querySelector);
         }
     },
     updating: {
@@ -85,6 +96,16 @@ globalThis.vitraux = {
         setElementsAttribute(elements, attribute, value) {
             for (const element in elements)
                 element.setAttribute(attribute, value);
+        },
+
+        UpdateByTemplate(templateContent, addToElements, toChildQueryFunction, updateTemplateChildFunction) {
+
+            for (const addToElement of addToElements) {
+                const clonedTemplateContent = templateContent.cloneNode(true);
+                targetTemplateChildElements = toChildQueryFunction(clonedTemplateContent);
+                updateTemplateChildFunction(targetTemplateChildElements);
+                addToElement.appendChild(clonedTemplateContent); //Falta el shadow DOM
+            }
         }
     },
 
