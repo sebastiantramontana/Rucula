@@ -88,12 +88,16 @@ globalThis.vitraux = {
         },
 
         UpdateByTemplate(templateContent, appendToElements, toChildQueryFunction, updateTemplateChildFunction) {
-
             for (const appendToElement of appendToElements) {
                 const clonedTemplateContent = templateContent.cloneNode(true);
                 targetTemplateChildElements = toChildQueryFunction(clonedTemplateContent);
                 updateTemplateChildFunction(targetTemplateChildElements);
-                appendToElement.appendChild(clonedTemplateContent); //Falta el shadow DOM
+
+                const rootElement = vitraux.supportShadowDom(appendToElement)
+                    ? appendToElement.attachShadow({ mode: "open" })
+                    : appendToElement;
+
+                rootElement.appendChild(clonedTemplateContent);
             }
         }
     },
@@ -101,5 +105,29 @@ globalThis.vitraux = {
     executeCode(code) {
         const func = new Function(code);
         func();
+    },
+
+    supportShadowDom(element) {
+        const supportedTagNames = [
+            "article",
+            "aside",
+            "blockquote",
+            "body",
+            "div",
+            "footer",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "header",
+            "main",
+            "nav",
+            "p",
+            "section",
+            "span"];
+
+        return supportedTagNames.some((tn) => tn === element.tagName);
     }
 };
