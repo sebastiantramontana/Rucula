@@ -10,13 +10,13 @@ namespace Vitraux.Modeling
     {
         private IElementSelectorBuilder _elementSelectorBuilder = default!;
         private IRowSelectorBuilder _rowSelectionBuilder = default!;
-        private ITemplateChildElementSelectorBuilder _templateChildElementSelectorBuilder = default!;
+        private IFromTemplateElementSelectorBuilder _fromTemplateElementSelectorBuilder = default!;
 
-        void IModelConfiguration<TViewModel>.Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder, ITemplateChildElementSelectorBuilder templateChildElementSelectorBuilder)
+        void IModelConfiguration<TViewModel>.Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder, IFromTemplateElementSelectorBuilder fromTemplateElementSelectorBuilder)
         {
             _elementSelectorBuilder = elementSelectorBuilder;
             _rowSelectionBuilder = rowSelectionBuilder;
-            _templateChildElementSelectorBuilder = templateChildElementSelectorBuilder;
+            _fromTemplateElementSelectorBuilder = fromTemplateElementSelectorBuilder;
 
             Configure(modelBuilder);
         }
@@ -25,9 +25,8 @@ namespace Vitraux.Modeling
         protected ElementSelector ByQuerySelector(string querySelector) => _elementSelectorBuilder.ByQuerySelector(querySelector);
         protected IAppendToTemplateSelectorBuilder FromTemplate(string templateId) => _elementSelectorBuilder.FromTemplate(templateId);
         protected RowSelector Template(string templateId) => _rowSelectionBuilder.FromTemplate(templateId);
-        protected TemplateChildElementSelector NoChild => _templateChildElementSelectorBuilder.NoChild();
-        protected TemplateChildElementSelector TemplateChildById(string id) => _templateChildElementSelectorBuilder.ById(id);
-        protected TemplateChildElementSelector TemplateChildByQuerySelector(string querySelector) => _templateChildElementSelectorBuilder.ByQuerySelector(querySelector);
+        protected FromTemplateElementSelector FromTemplateById(string id) => _fromTemplateElementSelectorBuilder.ById(id);
+        protected FromTemplateElementSelector FromTemplateByQuerySelector(string querySelector) => _fromTemplateElementSelectorBuilder.ByQuerySelector(querySelector);
         protected abstract void Configure(IModelBuilder<TViewModel> modelBuilder);
     }
 }

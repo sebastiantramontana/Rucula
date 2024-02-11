@@ -4,6 +4,6 @@ namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
 {
     public interface IToChildTemplateSelectorBuilder
     {
-        ElementSelector ToChild(TemplateChildElementSelector selector);
+        ElementSelector ToChild(FromTemplateElementSelector selector);
     }
 }

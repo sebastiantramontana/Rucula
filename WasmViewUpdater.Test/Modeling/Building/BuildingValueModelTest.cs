@@ -27,7 +27,7 @@ namespace Vitraux.Test.Modeling.Building
         {
             var selector1 = new ElementIdSelector("test-id");
             var selector2 = new ElementQuerySelector(".test > p");
-            var selector3 = new ElementTemplateSelector("template-id", new ElementIdSelector("element-to-append-id"));
+            var selector3 = new ElementTemplateSelector("template-id", new FromTemplateElementIdSelector("element-to-append-id"));
 
             var func1 = (ViewModelTest e) => e.Name;
 

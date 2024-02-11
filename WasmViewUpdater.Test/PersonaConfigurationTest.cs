@@ -19,7 +19,7 @@ public class PersonaConfigurationTest
         var modelBuilder = new ModelBuilder<Persona>();
         var elementSelectorBuilder = new ElementSelectorBuilder();
         var rowSelectorBuilder = new RowSelectorBuilder();
-        var templateChildSelectorBuilder = new TemplateChildElementSelectorBuilder();
+        var fromTemplateElementSelectorBuilder = new FromTemplateElementSelectorBuilder();
 
         var value1 = TestHelper.CreateValueModel((Persona p) => p.Name,
         [
@@ -71,7 +71,7 @@ public class PersonaConfigurationTest
                 Enumerable.Empty<CollectionTableModel>())
             });
 
-        sut.Configure(modelBuilder, elementSelectorBuilder, rowSelectorBuilder, templateChildSelectorBuilder);
+        sut.Configure(modelBuilder, elementSelectorBuilder, rowSelectorBuilder, fromTemplateElementSelectorBuilder);
 
         var data = modelBuilder as IModelBuilderData;
 

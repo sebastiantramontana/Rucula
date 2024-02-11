@@ -1,11 +1,8 @@
 ﻿namespace Vitraux.Modeling.Building.Selectors.Elements.Templates
 {
-    public enum TemplateChildElementSelection
+    public enum FromTemplateElementSelection
     {
-        NoChild,
         Id,
         QuerySelector
     }
-
-
 }

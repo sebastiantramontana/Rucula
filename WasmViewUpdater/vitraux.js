@@ -61,17 +61,6 @@ globalThis.vitraux = {
 
             return element;
         },
-        QueryTemplateChildNoChild(templateContent) {
-            return templateContent;
-        },
-
-        QueryTemplateChildById(templateContent, id) {
-            return globalThis.vitraux.storedElements.getElementByIdAsArray(templateContent, id);
-        },
-
-        QueryTemplateChildByQuerySelector(templateContent, querySelector) {
-            return globalThis.vitraux.storedElements.getElementsByQuerySelector(templateContent, querySelector);
-        }
     },
     updating: {
         vms: {},
@@ -98,13 +87,13 @@ globalThis.vitraux = {
                 element.setAttribute(attribute, value);
         },
 
-        UpdateByTemplate(templateContent, addToElements, toChildQueryFunction, updateTemplateChildFunction) {
+        UpdateByTemplate(templateContent, appendToElements, toChildQueryFunction, updateTemplateChildFunction) {
 
-            for (const addToElement of addToElements) {
+            for (const appendToElement of appendToElements) {
                 const clonedTemplateContent = templateContent.cloneNode(true);
                 targetTemplateChildElements = toChildQueryFunction(clonedTemplateContent);
                 updateTemplateChildFunction(targetTemplateChildElements);
-                addToElement.appendChild(clonedTemplateContent); //Falta el shadow DOM
+                appendToElement.appendChild(clonedTemplateContent); //Falta el shadow DOM
             }
         }
     },

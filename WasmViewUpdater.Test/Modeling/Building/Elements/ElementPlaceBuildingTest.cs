@@ -29,7 +29,7 @@ namespace Vitraux.Test.Modeling.Building.Elements
             var valueModel = new ValueModel((ViewModelTest e) => e.Weigth);
             var modelBuilder = new ModelBuilder<ViewModelTest>();
             var valueModelBuilder = new ValueModelBuilder<ViewModelTest>(valueModel, modelBuilder);
-            var selector = new ElementTemplateSelector("template-id", new ElementIdSelector("append-to-element-id"));
+            var selector = new ElementTemplateSelector("template-id", new FromTemplateElementIdSelector("append-to-element-id"));
             var sut = valueModelBuilder.ToContainerElement(selector);
 
             var result = actFunc(sut);

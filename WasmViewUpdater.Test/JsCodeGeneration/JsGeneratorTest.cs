@@ -22,6 +22,7 @@ namespace Vitraux.Test.JsCodeGeneration
         const string expectedCodeOnInit = """
                                             const elements0 = globalThis.vitraux.storedElements.elements.document.elements0;
                                             const elements1 = globalThis.vitraux.storedElements.elements.document.elements1;
+                                            const elements1_appendTo = globalThis.vitraux.storedElements.elements.document.elements1_appendTo;
                                             const elements2 = globalThis.vitraux.storedElements.elements.document.elements2;
                                             const elements3 = globalThis.vitraux.storedElements.elements.document.elements3;
                                             """;
@@ -29,6 +30,7 @@ namespace Vitraux.Test.JsCodeGeneration
         const string expectedCodeOnDemand = """
                                             const elements0 = globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'algo-name', 'elements0');
                                             const elements1 = globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('otro-template-id', 'elements1');
+                                            const elements1_appendTo = globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document,'document','parent-to-add-id', 'elements1_appendTo');
                                             const elements2 = globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'elements2');
                                             const elements3 = globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'mascotas-table-id', 'elements3');
                                             """;
@@ -36,6 +38,7 @@ namespace Vitraux.Test.JsCodeGeneration
         const string expectedCodeAlways = """
                                           const elements0 = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'algo-name');
                                           const elements1 = globalThis.vitraux.storedElements.getElementByTemplateAsArray('otro-template-id');
+                                          const elements1_appendTo = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'parent-to-add-id');
                                           const elements2 = globalThis.vitraux.storedElements.getElementsByQuerySelector(document,'.p-otro > img');
                                           const elements3 = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'mascotas-table-id');
                                           """;
@@ -43,6 +46,7 @@ namespace Vitraux.Test.JsCodeGeneration
         const string expectedExecutedCodeForOnInit = """
                                                     globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'algo-name', 'elements0');
                                                     globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('otro-template-id', 'elements1');
+                                                    globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document,'document','parent-to-add-id', 'elements1_appendTo');
                                                     globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'elements2');
                                                     globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'mascotas-table-id', 'elements3');
                                                     """;
@@ -53,7 +57,12 @@ namespace Vitraux.Test.JsCodeGeneration
                                             }
 
                                             if(vm.value1) {
-                                                globalThis.vitraux.updating.setElementsContent(elements1, vm.value1);
+                                                UpdateByTemplate(
+                                                    elements1[0], 
+                                                    elements1_appendTo,
+                                                    (templateContent) => globalThis.vitraux.storedElements.getElementByIdAsArray(templateContent, "child-target-id"),
+                                                    (targetTemplateChildElements) => globalThis.vitraux.updating.setElementsContent(targetTemplateChildElements, vm.value1));
+
                                                 globalThis.vitraux.updating.setElementsAttribute(elements2, 'data-otro', vm.value1);
                                             }
                                             """;
@@ -70,7 +79,7 @@ namespace Vitraux.Test.JsCodeGeneration
             var personaConfig = new PersonaConfiguration() as IModelConfiguration<Persona>;
 
             var modelBuilder = new ModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
-            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new TemplateChildElementSelectorBuilder());
+            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new FromTemplateElementSelectorBuilder());
 
             var code = sut.GenerateJsCode(modelBuilder);
 
