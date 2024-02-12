@@ -9,7 +9,7 @@ globalThis.vitraux = {
                 ? parent.getElementById(id)
                 : parent.querySelector("#".concat(id));
 
-            return [element];
+            return element ? [element] : [];
         },
 
         getStoredElementByIdAsArray(parentObj, parentObjName, id, elementObjectName) {
@@ -38,14 +38,14 @@ globalThis.vitraux = {
         },
 
         storeElementsByQuerySelector(parentObj, parentObjName, querySelector, elementsObjectName) {
-            elements = this.getElementsByQuerySelector(parentObj, querySelector);
+            const elements = this.getElementsByQuerySelector(parentObj, querySelector);
             this.elements[parentObjName][elementsObjectName] = elements;
 
             return elements;
         },
 
         getElementByTemplateAsArray(id) {
-            return [document.getElementById(id).content];
+            return document.getElementById(id)?.content ?? [];
         },
 
         getStoredElementByTemplateAsArray(id, elementsObjectName) {
@@ -56,7 +56,7 @@ globalThis.vitraux = {
         },
 
         storeElementByTemplateAsArray(id, elementsObjectName) {
-            element = this.getElementByTemplateAsArray(id);
+            const element = this.getElementByTemplateAsArray(id);
             this.elements["document"][elementsObjectName] = element;
 
             return element;
@@ -93,11 +93,7 @@ globalThis.vitraux = {
                 targetTemplateChildElements = toChildQueryFunction(clonedTemplateContent);
                 updateTemplateChildFunction(targetTemplateChildElements);
 
-                const rootElement = vitraux.supportShadowDom(appendToElement)
-                    ? appendToElement.attachShadow({ mode: "open" })
-                    : appendToElement;
-
-                rootElement.appendChild(clonedTemplateContent);
+                vitraux.appendChild(appendToElement, clonedTemplateContent);
             }
         }
     },
@@ -105,6 +101,17 @@ globalThis.vitraux = {
     executeCode(code) {
         const func = new Function(code);
         func();
+    },
+
+    appendChild(parentElement, childElement) {
+        const rootElement = this.tryAttachShadow(parentElement);
+        rootElement.appendChild(childElement);
+    },
+
+    tryAttachShadow(element) {
+        return this.supportShadowDom(element)
+            ? element.attachShadow({ mode: "open" })
+            : element;
     },
 
     supportShadowDom(element) {
