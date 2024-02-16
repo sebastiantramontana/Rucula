@@ -12,9 +12,9 @@ internal class StorageElementJsLineGenerator(
     public string Generate(ElementObjectName elementObjectName, string parentObjectName)
         => elementObjectName.AssociatedSelector.SelectionBy switch
         {
-            ElementSelection.Id => generatorById.Generate(elementObjectName, parentObjectName),
-            ElementSelection.QuerySelector => generatorByQuerySelector.Generate(elementObjectName, parentObjectName),
-            ElementSelection.Template => generatorByTemplate.Generate(elementObjectName),
-            _ => throw new NotImplementedException($"Selector type {elementObjectName.AssociatedSelector.SelectionBy} not implemented for CreateStorageElementJsLine on QueryElementsOneTimeOnInitInitializer"),
+            ElementSelection.Id => generatorById.Generate(elementObjectName.Name, elementObjectName.AssociatedSelector.Value, parentObjectName),
+            ElementSelection.QuerySelector => generatorByQuerySelector.Generate(elementObjectName.Name, elementObjectName.AssociatedSelector.Value, parentObjectName),
+            ElementSelection.Template => generatorByTemplate.Generate(elementObjectName, parentObjectName),
+            _ => throw new NotImplementedException($"Selector type {elementObjectName.AssociatedSelector.SelectionBy} not implemented in {this.GetType().FullName} for OneTimeOnInit initialization"),
         };
 }

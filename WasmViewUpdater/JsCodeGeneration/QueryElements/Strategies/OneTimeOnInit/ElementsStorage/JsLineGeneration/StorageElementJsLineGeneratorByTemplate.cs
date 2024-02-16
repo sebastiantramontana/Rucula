@@ -1,21 +1,24 @@
 ﻿using System.Text;
+using Vitraux.JsCodeGeneration.BuiltInCalling.StoredElements;
 using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 using Vitraux.Modeling.Building.Selectors.Elements.Templates;
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit.ElementsStorage.JsLineGeneration;
 
-internal class StorageElementJsLineGeneratorByTemplate : IStorageElementJsLineGeneratorByTemplate
+internal class StorageElementJsLineGeneratorByTemplate(
+    IGetStoredElementByTemplateAsArrayCall getStoredElementByTemplateAsArrayCall,
+    IStorageFromTemplateElementJsLineGenerator storageFromTemplateElementJsLineGenerator) 
+    : IStorageElementJsLineGeneratorByTemplate
 {
-    public string Generate(ElementObjectName elementObjectName)
+    public string Generate(ElementObjectName elementObjectName, string parentObjectToAppend)
     {
-        var codeBuilder = new StringBuilder($"globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('{elementObjectName.AssociatedSelector.Value}', '{elementObjectName.Name}');");
+        var codeBuilder = new StringBuilder($"{getStoredElementByTemplateAsArrayCall.Generate(elementObjectName.AssociatedSelector.Value, elementObjectName.Name)};");
 
-        if (elementObjectName.AssociatedSelector is ElementTemplateSelector)
-        {
-            codeBuilder
-                .AppendLine()
-                .Append($"globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'parent-to-add-id', 'elements1_appendTo');");
-        }
+        var templateSelector = elementObjectName.AssociatedSelector as ElementTemplateSelector;
+
+        codeBuilder
+            .AppendLine()
+            .Append($"{storageFromTemplateElementJsLineGenerator.Generate(templateSelector!.ElementToAppend, $"{elementObjectName.Name}_appendTo", parentObjectToAppend)};");
 
         return codeBuilder.ToString();
     }

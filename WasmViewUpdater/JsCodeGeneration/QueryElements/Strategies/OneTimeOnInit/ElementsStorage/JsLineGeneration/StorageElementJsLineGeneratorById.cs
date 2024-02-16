@@ -1,9 +1,10 @@
-﻿using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
+﻿using Vitraux.JsCodeGeneration.BuiltInCalling.StoredElements;
+using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit.ElementsStorage.JsLineGeneration;
 
-internal class StorageElementJsLineGeneratorById : IStorageElementJsLineGeneratorById
+internal class StorageElementJsLineGeneratorById(IGetStoredElementByIdAsArrayCall getStoredElementByIdAsArrayCalling) : IStorageElementJsLineGeneratorById
 {
-    public string Generate(ElementObjectName elementObjectName, string parentObjectName)
-        => $"globalThis.vitraux.storedElements.getStoredElementByIdAsArray({parentObjectName}, '{parentObjectName}', '{elementObjectName.AssociatedSelector.Value}', '{elementObjectName.Name}');";
+    public string Generate(string elementObjectName, string id, string parentObjectName)
+        => $"{getStoredElementByIdAsArrayCalling.Generate(parentObjectName, id, elementObjectName)};";
 }

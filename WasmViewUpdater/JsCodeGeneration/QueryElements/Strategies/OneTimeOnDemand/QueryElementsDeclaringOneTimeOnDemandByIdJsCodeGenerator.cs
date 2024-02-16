@@ -1,9 +1,10 @@
-﻿using Vitraux.Modeling.Building.Selectors.Elements;
+﻿using Vitraux.JsCodeGeneration.BuiltInCalling.StoredElements;
+using Vitraux.Modeling.Building.Selectors.Elements;
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnDemand;
 
-internal class QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator : IQueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator
+internal class QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator(IGetStoredElementByIdAsArrayCall getStoredElementByIdAsArrayCalling) : IQueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator
 {
     public string GenerateJsCode(string elementObjectName, string parentObjectName, ElementSelector selector)
-        => $"const {elementObjectName} = globalThis.vitraux.storedElements.getStoredElementByIdAsArray({parentObjectName}, '{parentObjectName}', '{selector.Value}', '{elementObjectName}');";
+        => $"const {elementObjectName} = {getStoredElementByIdAsArrayCalling.Generate(parentObjectName, selector.Value, elementObjectName)};";
 }
