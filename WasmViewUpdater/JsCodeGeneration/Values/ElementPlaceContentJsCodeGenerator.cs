@@ -1,7 +1,9 @@
-﻿namespace Vitraux.JsCodeGeneration.Values;
+﻿using Vitraux.JsCodeGeneration.BuiltInCalling.Updating;
 
-internal class ElementPlaceContentJsCodeGenerator : IElementPlaceContentJsCodeGenerator
+namespace Vitraux.JsCodeGeneration.Values;
+
+internal class ElementPlaceContentJsCodeGenerator(ISetElementsContentCall setElementsContentCall) : IElementPlaceContentJsCodeGenerator
 {
     public string Generate(string elementObjectName, string valueObjectName)
-        => $"globalThis.vitraux.updating.setElementsContent({elementObjectName}, vm.{valueObjectName});";
+        => $"{setElementsContentCall.Generate(elementObjectName, $"vm.{valueObjectName}")};";
 }
