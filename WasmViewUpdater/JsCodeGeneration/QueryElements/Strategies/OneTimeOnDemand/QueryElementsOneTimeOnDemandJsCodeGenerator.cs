@@ -10,5 +10,3 @@ internal class QueryElementsOneTimeOnDemandJsCodeGenerator(
     public string GenerateJsCode(IEnumerable<ElementObjectName> elements, string parentObjectName)
         => builder.BuildJsCode(generator, elements, parentObjectName);
 }
-
-

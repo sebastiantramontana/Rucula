@@ -2,6 +2,6 @@
 {
     internal interface IUpdateByTemplateCall
     {
-        string Generate(string templateContentArg, string appendToElementsArg, string toChildQueryFunctionArg, string updateTemplateChildFunctionArg);
+        string Generate(string templateElementAsArrayObjectName, string appendToElementsObjectName, string toChildQueryFunctionCall, string updateTemplateChildFunctionCall);
     }
 }
