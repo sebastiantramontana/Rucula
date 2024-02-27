@@ -1,14 +1,13 @@
 ﻿using System.Text;
-using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 
 namespace Vitraux.JsCodeGeneration.Values;
 
-internal class ValueCheckJsCodeGeneration(ITargetElementsJsCodeGenerationBuilder targetElementJsBuilder) : IValueCheckJsCodeGeneration
+internal class ValueCheckJsCodeGeneration : IValueCheckJsCodeGeneration
 {
-    public string GenerateJsCode(ValueObjectName value, IEnumerable<ElementObjectName> elements)
+    public string GenerateJsCode(string valueObjectName, string jsCodeBlock)
         => new StringBuilder()
-            .AppendLine($"if(vm.{value.Name}) {{")
-            .Append(targetElementJsBuilder.Build(value, elements))
+            .AppendLine($"if(vm.{valueObjectName}) {{")
+            .Append(jsCodeBlock)
             .AppendLine("}")
             .ToString();
 }

@@ -9,8 +9,8 @@ namespace Vitraux.JsCodeGeneration.BuiltInCalling.Updating
                 .AppendLine($"globalThis.vitraux.updating.UpdateByTemplate(")
                 .AppendLine(codeFormatting.Indent($"{templateElementAsArrayObjectName}[0],"))
                 .AppendLine(codeFormatting.Indent($"{appendToElementsObjectName},"))
-                .AppendLine(codeFormatting.Indent($"(templateContent) => {toChildQueryFunctionCall},"))
-                .AppendLine(codeFormatting.Indent($"(targetTemplateChildElements) => {updateTemplateChildFunctionCall});"))
+                .AppendLine(codeFormatting.Indent($"{toChildQueryFunctionCall},"))
+                .AppendLine(codeFormatting.Indent($"{updateTemplateChildFunctionCall});"))
                 .ToString();
     }
 }

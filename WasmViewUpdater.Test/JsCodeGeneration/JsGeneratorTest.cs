@@ -168,8 +168,8 @@ namespace Vitraux.Test.JsCodeGeneration
 
             var targetElementJsCodeGeneration = new TargetElementJsCodeGenerator(attributeCodeGenerator, contentCodeGenerator, codeFormatting);
             var targetElementsJsCodeGenerationBuilder = new TargetElementsJsCodeGenerationBuilder(targetElementJsCodeGeneration);
-            var valueCheckJsCodeGeneration = new ValueCheckJsCodeGeneration(targetElementsJsCodeGenerationBuilder);
-            var valuesJsCodeGenerationBuilder = new ValuesJsCodeGenerationBuilder(valueCheckJsCodeGeneration);
+            var valueCheckJsCodeGeneration = new ValueCheckJsCodeGeneration();
+            var valuesJsCodeGenerationBuilder = new ValuesJsCodeGenerationBuilder(valueCheckJsCodeGeneration, targetElementsJsCodeGenerationBuilder);
             return new ValuesJsCodeGenerator(valuesJsCodeGenerationBuilder);
         }
 
