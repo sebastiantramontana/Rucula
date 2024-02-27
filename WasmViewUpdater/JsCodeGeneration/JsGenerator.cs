@@ -21,9 +21,7 @@ internal class JsGenerator<TViewModel>(
         var elements = elementNamesGenerator.Generate(selectors);
         var valueNames = valueNamesGenerator.Generate(modelBuilderData.Values);
 
-        var code = new StringBuilder();
-
-        return code
+        return new StringBuilder()
             .AppendLine(GenerateQueryElementsJsCode(modelBuilderData.QueryElementStrategy, elements, rootObject))
             .AppendLine()
             .AppendLine(GenerateValuesJsCode(valueNames, elements))

@@ -1,6 +1,10 @@
-﻿using Moq;
+﻿using HtmlAgilityPack;
+using Moq;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using Vitraux.JsCodeGeneration;
 using Vitraux.JsCodeGeneration.BuiltInCalling.StoredElements;
+using Vitraux.JsCodeGeneration.BuiltInCalling.Updating;
 using Vitraux.JsCodeGeneration.QueryElements;
 using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 using Vitraux.JsCodeGeneration.QueryElements.Strategies.Always;
@@ -69,6 +73,44 @@ namespace Vitraux.Test.JsCodeGeneration
                                             """;
 
         [Test]
+        public void SampleToTestGeneratedJsCode()
+        {
+            //Arrange
+            var html = """
+                <!DOCTYPE html>
+
+                <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>Some Title</title>
+                </head>
+                <body>
+                <div id="test_id">text to change</div>
+                </body>
+                </html>
+                """;
+
+            var options = new ChromeOptions();
+            // Avoid opening a Chrome window browser: The test runs in memory
+            options.AddArguments("--disable-crash-reporter", "--enable-gpu", "--force-headless-for-tests", "--headless");
+
+            //Also: FireFoxDriver, EdgeDriver and SafariDriver
+            IWebDriver driver = new ChromeDriver(options);
+
+            //Load a page with the desired html
+            driver.Navigate().GoToUrl("about:blank"); //First blank page...
+            var js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript($"document.write(arguments[0]);", html); //then, write the html
+
+            //Act
+            js.ExecuteScript("document.getElementById('test_id').innerHTML = 'text changed'");
+
+            //Assert
+            var element = driver.FindElement(By.Id("test_id"));
+            Assert.That(element.Text, Is.EqualTo("text changed"));
+        }
+
+        [Test]
         [TestCase(QueryElementStrategy.OneTimeOnInit, expectedCodeOnInit)]
         [TestCase(QueryElementStrategy.OneTimeOnDemand, expectedCodeOnDemand)]
         [TestCase(QueryElementStrategy.Always, expectedCodeAlways)]
@@ -116,9 +158,15 @@ namespace Vitraux.Test.JsCodeGeneration
 
         private IValuesJsCodeGenerator CreateValuesJsCodeGenerator()
         {
-            var attributeCodeGenerator = new ElementPlaceAttributeJsCodeGenerator();
-            var contentCodeGenerator = new ElementPlaceContentJsCodeGenerator();
-            var targetElementJsCodeGeneration = new TargetElementJsCodeGenerator(attributeCodeGenerator, contentCodeGenerator);
+            var setElementsAttributeCall = new SetElementsAttributeCall();
+            var attributeCodeGenerator = new ElementPlaceAttributeJsCodeGenerator(setElementsAttributeCall);
+
+            var setElementsContentCall = new SetElementsContentCall();
+            var contentCodeGenerator = new ElementPlaceContentJsCodeGenerator(setElementsContentCall);
+
+            var codeFormatting = new CodeFormatting();
+
+            var targetElementJsCodeGeneration = new TargetElementJsCodeGenerator(attributeCodeGenerator, contentCodeGenerator, codeFormatting);
             var targetElementsJsCodeGenerationBuilder = new TargetElementsJsCodeGenerationBuilder(targetElementJsCodeGeneration);
             var valueCheckJsCodeGeneration = new ValueCheckJsCodeGeneration(targetElementsJsCodeGenerationBuilder);
             var valuesJsCodeGenerationBuilder = new ValuesJsCodeGenerationBuilder(valueCheckJsCodeGeneration);
@@ -146,7 +194,8 @@ namespace Vitraux.Test.JsCodeGeneration
         {
             var declaringOneTimeOnDemandByIdGenerator = new QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator(getStoredElementByIdAsArrayCall);
             var declaringOneTimeOnDemandByQuerySelectorGenerator = new QueryElementsDeclaringOneTimeOnDemandByQuerySelectorJsCodeGenerator(getStoredElementsByQuerySelectorCall);
-            var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator();
+            var getStoredElementByTemplateAsArrayCall = new GetStoredElementByTemplateAsArrayCall();
+            var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator(getStoredElementByTemplateAsArrayCall);
             var onDemandGeneratorFactory = new JsQueryElementsOneTimeOnDemandGeneratorFactory(declaringOneTimeOnDemandByIdGenerator, declaringOneTimeOnDemandByQuerySelectorGenerator, declaringOneTimeOnDemandByTemplateGenerator);
             var declaringOneTimeOnDemandGenerator = new QueryElementsDeclaringOneTimeOnDemandJsCodeGenerator(onDemandGeneratorFactory);
             return new QueryElementsOneTimeOnDemandJsCodeGenerator(builder, declaringOneTimeOnDemandGenerator);
