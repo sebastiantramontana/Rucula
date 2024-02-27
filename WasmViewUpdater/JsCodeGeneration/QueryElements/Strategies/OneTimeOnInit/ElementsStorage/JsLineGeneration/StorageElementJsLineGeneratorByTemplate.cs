@@ -7,19 +7,19 @@ namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit.Elemen
 
 internal class StorageElementJsLineGeneratorByTemplate(
     IGetStoredElementByTemplateAsArrayCall getStoredElementByTemplateAsArrayCall,
-    IStorageFromTemplateElementJsLineGenerator storageFromTemplateElementJsLineGenerator) 
+    IStorageFromTemplateElementJsLineGenerator storageFromTemplateElementJsLineGenerator)
     : IStorageElementJsLineGeneratorByTemplate
 {
     public string Generate(ElementObjectName elementObjectName, string parentObjectToAppend)
     {
         var codeBuilder = new StringBuilder($"{getStoredElementByTemplateAsArrayCall.Generate(elementObjectName.AssociatedSelector.Value, elementObjectName.Name)};");
 
-        var templateSelector = elementObjectName.AssociatedSelector as ElementTemplateSelector;
+        var templateObjectName = elementObjectName as ElementTemplateObjectName;
+        var templateSelector = templateObjectName!.AssociatedSelector as ElementTemplateSelector;
 
-        codeBuilder
+        return codeBuilder
             .AppendLine()
-            .Append($"{storageFromTemplateElementJsLineGenerator.Generate(templateSelector!.ElementToAppend, $"{elementObjectName.Name}_appendTo", parentObjectToAppend)};");
-
-        return codeBuilder.ToString();
+            .Append($"{storageFromTemplateElementJsLineGenerator.Generate(templateSelector!.ElementToAppend, templateObjectName.AppendToName, parentObjectToAppend)};")
+            .ToString();
     }
 }

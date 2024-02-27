@@ -11,7 +11,7 @@ internal class QueryElementsJsCodeBuilder : IQueryElementsJsCodeBuilder
             .ToString();
 
     private static string BuildElementDeclarationCode(IQueryElementsDeclaringJsCodeGenerator declaringJsCodeGenerator, ElementObjectName element, string parentObjectName)
-        => declaringJsCodeGenerator.GenerateJsCode(element.Name, parentObjectName, element.AssociatedSelector);
+        => declaringJsCodeGenerator.GenerateJsCode(parentObjectName, element);
 }
 
 

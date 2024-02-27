@@ -1,20 +1,19 @@
 ﻿using System.Text;
-using Vitraux.Modeling.Building.Selectors.Elements;
-using Vitraux.Modeling.Building.Selectors.Elements.Templates;
+using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit;
 
 internal class QueryElementsDeclaringOneTimeOnInitJsCodeGenerator : IQueryElementsDeclaringOneTimeOnInitJsCodeGenerator
 {
-    public string GenerateJsCode(string elementObjectName, string parentObjectName, ElementSelector selector)
+    public string GenerateJsCode(string parentObjectName, ElementObjectName elementObjectName)
     {
-        var elementCodeBuilder = new StringBuilder($"const {elementObjectName} = globalThis.vitraux.storedElements.elements.{parentObjectName}.{elementObjectName};");
+        var elementCodeBuilder = new StringBuilder($"const {elementObjectName.Name} = globalThis.vitraux.storedElements.elements.{parentObjectName}.{elementObjectName.Name};");
 
-        if (selector is ElementTemplateSelector)
+        if (elementObjectName is ElementTemplateObjectName templateObjectName)
         {
             elementCodeBuilder
                 .AppendLine()
-                .Append($"const {elementObjectName}_appendTo = globalThis.vitraux.storedElements.elements.{parentObjectName}.{elementObjectName}_appendTo;");
+                .Append($"const {templateObjectName.AppendToName} = globalThis.vitraux.storedElements.elements.{parentObjectName}.{templateObjectName.AppendToName};");
         }
 
         return elementCodeBuilder.ToString();

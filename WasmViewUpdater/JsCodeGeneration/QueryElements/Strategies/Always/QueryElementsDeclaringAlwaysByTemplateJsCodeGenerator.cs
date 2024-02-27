@@ -1,10 +1,10 @@
 ﻿using Vitraux.JsCodeGeneration.BuiltInCalling.StoredElements;
-using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.JsCodeGeneration.QueryElements.ElementsGeneration;
 
 namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.Always;
 
 internal class QueryElementsDeclaringAlwaysByTemplateJsCodeGenerator(IGetElementByTemplateAsArrayCall getElementByTemplateAsArrayCalling) : IQueryElementsDeclaringAlwaysByTemplateJsCodeGenerator
 {
-    public string GenerateJsCode(string elementObjectName, string parentObjectName, ElementSelector selector)
-        => $"const {elementObjectName} = {getElementByTemplateAsArrayCalling.Generate(selector.Value)};";
+    public string GenerateJsCode(string parentObjectName, ElementObjectName elementObjectName)
+        => $"const {elementObjectName.Name} = {getElementByTemplateAsArrayCalling.Generate(elementObjectName.AssociatedSelector.Value)};";
 }
