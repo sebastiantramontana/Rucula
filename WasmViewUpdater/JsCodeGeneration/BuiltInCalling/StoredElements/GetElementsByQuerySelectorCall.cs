@@ -3,6 +3,6 @@
     internal class GetElementsByQuerySelectorCall : IGetElementsByQuerySelectorCall
     {
         public string Generate(string parentObjectName, string querySelector)
-            => $"globalThis.vitraux.storedElements.getElementsByQuerySelector({parentObjectName},'{querySelector}')";
+            => $"globalThis.vitraux.storedElements.getElementsByQuerySelector({parentObjectName}, '{querySelector}')";
     }
 }

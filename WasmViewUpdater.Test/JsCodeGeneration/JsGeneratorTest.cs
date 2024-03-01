@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using Moq;
+﻿using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Vitraux.JsCodeGeneration;
@@ -41,11 +40,11 @@ namespace Vitraux.Test.JsCodeGeneration
                                             """;
 
         const string expectedCodeAlways = """
-                                          const elements0 = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'algo-name');
+                                          const elements0 = globalThis.vitraux.storedElements.getElementByIdAsArray(document, 'algo-name');
                                           const elements1 = globalThis.vitraux.storedElements.getElementByTemplateAsArray('otro-template-id');
-                                          const elements1_appendTo = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'parent-to-add-id');
-                                          const elements2 = globalThis.vitraux.storedElements.getElementsByQuerySelector(document,'.p-otro > img');
-                                          const elements3 = globalThis.vitraux.storedElements.getElementByIdAsArray(document,'mascotas-table-id');
+                                          const elements1_appendTo = globalThis.vitraux.storedElements.getElementByIdAsArray(document, 'parent-to-add-id');
+                                          const elements2 = globalThis.vitraux.storedElements.getElementsByQuerySelector(document, '.p-otro > img');
+                                          const elements3 = globalThis.vitraux.storedElements.getElementByIdAsArray(document, 'mascotas-table-id');
                                           """;
 
         const string expectedExecutedCodeForOnInit = """
@@ -62,15 +61,38 @@ namespace Vitraux.Test.JsCodeGeneration
                                             }
 
                                             if(vm.value1) {
-                                                UpdateByTemplate(
-                                                    elements1[0], 
-                                                    elements1_appendTo,
-                                                    (templateContent) => globalThis.vitraux.storedElements.getElementByIdAsArray(templateContent, "child-target-id"),
-                                                    (targetTemplateChildElements) => globalThis.vitraux.updating.setElementsContent(targetTemplateChildElements, vm.value1));
+                                                globalThis.vitraux.updating.UpdateByTemplate(
+                                                elements1[0],
+                                                elements1_appendTo,
+                                                (templateContent) => globalThis.vitraux.storedElements.getElementByIdAsArray(templateContent, 'child-target-id'),
+                                                (targetTemplateChildElements) => globalThis.vitraux.updating.setElementsContent(targetTemplateChildElements, vm.value1));
 
                                                 globalThis.vitraux.updating.setElementsAttribute(elements2, 'data-otro', vm.value1);
                                             }
                                             """;
+
+        [Test]
+        [TestCase(QueryElementStrategy.OneTimeOnInit, expectedCodeOnInit)]
+        [TestCase(QueryElementStrategy.OneTimeOnDemand, expectedCodeOnDemand)]
+        [TestCase(QueryElementStrategy.Always, expectedCodeAlways)]
+        public void GenerateCodeTest(QueryElementStrategy queryElementStrategy, string expectedQueryElementsCode)
+        {
+            var executorMock = new Mock<IJsCodeExecutor>();
+
+            var sut = CreateSut(executorMock.Object);
+            var personaConfig = new PersonaConfiguration() as IModelConfiguration<Persona>;
+
+            var modelBuilder = new ModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
+            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new FromTemplateElementSelectorBuilder());
+
+            var actualCode = sut.GenerateJsCode(modelBuilder);
+
+            var expectedCode = expectedQueryElementsCode + Environment.NewLine + Environment.NewLine + expectedCodeForValues;
+            Assert.That(actualCode, Is.EqualTo(expectedCode));
+
+            if (queryElementStrategy == QueryElementStrategy.OneTimeOnInit)
+                executorMock.Verify(e => e.Excute(expectedExecutedCodeForOnInit), Times.Once);
+        }
 
         [Test]
         public void SampleToTestGeneratedJsCode()
@@ -110,53 +132,35 @@ namespace Vitraux.Test.JsCodeGeneration
             Assert.That(element.Text, Is.EqualTo("text changed"));
         }
 
-        [Test]
-        [TestCase(QueryElementStrategy.OneTimeOnInit, expectedCodeOnInit)]
-        [TestCase(QueryElementStrategy.OneTimeOnDemand, expectedCodeOnDemand)]
-        [TestCase(QueryElementStrategy.Always, expectedCodeAlways)]
-        public void GenerateCodeTest(QueryElementStrategy queryElementStrategy, string expectedQueryElementsCode)
-        {
-            var executorMock = new Mock<IJsCodeExecutor>();
-
-            var sut = CreateSut(executorMock.Object);
-            var personaConfig = new PersonaConfiguration() as IModelConfiguration<Persona>;
-
-            var modelBuilder = new ModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
-            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new FromTemplateElementSelectorBuilder());
-
-            var code = sut.GenerateJsCode(modelBuilder);
-
-            var expectedCode = expectedQueryElementsCode + Environment.NewLine + Environment.NewLine + expectedCodeForValues;
-            Assert.That(code, Is.EqualTo(expectedCode));
-
-            if (queryElementStrategy == QueryElementStrategy.OneTimeOnInit)
-                executorMock.Verify(e => e.Excute(expectedExecutedCodeForOnInit), Times.Once);
-        }
-
         private IJsGenerator<Persona> CreateSut(IJsCodeExecutor jsCodeExecutor)
         {
-            var queryElementsGeneratorByStrategyFactory = CreateQueryElementsJsCodeGeneratorByStrategyFactory(jsCodeExecutor);
+            var getElementByIdAsArrayCall = new GetElementByIdAsArrayCall();
+            var getElementsByQuerySelectorCall = new GetElementsByQuerySelectorCall();
+
+            var queryElementsGeneratorByStrategyFactory = CreateQueryElementsJsCodeGeneratorByStrategyFactory(jsCodeExecutor, getElementByIdAsArrayCall, getElementsByQuerySelectorCall);
             var elementNamesGenerator = new ElementNamesGenerator();
             var valueNamesGenerator = new ValueNamesGenerator();
-            var valueJsCodeGenerator = CreateValuesJsCodeGenerator();
+            var valueJsCodeGenerator = CreateValuesJsCodeGenerator(getElementByIdAsArrayCall, getElementsByQuerySelectorCall);
 
             return new JsGenerator<Persona>(queryElementsGeneratorByStrategyFactory, elementNamesGenerator, valueNamesGenerator, valueJsCodeGenerator);
         }
 
-        private IQueryElementsJsCodeGeneratorByStrategyFactory CreateQueryElementsJsCodeGeneratorByStrategyFactory(IJsCodeExecutor jsCodeExecutor)
+        private IQueryElementsJsCodeGeneratorByStrategyFactory CreateQueryElementsJsCodeGeneratorByStrategyFactory(IJsCodeExecutor jsCodeExecutor, IGetElementByIdAsArrayCall getElementByIdAsArrayCall, IGetElementsByQuerySelectorCall getElementsByQuerySelectorCall)
         {
             var builder = new QueryElementsJsCodeBuilder();
             var getStoredElementByIdAsArrayCall = new GetStoredElementByIdAsArrayCall();
             var getStoredElementsByQuerySelectorCall = new GetStoredElementsByQuerySelectorCall();
+            var queryAppendToElementsDeclaringByTemplateJsCodeGenerator = new QueryAppendToElementsDeclaringByTemplateJsCodeGenerator();
+            var queryTemplateCallingJsBuiltInFunctionCodeGenerator = new QueryTemplateCallingJsBuiltInFunctionCodeGenerator(queryAppendToElementsDeclaringByTemplateJsCodeGenerator);
 
             var onInitGenerator = CreateOnInitGenerator(builder, jsCodeExecutor, getStoredElementByIdAsArrayCall, getStoredElementsByQuerySelectorCall);
-            var onDemandGenerator = CreateOnDemandGenerator(builder, getStoredElementByIdAsArrayCall, getStoredElementsByQuerySelectorCall);
-            var onAlwaysGenerator = CreateAlwaysGenerator(builder);
+            var onDemandGenerator = CreateOnDemandGenerator(builder, getStoredElementByIdAsArrayCall, getStoredElementsByQuerySelectorCall, queryTemplateCallingJsBuiltInFunctionCodeGenerator);
+            var onAlwaysGenerator = CreateAlwaysGenerator(builder, getElementByIdAsArrayCall, getElementsByQuerySelectorCall, queryTemplateCallingJsBuiltInFunctionCodeGenerator);
 
             return new QueryElementsJsCodeGeneratorByStrategyFactory(onInitGenerator, onDemandGenerator, onAlwaysGenerator);
         }
 
-        private IValuesJsCodeGenerator CreateValuesJsCodeGenerator()
+        private IValuesJsCodeGenerator CreateValuesJsCodeGenerator(IGetElementByIdAsArrayCall getElementByIdAsArrayCall, IGetElementsByQuerySelectorCall getElementsByQuerySelectorCall)
         {
             var setElementsAttributeCall = new SetElementsAttributeCall();
             var attributeCodeGenerator = new ElementPlaceAttributeJsCodeGenerator(setElementsAttributeCall);
@@ -166,8 +170,11 @@ namespace Vitraux.Test.JsCodeGeneration
 
             var codeFormatting = new CodeFormatting();
 
-            var targetElementJsCodeGeneration = new TargetElementJsCodeGenerator(attributeCodeGenerator, contentCodeGenerator, codeFormatting);
-            var targetElementsJsCodeGenerationBuilder = new TargetElementsJsCodeGenerationBuilder(targetElementJsCodeGeneration);
+            var updateByTemplateCall = new UpdateByTemplateCall(codeFormatting);
+
+            var targetElementDirectUpdateJsCodeGeneration = new TargetElementDirectUpdateValueJsCodeGenerator(attributeCodeGenerator, contentCodeGenerator, codeFormatting);
+            var targetElementTemplateUpdateJsCodeGeneration = new TargetElementTemplateUpdateValueJsCodeGenerator(updateByTemplateCall, getElementByIdAsArrayCall, getElementsByQuerySelectorCall, setElementsAttributeCall, setElementsContentCall, codeFormatting);
+            var targetElementsJsCodeGenerationBuilder = new TargetElementsJsCodeGenerationBuilder(targetElementDirectUpdateJsCodeGeneration, targetElementTemplateUpdateJsCodeGeneration);
             var valueCheckJsCodeGeneration = new ValueCheckJsCodeGeneration();
             var valuesJsCodeGenerationBuilder = new ValuesJsCodeGenerationBuilder(valueCheckJsCodeGeneration, targetElementsJsCodeGenerationBuilder);
             return new ValuesJsCodeGenerator(valuesJsCodeGenerationBuilder);
@@ -190,27 +197,37 @@ namespace Vitraux.Test.JsCodeGeneration
             return new QueryElementsOneTimeOnInitJsCodeGenerator(builder, onInitDeclaringGenerator, initializer);
         }
 
-        private static IQueryElementsOneTimeOnDemandJsCodeGenerator CreateOnDemandGenerator(IQueryElementsJsCodeBuilder builder, IGetStoredElementByIdAsArrayCall getStoredElementByIdAsArrayCall, IGetStoredElementsByQuerySelectorCall getStoredElementsByQuerySelectorCall)
+        private static IQueryElementsOneTimeOnDemandJsCodeGenerator CreateOnDemandGenerator(
+            IQueryElementsJsCodeBuilder builder,
+            IGetStoredElementByIdAsArrayCall getStoredElementByIdAsArrayCall,
+            IGetStoredElementsByQuerySelectorCall getStoredElementsByQuerySelectorCall,
+            IQueryTemplateCallingJsBuiltInFunctionCodeGenerator queryTemplateCallingJsBuiltInFunctionCodeGenerator)
         {
             var declaringOneTimeOnDemandByIdGenerator = new QueryElementsDeclaringOneTimeOnDemandByIdJsCodeGenerator(getStoredElementByIdAsArrayCall);
             var declaringOneTimeOnDemandByQuerySelectorGenerator = new QueryElementsDeclaringOneTimeOnDemandByQuerySelectorJsCodeGenerator(getStoredElementsByQuerySelectorCall);
             var getStoredElementByTemplateAsArrayCall = new GetStoredElementByTemplateAsArrayCall();
-            var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator(getStoredElementByTemplateAsArrayCall);
+            var jsQueryFromTemplateElementsDeclaringOneTimeOnDemandGeneratorFactory = new JsQueryFromTemplateElementsDeclaringOneTimeOnDemandGeneratorFactory(declaringOneTimeOnDemandByIdGenerator, declaringOneTimeOnDemandByQuerySelectorGenerator);
+            var declaringOneTimeOnDemandByTemplateGenerator = new QueryElementsDeclaringOneTimeOnDemandByTemplateJsCodeGenerator(getStoredElementByTemplateAsArrayCall, queryTemplateCallingJsBuiltInFunctionCodeGenerator, jsQueryFromTemplateElementsDeclaringOneTimeOnDemandGeneratorFactory);
             var onDemandGeneratorFactory = new JsQueryElementsOneTimeOnDemandGeneratorFactory(declaringOneTimeOnDemandByIdGenerator, declaringOneTimeOnDemandByQuerySelectorGenerator, declaringOneTimeOnDemandByTemplateGenerator);
             var declaringOneTimeOnDemandGenerator = new QueryElementsDeclaringOneTimeOnDemandJsCodeGenerator(onDemandGeneratorFactory);
+
             return new QueryElementsOneTimeOnDemandJsCodeGenerator(builder, declaringOneTimeOnDemandGenerator);
         }
 
-        private static IQueryElementsAlwaysJsCodeGenerator CreateAlwaysGenerator(IQueryElementsJsCodeBuilder builder)
+        private static IQueryElementsAlwaysJsCodeGenerator CreateAlwaysGenerator(
+            IQueryElementsJsCodeBuilder builder,
+            IGetElementByIdAsArrayCall getElementByIdAsArrayCall,
+            IGetElementsByQuerySelectorCall getElementsByQuerySelectorCall,
+            IQueryTemplateCallingJsBuiltInFunctionCodeGenerator queryTemplateCallingJsBuiltInFunctionCodeGenerator)
         {
-            var getElementByIdAsArrayCall = new GetElementByIdAsArrayCall();
             var declaringAlwaysByIdGenerator = new QueryElementsDeclaringAlwaysByIdJsCodeGenerator(getElementByIdAsArrayCall);
-            var getElementsByQuerySelectorCall = new GetElementsByQuerySelectorCall();
             var declaringAlwaysByQuerySelectorGenerator = new QueryElementsDeclaringAlwaysByQuerySelectorJsCodeGenerator(getElementsByQuerySelectorCall);
             var getElementByTemplateAsArrayCall = new GetElementByTemplateAsArrayCall();
-            var declaringAlwaysByTemplateGenerator = new QueryElementsDeclaringAlwaysByTemplateJsCodeGenerator(getElementByTemplateAsArrayCall);
+            var jsQueryFromTemplateElementsDeclaringAlwaysGeneratorFactory = new JsQueryFromTemplateElementsDeclaringAlwaysGeneratorFactory(declaringAlwaysByIdGenerator, declaringAlwaysByQuerySelectorGenerator);
+            var declaringAlwaysByTemplateGenerator = new QueryElementsDeclaringAlwaysByTemplateJsCodeGenerator(getElementByTemplateAsArrayCall, queryTemplateCallingJsBuiltInFunctionCodeGenerator, jsQueryFromTemplateElementsDeclaringAlwaysGeneratorFactory);
             var alwaysGeneratorFactory = new JsQueryElementsDeclaringAlwaysGeneratorFactory(declaringAlwaysByIdGenerator, declaringAlwaysByQuerySelectorGenerator, declaringAlwaysByTemplateGenerator);
             var declaringAlwaysGenerator = new QueryElementsDeclaringAlwaysCodeGenerator(alwaysGeneratorFactory);
+
             return new QueryElementsAlwaysJsCodeGenerator(declaringAlwaysGenerator, builder);
         }
     }

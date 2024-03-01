@@ -4,11 +4,11 @@ using Vitraux.Modeling.Models;
 
 namespace Vitraux.JsCodeGeneration.Values;
 
-internal class TargetElementJsCodeGenerator(
+internal class TargetElementDirectUpdateValueJsCodeGenerator(
     IElementPlaceAttributeJsCodeGenerator attributeGenerator,
     IElementPlaceContentJsCodeGenerator contentGenerator,
     ICodeFormatting codeFormatting)
-    : ITargetElementJsCodeGenerator
+    : ITargetElementDirectUpdateValueJsCodeGenerator
 {
     public string GenerateJsCode(TargetElement targetElement, IEnumerable<ElementObjectName> associatedElements, string valueObjectName)
         => associatedElements

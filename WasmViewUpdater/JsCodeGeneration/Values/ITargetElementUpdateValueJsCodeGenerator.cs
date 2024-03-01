@@ -3,7 +3,7 @@ using Vitraux.Modeling.Models;
 
 namespace Vitraux.JsCodeGeneration.Values;
 
-internal interface ITargetElementJsCodeGenerator
+internal interface ITargetElementUpdateValueJsCodeGenerator
 {
     string GenerateJsCode(TargetElement targetElement, IEnumerable<ElementObjectName> associatedElements, string valueObjectName);
 }

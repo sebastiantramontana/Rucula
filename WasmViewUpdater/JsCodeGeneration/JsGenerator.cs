@@ -41,10 +41,9 @@ internal class JsGenerator<TViewModel>(
                 .Trim();
 
     private IEnumerable<ElementSelector> GroupSelectors(IModelBuilderData modelBuilderData)
-    => modelBuilderData
-        .Values
-        .SelectMany(v => v.TargetElements)
-        .GroupBy(t => t.Selector)
-        .Select(g => g.Key)
-        .Concat(modelBuilderData.CollectionTables.Select(c => c.TableSelector));
+        => modelBuilderData
+            .Values
+            .SelectMany(v => v.TargetElements.Select(te => te.Selector))
+            .Distinct()
+            .Concat(modelBuilderData.CollectionTables.Select(c => c.TableSelector));
 }
