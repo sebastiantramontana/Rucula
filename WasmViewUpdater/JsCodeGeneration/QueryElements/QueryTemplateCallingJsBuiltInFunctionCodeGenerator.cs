@@ -18,7 +18,7 @@ internal class QueryTemplateCallingJsBuiltInFunctionCodeGenerator(
 
         return new StringBuilder()
             .AppendLine(templateDeclaring)
-            .AppendLine(appendToDeclaring)
+            .Append(appendToDeclaring)
             .ToString();
     }
 }
