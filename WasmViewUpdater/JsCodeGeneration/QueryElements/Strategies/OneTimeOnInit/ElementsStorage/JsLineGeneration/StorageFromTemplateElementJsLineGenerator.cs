@@ -11,6 +11,6 @@ internal class StorageFromTemplateElementJsLineGenerator(
         {
             FromTemplateElementSelection.Id => generatorById.Generate(elementObjectName, selector.Value, parentObjectName),
             FromTemplateElementSelection.QuerySelector => generatorByQuerySelector.Generate(elementObjectName, selector.Value, parentObjectName),
-            _ => throw new NotImplementedException($"Selector type {selector.SelectionBy} not implemented  in {this.GetType().FullName} for OneTimeOnInit initialization"),
+            _ => throw new NotImplementedException($"Selector type {selector.SelectionBy} not implemented"),
         };
 }

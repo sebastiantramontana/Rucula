@@ -50,7 +50,7 @@ namespace Vitraux.Test.JsCodeGeneration
         const string expectedExecutedCodeForOnInit = """
                                                     globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'algo-name', 'elements0');
                                                     globalThis.vitraux.storedElements.getStoredElementByTemplateAsArray('otro-template-id', 'elements1');
-                                                    globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document,'document','parent-to-add-id', 'elements1_appendTo');
+                                                    globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'parent-to-add-id', 'elements1_appendTo');
                                                     globalThis.vitraux.storedElements.getStoredElementsByQuerySelector(document, 'document', '.p-otro > img', 'elements2');
                                                     globalThis.vitraux.storedElements.getStoredElementByIdAsArray(document, 'document', 'mascotas-table-id', 'elements3');
                                                     """;

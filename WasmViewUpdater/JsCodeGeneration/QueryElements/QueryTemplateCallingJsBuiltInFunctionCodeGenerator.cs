@@ -16,7 +16,8 @@ internal class QueryTemplateCallingJsBuiltInFunctionCodeGenerator(
         var templateDeclaring = $"const {templateObjectName.Name} = {getElementTemplateCallingFunc()};";
         var appendToDeclaring = appendToDeclaringGenerator.GenerateAppendToJsCode(templateObjectName.AppendToName, templateSelector!.ElementToAppend, queryGeneratorFactory);
 
-        return new StringBuilder(templateDeclaring)
+        return new StringBuilder()
+            .AppendLine(templateDeclaring)
             .AppendLine(appendToDeclaring)
             .ToString();
     }
