@@ -2,7 +2,7 @@
 {
     internal class GetElementByIdAsArrayCall : IGetElementByIdAsArrayCall
     {
-        public string Generate(string parentObjectName, string id)
-            => $"globalThis.vitraux.storedElements.getElementByIdAsArray({parentObjectName}, '{id}')";
+        public string Generate(string id)
+            => $"globalThis.vitraux.storedElements.getElementByIdAsArray('{id}')";
     }
 }

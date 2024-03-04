@@ -23,8 +23,8 @@ namespace Vitraux.Test.Modeling
             };
 
 
-        public static ElementTemplateSelector CreateElementTemplateSelectorToId(string templateId, string elementToAppendId, string toChildElementId)
-            => new(templateId, new FromTemplateElementIdSelector(elementToAppendId)) { TargetChildElement = new FromTemplateElementIdSelector(toChildElementId) };
+        public static ElementTemplateSelector CreateElementTemplateSelectorToId(string templateId, string elementToAppendId, string toChildQuerySelector)
+            => new(templateId, new FromTemplateElementIdSelector(elementToAppendId)) { TargetChildElement = new ElementQuerySelector(toChildQuerySelector) };
 
         public static ElementTemplateSelector CreateElementTemplateSelectorToQuery(string templateId, string elementToAppendQuerySelector)
             => new(templateId, new FromTemplateElementQuerySelector(elementToAppendQuerySelector));

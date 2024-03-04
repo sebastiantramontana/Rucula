@@ -4,6 +4,6 @@ namespace Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit.Elemen
 
 internal class StorageElementJsLineGeneratorById(IGetStoredElementByIdAsArrayCall getStoredElementByIdAsArrayCalling) : IStorageElementJsLineGeneratorById
 {
-    public string Generate(string elementObjectName, string id, string parentObjectName)
-        => $"{getStoredElementByIdAsArrayCalling.Generate(parentObjectName, id, elementObjectName)};";
+    public string Generate(string elementObjectName, string id)
+        => $"{getStoredElementByIdAsArrayCalling.Generate(id, elementObjectName)};";
 }

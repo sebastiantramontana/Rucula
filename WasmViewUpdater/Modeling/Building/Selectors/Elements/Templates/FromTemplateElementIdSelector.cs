@@ -2,7 +2,7 @@
 {
     public record class FromTemplateElementIdSelector : FromTemplateElementSelector
     {
-        public FromTemplateElementIdSelector(string id)
+        internal FromTemplateElementIdSelector(string id)
             : base(FromTemplateElementSelection.Id, id)
         {
         }

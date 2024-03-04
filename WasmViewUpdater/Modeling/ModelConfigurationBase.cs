@@ -21,8 +21,8 @@ namespace Vitraux.Modeling
             Configure(modelBuilder);
         }
 
-        protected ElementSelector ById(string id) => _elementSelectorBuilder.ById(id);
-        protected ElementSelector ByQuerySelector(string querySelector) => _elementSelectorBuilder.ByQuerySelector(querySelector);
+        protected ElementIdSelector ById(string id) => _elementSelectorBuilder.ById(id);
+        protected ElementQuerySelector ByQuerySelector(string querySelector) => _elementSelectorBuilder.ByQuerySelector(querySelector);
         protected IAppendToTemplateSelectorBuilder FromTemplate(string templateId) => _elementSelectorBuilder.FromTemplate(templateId);
         protected RowSelector Template(string templateId) => _rowSelectionBuilder.FromTemplate(templateId);
         protected FromTemplateElementSelector FromTemplateById(string id) => _fromTemplateElementSelectorBuilder.ById(id);

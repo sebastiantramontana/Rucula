@@ -2,6 +2,6 @@
 {
     internal interface IGetElementByIdAsArrayCall
     {
-        string Generate(string parentObjectName, string id);
+        string Generate(string id);
     }
 }

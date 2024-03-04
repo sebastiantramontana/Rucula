@@ -9,6 +9,6 @@
         }
 
         public FromTemplateElementSelector ElementToAppend { get; }
-        public FromTemplateElementSelector TargetChildElement { get; set; } = default!;
+        public ElementQuerySelector TargetChildElement { get; set; } = default!;
     }
 }

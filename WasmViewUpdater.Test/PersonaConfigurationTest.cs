@@ -26,7 +26,7 @@ public class PersonaConfigurationTest
             TestHelper.CreateTargetElement(new ElementIdSelector("algo-name"), TestHelper.CreateAttributeElementPlace("alt"))
         ]);
 
-        var templateForValue2 = TestHelper.CreateElementTemplateSelectorToId("otro-template-id", "parent-to-add-id", "child-target-id");
+        var templateForValue2 = TestHelper.CreateElementTemplateSelectorToId("otro-template-id", "parent-to-add-id", ".child-target");
 
         var value2 = TestHelper.CreateValueModel((Persona p) => p.Edad,
         [

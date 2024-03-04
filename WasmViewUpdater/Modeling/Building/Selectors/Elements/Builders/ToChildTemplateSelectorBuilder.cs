@@ -11,7 +11,7 @@ namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
             _templateSelector = templateSelector;
         }
 
-        public ElementSelector ToChild(FromTemplateElementSelector childSelector)
+        public ElementSelector ToChild(ElementQuerySelector childSelector)
         {
             _templateSelector.TargetChildElement = childSelector;
             return _templateSelector;

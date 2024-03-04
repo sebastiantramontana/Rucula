@@ -9,7 +9,6 @@ namespace Vitraux.JsCodeGeneration.Values;
 
 internal class TargetElementTemplateUpdateValueJsCodeGenerator(
     IUpdateByTemplateCall updateByTemplateCall,
-    IGetElementByIdAsArrayCall getElementByIdAsArrayCall,
     IGetElementsByQuerySelectorCall getElementsByQuerySelectorCall,
     ISetElementsAttributeCall setElementsAttributeCall,
     ISetElementsContentCall setElementsContentCall,
@@ -26,23 +25,16 @@ internal class TargetElementTemplateUpdateValueJsCodeGenerator(
     {
         var templateSelector = elementTemplateObjectName.AssociatedSelector as ElementTemplateSelector;
 
-        var toChildQueryFunctionCall = GenerateToChildQueryFunctionCall(templateSelector!.TargetChildElement);
+        var toChildQueryFunctionCall = GenerateToChildQueryFunctionCall(templateSelector!.TargetChildElement.Value);
         var updateTemplateChildFunctionCall = GenerateUpdateTemplateChildFunctionCall(targetElement, valueObjectName);
 
         return codeFormatting.Indent(updateByTemplateCall.Generate(elementTemplateObjectName.Name, elementTemplateObjectName.AppendToName, toChildQueryFunctionCall, updateTemplateChildFunctionCall));
     }
 
-    private string GenerateToChildQueryFunctionCall(FromTemplateElementSelector toChildSelector)
+    private string GenerateToChildQueryFunctionCall(string toChildQuerySelector)
     {
         const string templateContentAsParentName = "templateContent";
-
-        return $"({templateContentAsParentName}) => " +
-            toChildSelector.SelectionBy switch
-            {
-                FromTemplateElementSelection.Id => getElementByIdAsArrayCall.Generate(templateContentAsParentName, toChildSelector.Value),
-                FromTemplateElementSelection.QuerySelector => getElementsByQuerySelectorCall.Generate(templateContentAsParentName, toChildSelector.Value),
-                _ => throw new NotImplementedException($"{toChildSelector.SelectionBy} not implemented in {nameof(GenerateToChildQueryFunctionCall)}"),
-            };
+        return $"({templateContentAsParentName}) => {getElementsByQuerySelectorCall.Generate(templateContentAsParentName, toChildQuerySelector)}";
     }
 
     private string GenerateUpdateTemplateChildFunctionCall(TargetElement toChildTargetElement, string valueObjectName)

@@ -2,6 +2,6 @@
 {
     internal interface IGetStoredElementByIdAsArrayCall
     {
-        string Generate(string parentObjectName, string id, string elementObjectName);
+        string Generate(string id, string elementObjectName);
     }
 }

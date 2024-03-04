@@ -2,8 +2,8 @@
 {
     public interface IElementSelectorBuilder
     {
-        ElementSelector ById(string elementId);
+        ElementIdSelector ById(string elementId);
         IAppendToTemplateSelectorBuilder FromTemplate(string templateId);
-        ElementSelector ByQuerySelector(string querySelector);
+        ElementQuerySelector ByQuerySelector(string querySelector);
     }
 }
