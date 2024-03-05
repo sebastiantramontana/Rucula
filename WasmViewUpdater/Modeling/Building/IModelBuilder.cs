@@ -1,7 +1,13 @@
-﻿namespace Vitraux.Modeling.Building;
+﻿using Vitraux.Modeling.Building.Selectors.Elements;
 
-public interface IModelBuilder<TViewModel> : IModelBuilderData
+namespace Vitraux.Modeling.Building;
+
+public interface IModelBuilder<TViewModel, TSelector> : IModelBuilderData where TSelector : ElementSelector
 {
-    IElementBuilder<TViewModel> Value<TReturn>(Func<TViewModel, TReturn> func);
+    IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func);
     ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func);
+}
+
+public interface IModelBuilder<TViewModel> : IModelBuilder<TViewModel, ElementSelector>
+{
 }

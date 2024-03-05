@@ -7,11 +7,11 @@ internal class JsQueryFromTemplateElementsDeclaringOneTimeOnDemandGeneratorFacto
     IQueryElementsDeclaringOneTimeOnDemandByQuerySelectorJsCodeGenerator jsQueryElementsByQuerySelectorGenerator)
     : IJsQueryFromTemplateElementsDeclaringOneTimeOnDemandGeneratorFactory
 {
-    public IQueryElementsDeclaringJsCodeGenerator GetInstance(FromTemplateElementSelection selectionBy)
+    public IQueryElementsDeclaringJsCodeGenerator GetInstance(FromTemplateAppendToElementSelection selectionBy)
      => selectionBy switch
      {
-         FromTemplateElementSelection.Id => jsQueryElementsByIdGenerator,
-         FromTemplateElementSelection.QuerySelector => jsQueryElementsByQuerySelectorGenerator,
+         FromTemplateAppendToElementSelection.Id => jsQueryElementsByIdGenerator,
+         FromTemplateAppendToElementSelection.QuerySelector => jsQueryElementsByQuerySelectorGenerator,
          _ => throw new NotImplementedException($"IQueryElementsDeclaringJsCodeGenerator not implemented for FromTemplateElementSelection: {selectionBy}")
      };
 }

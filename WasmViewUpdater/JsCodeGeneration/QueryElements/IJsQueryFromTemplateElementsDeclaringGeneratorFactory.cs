@@ -4,6 +4,6 @@ namespace Vitraux.JsCodeGeneration.QueryElements
 {
     internal interface IJsQueryFromTemplateElementsDeclaringGeneratorFactory
     {
-        IQueryElementsDeclaringJsCodeGenerator GetInstance(FromTemplateElementSelection selectionBy);
+        IQueryElementsDeclaringJsCodeGenerator GetInstance(FromTemplateAppendToElementSelection selectionBy);
     }
 }

@@ -5,10 +5,10 @@ namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
     internal class ElementSelectorBuilder : IElementSelectorBuilder
     {
         public ElementIdSelector ById(string elementId)
-            => new ElementIdSelector(elementId);
+            => new(elementId);
 
         public ElementQuerySelector ByQuerySelector(string querySelector)
-            => new ElementQuerySelector(querySelector);
+            => new(querySelector);
 
         public IAppendToTemplateSelectorBuilder FromTemplate(string templateId)
             => new AppendToTemplateSelectorBuilder(templateId);

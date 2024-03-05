@@ -12,11 +12,11 @@ namespace Vitraux.Test.Modeling.Building
         [Test]
         public void BuildModelValuesTest()
         {
-            IModelBuilder<ViewModelTest> sut = new ModelBuilder<ViewModelTest>();
+            IModelBuilder<ViewModelTest> sut = new InitialModelBuilder<ViewModelTest>();
 
             var selector1 = new ElementIdSelector("test-id");
             var selector2 = new ElementQuerySelector(".test > p");
-            var selector3 = new ElementTemplateSelector("template-id", new FromTemplateElementIdSelector("element-to-append-id"));
+            var selector3 = new ElementTemplateSelector("template-id", new FromTemplateAppendToElementIdSelector("element-to-append-id"));
 
             var func1 = (ViewModelTest e) => e.Name;
             var func2 = (ViewModelTest e) => e.Age;

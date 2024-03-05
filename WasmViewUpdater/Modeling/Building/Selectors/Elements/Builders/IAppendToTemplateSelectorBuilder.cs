@@ -4,6 +4,6 @@ namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
 {
     public interface IAppendToTemplateSelectorBuilder
     {
-        IToChildTemplateSelectorBuilder AppendTo(FromTemplateElementSelector selector);
+        IToChildTemplateSelectorBuilder AppendTo(FromTemplateAppendToElementSelector selector);
     }
 }

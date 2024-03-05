@@ -10,9 +10,9 @@ namespace Vitraux.Modeling
     {
         private IElementSelectorBuilder _elementSelectorBuilder = default!;
         private IRowSelectorBuilder _rowSelectionBuilder = default!;
-        private IFromTemplateElementSelectorBuilder _fromTemplateElementSelectorBuilder = default!;
+        private IFromTemplateAppendToElementSelectorBuilder _fromTemplateElementSelectorBuilder = default!;
 
-        void IModelConfiguration<TViewModel>.Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder, IFromTemplateElementSelectorBuilder fromTemplateElementSelectorBuilder)
+        void IModelConfiguration<TViewModel>.Configure(IModelBuilder<TViewModel> modelBuilder, IElementSelectorBuilder elementSelectorBuilder, IRowSelectorBuilder rowSelectionBuilder, IFromTemplateAppendToElementSelectorBuilder fromTemplateElementSelectorBuilder)
         {
             _elementSelectorBuilder = elementSelectorBuilder;
             _rowSelectionBuilder = rowSelectionBuilder;
@@ -25,8 +25,8 @@ namespace Vitraux.Modeling
         protected ElementQuerySelector ByQuerySelector(string querySelector) => _elementSelectorBuilder.ByQuerySelector(querySelector);
         protected IAppendToTemplateSelectorBuilder FromTemplate(string templateId) => _elementSelectorBuilder.FromTemplate(templateId);
         protected RowSelector Template(string templateId) => _rowSelectionBuilder.FromTemplate(templateId);
-        protected FromTemplateElementSelector FromTemplateById(string id) => _fromTemplateElementSelectorBuilder.ById(id);
-        protected FromTemplateElementSelector FromTemplateByQuerySelector(string querySelector) => _fromTemplateElementSelectorBuilder.ByQuerySelector(querySelector);
+        protected FromTemplateAppendToElementSelector DocumentById(string id) => _fromTemplateElementSelectorBuilder.ById(id);
+        protected FromTemplateAppendToElementSelector DocumentByQuerySelector(string querySelector) => _fromTemplateElementSelectorBuilder.ByQuerySelector(querySelector);
         protected abstract void Configure(IModelBuilder<TViewModel> modelBuilder);
     }
 }

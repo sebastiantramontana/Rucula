@@ -9,6 +9,6 @@ namespace Vitraux.Modeling
         internal void Configure(IModelBuilder<TViewModel> modelBuilder,
                                 IElementSelectorBuilder elementSelectorBuilder,
                                 IRowSelectorBuilder rowSelectionBuilder,
-                                IFromTemplateElementSelectorBuilder fromTemplateElementSelectorBuilder);
+                                IFromTemplateAppendToElementSelectorBuilder fromTemplateElementSelectorBuilder);
     }
 }

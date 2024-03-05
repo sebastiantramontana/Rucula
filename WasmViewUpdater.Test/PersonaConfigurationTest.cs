@@ -3,7 +3,6 @@ using Vitraux.Modeling.Building;
 using Vitraux.Modeling.Building.Selectors.Elements;
 using Vitraux.Modeling.Building.Selectors.Elements.Builders;
 using Vitraux.Modeling.Building.Selectors.TableRows;
-using Vitraux.Modeling.Models;
 using Vitraux.Test.Example;
 using Vitraux.Test.Modeling;
 
@@ -16,10 +15,10 @@ public class PersonaConfigurationTest
     public void Test()
     {
         IModelConfiguration<Persona> sut = new PersonaConfiguration();
-        var modelBuilder = new ModelBuilder<Persona>();
+        var modelBuilder = new InitialModelBuilder<Persona>();
         var elementSelectorBuilder = new ElementSelectorBuilder();
         var rowSelectorBuilder = new RowSelectorBuilder();
-        var fromTemplateElementSelectorBuilder = new FromTemplateElementSelectorBuilder();
+        var fromTemplateElementSelectorBuilder = new FromTemplateAppendToElementSelectorBuilder();
 
         var value1 = TestHelper.CreateValueModel((Persona p) => p.Name,
         [
@@ -38,38 +37,35 @@ public class PersonaConfigurationTest
             (Persona p) => p.Mascotas,
             new ElementIdSelector("mascotas-table-id"),
             new TemplateRowSelector("row-template-id"),
-            new[]
-            {
+            [
                 TestHelper.CreateValueModel((Mascota m) => m.Name,
                 [
-                    TestHelper.CreateTargetElement(new ElementIdSelector("cell-mascota-nombre-id"),TestHelper.CreateContentElementPlace()),
-                    TestHelper.CreateTargetElement(new ElementIdSelector("anchor-cell-mascota-nombre-id"),TestHelper.CreateAttributeElementPlace("href")),
-                    TestHelper.CreateTargetElement(new ElementIdSelector("another-anchor-cell-mascota-nombre-id"),TestHelper.CreateAttributeElementPlace("href")),
+                    TestHelper.CreateTargetElement(new ElementQuerySelector(".cell-mascota-nombre"),TestHelper.CreateContentElementPlace()),
+                    TestHelper.CreateTargetElement(new ElementQuerySelector(".anchor-cell-mascota-nombre"),TestHelper.CreateAttributeElementPlace("href")),
+                    TestHelper.CreateTargetElement(new ElementQuerySelector(".another-anchor-cell-mascota-nombre"),TestHelper.CreateAttributeElementPlace("href")),
                 ]),
                 TestHelper.CreateValueModel((Mascota m) => m.IsDespulgado,
                 [
-                    TestHelper.CreateTargetElement(new ElementIdSelector("some-despulgado-id"),TestHelper.CreateAttributeElementPlace("data-despulgado")),
+                    TestHelper.CreateTargetElement(new ElementQuerySelector(".some-despulgado"),TestHelper.CreateAttributeElementPlace("data-despulgado")),
                 ])
-            },
-            new[]
-            {
+            ],
+            [
                 TestHelper.CreateCollectionTableModel(
                 (Mascota m) => m.Vacunas,
                 new ElementIdSelector("inner-table-vacunas"),
                 new TemplateRowSelector("row-template-vacunas-id"),
-                new[]
-                {
+                [
                     TestHelper.CreateValueModel((Vacuna v) => v.Name,
                     [
-                        TestHelper.CreateTargetElement(new ElementIdSelector("div-vacuna-id"),TestHelper.CreateContentElementPlace())
+                        TestHelper.CreateTargetElement(new ElementQuerySelector(".div-vacuna"),TestHelper.CreateContentElementPlace())
                     ]),
                     TestHelper.CreateValueModel((Vacuna v) => v.DateApplied,
                     [
-                        TestHelper.CreateTargetElement(new ElementIdSelector("span-vacuna-id"),TestHelper.CreateContentElementPlace())
+                        TestHelper.CreateTargetElement(new ElementQuerySelector(".span-vacuna"),TestHelper.CreateContentElementPlace())
                     ])
-                },
-                Enumerable.Empty<CollectionTableModel>())
-            });
+                ],
+                [])
+            ]);
 
         sut.Configure(modelBuilder, elementSelectorBuilder, rowSelectorBuilder, fromTemplateElementSelectorBuilder);
 

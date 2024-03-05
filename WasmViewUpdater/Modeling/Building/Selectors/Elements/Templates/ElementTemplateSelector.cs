@@ -2,13 +2,13 @@
 {
     internal record class ElementTemplateSelector : ElementSelector
     {
-        internal ElementTemplateSelector(string templateId, FromTemplateElementSelector elementToAppend)
+        internal ElementTemplateSelector(string templateId, FromTemplateAppendToElementSelector elementToAppend)
             : base(ElementSelection.Template, templateId)
         {
             ElementToAppend = elementToAppend;
         }
 
-        public FromTemplateElementSelector ElementToAppend { get; }
+        public FromTemplateAppendToElementSelector ElementToAppend { get; }
         public ElementQuerySelector TargetChildElement { get; set; } = default!;
     }
 }

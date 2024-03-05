@@ -1,8 +1,10 @@
-﻿namespace Vitraux.Modeling.Building.Elements
+﻿using Vitraux.Modeling.Building.Selectors.Elements;
+
+namespace Vitraux.Modeling.Building.Elements
 {
 
-    public interface IElementAttributeBuilder<TViewModel>
+    public interface IElementAttributeBuilder<TViewModel, TSelector> where TSelector : ElementSelector
     {
-        IFinalizableBuilder<TViewModel> ToAttribute(string attribute);
+        IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute);
     }
 }

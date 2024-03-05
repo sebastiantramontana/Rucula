@@ -24,12 +24,12 @@ namespace Vitraux.Test.Modeling.Building.Elements
             TestPlace(expectedPlace, sut => sut.ToAttribute("data-weight"));
         }
 
-        private void TestPlace(ElementPlace expectedPlace, Func<IELementContentBuilder<ViewModelTest>, IFinalizableBuilder<ViewModelTest>> actFunc)
+        private void TestPlace(ElementPlace expectedPlace, Func<IELementContentBuilder<ViewModelTest, ElementSelector>, IFinalizableBuilder<ViewModelTest, ElementSelector>> actFunc)
         {
             var valueModel = new ValueModel((ViewModelTest e) => e.Weigth);
-            var modelBuilder = new ModelBuilder<ViewModelTest>();
-            var valueModelBuilder = new ValueModelBuilder<ViewModelTest>(valueModel, modelBuilder);
-            var selector = new ElementTemplateSelector("template-id", new FromTemplateElementIdSelector("append-to-element-id"));
+            var modelBuilder = new InitialModelBuilder<ViewModelTest>();
+            var valueModelBuilder = new ValueModelBuilder<ViewModelTest, ElementSelector>(valueModel, modelBuilder);
+            var selector = new ElementTemplateSelector("template-id", new FromTemplateAppendToElementIdSelector("append-to-element-id"));
             var sut = valueModelBuilder.ToContainerElement(selector);
 
             var result = actFunc(sut);

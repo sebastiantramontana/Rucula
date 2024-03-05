@@ -3,8 +3,8 @@ using Vitraux.Modeling.Building.Selectors.Elements;
 
 namespace Vitraux.Modeling.Building;
 
-public interface IElementBuilder<TViewModel>
+public interface IElementBuilder<TViewModel, TSelector> where TSelector : ElementSelector
 {
-    IElementAttributeBuilder<TViewModel> ToElement(ElementSelector selector);
-    IELementContentBuilder<TViewModel> ToContainerElement(ElementSelector selector);
+    IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector);
+    IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector);
 }

@@ -11,7 +11,7 @@ namespace Vitraux.Modeling.Building.Selectors.Elements.Builders
             _templateId = templateId;
         }
 
-        public IToChildTemplateSelectorBuilder AppendTo(FromTemplateElementSelector appendToSelector)
+        public IToChildTemplateSelectorBuilder AppendTo(FromTemplateAppendToElementSelector appendToSelector)
         {
             var templateElementSelector = new ElementTemplateSelector(_templateId, appendToSelector);
             return new ToChildTemplateSelectorBuilder(templateElementSelector);

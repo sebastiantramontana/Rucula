@@ -20,9 +20,9 @@ internal class CollectionTableModelBuilder<TViewModel> : ITableBuilder<TViewMode
         return this;
     }
 
-    public IModelBuilder<TViewModel> RowsFrom(RowSelector rowSelection)
+    public IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)
     {
-        var modelBuilder = new ModelBuilder<TViewModel>();
+        var modelBuilder = new ModelBuilder<TViewModel, ElementQuerySelector>();
 
         _collectionTableModel.ModelBuilderData = modelBuilder;
         _collectionTableModel.RowSelector = rowSelection;

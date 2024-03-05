@@ -4,14 +4,14 @@ using Vitraux.Modeling.Models;
 
 namespace Vitraux.Modeling.Building;
 
-internal class FinalizableValueModelBuilder<TViewModel> : IFinalizableBuilder<TViewModel>
+internal class FinalizableValueModelBuilder<TViewModel, TSelector> : IFinalizableBuilder<TViewModel, TSelector> where TSelector : ElementSelector
 {
     private readonly ICollection<ValueModel> _values;
     private readonly ICollection<CollectionTableModel> _collections;
-    private readonly IModelBuilder<TViewModel> _innerModelBuilder;
-    private readonly IElementBuilder<TViewModel> _innerElementBuilder;
+    private readonly IModelBuilder<TViewModel, TSelector> _innerModelBuilder;
+    private readonly IElementBuilder<TViewModel, TSelector> _innerElementBuilder;
 
-    internal FinalizableValueModelBuilder(IModelBuilder<TViewModel> innerModelBuilder, IElementBuilder<TViewModel> innerElementBuilder)
+    internal FinalizableValueModelBuilder(IModelBuilder<TViewModel, TSelector> innerModelBuilder, IElementBuilder<TViewModel, TSelector> innerElementBuilder)
     {
         _values = innerModelBuilder.Values.ToList();
         _collections = innerModelBuilder.CollectionTables.ToList();
@@ -34,15 +34,15 @@ internal class FinalizableValueModelBuilder<TViewModel> : IFinalizableBuilder<TV
         set => _innerModelBuilder.TrackChanges = value;
     }
 
-    public IElementBuilder<TViewModel> Value<TReturn>(Func<TViewModel, TReturn> func)
+    public IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)
         => _innerModelBuilder.Value(func);
 
     public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)
         => _innerModelBuilder.Collection(func);
 
-    public IELementContentBuilder<TViewModel> ToContainerElement(ElementSelector selector)
+    public IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)
         => _innerElementBuilder.ToContainerElement(selector);
 
-    public IElementAttributeBuilder<TViewModel> ToElement(ElementSelector selector)
+    public IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)
         => _innerElementBuilder.ToElement(selector);
 }

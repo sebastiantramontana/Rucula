@@ -13,21 +13,21 @@ namespace Vitraux.Test.Modeling.Building
         [Test]
         public void ToContainerElementTest()
         {
-            TestAddingNewTargetValueToValueModel<Persona, IELementContentBuilder<Persona>>((sut) => sut.ToContainerElement);
+            TestAddingNewTargetValueToValueModel<Persona, IELementContentBuilder<Persona, ElementSelector>>((sut) => sut.ToContainerElement);
         }
 
         [Test]
         public void ToElementTest()
         {
-            TestAddingNewTargetValueToValueModel<Persona, IElementAttributeBuilder<Persona>>((sut) => sut.ToElement);
+            TestAddingNewTargetValueToValueModel<Persona, IElementAttributeBuilder<Persona, ElementSelector>>((sut) => sut.ToElement);
         }
 
-        private void TestAddingNewTargetValueToValueModel<TViewModel, TReturn>(Func<ValueModelBuilder<TViewModel>, Func<ElementSelector, TReturn>> getActFunc)
-            where TReturn : IElementAttributeBuilder<TViewModel>
+        private void TestAddingNewTargetValueToValueModel<TViewModel, TReturn>(Func<ValueModelBuilder<TViewModel, ElementSelector>, Func<ElementSelector, TReturn>> getActFunc)
+            where TReturn : IElementAttributeBuilder<TViewModel, ElementSelector>
         {
             var selector1 = new ElementIdSelector("test-id");
             var selector2 = new ElementQuerySelector(".test > p");
-            var selector3 = new ElementTemplateSelector("template-id", new FromTemplateElementIdSelector("element-to-append-id"));
+            var selector3 = new ElementTemplateSelector("template-id", new FromTemplateAppendToElementIdSelector("element-to-append-id"));
 
             var func1 = (ViewModelTest e) => e.Name;
 
@@ -44,8 +44,8 @@ namespace Vitraux.Test.Modeling.Building
                 TestHelper.CreateTargetElement(selector3, default!),
             ]);
 
-            var modelBuilder = new ModelBuilder<TViewModel>();
-            var sut = new ValueModelBuilder<TViewModel>(actualvalue, modelBuilder);
+            var modelBuilder = new InitialModelBuilder<TViewModel>();
+            var sut = new ValueModelBuilder<TViewModel, ElementSelector>(actualvalue, modelBuilder);
 
             var result = getActFunc(sut).Invoke(selector3);
 

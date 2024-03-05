@@ -1,16 +1,17 @@
-﻿using Vitraux.Modeling.Models;
+﻿using Vitraux.Modeling.Building.Selectors.Elements;
+using Vitraux.Modeling.Models;
 
 namespace Vitraux.Modeling.Building;
 
-internal class ModelBuilder<TViewModel> : IModelBuilder<TViewModel>
+internal class ModelBuilder<TViewModel, TSelector> : IModelBuilder<TViewModel, TSelector> where TSelector : ElementSelector
 {
     private readonly ICollection<ValueModel> _values;
     private readonly ICollection<CollectionTableModel> _collections;
 
     internal ModelBuilder()
     {
-        _values = new List<ValueModel>();
-        _collections = new List<CollectionTableModel>();
+        _values = [];
+        _collections = [];
     }
 
     IEnumerable<ValueModel> IModelBuilderData.Values => _values;
@@ -19,12 +20,12 @@ internal class ModelBuilder<TViewModel> : IModelBuilder<TViewModel>
     public QueryElementStrategy QueryElementStrategy { get; set; } = QueryElementStrategy.OneTimeOnInit;
     public bool TrackChanges { get; set; } = false;
 
-    public IElementBuilder<TViewModel> Value<TReturn>(Func<TViewModel, TReturn> func)
+    public IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)
     {
         var valueModel = new ValueModel(func);
         _values.Add(valueModel);
 
-        return new ValueModelBuilder<TViewModel>(valueModel, this);
+        return new ValueModelBuilder<TViewModel, TSelector>(valueModel, this);
     }
 
     public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)

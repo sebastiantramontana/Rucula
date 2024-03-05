@@ -82,8 +82,8 @@ namespace Vitraux.Test.JsCodeGeneration
             var sut = CreateSut(executorMock.Object);
             var personaConfig = new PersonaConfiguration() as IModelConfiguration<Persona>;
 
-            var modelBuilder = new ModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
-            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new FromTemplateElementSelectorBuilder());
+            var modelBuilder = new InitialModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
+            personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new FromTemplateAppendToElementSelectorBuilder());
 
             var actualCode = sut.GenerateJsCode(modelBuilder);
 
