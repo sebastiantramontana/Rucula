@@ -1,7 +1,6 @@
 ﻿using Vitraux.JsCodeGeneration.QueryElements.Strategies.Always;
 using Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnDemand;
 using Vitraux.JsCodeGeneration.QueryElements.Strategies.OneTimeOnInit;
-using Vitraux.Modeling.Building;
 
 namespace Vitraux.JsCodeGeneration.QueryElements;
 

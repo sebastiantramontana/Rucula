@@ -1,4 +1,4 @@
-﻿namespace Vitraux.Modeling.Building;
+﻿namespace Vitraux.JsCodeGeneration.QueryElements;
 
 public enum QueryElementStrategy
 {

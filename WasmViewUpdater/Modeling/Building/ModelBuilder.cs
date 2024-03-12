@@ -1,4 +1,5 @@
-﻿using Vitraux.Modeling.Building.Selectors.Elements;
+﻿using Vitraux.JsCodeGeneration.QueryElements;
+using Vitraux.Modeling.Building.Selectors.Elements;
 using Vitraux.Modeling.Models;
 
 namespace Vitraux.Modeling.Building;

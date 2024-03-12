@@ -1,6 +1,4 @@
-﻿using Vitraux.Modeling.Building;
-
-namespace Vitraux.JsCodeGeneration.QueryElements;
+﻿namespace Vitraux.JsCodeGeneration.QueryElements;
 
 internal interface IQueryElementsJsCodeGeneratorByStrategyFactory
 {
