@@ -1,0 +1,2690 @@
+﻿{
+  "Version": 2,
+  "Properties": {
+    "AreNodeDescriptionsVisible": "True"
+  },
+  "Nodes": [
+    {
+      "Id": "1",
+      "Name": "Vitraux.Modeling.Building",
+      "Stereotype": "Namespace",
+      "CreatedAtUtc": "2024-03-12T19:23:38.2256190Z",
+      "AbsoluteTopLeft": "-4103.2045,-1005.5325",
+      "HeaderContentSize": "3076.1643,27",
+      "PreferredHeaderSize": "232.3367,27",
+      "Tooltip": "namespace Vitraux.Modeling.Building\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "3076.1643,998.0088",
+      "ChildrenAreaTopLeft": "1,27",
+      "ChildrenAreaSize": "3074.1643,970.0088",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynNamespace",
+        "SymbolName": "Building",
+        "FullyQualifiedName": "Vitraux.Modeling.Building",
+        "FullName": "namespace Vitraux.Modeling.Building",
+        "Symbols": [
+          "{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode",
+        "NamespaceLevel": 3
+      }
+    },
+    {
+      "Id": "2",
+      "ParentId": "1",
+      "Name": "CollectionTableModelBuilder<TViewModel>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3331621Z",
+      "AbsoluteTopLeft": "-2939.9838,-148.5238",
+      "HeaderContentSize": "301.3067,50",
+      "PreferredHeaderSize": "261.9867,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.CollectionTableModelBuilder<TViewModel>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "301.3067,120",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "299.3067,69",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "CollectionTableModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.CollectionTableModelBuilder<TViewModel>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "70",
+      "ParentId": "2",
+      "Name": "IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:28.6076837Z",
+      "AbsoluteTopLeft": "-2938.9838,-98.5238",
+      "HeaderContentSize": "299.3067,23",
+      "PreferredHeaderSize": "299.3067,23",
+      "Tooltip": "public IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)",
+      "NodeTotalSize": "299.3067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "RowsFrom",
+        "FullName": "public IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"RowsFrom(Vitraux.Modeling.Building.Selectors.TableRows.RowSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "71",
+      "ParentId": "2",
+      "Name": "ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:30.1856589Z",
+      "AbsoluteTopLeft": "-2938.9838,-75.5238",
+      "HeaderContentSize": "299.3067,23",
+      "PreferredHeaderSize": "294.4233,23",
+      "Tooltip": "public ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)",
+      "NodeTotalSize": "299.3067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToTable",
+        "FullName": "public ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToTable(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "72",
+      "ParentId": "2",
+      "Name": "CollectionTableModel _collectionTableModel",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:28:37.8168500Z",
+      "AbsoluteTopLeft": "-2938.9838,-52.5238",
+      "HeaderContentSize": "299.3067,23",
+      "PreferredHeaderSize": "264.8333,23",
+      "Tooltip": "private readonly CollectionTableModel _collectionTableModel",
+      "NodeTotalSize": "299.3067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_collectionTableModel",
+        "FullName": "private readonly CollectionTableModel _collectionTableModel",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_collectionTableModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "3",
+      "ParentId": "1",
+      "Name": "FinalizableValueModelBuilder<TViewModel, TSelector>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3466769Z",
+      "AbsoluteTopLeft": "-2284.5941,-471.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "298.74,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.FinalizableValueModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,258",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,207",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "FinalizableValueModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.FinalizableValueModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "86",
+      "ParentId": "3",
+      "Name": "ICollection<CollectionTableModel> _collections",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:32:22.9992732Z",
+      "AbsoluteTopLeft": "-2283.5941,-421.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "281.0867,23",
+      "Tooltip": "private readonly ICollection<CollectionTableModel> _collections",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_collections",
+        "FullName": "private readonly ICollection<CollectionTableModel> _collections",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_collections\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "87",
+      "ParentId": "3",
+      "Name": "IElementBuilder<TViewModel, TSelector> _innerElementBuilder",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:32:23.4398153Z",
+      "AbsoluteTopLeft": "-2283.5941,-398.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "299.8967,23",
+      "Tooltip": "private readonly IElementBuilder<TViewModel, TSelector> _innerElementBuilder",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_innerElementBuilder",
+        "FullName": "private readonly IElementBuilder<TViewModel, TSelector> _innerElementBuilder",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_innerElementBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "88",
+      "ParentId": "3",
+      "Name": "IModelBuilder<TViewModel, TSelector> _innerModelBuilder",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:32:23.9707519Z",
+      "AbsoluteTopLeft": "-2283.5941,-375.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "295.9367,23",
+      "Tooltip": "private readonly IModelBuilder<TViewModel, TSelector> _innerModelBuilder",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_innerModelBuilder",
+        "FullName": "private readonly IModelBuilder<TViewModel, TSelector> _innerModelBuilder",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_innerModelBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "89",
+      "ParentId": "3",
+      "Name": "ICollection<ValueModel> _values",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:32:24.4236852Z",
+      "AbsoluteTopLeft": "-2283.5941,-352.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "206.3967,23",
+      "Tooltip": "private readonly ICollection<ValueModel> _values",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_values",
+        "FullName": "private readonly ICollection<ValueModel> _values",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_values\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "90",
+      "ParentId": "3",
+      "Name": "QueryElementStrategy QueryElementStrategy",
+      "Stereotype": "Property",
+      "CreatedAtUtc": "2024-03-12T21:32:24.8586091Z",
+      "AbsoluteTopLeft": "-2283.5941,-329.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "270.02,23",
+      "Tooltip": "public QueryElementStrategy QueryElementStrategy { get; set; }",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "QueryElementStrategy",
+        "FullName": "public QueryElementStrategy QueryElementStrategy { get; set; }",
+        "Symbols": [
+          "{\"K\":\"Property\",\"N\":\"QueryElementStrategy\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "91",
+      "ParentId": "3",
+      "Name": "bool TrackChanges",
+      "Stereotype": "Property",
+      "CreatedAtUtc": "2024-03-12T21:32:25.2392660Z",
+      "AbsoluteTopLeft": "-2283.5941,-306.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "129.89,23",
+      "Tooltip": "public bool TrackChanges { get; set; }",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "TrackChanges",
+        "FullName": "public bool TrackChanges { get; set; }",
+        "Symbols": [
+          "{\"K\":\"Property\",\"N\":\"TrackChanges\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "92",
+      "ParentId": "3",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:32:25.4293503Z",
+      "AbsoluteTopLeft": "-2283.5941,-283.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "93",
+      "ParentId": "3",
+      "Name": "IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:32:25.5685580Z",
+      "AbsoluteTopLeft": "-2283.5941,-260.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "295.6067,23",
+      "Tooltip": "public IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContainerElement",
+        "FullName": "public IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContainerElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "94",
+      "ParentId": "3",
+      "Name": "IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:32:25.7404675Z",
+      "AbsoluteTopLeft": "-2283.5941,-237.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "297.5533,23",
+      "Tooltip": "public IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToElement",
+        "FullName": "public IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "4",
+      "ParentId": "1",
+      "Name": "IElementBuilder<TViewModel, TSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3486748Z",
+      "AbsoluteTopLeft": "-2005.2102,-778.5325",
+      "HeaderContentSize": "299.5533,50",
+      "PreferredHeaderSize": "245,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IElementBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "299.5533,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "297.5533,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IElementBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IElementBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "56",
+      "ParentId": "4",
+      "Name": "IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:23:32.4312309Z",
+      "AbsoluteTopLeft": "-2004.2102,-728.5325",
+      "HeaderContentSize": "297.5533,23",
+      "PreferredHeaderSize": "295.6067,23",
+      "Tooltip": "IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+      "NodeTotalSize": "297.5533,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContainerElement",
+        "FullName": "IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContainerElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "57",
+      "ParentId": "4",
+      "Name": "IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:23:34.4441834Z",
+      "AbsoluteTopLeft": "-2004.2102,-705.5325",
+      "HeaderContentSize": "297.5533,23",
+      "PreferredHeaderSize": "297.5533,23",
+      "Tooltip": "IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+      "NodeTotalSize": "297.5533,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToElement",
+        "FullName": "IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "5",
+      "ParentId": "1",
+      "Name": "IFinalizableBuilder<TViewModel, TSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3511930Z",
+      "AbsoluteTopLeft": "-2320.4808,-601.5325",
+      "HeaderContentSize": "261.8233,50",
+      "PreferredHeaderSize": "261.8233,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IFinalizableBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "261.8233,50",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IFinalizableBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IFinalizableBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IFinalizableBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "6",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel, TSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3526953Z",
+      "AbsoluteTopLeft": "-2337.9735,-828.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "234.2467,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "43",
+      "ParentId": "6",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:19:58.9072993Z",
+      "AbsoluteTopLeft": "-2336.9735,-778.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "44",
+      "ParentId": "6",
+      "Name": "IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:20:01.6623294Z",
+      "AbsoluteTopLeft": "-2336.9735,-755.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "298.7733,23",
+      "Tooltip": "IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "7",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3537015Z",
+      "AbsoluteTopLeft": "-3285.4458,-576.6",
+      "HeaderContentSize": "176.1667,50",
+      "PreferredHeaderSize": "176.1667,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "176.1667,50",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "8",
+      "ParentId": "1",
+      "Name": "IModelBuilderData",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3547002Z",
+      "AbsoluteTopLeft": "-3137.2502,-958.5325",
+      "HeaderContentSize": "117.7967,50",
+      "PreferredHeaderSize": "117.7967,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilderData\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "117.7967,50",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilderData",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilderData",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "9",
+      "ParentId": "1",
+      "Name": "InitialModelBuilder<TViewModel>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3547002Z",
+      "AbsoluteTopLeft": "-3166.1026,-382.5325",
+      "HeaderContentSize": "208.02,50",
+      "PreferredHeaderSize": "208.02,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.InitialModelBuilder<TViewModel>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "208.02,50",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "InitialModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.InitialModelBuilder<TViewModel>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "10",
+      "ParentId": "1",
+      "Name": "ITableBuilder<TViewModel>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3557123Z",
+      "AbsoluteTopLeft": "-3101.9747,-302.5238",
+      "HeaderContentSize": "296.4233,50",
+      "PreferredHeaderSize": "172.9833,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.ITableBuilder<TViewModel>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "296.4233,74",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "294.4233,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "ITableBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.ITableBuilder<TViewModel>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"ITableBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "69",
+      "ParentId": "10",
+      "Name": "ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:22.9560936Z",
+      "AbsoluteTopLeft": "-3100.9747,-252.5238",
+      "HeaderContentSize": "294.4233,23",
+      "PreferredHeaderSize": "294.4233,23",
+      "Tooltip": "ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)",
+      "NodeTotalSize": "294.4233,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToTable",
+        "FullName": "ITableRowsBuilder<TViewModel> ToTable(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToTable(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "11",
+      "ParentId": "1",
+      "Name": "ModelBuilder<TViewModel, TSelector>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3567093Z",
+      "AbsoluteTopLeft": "-2028.6575,-651.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "234.8133,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.ModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "ModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.ModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "59",
+      "ParentId": "11",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:23:46.9527491Z",
+      "AbsoluteTopLeft": "-2027.6575,-601.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "60",
+      "ParentId": "11",
+      "Name": "IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:23:48.7352921Z",
+      "AbsoluteTopLeft": "-2027.6575,-578.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "298.7733,23",
+      "Tooltip": "public IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "public IElementBuilder<TViewModel, TSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "12",
+      "ParentId": "1",
+      "Name": "ValueModelBuilder<TViewModel, TSelector>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T19:23:38.3567093Z",
+      "AbsoluteTopLeft": "-1864.9729,-524.5325",
+      "HeaderContentSize": "300.72,50",
+      "PreferredHeaderSize": "265.5333,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.ValueModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "300.72,258",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "298.72,207",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "ValueModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.ValueModelBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "61",
+      "ParentId": "12",
+      "Name": "IELementContentBuilder<TViewModel, TSelector> AddNewTargetElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:35.9492182Z",
+      "AbsoluteTopLeft": "-1863.9729,-474.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "295.6067,23",
+      "Tooltip": "private IELementContentBuilder<TViewModel, TSelector> AddNewTargetElement(TSelector selector)",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "AddNewTargetElement",
+        "FullName": "private IELementContentBuilder<TViewModel, TSelector> AddNewTargetElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"AddNewTargetElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "62",
+      "ParentId": "12",
+      "Name": "IFinalizableBuilder<TViewModel, TSelector> CreateFinalizableBuilder(ElementPlace elementPlace)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:37.8550545Z",
+      "AbsoluteTopLeft": "-1863.9729,-451.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "298.42,23",
+      "Tooltip": "private IFinalizableBuilder<TViewModel, TSelector> CreateFinalizableBuilder(ElementPlace elementPlace)",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "CreateFinalizableBuilder",
+        "FullName": "private IFinalizableBuilder<TViewModel, TSelector> CreateFinalizableBuilder(ElementPlace elementPlace)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"CreateFinalizableBuilder(Vitraux.Modeling.Models.ElementPlace)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "63",
+      "ParentId": "12",
+      "Name": "IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:38.6022254Z",
+      "AbsoluteTopLeft": "-1863.9729,-428.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "298.3867,23",
+      "Tooltip": "public IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute)",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToAttribute",
+        "FullName": "public IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToAttribute(string)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "64",
+      "ParentId": "12",
+      "Name": "IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:39.1877292Z",
+      "AbsoluteTopLeft": "-1863.9729,-405.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "295.6067,23",
+      "Tooltip": "public IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContainerElement",
+        "FullName": "public IELementContentBuilder<TViewModel, TSelector> ToContainerElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContainerElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "65",
+      "ParentId": "12",
+      "Name": "IFinalizableBuilder<TViewModel, TSelector> ToContent()",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:39.8045524Z",
+      "AbsoluteTopLeft": "-1863.9729,-382.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "294.01,23",
+      "Tooltip": "public IFinalizableBuilder<TViewModel, TSelector> ToContent()",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContent",
+        "FullName": "public IFinalizableBuilder<TViewModel, TSelector> ToContent()",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContent()\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "82",
+      "ParentId": "12",
+      "Name": "TargetElement _currentTargetElement",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:31:23.0561283Z",
+      "AbsoluteTopLeft": "-1863.9729,-359.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "226.7867,23",
+      "Tooltip": "private TargetElement _currentTargetElement",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_currentTargetElement",
+        "FullName": "private TargetElement _currentTargetElement",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_currentTargetElement\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "83",
+      "ParentId": "12",
+      "Name": "IModelBuilder<TViewModel, TSelector> _modelBuilder",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:31:24.0632168Z",
+      "AbsoluteTopLeft": "-1863.9729,-336.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "298.72,23",
+      "Tooltip": "private readonly IModelBuilder<TViewModel, TSelector> _modelBuilder",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_modelBuilder",
+        "FullName": "private readonly IModelBuilder<TViewModel, TSelector> _modelBuilder",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_modelBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "84",
+      "ParentId": "12",
+      "Name": "ValueModel _valueModel",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:31:27.1883900Z",
+      "AbsoluteTopLeft": "-1863.9729,-313.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "162.86,23",
+      "Tooltip": "private readonly ValueModel _valueModel",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_valueModel",
+        "FullName": "private readonly ValueModel _valueModel",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_valueModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "85",
+      "ParentId": "12",
+      "Name": "IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:31:31.7344748Z",
+      "AbsoluteTopLeft": "-1863.9729,-290.5325",
+      "HeaderContentSize": "298.72,23",
+      "PreferredHeaderSize": "297.5533,23",
+      "Tooltip": "public IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+      "NodeTotalSize": "298.72,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToElement",
+        "FullName": "public IElementAttributeBuilder<TViewModel, TSelector> ToElement(TSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToElement(TSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "17",
+      "ParentId": "1",
+      "Name": "IELementContentBuilder<TViewModel, TSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T20:18:50.2888991Z",
+      "AbsoluteTopLeft": "-1675.6568,-755.5325",
+      "HeaderContentSize": "296.01,50",
+      "PreferredHeaderSize": "291.45,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.Elements.IELementContentBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "296.01,74",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "294.01,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IELementContentBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.Elements.IELementContentBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "58",
+      "ParentId": "17",
+      "Name": "IFinalizableBuilder<TViewModel, TSelector> ToContent()",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:23:36.9693575Z",
+      "AbsoluteTopLeft": "-1674.6568,-705.5325",
+      "HeaderContentSize": "294.01,23",
+      "PreferredHeaderSize": "294.01,23",
+      "Tooltip": "IFinalizableBuilder<TViewModel, TSelector> ToContent()",
+      "NodeTotalSize": "294.01,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContent",
+        "FullName": "IFinalizableBuilder<TViewModel, TSelector> ToContent()",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContent()\",\"C\":{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "18",
+      "ParentId": "1",
+      "Name": "IElementAttributeBuilder<TViewModel, TSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T20:19:02.1978730Z",
+      "AbsoluteTopLeft": "-1680.4291,-909.5325",
+      "HeaderContentSize": "300.3867,50",
+      "PreferredHeaderSize": "296.0767,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.Elements.IElementAttributeBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "300.3867,74",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "298.3867,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IElementAttributeBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.Elements.IElementAttributeBuilder<TViewModel, TSelector> where TSelector : Vitraux.Modeling.Building.Selectors.Elements.ElementSelector",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "55",
+      "ParentId": "18",
+      "Name": "IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:23:14.0808952Z",
+      "AbsoluteTopLeft": "-1679.4291,-859.5325",
+      "HeaderContentSize": "298.3867,23",
+      "PreferredHeaderSize": "298.3867,23",
+      "Tooltip": "IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute)",
+      "NodeTotalSize": "298.3867,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToAttribute",
+        "FullName": "IFinalizableBuilder<TViewModel, TSelector> ToAttribute(string attribute)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToAttribute(string)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "19",
+      "ParentId": "1",
+      "Name": "ModelBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T20:19:13.5625451Z",
+      "AbsoluteTopLeft": "-3079.2791,-651.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "273.49,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.ModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,189",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,138",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "ModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.ModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "51",
+      "ParentId": "19",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:21:20.7691704Z",
+      "AbsoluteTopLeft": "-3078.2791,-601.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "public ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "52",
+      "ParentId": "19",
+      "Name": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:21:23.4954883Z",
+      "AbsoluteTopLeft": "-3078.2791,-578.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "295.2933,23",
+      "Tooltip": "public IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "public IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "95",
+      "ParentId": "19",
+      "Name": "ICollection<CollectionTableModel> _collections",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:32:33.3326860Z",
+      "AbsoluteTopLeft": "-3078.2791,-555.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "281.0867,23",
+      "Tooltip": "private readonly ICollection<CollectionTableModel> _collections",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_collections",
+        "FullName": "private readonly ICollection<CollectionTableModel> _collections",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_collections\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "96",
+      "ParentId": "19",
+      "Name": "ICollection<ValueModel> _values",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:32:37.7510261Z",
+      "AbsoluteTopLeft": "-3078.2791,-532.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "206.3967,23",
+      "Tooltip": "private readonly ICollection<ValueModel> _values",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_values",
+        "FullName": "private readonly ICollection<ValueModel> _values",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_values\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "97",
+      "ParentId": "19",
+      "Name": "QueryElementStrategy QueryElementStrategy",
+      "Stereotype": "Property",
+      "CreatedAtUtc": "2024-03-12T21:32:38.8261496Z",
+      "AbsoluteTopLeft": "-3078.2791,-509.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "270.02,23",
+      "Tooltip": "public QueryElementStrategy QueryElementStrategy { get; set; }",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "QueryElementStrategy",
+        "FullName": "public QueryElementStrategy QueryElementStrategy { get; set; }",
+        "Symbols": [
+          "{\"K\":\"Property\",\"N\":\"QueryElementStrategy\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "98",
+      "ParentId": "19",
+      "Name": "bool TrackChanges",
+      "Stereotype": "Property",
+      "CreatedAtUtc": "2024-03-12T21:32:39.7180221Z",
+      "AbsoluteTopLeft": "-3078.2791,-486.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "129.89,23",
+      "Tooltip": "public bool TrackChanges { get; set; }",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "TrackChanges",
+        "FullName": "public bool TrackChanges { get; set; }",
+        "Symbols": [
+          "{\"K\":\"Property\",\"N\":\"TrackChanges\",\"C\":{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "20",
+      "ParentId": "1",
+      "Name": "ITableRowsBuilder<TViewModel>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T20:19:37.6271587Z",
+      "AbsoluteTopLeft": "-2775.5513,-302.5238",
+      "HeaderContentSize": "301.3067,50",
+      "PreferredHeaderSize": "202.3733,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.Elements.ITableRowsBuilder<TViewModel>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "301.3067,74",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "299.3067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "ITableRowsBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.Elements.ITableRowsBuilder<TViewModel>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "28",
+      "ParentId": "20",
+      "Name": "IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T20:43:40.5036062Z",
+      "AbsoluteTopLeft": "-2774.5513,-252.5238",
+      "HeaderContentSize": "299.3067,23",
+      "PreferredHeaderSize": "299.3067,23",
+      "Tooltip": "IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)",
+      "NodeTotalSize": "299.3067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "RowsFrom",
+        "FullName": "IModelBuilder<TViewModel, ElementQuerySelector> RowsFrom(RowSelector rowSelection)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"RowsFrom(Vitraux.Modeling.Building.Selectors.TableRows.RowSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "29",
+      "ParentId": "1",
+      "Name": "ValueModelBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Class",
+      "CreatedAtUtc": "2024-03-12T20:44:38.3572394Z",
+      "AbsoluteTopLeft": "-1527.8675,-474.5323",
+      "HeaderContentSize": "301.6067,50",
+      "PreferredHeaderSize": "294.56,43.4",
+      "Tooltip": "class Vitraux.Modeling.Building.ValueModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "301.6067,258",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "299.6067,207",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "ValueModelBuilder",
+        "FullName": "class Vitraux.Modeling.Building.ValueModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Internal",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "73",
+      "ParentId": "29",
+      "Name": "TargetElement _currentTargetElement",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:28:51.8148437Z",
+      "AbsoluteTopLeft": "-1526.8675,-424.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "226.7867,23",
+      "Tooltip": "private TargetElement _currentTargetElement",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_currentTargetElement",
+        "FullName": "private TargetElement _currentTargetElement",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_currentTargetElement\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "74",
+      "ParentId": "29",
+      "Name": "IModelBuilder<TViewModel, ElementSelector> _modelBuilder",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:28:52.9169662Z",
+      "AbsoluteTopLeft": "-1526.8675,-401.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "294.8933,23",
+      "Tooltip": "private readonly IModelBuilder<TViewModel, ElementSelector> _modelBuilder",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_modelBuilder",
+        "FullName": "private readonly IModelBuilder<TViewModel, ElementSelector> _modelBuilder",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_modelBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "75",
+      "ParentId": "29",
+      "Name": "ValueModel _valueModel",
+      "Stereotype": "Field",
+      "CreatedAtUtc": "2024-03-12T21:28:53.3964309Z",
+      "AbsoluteTopLeft": "-1526.8675,-378.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "162.86,23",
+      "Tooltip": "private readonly ValueModel _valueModel",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "_valueModel",
+        "FullName": "private readonly ValueModel _valueModel",
+        "Symbols": [
+          "{\"K\":\"Field\",\"N\":\"_valueModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "76",
+      "ParentId": "29",
+      "Name": "IELementContentBuilder<TViewModel, ElementSelector> AddNewTargetElement(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:53.6071190Z",
+      "AbsoluteTopLeft": "-1526.8675,-355.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "296.0033,23",
+      "Tooltip": "private IELementContentBuilder<TViewModel, ElementSelector> AddNewTargetElement(ElementSelector selector)",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "AddNewTargetElement",
+        "FullName": "private IELementContentBuilder<TViewModel, ElementSelector> AddNewTargetElement(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"AddNewTargetElement(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "77",
+      "ParentId": "29",
+      "Name": "IFinalizableBuilder<TViewModel, ElementSelector> CreateFinalizableBuilder(ElementPlace elementPlace)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:54.5046730Z",
+      "AbsoluteTopLeft": "-1526.8675,-332.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "299.6067,23",
+      "Tooltip": "private IFinalizableBuilder<TViewModel, ElementSelector> CreateFinalizableBuilder(ElementPlace elementPlace)",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "CreateFinalizableBuilder",
+        "FullName": "private IFinalizableBuilder<TViewModel, ElementSelector> CreateFinalizableBuilder(ElementPlace elementPlace)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"CreateFinalizableBuilder(Vitraux.Modeling.Models.ElementPlace)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Private",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "78",
+      "ParentId": "29",
+      "Name": "IFinalizableBuilder<TViewModel, ElementSelector> ToAttribute(string attribute)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:54.9594544Z",
+      "AbsoluteTopLeft": "-1526.8675,-309.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "299.6067,23",
+      "Tooltip": "public IFinalizableBuilder<TViewModel, ElementSelector> ToAttribute(string attribute)",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToAttribute",
+        "FullName": "public IFinalizableBuilder<TViewModel, ElementSelector> ToAttribute(string attribute)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToAttribute(string)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "79",
+      "ParentId": "29",
+      "Name": "IFinalizableBuilder<TViewModel, ElementSelector> ToContent()",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:55.7815958Z",
+      "AbsoluteTopLeft": "-1526.8675,-286.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "299.6067,23",
+      "Tooltip": "public IFinalizableBuilder<TViewModel, ElementSelector> ToContent()",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContent",
+        "FullName": "public IFinalizableBuilder<TViewModel, ElementSelector> ToContent()",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContent()\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "80",
+      "ParentId": "29",
+      "Name": "IELementContentBuilder<TViewModel, ElementSelector> ToContainerElement(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:56.4207780Z",
+      "AbsoluteTopLeft": "-1526.8675,-263.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "296.0033,23",
+      "Tooltip": "public IELementContentBuilder<TViewModel, ElementSelector> ToContainerElement(ElementSelector selector)",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContainerElement",
+        "FullName": "public IELementContentBuilder<TViewModel, ElementSelector> ToContainerElement(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContainerElement(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "81",
+      "ParentId": "29",
+      "Name": "IElementAttributeBuilder<TViewModel, ElementSelector> ToElement(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:28:56.9355848Z",
+      "AbsoluteTopLeft": "-1526.8675,-240.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "297.95,23",
+      "Tooltip": "public IElementAttributeBuilder<TViewModel, ElementSelector> ToElement(ElementSelector selector)",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToElement",
+        "FullName": "public IElementAttributeBuilder<TViewModel, ElementSelector> ToElement(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToElement(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "30",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T20:57:14.9432331Z",
+      "AbsoluteTopLeft": "-3416.6778,-804.1727",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "272.46,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "41",
+      "ParentId": "30",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:18:41.2573472Z",
+      "AbsoluteTopLeft": "-3415.6778,-754.1727",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "42",
+      "ParentId": "30",
+      "Name": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:18:43.3876360Z",
+      "AbsoluteTopLeft": "-3415.6778,-731.1727",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "295.2933,23",
+      "Tooltip": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "31",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T20:57:43.3919477Z",
+      "AbsoluteTopLeft": "-3083.9145,-828.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "272.46,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "49",
+      "ParentId": "31",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:21:01.9528636Z",
+      "AbsoluteTopLeft": "-3082.9145,-778.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "50",
+      "ParentId": "31",
+      "Name": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:21:04.1316208Z",
+      "AbsoluteTopLeft": "-3082.9145,-755.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "295.2933,23",
+      "Tooltip": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "32",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T21:12:39.3418694Z",
+      "AbsoluteTopLeft": "-2751.1511,-828.5325",
+      "HeaderContentSize": "383.1777,50",
+      "PreferredHeaderSize": "272.46,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "383.1777,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "381.1777,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "53",
+      "ParentId": "32",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:21:44.3027909Z",
+      "AbsoluteTopLeft": "-2750.1511,-778.5325",
+      "HeaderContentSize": "381.1777,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "381.1777,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "54",
+      "ParentId": "32",
+      "Name": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:21:47.2204411Z",
+      "AbsoluteTopLeft": "-2750.1511,-755.5325",
+      "HeaderContentSize": "381.1777,23",
+      "PreferredHeaderSize": "295.2933,23",
+      "Tooltip": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "381.1777,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "IElementBuilder<TViewModel, ElementSelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "34",
+      "ParentId": "1",
+      "Name": "IElementBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T21:15:06.5781980Z",
+      "AbsoluteTopLeft": "-1682.6074,-651.5325",
+      "HeaderContentSize": "299.95,50",
+      "PreferredHeaderSize": "283.2133,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IElementBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "299.95,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "297.95,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IElementBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IElementBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "67",
+      "ParentId": "34",
+      "Name": "IELementContentBuilder<TViewModel, ElementSelector> ToContainerElement(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:45.8652688Z",
+      "AbsoluteTopLeft": "-1681.6074,-601.5325",
+      "HeaderContentSize": "297.95,23",
+      "PreferredHeaderSize": "296.0033,23",
+      "Tooltip": "IELementContentBuilder<TViewModel, ElementSelector> ToContainerElement(ElementSelector selector)",
+      "NodeTotalSize": "297.95,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContainerElement",
+        "FullName": "IELementContentBuilder<TViewModel, ElementSelector> ToContainerElement(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContainerElement(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "68",
+      "ParentId": "34",
+      "Name": "IElementAttributeBuilder<TViewModel, ElementSelector> ToElement(ElementSelector selector)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:27:47.4557252Z",
+      "AbsoluteTopLeft": "-1681.6074,-578.5325",
+      "HeaderContentSize": "297.95,23",
+      "PreferredHeaderSize": "297.95,23",
+      "Tooltip": "IElementAttributeBuilder<TViewModel, ElementSelector> ToElement(ElementSelector selector)",
+      "NodeTotalSize": "297.95,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToElement",
+        "FullName": "IElementAttributeBuilder<TViewModel, ElementSelector> ToElement(ElementSelector selector)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToElement(Vitraux.Modeling.Building.Selectors.Elements.ElementSelector)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "35",
+      "ParentId": "1",
+      "Name": "IELementContentBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T21:15:09.3565411Z",
+      "AbsoluteTopLeft": "-1352.6574,-628.5323",
+      "HeaderContentSize": "301.6067,50",
+      "PreferredHeaderSize": "300.34,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.Elements.IELementContentBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "301.6067,74",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IELementContentBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.Elements.IELementContentBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "38",
+      "ParentId": "35",
+      "Name": "IFinalizableBuilder<TViewModel, ElementSelector> ToContent()",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:16:47.2754163Z",
+      "AbsoluteTopLeft": "-1351.6574,-578.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "299.6067,23",
+      "Tooltip": "IFinalizableBuilder<TViewModel, ElementSelector> ToContent()",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToContent",
+        "FullName": "IFinalizableBuilder<TViewModel, ElementSelector> ToContent()",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToContent()\",\"C\":{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "36",
+      "ParentId": "1",
+      "Name": "IElementAttributeBuilder<TViewModel, ElementSelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T21:16:10.9181165Z",
+      "AbsoluteTopLeft": "-1349.6468,-782.5323",
+      "HeaderContentSize": "301.6067,50",
+      "PreferredHeaderSize": "298.7267,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.Elements.IElementAttributeBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "301.6067,74",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IElementAttributeBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.Elements.IElementAttributeBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementSelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "37",
+      "ParentId": "36",
+      "Name": "IFinalizableBuilder<TViewModel, ElementSelector> ToAttribute(string attribute)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:16:28.8646281Z",
+      "AbsoluteTopLeft": "-1348.6468,-732.5323",
+      "HeaderContentSize": "299.6067,23",
+      "PreferredHeaderSize": "299.6067,23",
+      "Tooltip": "IFinalizableBuilder<TViewModel, ElementSelector> ToAttribute(string attribute)",
+      "NodeTotalSize": "299.6067,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "ToAttribute",
+        "FullName": "IFinalizableBuilder<TViewModel, ElementSelector> ToAttribute(string attribute)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"ToAttribute(string)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "39",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel, ElementQuerySelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T21:17:20.7738482Z",
+      "AbsoluteTopLeft": "-4082.2045,-828.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "297.01,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementQuerySelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementQuerySelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "45",
+      "ParentId": "39",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:20:49.2387887Z",
+      "AbsoluteTopLeft": "-4081.2045,-778.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "46",
+      "ParentId": "39",
+      "Name": "IElementBuilder<TViewModel, ElementQuerySelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:20:51.5159521Z",
+      "AbsoluteTopLeft": "-4081.2045,-755.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "298.3633,23",
+      "Tooltip": "IElementBuilder<TViewModel, ElementQuerySelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "IElementBuilder<TViewModel, ElementQuerySelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "40",
+      "ParentId": "1",
+      "Name": "IModelBuilder<TViewModel, ElementQuerySelector>",
+      "Stereotype": "Interface",
+      "CreatedAtUtc": "2024-03-12T21:17:35.3896605Z",
+      "AbsoluteTopLeft": "-3749.4411,-828.5325",
+      "HeaderContentSize": "302.7633,50",
+      "PreferredHeaderSize": "297.01,39.4",
+      "Tooltip": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementQuerySelector>\r\nassembly: Vitraux, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "NodeTotalSize": "302.7633,97",
+      "ChildrenAreaTopLeft": "1,50",
+      "ChildrenAreaSize": "300.7633,46",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "RoslynType",
+        "SymbolName": "IModelBuilder",
+        "FullName": "interface Vitraux.Modeling.Building.IModelBuilder<TViewModel, Vitraux.Modeling.Building.Selectors.Elements.ElementQuerySelector>",
+        "Symbols": [
+          "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "47",
+      "ParentId": "40",
+      "Name": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:20:54.2153299Z",
+      "AbsoluteTopLeft": "-3748.4411,-778.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "300.7633,23",
+      "Tooltip": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Collection",
+        "FullName": "ITableBuilder<TReturn> Collection<TReturn>(Func<TViewModel, IEnumerable<TReturn>> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Collection<TReturn>(System.Func<TViewModel, System.Collections.Generic.IEnumerable<TReturn>>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    },
+    {
+      "Id": "48",
+      "ParentId": "40",
+      "Name": "IElementBuilder<TViewModel, ElementQuerySelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "Stereotype": "Method",
+      "CreatedAtUtc": "2024-03-12T21:20:56.0367013Z",
+      "AbsoluteTopLeft": "-3748.4411,-755.5325",
+      "HeaderContentSize": "300.7633,23",
+      "PreferredHeaderSize": "298.3633,23",
+      "Tooltip": "IElementBuilder<TViewModel, ElementQuerySelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+      "NodeTotalSize": "300.7633,23",
+      "IsPinned": true,
+      "Payload": {
+        "Discriminator": "Other",
+        "SymbolName": "Value",
+        "FullName": "IElementBuilder<TViewModel, ElementQuerySelector> Value<TReturn>(Func<TViewModel, TReturn> func)",
+        "Symbols": [
+          "{\"K\":\"Method\",\"S\":\"Value<TReturn>(System.Func<TViewModel, TReturn>)\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+        ],
+        "IsDescriptionVisible": true,
+        "IsAbstract": true,
+        "Accessibility": "Public",
+        "Origin": "SourceCode"
+      }
+    }
+  ],
+  "Connectors": [
+    {
+      "Id": "1",
+      "SourceNodeId": "2",
+      "TargetNodeId": "10",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"ITableBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "2",
+      "SourceNodeId": "3",
+      "TargetNodeId": "6",
+      "Stereotype": "Association",
+      "Payload": {
+        "Discriminator": "Association",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Association|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text2": "_innerModelBuilder",
+              "Tooltip": "private readonly IModelBuilder<TViewModel, TSelector> _innerModelBuilder"
+            },
+            "Symbol": "{\"K\":\"Field\",\"N\":\"_innerModelBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+          }
+        ]
+      }
+    },
+    {
+      "Id": "3",
+      "SourceNodeId": "3",
+      "TargetNodeId": "4",
+      "Stereotype": "Association",
+      "Payload": {
+        "Discriminator": "Association",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Association|{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text2": "_innerElementBuilder",
+              "Tooltip": "private readonly IElementBuilder<TViewModel, TSelector> _innerElementBuilder"
+            },
+            "Symbol": "{\"K\":\"Field\",\"N\":\"_innerElementBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+          }
+        ]
+      }
+    },
+    {
+      "Id": "4",
+      "SourceNodeId": "3",
+      "TargetNodeId": "5",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"FinalizableValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IFinalizableBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "5",
+      "SourceNodeId": "5",
+      "TargetNodeId": "4",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IFinalizableBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "6",
+      "SourceNodeId": "5",
+      "TargetNodeId": "6",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IFinalizableBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "7",
+      "SourceNodeId": "6",
+      "TargetNodeId": "8",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "8",
+      "SourceNodeId": "12",
+      "TargetNodeId": "4",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "9",
+      "SourceNodeId": "11",
+      "TargetNodeId": "6",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "10",
+      "SourceNodeId": "9",
+      "TargetNodeId": "7",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "11",
+      "SourceNodeId": "12",
+      "TargetNodeId": "6",
+      "Stereotype": "Association",
+      "Payload": {
+        "Discriminator": "Association",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Association|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text2": "_modelBuilder",
+              "Tooltip": "private readonly IModelBuilder<TViewModel, TSelector> _modelBuilder",
+              "CanBeHidden": true
+            },
+            "Symbol": "{\"K\":\"Field\",\"N\":\"_modelBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+          }
+        ]
+      }
+    },
+    {
+      "Id": "18",
+      "SourceNodeId": "12",
+      "TargetNodeId": "17",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+      }
+    },
+    {
+      "Id": "19",
+      "SourceNodeId": "17",
+      "TargetNodeId": "18",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+      }
+    },
+    {
+      "Id": "20",
+      "SourceNodeId": "9",
+      "TargetNodeId": "19",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "21",
+      "SourceNodeId": "19",
+      "TargetNodeId": "11",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "22",
+      "SourceNodeId": "2",
+      "TargetNodeId": "20",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+      }
+    },
+    {
+      "Id": "45",
+      "SourceNodeId": "29",
+      "TargetNodeId": "12",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "47",
+      "SourceNodeId": "7",
+      "TargetNodeId": "30",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "48",
+      "SourceNodeId": "30",
+      "TargetNodeId": "6",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "49",
+      "SourceNodeId": "30",
+      "TargetNodeId": "8",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "50",
+      "SourceNodeId": "19",
+      "TargetNodeId": "31",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "51",
+      "SourceNodeId": "31",
+      "TargetNodeId": "8",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "52",
+      "SourceNodeId": "31",
+      "TargetNodeId": "6",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"InitialModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "53",
+      "SourceNodeId": "29",
+      "TargetNodeId": "32",
+      "Stereotype": "Association",
+      "Payload": {
+        "Discriminator": "Association",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Association|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text2": "_modelBuilder",
+              "Tooltip": "private readonly IModelBuilder<TViewModel, ElementSelector> _modelBuilder",
+              "CanBeHidden": true
+            },
+            "Symbol": "{\"K\":\"Field\",\"N\":\"_modelBuilder\",\"C\":{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+          }
+        ]
+      }
+    },
+    {
+      "Id": "54",
+      "SourceNodeId": "32",
+      "TargetNodeId": "8",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "55",
+      "SourceNodeId": "32",
+      "TargetNodeId": "6",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "57",
+      "SourceNodeId": "29",
+      "TargetNodeId": "34",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "58",
+      "SourceNodeId": "34",
+      "TargetNodeId": "4",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IElementBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "59",
+      "SourceNodeId": "29",
+      "TargetNodeId": "35",
+      "Stereotype": "Implementation",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"ValueModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Implementation|{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+      }
+    },
+    {
+      "Id": "60",
+      "SourceNodeId": "35",
+      "TargetNodeId": "17",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "61",
+      "SourceNodeId": "35",
+      "TargetNodeId": "36",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IELementContentBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}"
+      }
+    },
+    {
+      "Id": "62",
+      "SourceNodeId": "36",
+      "TargetNodeId": "18",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\"},{\"K\":\"NamedType\",\"N\":\"ElementSelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IElementAttributeBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementSelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementSelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "63",
+      "SourceNodeId": "39",
+      "TargetNodeId": "6",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementQuerySelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementQuerySelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "64",
+      "SourceNodeId": "39",
+      "TargetNodeId": "8",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"CollectionTableModelBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    },
+    {
+      "Id": "65",
+      "SourceNodeId": "40",
+      "TargetNodeId": "6",
+      "Stereotype": "GenericConstruction",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|GenericConstruction|{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}",
+        "TargetLabels": [
+          {
+            "Label": {
+              "Text1": "TViewModel:",
+              "Text2": "TViewModel",
+              "Tooltip": "TViewModel"
+            }
+          },
+          {
+            "Label": {
+              "Text1": "TSelector:",
+              "Text2": "ElementQuerySelector",
+              "Tooltip": "record Vitraux.Modeling.Building.Selectors.Elements.ElementQuerySelector"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Id": "66",
+      "SourceNodeId": "40",
+      "TargetNodeId": "8",
+      "Stereotype": "Inheritance",
+      "Payload": {
+        "Discriminator": "Other",
+        "Relationship": "{\"K\":\"NamedType\",\"N\":\"IModelBuilder\",\"A\":2,\"T\":[{\"K\":\"TypeParameter\",\"N\":\"TViewModel\",\"C\":{\"K\":\"NamedType\",\"N\":\"ITableRowsBuilder\",\"A\":1,\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}},{\"K\":\"NamedType\",\"N\":\"ElementQuerySelector\",\"C\":{\"K\":\"Namespace\",\"N\":\"Elements\",\"C\":{\"K\":\"Namespace\",\"N\":\"Selectors\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}}}],\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}|Inheritance|{\"K\":\"NamedType\",\"N\":\"IModelBuilderData\",\"C\":{\"K\":\"Namespace\",\"N\":\"Building\",\"C\":{\"K\":\"Namespace\",\"N\":\"Modeling\",\"C\":{\"K\":\"Namespace\",\"N\":\"Vitraux\",\"C\":{\"K\":\"Assembly\",\"N\":\"Vitraux\",\"V\":\"1.0.0.0\"}}}}}"
+      }
+    }
+  ]
+}
