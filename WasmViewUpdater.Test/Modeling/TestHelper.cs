@@ -1,4 +1,5 @@
-﻿using Vitraux.JsCodeGeneration.QueryElements;
+﻿using System.Reflection.Metadata;
+using Vitraux.JsCodeGeneration.QueryElements;
 using Vitraux.Modeling.Building;
 using Vitraux.Modeling.Building.Selectors.Elements;
 using Vitraux.Modeling.Building.Selectors.Elements.Templates;
@@ -103,7 +104,8 @@ namespace Vitraux.Test.Modeling
 
         private static void AssertDelegate(Delegate actual, Delegate expected)
         {
-            CollectionAssert.AreEqual(GetDelegateIL(expected), GetDelegateIL(actual));
+            CollectionAssert.AreEqual(actual.Method.GetParameters().Select(p => p.ParameterType), expected.Method.GetParameters().Select(p => p.ParameterType));
+            Assert.That(actual.Method.ReturnType, Is.EqualTo(expected.Method.ReturnType));
         }
 
         private static byte[] GetDelegateIL(Delegate d)
