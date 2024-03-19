@@ -13,13 +13,13 @@ namespace Vitraux.Test.Modeling.Building
         [Test]
         public void ToContainerElementTest()
         {
-            TestAddingNewTargetValueToValueModel<Persona, IELementContentBuilder<Persona, ElementSelector>>((sut) => sut.ToContainerElement);
+            TestAddingNewTargetValueToValueModel<PetOwner, IELementContentBuilder<PetOwner, ElementSelector>>((sut) => sut.ToContainerElement);
         }
 
         [Test]
         public void ToElementTest()
         {
-            TestAddingNewTargetValueToValueModel<Persona, IElementAttributeBuilder<Persona, ElementSelector>>((sut) => sut.ToElement);
+            TestAddingNewTargetValueToValueModel<PetOwner, IElementAttributeBuilder<PetOwner, ElementSelector>>((sut) => sut.ToElement);
         }
 
         private void TestAddingNewTargetValueToValueModel<TViewModel, TReturn>(Func<ValueModelBuilder<TViewModel, ElementSelector>, Func<ElementSelector, TReturn>> getActFunc)

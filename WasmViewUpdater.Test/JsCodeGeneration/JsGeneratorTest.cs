@@ -1,6 +1,7 @@
 ﻿using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Vitraux.Helpers;
 using Vitraux.JsCodeGeneration;
 using Vitraux.JsCodeGeneration.BuiltInCalling.StoredElements;
 using Vitraux.JsCodeGeneration.BuiltInCalling.Updating;
@@ -80,9 +81,9 @@ namespace Vitraux.Test.JsCodeGeneration
             var executorMock = new Mock<IJsCodeExecutor>();
 
             var sut = CreateSut(executorMock.Object);
-            var personaConfig = new PersonaConfiguration() as IModelConfiguration<Persona>;
+            var personaConfig = new PetOwnerConfiguration(new DataUriConverter()) as IModelConfiguration<PetOwner>;
 
-            var modelBuilder = new InitialModelBuilder<Persona>() { QueryElementStrategy = queryElementStrategy };
+            var modelBuilder = new InitialModelBuilder<PetOwner>() { QueryElementStrategy = queryElementStrategy };
             personaConfig.Configure(modelBuilder, new ElementSelectorBuilder(), new RowSelectorBuilder(), new FromTemplateAppendToElementSelectorBuilder());
 
             var actualCode = sut.GenerateJsCode(modelBuilder);
@@ -132,7 +133,7 @@ namespace Vitraux.Test.JsCodeGeneration
             Assert.That(element.Text, Is.EqualTo("text changed"));
         }
 
-        private IJsGenerator<Persona> CreateSut(IJsCodeExecutor jsCodeExecutor)
+        private IJsGenerator<PetOwner> CreateSut(IJsCodeExecutor jsCodeExecutor)
         {
             var getElementByIdAsArrayCall = new GetElementByIdAsArrayCall();
             var getElementsByQuerySelectorCall = new GetElementsByQuerySelectorCall();
@@ -142,7 +143,7 @@ namespace Vitraux.Test.JsCodeGeneration
             var valueNamesGenerator = new ValueNamesGenerator();
             var valueJsCodeGenerator = CreateValuesJsCodeGenerator(getElementsByQuerySelectorCall);
 
-            return new JsGenerator<Persona>(queryElementsGeneratorByStrategyFactory, elementNamesGenerator, valueNamesGenerator, valueJsCodeGenerator);
+            return new JsGenerator<PetOwner>(queryElementsGeneratorByStrategyFactory, elementNamesGenerator, valueNamesGenerator, valueJsCodeGenerator);
         }
 
         private IQueryElementsJsCodeGeneratorByStrategyFactory CreateQueryElementsJsCodeGeneratorByStrategyFactory(IJsCodeExecutor jsCodeExecutor, IGetElementByIdAsArrayCall getElementByIdAsArrayCall, IGetElementsByQuerySelectorCall getElementsByQuerySelectorCall)
