@@ -1,1 +1,0 @@
-copy "*.htaccess" "..\Release\_framework\*.htaccess" /y
