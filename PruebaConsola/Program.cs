@@ -10,30 +10,51 @@ namespace PruebaConsola
         static async Task Main(string[] args)
         {
             var servicesCollection = new ServiceCollection();
-            DataAccessRegistrar.Register(servicesCollection);
-            DomainRegistrar.Register(servicesCollection);
+            servicesCollection
+                .AddHttpClient()
+                .AddDataAccess()
+                .AddDomain()
+                .AddSingleton<INotifier, ConsoleNotifier>();
 
-            servicesCollection.AddHttpClient();
             var services = servicesCollection.BuildServiceProvider();
 
+            var notifier = services.GetRequiredService<INotifier>();
+
             var blueProvider = services.GetRequiredService<IDolarBlueProvider>();
-            Console.WriteLine($"Blue: {await blueProvider.GetCurrentBlue()}");
+            await notifier.NotifyProgress($"Blue: {await blueProvider.GetCurrentBlue()}{Environment.NewLine}");
 
             var cryptoProvider = services.GetRequiredService<IDolarCryptoProvider>();
-            Console.WriteLine($"Crypto: {await cryptoProvider.GetCurrentDolarCrypto()}");
+            await notifier.NotifyProgress($"Crypto: {await cryptoProvider.GetCurrentDolarCrypto()}{Environment.NewLine}");
 
             var wuProvider = services.GetRequiredService<IWesternUnionProvider>();
-            Console.WriteLine($"WU: {await wuProvider.GetCurrentDolarWesternUnion()}");
+            await notifier.NotifyProgress($"WU: {await wuProvider.GetCurrentDolarWesternUnion()}{Environment.NewLine}");
 
             var service = services.GetRequiredService<IChoicesService>();
             var choices = await service.GetChoices();
 
-            Console.WriteLine($"Mejor opción: {choices.WinningChoice}");
+            await notifier.NotifyProgress($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
 
             foreach (var titulo in choices.RankingTitulos)
             {
-                Console.WriteLine($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.CotizacionCcl}");
+                await notifier.NotifyProgress($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.CotizacionCcl}{Environment.NewLine}");
             }
+        }
+    }
+
+    public class ConsoleNotifier : INotifier
+    {
+        public Task NotifyProgress(string message)
+        {
+            CleanConsoleLine();
+            Console.Write(message);
+
+            return Task.CompletedTask;
+        }
+
+        private static void CleanConsoleLine()
+        {
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write("\u001b[2K");
         }
     }
 }

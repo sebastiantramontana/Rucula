@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Primitives;
 using Microsoft.JSInterop;
+using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using Rucula.Infrastructure.IoC;
 using System.Text.Json;
 
 namespace Rucula.WebAssembly.Mock
@@ -12,6 +14,7 @@ namespace Rucula.WebAssembly.Mock
     {
         private static NavigationManager _navigationManager = default!;
         private static IHttpClientFactory _httpClientFactory = default!;
+        private static INotifier _notifier = default!;
 
         public static async Task Main(string[] args)
         {
@@ -39,7 +42,7 @@ namespace Rucula.WebAssembly.Mock
         [JSInvokable]
         public static async Task<ChoicesInfo> GetChoices()
         {
-            var mockParam = GetMockParam();
+            var mockParam = await GetMockParam();
 
             return mockParam switch
             {
@@ -49,7 +52,7 @@ namespace Rucula.WebAssembly.Mock
             };
         }
 
-        private static string? GetMockParam()
+        private static async Task<string?> GetMockParam()
         {
             var uri = _navigationManager.ToAbsoluteUri(_navigationManager.Uri);
 
@@ -61,8 +64,9 @@ namespace Rucula.WebAssembly.Mock
             if (!(queryStrings?.TryGetValue("mock", out StringValues values) ?? false))
                 return null;
 
-            Console.WriteLine($"params: {values}");
-
+            await _notifier.NotifyProgress($"params: {values}");
+            await Task.Delay(1000);
+            
             return values[0];
         }
 
@@ -71,7 +75,8 @@ namespace Rucula.WebAssembly.Mock
 
         private static async Task<ChoicesInfo> FetchMock(string mockName)
         {
-            Console.WriteLine($"Fetching mock: {mockName}");
+            await _notifier.NotifyProgress($"Fetching mock: {mockName}");
+            await Task.Delay(1000);
 
             var uri = GetMockUri(mockName);
             var json = await RequestMock(uri);
@@ -100,7 +105,7 @@ namespace Rucula.WebAssembly.Mock
 
         private static async Task<ChoicesInfo> RunForever()
         {
-            Console.WriteLine("Running forever...");
+            await _notifier.NotifyProgress("Running forever...");
 
             await Task.Delay(Timeout.InfiniteTimeSpan);
             return ChoicesInfo.NoChoices;
@@ -116,11 +121,12 @@ namespace Rucula.WebAssembly.Mock
         {
             _navigationManager = serviceProvider.GetRequiredService<NavigationManager>();
             _httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+            _notifier = serviceProvider.GetRequiredService<INotifier>();
         }
 
         private static void Register(IServiceCollection serviceCollection)
-        {
-            serviceCollection.AddHttpClient();
-        }
+            => serviceCollection
+                .AddHttpClient()
+                .AddInfrastructure();
     }
 }

@@ -68,12 +68,22 @@ async function getAllData() {
 }
 
 function showLoadingIndicator() {
-    let indicator = document.getElementById("loading-indicator");
-    indicator.style.display = "inline";
+    const indicator = document.getElementById("loading-indicator");
+    const bestChoice = document.getElementById("mejor-opcion");
+
+    indicator.style.display = "inline-block";
+    bestChoice.style.display = "none";
 }
 
 function hideLoadingIndicator() {
-    let indicator = document.getElementById("loading-indicator");
+    const indicator = document.getElementById("loading-indicator");
+    const bestChoice = document.getElementById("mejor-opcion");
+
     indicator.style.display = "none";
+    bestChoice.style.display = "inline-block";
 }
 
+export function notify(message) {
+    const msgElement = document.getElementById("notify-progress");
+    msgElement.textContent = message;
+}

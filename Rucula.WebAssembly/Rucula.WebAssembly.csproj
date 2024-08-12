@@ -36,6 +36,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Rucula.DataAccess\Rucula.DataAccess.csproj" />
 		<ProjectReference Include="..\Rucula.Domain.Implementations\Rucula.Domain.Implementations.csproj" />
+		<ProjectReference Include="..\Rucula.Infrastructure\Rucula.Infrastructure.csproj" />
 		<TrimmerRootAssembly Include="Rucula.DataAccess" />
 		<TrimmerRootAssembly Include="Rucula.Domain.Implementations" />
 		<TrimmerRootAssembly Include="Rucula.WebAssembly" />

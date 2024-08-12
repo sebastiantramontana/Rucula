@@ -13,18 +13,22 @@ namespace Rucula.DataAccess.Providers
         private readonly IWesternUnionFetcher _westernUnionFetcher;
         private readonly IJsonDeserializer<DolarWesternUnionDto> _dolarWesternUnionJsonDeserializer;
         private readonly IMapper<DolarWesternUnionDto, DolarWesternUnion> _dolarWesterUnionMapper;
+        private readonly INotifier _notifier;
 
         public WesternUnionProvider(IWesternUnionFetcher westernUnionFetcher,
                                     IJsonDeserializer<DolarWesternUnionDto> dolarWesternUnionJsonDeserializer,
-                                    IMapper<DolarWesternUnionDto, DolarWesternUnion> dolarWesterUnionMapper)
+                                    IMapper<DolarWesternUnionDto, DolarWesternUnion> dolarWesterUnionMapper,
+                                    INotifier notifier)
         {
             _westernUnionFetcher = westernUnionFetcher;
             _dolarWesternUnionJsonDeserializer = dolarWesternUnionJsonDeserializer;
             _dolarWesterUnionMapper = dolarWesterUnionMapper;
+            _notifier = notifier;
         }
 
         public async Task<DolarWesternUnion> GetCurrentDolarWesternUnion()
         {
+            await _notifier.NotifyProgress("Consultando Dolar Western Union...");
             var content = await _westernUnionFetcher.Fetch().ConfigureAwait(false);
             return MapToDolarWesterUnion(ConvertContentToDolarWesterUnion(content));
         }

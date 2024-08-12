@@ -5,11 +5,9 @@ namespace Rucula.Domain.Implementations.IoC
 {
     public static class DomainRegistrar
     {
-        public static void Register(IServiceCollection serviceCollection)
-        {
-            serviceCollection
+        public static IServiceCollection AddDomain(this IServiceCollection serviceCollection)
+            => serviceCollection
                 .AddSingleton<ITitulosService, TitulosService>()
                 .AddSingleton<IChoicesService, ChoicesService>();
-        }
     }
 }

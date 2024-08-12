@@ -7,11 +7,13 @@ namespace Rucula.Domain.Implementations
     {
         private readonly ITitulosProvider _titulosProvider;
         private readonly ITituloDetailsProvider _tituloDetailsProvider;
+        private readonly INotifier _notifier;
 
-        public TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider)
+        public TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier)
         {
             _titulosProvider = titulosProvider;
             _tituloDetailsProvider = tituloDetailsProvider;
+            _notifier = notifier;
         }
 
         public Task<IEnumerable<Titulo>> GetAllTitulos()
@@ -21,8 +23,10 @@ namespace Rucula.Domain.Implementations
 
         public async Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin(Blue blue)
         {
+            await _notifier.NotifyProgress("Consultando títulos públicos...");
             var titulos = await _titulosProvider.Get();
             var details = await GetUsefulTitulosDetails(titulos);
+
             return CreateTitulosIsin(details, blue);
         }
 
@@ -33,6 +37,7 @@ namespace Rucula.Domain.Implementations
 
             foreach (var t in titulos)
             {
+                await _notifier.NotifyProgress($"Consultando {t.Simbolo}...");
                 var allDetails = await GetTituloDetails(t);
                 var usefulDetails = allDetails.FirstOrDefault(d => IsDetailsUseful(d, today));
                 detailsContentList.Add((t, usefulDetails));
@@ -44,15 +49,13 @@ namespace Rucula.Domain.Implementations
         private Task<IEnumerable<TituloDetails>> GetTituloDetails(Titulo titulo)
             => _tituloDetailsProvider.GetTituloDetails(titulo.Simbolo);
 
-        private IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails? TituloDetails)> details, Blue blue)
-        {
-            return details
+        private IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails? TituloDetails)> details, Blue blue) 
+            => details
                 .Where(d => d.TituloDetails is not null)
                 .GroupBy(d => d.TituloDetails!)
                 .Select(g => CreateTituloIsin(g, blue))
                 .Where(t => t.CotizacionCcl is not null)
                 .OrderByDescending(t => t.CotizacionCcl);
-        }
 
         private TituloIsin CreateTituloIsin(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails? TituloDetails)> values, Blue blue)
         {

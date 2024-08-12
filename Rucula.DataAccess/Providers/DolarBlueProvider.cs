@@ -13,16 +13,23 @@ namespace Rucula.DataAccess.Providers
         private readonly IAmbitoBlueFetcher _ambitoBlueFetcher;
         private readonly IJsonDeserializer<BlueDto> _blueJsonDeserializer;
         private readonly IMapper<BlueDto, Blue> _blueMapper;
+        private readonly INotifier _notifier;
 
-        public DolarBlueProvider(IAmbitoBlueFetcher ambitoBlueFetcher, IJsonDeserializer<BlueDto> blueJsonDeserializer, IMapper<BlueDto, Blue> blueMapper)
+        public DolarBlueProvider(
+            IAmbitoBlueFetcher ambitoBlueFetcher,
+            IJsonDeserializer<BlueDto> blueJsonDeserializer,
+            IMapper<BlueDto, Blue> blueMapper,
+            INotifier notifier)
         {
             _ambitoBlueFetcher = ambitoBlueFetcher;
             _blueJsonDeserializer = blueJsonDeserializer;
             _blueMapper = blueMapper;
+            _notifier = notifier;
         }
 
         public async Task<Blue> GetCurrentBlue()
         {
+            await _notifier.NotifyProgress("Consultando Dolar Blue...");
             var content = await _ambitoBlueFetcher.Fetch().ConfigureAwait(false);
             return MapToBlue(ConvertContentToBlue(content));
         }

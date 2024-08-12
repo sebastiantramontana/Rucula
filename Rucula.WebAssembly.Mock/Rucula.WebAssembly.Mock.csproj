@@ -29,6 +29,8 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\Rucula.Domain.Abstractions\Rucula.Domain.Abstractions.csproj" />
 	  <ProjectReference Include="..\Rucula.Domain.Entities\Rucula.Domain.Entities.csproj" />
+	  <ProjectReference Include="..\Rucula.Infrastructure\Rucula.Infrastructure.csproj" />
 	</ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ namespace Rucula.DataAccess.IoC
 {
     public static class DataAccessRegistrar
     {
-        public static void Register(IServiceCollection serviceCollection)
+        public static IServiceCollection AddDataAccess(this IServiceCollection serviceCollection)
         {
             RegisterDeserializers(serviceCollection);
             RegisterProviders(serviceCollection);
@@ -24,6 +24,8 @@ namespace Rucula.DataAccess.IoC
             RegisterRequestFactories(serviceCollection);
             RegisterMappers(serviceCollection);
             RegisterGlobalization(serviceCollection);
+
+            return serviceCollection;
         }
 
         private static void RegisterRequestFactories(IServiceCollection serviceCollection)
