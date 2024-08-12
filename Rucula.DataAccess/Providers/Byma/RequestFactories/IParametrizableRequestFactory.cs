@@ -1,7 +1,6 @@
-﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
+
+internal interface IParametrizableRequestFactory
 {
-    internal interface IParametrizableRequestFactory
-    {
-        HttpRequestMessage CreateRequest(string parameters);
-    }
+    HttpRequestMessage CreateRequest(string parameters);
 }

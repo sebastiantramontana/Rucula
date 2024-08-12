@@ -1,7 +1,5 @@
-﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories
-{
-    internal interface ILetrasRequestFactory : IFixedRequestFactory
-    {
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
 
-    }
+internal interface ILetrasRequestFactory : IFixedRequestFactory
+{
 }

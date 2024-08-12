@@ -1,6 +1,5 @@
-﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
+
+internal interface ITituloDetailsRequestFactory : IParametrizableRequestFactory
 {
-    internal interface ITituloDetailsRequestFactory : IParametrizableRequestFactory
-    {
-    }
 }

@@ -1,7 +1,7 @@
-﻿namespace Rucula.DataAccess.Providers
+﻿namespace Rucula.DataAccess.Providers;
+
+internal interface IRequestFactory
 {
-    internal interface IRequestFactory
-    {
-        HttpRequestMessage CreateRequest(string url, string parameters);
-    }
+    HttpRequestMessage CreateRequestPost(string url, string parameters);
+    HttpRequestMessage CreateRequestGet(string url);
 }

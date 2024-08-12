@@ -1,7 +1,6 @@
-﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
+
+internal interface IFixedRequestFactory
 {
-    internal interface IFixedRequestFactory
-    {
-        HttpRequestMessage CreateRequest();
-    }
+    HttpRequestMessage CreateRequest();
 }

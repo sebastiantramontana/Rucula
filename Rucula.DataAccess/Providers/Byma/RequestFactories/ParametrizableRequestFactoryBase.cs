@@ -14,6 +14,6 @@ namespace Rucula.DataAccess.Providers.Byma.RequestFactories
         }
 
         public HttpRequestMessage CreateRequest(string parameters)
-            => _bymaRequestFactory.CreateRequest(_url, parameters);
+            => _bymaRequestFactory.CreateRequestPost(_url, parameters);
     }
 }

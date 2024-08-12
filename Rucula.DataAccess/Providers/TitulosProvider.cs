@@ -12,25 +12,31 @@ namespace Rucula.DataAccess.Providers
     {
         private readonly IBymaLetrasFetcher _letrasFetcher;
         private readonly IBymaBonosFetcher _bonosFetcher;
+        private readonly IBymaIsMarketOpenFetcher _isMarketOpenFetcher;
         private readonly IJsonDeserializer<TitulosContentDto> _jsonTituloDeserializer;
         private readonly IMapper<TituloDto, Titulo> _tituloMapper;
 
         public TitulosProvider(IBymaLetrasFetcher letrasFetcher,
                                IBymaBonosFetcher bonosFetcher,
+                               IBymaIsMarketOpenFetcher isMarketOpenFetcher,
                                IJsonDeserializer<TitulosContentDto> jsonTituloDeserializer,
                                IMapper<TituloDto, Titulo> tituloMapper)
         {
             _letrasFetcher = letrasFetcher;
             _bonosFetcher = bonosFetcher;
+            _isMarketOpenFetcher = isMarketOpenFetcher;
             _jsonTituloDeserializer = jsonTituloDeserializer;
             _tituloMapper = tituloMapper;
         }
 
         public async Task<IEnumerable<Titulo>> Get()
         {
+            if (!await IsMarketOpen())
+                return [];
+
             var letrasTask = await GetLetras();
             var bonosTask = await GetBonos();
-            
+
             return letrasTask.Concat(bonosTask);
         }
 
@@ -58,5 +64,11 @@ namespace Rucula.DataAccess.Providers
 
         private IEnumerable<Titulo> MapToTitulo(IEnumerable<TituloDto> dtos)
             => dtos.Select(d => _tituloMapper.Map(d));
+
+        private async Task<bool> IsMarketOpen()
+        {
+            var content = await _isMarketOpenFetcher.Fetch();
+            return bool.Parse(content);
+        }
     }
 }

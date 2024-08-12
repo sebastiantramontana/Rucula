@@ -1,6 +1,5 @@
-﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
+
+internal interface IBonosRequestFactory : IFixedRequestFactory
 {
-    internal interface IBonosRequestFactory : IFixedRequestFactory
-    {
-    }
 }
