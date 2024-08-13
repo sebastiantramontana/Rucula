@@ -11,7 +11,12 @@ const numberFormater = new Intl.NumberFormat('es-AR', {
 });
 
 addEventListener("load", async () => {
-    await Blazor.start();
+    await Blazor.start({
+        loadBootResource: function (type, name, defaultUri, integrity) {
+            notify(`\u{2B07} '${name}'`);
+            return null;
+        }
+    });
 
     runGettingData();
     hookVisibilityEventToRun();
