@@ -40,7 +40,7 @@ public class Program
 
         try
         {
-            choices = await _choicesService.GetChoices();
+            choices = await _choicesService.GetChoices().ConfigureAwait(false);
         }
         catch (Exception ex)
         {

@@ -27,9 +27,9 @@ namespace Rucula.Domain.Implementations
             var dolarCrypto = _dolarCryptoProvider.GetCurrentDolarCrypto();
             var dolarWesternUnion = _westernUnionProvider.GetCurrentDolarWesternUnion();
 
-            await Task.WhenAll(dolarBlue, dolarCrypto, dolarWesternUnion);
+            await Task.WhenAll(dolarBlue, dolarCrypto, dolarWesternUnion).ConfigureAwait(false);
 
-            var rankingTitulos = await _titulosService.GetCclRankingTitulosIsin(dolarBlue.Result);
+            var rankingTitulos = await _titulosService.GetCclRankingTitulosIsin(dolarBlue.Result).ConfigureAwait(false);
 
             var bestTitulo = rankingTitulos.FirstOrDefault();
             var winner = GetWinningChoice(bestTitulo, dolarCrypto.Result, dolarWesternUnion.Result);

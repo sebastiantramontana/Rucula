@@ -17,7 +17,7 @@ namespace Rucula.DataAccess.Providers.Byma
         {
             using var request = _fixedRequestFactory.CreateRequest();
 
-            return await _httpReader.Read(request);
+            return await _httpReader.Read(request).ConfigureAwait(false);
         }
     }
 }

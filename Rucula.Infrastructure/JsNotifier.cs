@@ -13,7 +13,7 @@ internal class JsNotifier : INotifier
 
     public async Task NotifyProgress(string message)
     {
-        var module = await _jsModulesProvider.GetMainModule();
+        var module = await _jsModulesProvider.GetMainModule().ConfigureAwait(false);
         module.InvokeVoid("notify", message);
     }
 }

@@ -23,9 +23,9 @@ namespace Rucula.Domain.Implementations
 
         public async Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin(Blue blue)
         {
-            await _notifier.NotifyProgress("Consultando títulos públicos...");
-            var titulos = await _titulosProvider.Get();
-            var details = await GetUsefulTitulosDetails(titulos);
+            await _notifier.NotifyProgress("Consultando títulos públicos...").ConfigureAwait(false);
+            var titulos = await _titulosProvider.Get().ConfigureAwait(false);
+            var details = await GetUsefulTitulosDetails(titulos).ConfigureAwait(false);
 
             return CreateTitulosIsin(details, blue);
         }
@@ -37,8 +37,8 @@ namespace Rucula.Domain.Implementations
 
             foreach (var t in titulos)
             {
-                await _notifier.NotifyProgress($"Consultando {t.Simbolo}...");
-                var allDetails = await GetTituloDetails(t);
+                await _notifier.NotifyProgress($"Consultando {t.Simbolo}...").ConfigureAwait(false);
+                var allDetails = await GetTituloDetails(t).ConfigureAwait(false);
                 var usefulDetails = allDetails.FirstOrDefault(d => IsDetailsUseful(d, today));
                 detailsContentList.Add((t, usefulDetails));
             }

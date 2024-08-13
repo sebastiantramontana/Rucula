@@ -28,7 +28,7 @@ namespace Rucula.DataAccess.Providers
 
         public async Task<DolarCrypto> GetCurrentDolarCrypto()
         {
-            await _notifier.NotifyProgress("Consultando Dolar Crypto...");
+            await _notifier.NotifyProgress("Consultando Dolar Crypto...").ConfigureAwait(false);
             var content = await _ambitoDolarCryptoFetcher.Fetch().ConfigureAwait(false);
             return MapToCrypto(ConvertContentToCrypto(content));
         }

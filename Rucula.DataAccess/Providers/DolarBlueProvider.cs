@@ -29,7 +29,7 @@ namespace Rucula.DataAccess.Providers
 
         public async Task<Blue> GetCurrentBlue()
         {
-            await _notifier.NotifyProgress("Consultando Dolar Blue...");
+            await _notifier.NotifyProgress("Consultando Dolar Blue...").ConfigureAwait(false);
             var content = await _ambitoBlueFetcher.Fetch().ConfigureAwait(false);
             return MapToBlue(ConvertContentToBlue(content));
         }

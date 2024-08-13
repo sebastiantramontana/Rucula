@@ -28,7 +28,7 @@ namespace Rucula.DataAccess.Providers
 
         public async Task<DolarWesternUnion> GetCurrentDolarWesternUnion()
         {
-            await _notifier.NotifyProgress("Consultando Dolar Western Union...");
+            await _notifier.NotifyProgress("Consultando Dolar Western Union...").ConfigureAwait(false);
             var content = await _westernUnionFetcher.Fetch().ConfigureAwait(false);
             return MapToDolarWesterUnion(ConvertContentToDolarWesterUnion(content));
         }
