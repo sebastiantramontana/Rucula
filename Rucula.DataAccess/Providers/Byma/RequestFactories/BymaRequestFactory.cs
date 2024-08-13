@@ -5,7 +5,7 @@ namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
 internal class BymaRequestFactory : IBymaRequestFactory
 {
     public HttpRequestMessage CreateRequestGet(string url)
-        => AddHeaders(new HttpRequestMessage(HttpMethod.Get, url));
+        => new(HttpMethod.Get, url);
 
     public HttpRequestMessage CreateRequestPost(string url, string parameters)
     {
