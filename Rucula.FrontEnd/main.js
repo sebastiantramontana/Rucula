@@ -16,10 +16,12 @@ addEventListener("load", async () => {
             notify(`\u{2B07} '${name}'`);
             return null;
         }
+    })
+    .then(() =>
+    {
+        runGettingData();
+        hookVisibilityEventToRun();
     });
-
-    runGettingData();
-    hookVisibilityEventToRun();
 });
 
 function runGettingData() {
