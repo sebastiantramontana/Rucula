@@ -11,29 +11,32 @@ const numberFormater = new Intl.NumberFormat('es-AR', {
 });
 
 addEventListener("load", async () => {
-    await Blazor.start({
-        loadBootResource: function (type, name, defaultUri, integrity) {
-            notify(`\u{2B07} '${name}'`);
-            return null;
-        }
-    })
-    .then(() =>
-    {
-        runGettingData();
+    try {
+        await Blazor.start({
+            loadBootResource: function (type, name, defaultUri, integrity) {
+                notify(name);
+                return null;
+            }
+        });
+
+        await runGettingData();
         hookVisibilityEventToRun();
-    });
+    }
+    catch (ex) {
+        console.log(`Algo salió mal: ${ex}`);
+    }
 });
 
-function runGettingData() {
-    getAllData();
+async function runGettingData() {
+    await getAllData();
     startTimerGettingData();
 }
 
 function hookVisibilityEventToRun() {
-    document.addEventListener("visibilitychange", (e) => {
+    document.addEventListener("visibilitychange", async (e) => {
 
         if (document.visibilityState === "visible")
-            runGettingData();
+            await runGettingData();
         else
             stopTimerGettingData();
     });
@@ -69,25 +72,52 @@ async function getAllData() {
     showDolarWesternUnion(choices.dolarWesternUnion);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
-    hideLoadingIndicator();
+    showBestChoiceElement();
 
     isGettingData = false;
 }
 
 function showLoadingIndicator() {
-    const indicator = document.getElementById("loading-indicator");
-    const bestChoice = document.getElementById("mejor-opcion");
-
-    indicator.style.display = "inline-block";
-    bestChoice.style.display = "none";
+    hideBestChoice();
+    hideDownloadingIndicator();
+    showLoadingIndicatorElement();
+    showAllIndicatorsContainer();
 }
 
-function hideLoadingIndicator() {
-    const indicator = document.getElementById("loading-indicator");
-    const bestChoice = document.getElementById("mejor-opcion");
+function showBestChoiceElement() {
 
-    indicator.style.display = "none";
-    bestChoice.style.display = "inline-block";
+    showElementAsInlineBlock("mejor-opcion");
+    hideAllIndicatorsContainer();
+}
+
+function hideDownloadingIndicator() {
+    hideElement("downloading-packages-indicator");
+}
+
+function showAllIndicatorsContainer() {
+    showElementAsInlineBlock("all-indicators-container");
+}
+
+function hideAllIndicatorsContainer() {
+    hideElement("all-indicators-container");
+}
+
+function hideBestChoice() {
+    hideElement("mejor-opcion");
+}
+
+function showLoadingIndicatorElement() {
+    showElementAsInlineBlock("loading-indicator");
+}
+
+function showElementAsInlineBlock(id) {
+    const element = document.getElementById(id);
+    element.style.display = "inline-block";
+}
+
+function hideElement(id) {
+    const element = document.getElementById(id);
+    element.style.display = "none";
 }
 
 export function notify(message) {
