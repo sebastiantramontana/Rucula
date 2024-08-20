@@ -8,6 +8,7 @@
     "precioVenta": 910.19
   },
   "dolarWesternUnion": { "price": 850 },
+  "dolarDiarco": { "price": 1234 },
   "rankingTitulos": [
     {
       "codigoIsin": "ARARGE520E22",

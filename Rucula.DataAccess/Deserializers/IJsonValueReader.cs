@@ -4,6 +4,6 @@ namespace Rucula.DataAccess.Deserializers
 {
     internal interface IJsonValueReader
     {
-        T GetValue<T>(JsonNode node, string key);
+        T? GetValue<T>(JsonNode node, string key);
     }
 }

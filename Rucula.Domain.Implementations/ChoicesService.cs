@@ -9,16 +9,19 @@ namespace Rucula.Domain.Implementations
         private readonly IDolarBlueProvider _dolarBlueProvider;
         private readonly IDolarCryptoProvider _dolarCryptoProvider;
         private readonly IWesternUnionProvider _westernUnionProvider;
+        private readonly IDolarDiarcoProvider _dolarDiarcoProvider;
 
         public ChoicesService(ITitulosService titulosService,
                               IDolarBlueProvider dolarBlueProvider,
                               IDolarCryptoProvider dolarCryptoProvider,
-                              IWesternUnionProvider westernUnionProvider)
+                              IWesternUnionProvider westernUnionProvider,
+                              IDolarDiarcoProvider dolarDiarcoProvider)
         {
             _titulosService = titulosService;
             _dolarBlueProvider = dolarBlueProvider;
             _dolarCryptoProvider = dolarCryptoProvider;
             _westernUnionProvider = westernUnionProvider;
+            _dolarDiarcoProvider = dolarDiarcoProvider;
         }
 
         public async Task<ChoicesInfo> GetChoices()
@@ -26,15 +29,16 @@ namespace Rucula.Domain.Implementations
             var dolarBlue = _dolarBlueProvider.GetCurrentBlue();
             var dolarCrypto = _dolarCryptoProvider.GetCurrentDolarCrypto();
             var dolarWesternUnion = _westernUnionProvider.GetCurrentDolarWesternUnion();
+            var dolarDiarco = _dolarDiarcoProvider.GetCurrentDolarDiarco();
 
-            await Task.WhenAll(dolarBlue, dolarCrypto, dolarWesternUnion).ConfigureAwait(false);
+            await Task.WhenAll(dolarBlue, dolarCrypto, dolarWesternUnion, dolarDiarco).ConfigureAwait(false);
 
             var rankingTitulos = await _titulosService.GetCclRankingTitulosIsin(dolarBlue.Result).ConfigureAwait(false);
 
             var bestTitulo = rankingTitulos.FirstOrDefault();
             var winner = GetWinningChoice(bestTitulo, dolarCrypto.Result, dolarWesternUnion.Result);
 
-            return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue.Result, dolarCrypto.Result, dolarWesternUnion.Result);
+            return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue.Result, dolarCrypto.Result, dolarWesternUnion.Result, dolarDiarco.Result);
         }
 
         private static WinningChoice? GetWinningChoice(TituloIsin? titulo, DolarCrypto dolarCrypto, DolarWesternUnion dolarWesternUnion)

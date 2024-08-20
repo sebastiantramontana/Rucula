@@ -1,9 +1,6 @@
-﻿using Rucula.Domain.Entities;
+﻿namespace Rucula.DataAccess.Globalization;
 
-namespace Rucula.DataAccess.Globalization
+internal interface ISpanishNumberConverter
 {
-    internal interface ISpanishNumberConverter
-    {
-        string ConvertToEnglish(string number);
-    }
+    string ConvertToEnglish(string number);
 }

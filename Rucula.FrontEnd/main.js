@@ -2,6 +2,7 @@
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
+import showDolarDiarco from "./modules/dolar-diarco.js";
 import showBestChoice from "./modules/best-choice.js";
 
 let dataIntervalId = null;
@@ -70,6 +71,7 @@ async function getAllData() {
     showDolarBlue(choices.blue);
     showDolarCrypto(choices.dolarCrypto);
     showDolarWesternUnion(choices.dolarWesternUnion);
+    showDolarDiarco(choices.dolarDiarco);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();
