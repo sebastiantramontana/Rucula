@@ -1,25 +1,24 @@
 ﻿using Rucula.DataAccess.Dtos;
 using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Deserializers
+namespace Rucula.DataAccess.Deserializers;
+
+internal class JsonToTituloDetailsDtoDeserializer : IJsonDeserializer<TituloDetailsDto>
 {
-    internal class JsonToTituloDetailsDtoDeserializer : IJsonDeserializer<TituloDetailsDto>
+    private readonly IJsonValueReader _valueReader;
+
+    public JsonToTituloDetailsDtoDeserializer(IJsonValueReader jsonValueReader)
     {
-        private readonly IJsonValueReader _valueReader;
+        _valueReader = jsonValueReader;
+    }
 
-        public JsonToTituloDetailsDtoDeserializer(IJsonValueReader jsonValueReader)
-        {
-            _valueReader = jsonValueReader;
-        }
+    public TituloDetailsDto Deserialize(JsonNode node)
+    {
+        var isin = _valueReader.GetRequiredValue<string>(node, "codigoIsin");
+        var denominacion = _valueReader.GetRequiredValue<string>(node, "denominacion");
+        var tipoObligacion = _valueReader.GetRequiredValue<string>(node, "tipoObligacion");
+        var fechaVencimiento = _valueReader.GetRequiredValue<string>(node, "fechaVencimiento");
 
-        public TituloDetailsDto Deserialize(JsonNode node)
-        {
-            var isin = _valueReader.GetValue<string>(node, "codigoIsin");
-            var denominacion = _valueReader.GetValue<string>(node, "denominacion");
-            var tipoObligacion = _valueReader.GetValue<string>(node, "tipoObligacion");
-            var fechaVencimiento = _valueReader.GetValue<string>(node, "fechaVencimiento");
-
-            return new TituloDetailsDto(isin, denominacion, tipoObligacion, fechaVencimiento);
-        }
+        return new TituloDetailsDto(isin, denominacion, tipoObligacion, fechaVencimiento);
     }
 }
