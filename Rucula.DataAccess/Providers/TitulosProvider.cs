@@ -63,7 +63,18 @@ internal class TitulosProvider : ITitulosProvider
 
     private async Task<bool> IsMarketOpen()
     {
-        var content = await _isMarketOpenFetcher.Fetch().ConfigureAwait(false);
-        return bool.Parse(content);
+        bool isMarketOpen;
+
+        try
+        {
+            var content = await _isMarketOpenFetcher.Fetch().ConfigureAwait(false);
+            isMarketOpen = bool.Parse(content);
+        }
+        catch (HttpRequestException)
+        {
+            isMarketOpen = true;
+        }
+
+        return isMarketOpen;
     }
 }
