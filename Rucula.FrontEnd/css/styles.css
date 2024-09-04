@@ -12,6 +12,18 @@ body {
     background-color: #506436;
 }
 
+.hover-commissions-button:hover {
+    background-color: #548217;
+    border-width: 1px;
+    padding: 2px;
+}
+
+#commisions-checkbox:checked + span {
+    background-color: #548217;
+    border-width: 1px;
+    padding: 2px;
+}
+
 .bg-ccl {
     background-color: #548217;
 }
