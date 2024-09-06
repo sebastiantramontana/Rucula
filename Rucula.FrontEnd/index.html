@@ -40,17 +40,36 @@
                     </span>
                 </div>
             </div>
-            <div class="w-full bg-dolar text-white border-grey-light dark:border-black border-x flex">
-                <span class="font-medium sm:text-lg flex-1 place-content-center grid">Títulos Públicos</span>
-                <label class="max-h-6 overflow-hidden block my-2 flex-none mr-2">
-                    <input type="checkbox" id="commisions-checkbox" class="hidden absolute" />
-                    <span class="max-h-6 max-w-6 block p-0 cursor-pointer rounded-lg bg-transparent hover-commissions-button active:opacity-50 transition-all duration-300 ease-out">
-                        <img src="images/commissions.svg" class="mb-2" title="Configurar comisiones del broker" alt="Configurar comisiones del broker" />
-                        <span class="grid gap-1 grid-rows-1 grid-cols-3 place-content-start h-7"><span>Compra</span><input type="number" min="0.0" max="5.0" step="0.1" /></span>
-                        <span><span>Venta</span></span>
-                        <span><span>Retiro</span></span>
+            <div class="w-full text-white border-grey-light dark:border-black border-x">
+                <div id="titulos-publicos-bar" class="w-full flex bg-dolar">
+                    <span class="font-medium sm:text-lg place-content-center grid flex-1">Títulos Públicos</span>
+                    <label class="my-2 flex-none mr-2">
+                        <input type="checkbox" id="commissions-checkbox" class="peer/commissions-checkbox hidden absolute" />
+                        <span class="peer-checked/commissions-checkbox:bg-yellow-400 peer-checked/commissions-checkbox:border peer-checked/commissions-checkbox:p-0.5 block h-6 w-6 block p-0 cursor-pointer rounded-lg hover:bg-sky-400 hover:border hover:p-0.5 active:opacity-50 transition-all duration-300 ease-out">
+                            <img src="images/commissions.svg" class="mb-2" title="Configurar comisiones del broker" alt="Configurar comisiones del broker" />
+                        </span>
+                    </label>
+                </div>
+                <div id="commissions-panel" class="w-full sm:h-20 max-h-0 p-0 overflow-hidden text-xs transition-all duration-500 ease-in-out">
+                    <div class="dark:opacity-50 font-light sm:inline sm:text-sm mb-3 sm:mr-4 sm:mb-0 text-black dark:text-white">
+                        Configuración de las comisiones del broker para el cálculo del CCL neto.
+                    </div>
+                    <span class="text-black dark:text-white grid grid-cols-2 grid-rows-2 gap-4 sm:inline">
+                        <span class="sm:mr-4 inline-block">
+                            <span class="block mb-1" title="Porcentaje por compra del bono">% Compra</span>
+                            <input id="commission-porcentage-purchase-bond" class="w-full sm:w-16 h-5 p-0.5 border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0" max="5" step="0.1" />
+                        </span>
+                        <span class="sm:mr-4 inline-block">
+                            <span class="block mb-1" title="Porcentaje por venta del bono">% Venta</span>
+                            <input id="commission-porcentage-sale-bond" class="w-full sm:w-16 h-5 p-0.5 border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" />
+                        </span>
+                        <span class="sm:mr-4 inline-block">
+                            <span class="block mb-1" title="Porcentaje por retiro o transferencia a tu banco local">% Retiro</span>
+                            <input id="commission-porcentage-withdrawal-bond" class="w-full sm:w-16 h-5 p-0.5 border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" />
+                        </span>
+                        <button class="text-white bg-dolar hover-bg-ccl active:opacity-50 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
                     </span>
-                </label>
+                </div>
             </div>
             <table id="tabla-titulos" class="w-full border-collapse rounded-lg sm:shadow-lg mb-5 mt-0">
                 <caption id="titulos-caption" class="hidden text-black dark:text-white m-0 p-3 border-grey-light dark:border-black border">Información aún no disponible...</caption>

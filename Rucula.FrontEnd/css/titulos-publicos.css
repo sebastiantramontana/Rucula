@@ -1,4 +1,9 @@
-﻿#tabla-titulos:has(tbody:empty) > caption {
+﻿#titulos-publicos-bar:has(#commissions-checkbox:checked) + #commissions-panel {
+    max-height: 176px; /* h-44 */
+    padding: 12px;
+}
+
+#tabla-titulos:has(tbody:empty) > caption {
     display: table-caption;
 }
 
