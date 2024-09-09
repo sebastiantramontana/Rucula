@@ -11,7 +11,7 @@ namespace Rucula.WebAssembly;
 public class Program
 {
     private static IChoicesService _choicesService = default!;
-    private ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
+    private static ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
 
     public static async Task Main(string[] args)
     {
@@ -37,18 +37,23 @@ public class Program
     [JSInvokable]
     public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions)
     {
-        var choices = ChoicesInfo.NoChoices;
-
         try
         {
-            choices = await _choicesService.GetChoices(bondCommissions).ConfigureAwait(false);
+            _currentChoices = await _choicesService.GetChoices(bondCommissions).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
 
-        return choices;
+        return _currentChoices;
+    }
+
+    [JSInvokable]
+    public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions)
+    {
+        _currentChoices = _choicesService.RecalculateChoices(_currentChoices, bondCommissions);
+        return _currentChoices;
     }
 
     private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)

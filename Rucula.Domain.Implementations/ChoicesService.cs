@@ -33,12 +33,23 @@ namespace Rucula.Domain.Implementations
 
             await Task.WhenAll(dolarBlue, dolarCrypto, dolarWesternUnion, dolarDiarco).ConfigureAwait(false);
 
-            var rankingTitulos = await _titulosService.GetCclRankingTitulosIsin(dolarBlue.Result, bondCommissions).ConfigureAwait(false);
+            var rankingTitulos = await _titulosService.GetNetCclRanking(dolarBlue.Result, bondCommissions).ConfigureAwait(false);
 
+            return CreateWinningChoice(rankingTitulos, dolarBlue.Result, dolarCrypto.Result, dolarWesternUnion.Result, dolarDiarco.Result);
+        }
+
+        public ChoicesInfo RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions)
+        {
+            var rankingTitulos = _titulosService.RecalculateNetCclRanking(choices.RankingTitulos, bondCommissions);
+            return CreateWinningChoice(rankingTitulos, choices.Blue, choices.DolarCrypto, choices.DolarWesternUnion, choices.DolarDiarco);
+        }
+
+        private static ChoicesInfo CreateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Blue dolarBlue, DolarCrypto dolarCrypto, DolarWesternUnion dolarWesternUnion, DolarDiarco dolarDiarco)
+        {
             var bestTitulo = rankingTitulos.FirstOrDefault();
-            var winner = GetWinningChoice(bestTitulo, dolarCrypto.Result, dolarWesternUnion.Result);
+            var winner = GetWinningChoice(bestTitulo, dolarCrypto, dolarWesternUnion);
 
-            return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue.Result, dolarCrypto.Result, dolarWesternUnion.Result, dolarDiarco.Result);
+            return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue, dolarCrypto, dolarWesternUnion, dolarDiarco);
         }
 
         private static WinningChoice? GetWinningChoice(TituloIsin? titulo, DolarCrypto dolarCrypto, DolarWesternUnion dolarWesternUnion)

@@ -15,6 +15,8 @@ namespace Rucula.WebAssembly.Mock
         private static NavigationManager _navigationManager = default!;
         private static IHttpClientFactory _httpClientFactory = default!;
         private static INotifier _notifier = default!;
+        private static readonly JsonSerializerOptions _jsonSerializerOptions = new(JsonSerializerDefaults.Web);
+        private static ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
 
         public static async Task Main(string[] args)
         {
@@ -45,12 +47,22 @@ namespace Rucula.WebAssembly.Mock
             Console.WriteLine($"Comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
             var mockParam = await GetMockParam();
 
-            return mockParam switch
+            _currentChoices = mockParam switch
             {
                 null or "" => await FetchDefaultMock(),
                 "forever" => await RunForever(),
                 _ => await FetchMock(mockParam!)
             };
+
+            return _currentChoices;
+        }
+
+        [JSInvokable]
+        public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions)
+        {
+            Console.WriteLine($"Nuevas comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
+
+            return _currentChoices;
         }
 
         private static async Task<string?> GetMockParam()
@@ -67,7 +79,7 @@ namespace Rucula.WebAssembly.Mock
 
             await _notifier.NotifyProgress($"params: {values}");
             await Task.Delay(1000);
-            
+
             return values[0];
         }
 
@@ -81,7 +93,7 @@ namespace Rucula.WebAssembly.Mock
 
             var uri = GetMockUri(mockName);
             var json = await RequestMock(uri);
-            return JsonSerializer.Deserialize<ChoicesInfo>(json, new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+            return JsonSerializer.Deserialize<ChoicesInfo>(json, _jsonSerializerOptions)!;
         }
 
         private static async Task<string> RequestMock(string uri)

@@ -9,8 +9,8 @@
     {
         public static readonly ChoicesInfo NoChoices = new ChoicesInfo(WinningChoice.NoWinners,
                                                                        Enumerable.Empty<TituloIsin>(),
-                                                                       new Blue(double.NaN, double.NaN),
-                                                                       new DolarCrypto(double.NaN, double.NaN),
+                                                                       new Blue(null, null),
+                                                                       new DolarCrypto(null, null),
                                                                        new DolarWesternUnion(null),
                                                                        new DolarDiarco(null));
     }

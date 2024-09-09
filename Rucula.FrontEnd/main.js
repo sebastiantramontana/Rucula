@@ -20,6 +20,7 @@ addEventListener("load", async () => {
             }
         });
 
+        addApplyBondCommissionsClickListener();
         await runGettingData();
         hookVisibilityEventToRun();
     }
@@ -27,6 +28,11 @@ addEventListener("load", async () => {
         console.log(`Algo salió mal: ${ex}`);
     }
 });
+
+function addApplyBondCommissionsClickListener() {
+    const applyButton = document.getElementById("apply-bond-commissions-button");
+    applyButton.addEventListener("click", recalculateChoices);
+}
 
 async function runGettingData() {
     await getAllData();
@@ -72,6 +78,24 @@ async function getAllData() {
     showDolarCrypto(choices.dolarCrypto);
     showDolarWesternUnion(choices.dolarWesternUnion);
     showDolarDiarco(choices.dolarDiarco);
+    showTitulosPublicos(choices.rankingTitulos, numberFormater);
+
+    showBestChoiceElement();
+
+    isGettingData = false;
+}
+
+function recalculateChoices() {
+    if (isGettingData)
+        return;
+
+    isGettingData = true;
+
+    showLoadingIndicator();
+
+    const choices = DotNet.invokeMethod('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions());
+
+    showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();

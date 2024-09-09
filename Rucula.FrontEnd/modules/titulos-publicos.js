@@ -15,7 +15,7 @@
 
     function addCommissionInputEventListener(input) {
         input.addEventListener('input', function () {
-            const applyButton = document.getElementById("apply-commissions-button");
+            const applyButton = document.getElementById("apply-bond-commissions-button");
             applyButton.disabled = !(purchaseInput.checkValidity() && saleInput.checkValidity() && withdrawalInput.checkValidity());
         });
     }
@@ -29,15 +29,13 @@
     }
 
     function addApplyCommissionsClickListener() {
-        const applyButton = document.getElementById("apply-commissions-button");
-        applyButton.addEventListener("click", applyCommissions);
+        const applyButton = document.getElementById("apply-bond-commissions-button");
+        applyButton.addEventListener("click", saveCommissions);
     }
 
-    function applyCommissions() {
+    function saveCommissions() {
         const commissions = { "purchasePercentage": parseFloat(purchaseInput.value), "salePercentage": parseFloat(saleInput.value), "withdrawalPercentage": parseFloat(withdrawalInput.value) };
-
         localStorage.setItem("commisions-bond-settings", JSON.stringify(commissions));
-
         this.disabled = true;
     }
 });

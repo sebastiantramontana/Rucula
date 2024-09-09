@@ -1,4 +1,4 @@
 ﻿namespace Rucula.Domain.Entities
 {
-    public record class DolarCrypto(double PrecioCompra, double PrecioVenta);
+    public record class DolarCrypto(double? PrecioCompra, double? PrecioVenta);
 }

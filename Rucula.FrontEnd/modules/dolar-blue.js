@@ -3,6 +3,6 @@
     const dolarBlueCompra = document.getElementById("dolar-blue-compra");
     const dolarBlueVenta = document.getElementById("dolar-blue-venta");
 
-    dolarBlueCompra.innerHTML = dolarBlue.precioCompra;
-    dolarBlueVenta.innerHTML = dolarBlue.precioVenta;
+    dolarBlueCompra.textContent = dolarBlue.precioCompra;
+    dolarBlueVenta.textContent = dolarBlue.precioVenta;
 }

@@ -1,6 +1,5 @@
 ﻿using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
-using System.Linq;
 
 namespace Rucula.Domain.Implementations;
 
@@ -17,7 +16,12 @@ internal class TitulosService : ITitulosService
         _notifier = notifier;
     }
 
-    public async Task<IEnumerable<TituloIsin>> GetCclRankingTitulosIsin(Blue blue, BondCommissions bondCommissions)
+    public IEnumerable<TituloIsin> RecalculateNetCclRanking(IEnumerable<TituloIsin> titulos, BondCommissions bondCommissions)
+        => titulos
+            .Select(t => t with { NetCcl = CalculateNetCcl(t.GrossCcl, bondCommissions) })
+            .OrderByDescending(t => t.NetCcl);
+
+    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Blue blue, BondCommissions bondCommissions)
     {
         await _notifier.NotifyProgress("Consultando títulos públicos...").ConfigureAwait(false);
         var titulos = await _titulosProvider.Get().ConfigureAwait(false);
