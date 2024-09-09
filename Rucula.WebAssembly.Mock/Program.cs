@@ -40,8 +40,9 @@ namespace Rucula.WebAssembly.Mock
         }
 
         [JSInvokable]
-        public static async Task<ChoicesInfo> GetChoices()
+        public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions)
         {
+            Console.WriteLine($"Comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
             var mockParam = await GetMockParam();
 
             return mockParam switch

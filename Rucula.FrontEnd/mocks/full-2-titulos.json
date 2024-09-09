@@ -35,10 +35,10 @@
         "moneda": 1
       },
       "vencimiento": "2023-10-31",
-      "cotizacionCcl": 852.8448275862069,
+      "grossCcl": 852.8448275862069,
+      "netCcl": 827.513680356,
       "cotizacionCclMepBlue": 948.0076221743585,
-      "porcentajeArbitrajeCclMepBlue": 11.158277744087329,
-      "porcentajeArbitrajeCclMep": 0.8518746993998434
+      "porcentajeArbitrajeCclMepBlue": 11.158277744087329
     },
     {
       "codigoIsin": "ARARGE520DT9",
@@ -65,10 +65,10 @@
         "moneda": 1
       },
       "vencimiento": "2023-11-23",
-      "cotizacionCcl": 850.8465909090909,
+      "grossCcl": 850.8465909090909,
+      "netCcl": 821.123456789,
       "cotizacionCclMepBlue": 939.9937228714524,
-      "porcentajeArbitrajeCclMepBlue": 10.477462437395673,
-      "porcentajeArbitrajeCclMep": -0.0006677796327210217
+      "porcentajeArbitrajeCclMepBlue": 10.477462437395673
     }
   ],
   "winningChoice": {

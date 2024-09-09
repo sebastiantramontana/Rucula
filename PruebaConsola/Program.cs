@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
+using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
 
 namespace PruebaConsola;
@@ -21,13 +22,13 @@ internal class Program
         var notifier = services.GetRequiredService<INotifier>();
         var service = services.GetRequiredService<IChoicesService>();
 
-        var choices = await service.GetChoices();
+        var choices = await service.GetChoices(new BondCommissions(1, 1, 1));
 
         await notifier.NotifyProgress($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
 
         foreach (var titulo in choices.RankingTitulos)
         {
-            await notifier.NotifyProgress($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.CotizacionCcl}{Environment.NewLine}");
+            await notifier.NotifyProgress($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.GrossCcl} -> Neto: {titulo.NetCcl} {Environment.NewLine}");
         }
 
         await notifier.NotifyProgress($"Blue: {choices.Blue.PrecioCompra}{Environment.NewLine}");

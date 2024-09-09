@@ -6,8 +6,8 @@
                                    Titulo? TituloPeso,
                                    Titulo? TituloMep,
                                    DateOnly Vencimiento,
-                                   double? CotizacionCcl,
+                                   double? GrossCcl,
+                                   double? NetCcl,
                                    double? CotizacionCclMepBlue,
-                                   double? PorcentajeArbitrajeCclMepBlue,
-                                   double? PorcentajeArbitrajeCclMep);
+                                   double? PorcentajeArbitrajeCclMepBlue);
 }

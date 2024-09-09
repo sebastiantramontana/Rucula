@@ -67,7 +67,7 @@
                             <span class="block mb-1" title="Porcentaje por retiro o transferencia a tu banco local">% Retiro</span>
                             <input id="commission-porcentage-withdrawal-bond" class="w-full sm:w-16 h-5 p-0.5 border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
-                        <button id="apply-commissions-button" class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
+                        <button id="apply-commissions-button" disabled class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
                     </span>
                 </div>
             </div>
@@ -81,10 +81,10 @@
                         <th class="border-grey-light dark:border-black border bg-emerald-800 p-3">US$</th>
                         <th class="border-grey-light dark:border-black border bg-teal-700 p-3">Símbolo&nbsp;MEP</th>
                         <th class="border-grey-light dark:border-black border bg-teal-700 p-3">US$</th>
-                        <th class="border-grey-light dark:border-black border bg-ccl p-3">Cotización&nbsp;CCL</th>
+                        <th class="border-grey-light dark:border-black border bg-ccl p-3">CCL&nbsp;Bruto</th>
+                        <th class="border-grey-light dark:border-black border ring-2 ring-inset ring-sky-500 dark:ring-white/50 bg-ccl p-3">CCL&nbsp;Neto</th>
                         <th class="border-grey-light dark:border-black border bg-dolar p-3">CCL&#8702;MEP&#8702;Blue</th>
                         <th class="border-grey-light dark:border-black border bg-dolar p-3">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
-                        <th class="border-grey-light dark:border-black border bg-dolar p-3">%&nbsp;CCL&#8702;MEP</th>
                     </tr>
                 </thead>
                 <tbody class="text-black dark:text-white"></tbody>
@@ -158,9 +158,9 @@
         <td data-label="US$" id="cotizacion-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
         <td data-label="Símbolo&nbsp;MEP" id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-left">&nbsp;</td>
         <td data-label="US$" id="cotizacion-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
-        <td data-label="Cotización&nbsp;CCL" id="ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 font-bold sm:font-normal sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
         <td data-label="CCL&#8702;MEP&#8702;Blue" id="ccl-mep-blue" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
         <td data-label="%&nbsp;CCL&#8702;MEP&#8702;Blue" id="porc-ccl-mep-blue" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
-        <td data-label="%&nbsp;CCL&#8702;MEP" id="porc-ccl-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">&nbsp;</td>
     </tr>
 </template>

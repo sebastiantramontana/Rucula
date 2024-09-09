@@ -21,19 +21,11 @@
     }
 
     function loadInputs() {
-        const commisionsBondSettings = loadSavedCommisionsOrDefault();
+        const commisionsBondSettings = getSavedCommisionsOrDefault();
 
-        purchaseInput.value = commisionsBondSettings.purchase;
-        saleInput.value = commisionsBondSettings.sale;
-        withdrawalInput.value = commisionsBondSettings.withdrawal;
-    }
-
-    function loadSavedCommisionsOrDefault() {
-        const commisionsBondSettingsJson = localStorage.getItem("commisions-bond-settings");
-
-        return commisionsBondSettingsJson !== null
-            ? JSON.parse(commisionsBondSettingsJson)
-            : { "purchase": 0.0, "sale": 0.0, "withdrawal": 0.0 };
+        purchaseInput.value = commisionsBondSettings.purchasePercentage;
+        saleInput.value = commisionsBondSettings.salePercentage;
+        withdrawalInput.value = commisionsBondSettings.withdrawalPercentage;
     }
 
     function addApplyCommissionsClickListener() {
@@ -42,26 +34,42 @@
     }
 
     function applyCommissions() {
-        const commissions = { "purchase": purchaseInput.value, "sale": saleInput.value, "withdrawal": withdrawalInput.value };
+        const commissions = { "purchasePercentage": parseFloat(purchaseInput.value), "salePercentage": parseFloat(saleInput.value), "withdrawalPercentage": parseFloat(withdrawalInput.value) };
 
         localStorage.setItem("commisions-bond-settings", JSON.stringify(commissions));
+
+        this.disabled = true;
     }
 });
 
-export default function showTitulosPublicos(titulos, numberFormater) {
+function getSavedCommisionsOrDefault() {
+    const commisionsBondSettingsJson = localStorage.getItem("commisions-bond-settings");
+
+    return commisionsBondSettingsJson !== null
+        ? JSON.parse(commisionsBondSettingsJson)
+        : { "purchasePercentage": 0.0, "salePercentage": 0.0, "withdrawalPercentage": 0.0 };
+}
+
+export function getCommissions() {
+    return getSavedCommisionsOrDefault();
+}
+
+export function showTitulosPublicos(titulos, numberFormater) {
     const table = document.getElementById("tabla-titulos");
 
-    clearTableRows(table);
     fillTitulosRows(table, titulos, numberFormater);
 }
 
 function fillTitulosRows(table, titulos, numberFormater) {
-    const tbody = table.tBodies[0];
+    const tBody = table.tBodies[0];
+    const newTbody = tBody.cloneNode(false);
     const row = document.getElementById("titulos-table-row-template").content;
 
     for (let i = 0; i < titulos.length; i++) {
-        addNewRow(tbody, row, titulos[i], numberFormater);
+        addNewRow(newTbody, row, titulos[i], numberFormater);
     }
+
+    tBody.replaceWith(newTbody);
 }
 
 function addNewRow(tbody, templateRow, titulo, numberFormater) {
@@ -73,10 +81,10 @@ function addNewRow(tbody, templateRow, titulo, numberFormater) {
     writeCell(clonedRow, "cotizacion-cable", format(numberFormater, titulo?.tituloCable?.precioVenta));
     writeCell(clonedRow, "symbol-mep", titulo?.tituloMep?.simbolo);
     writeCell(clonedRow, "cotizacion-mep", format(numberFormater, titulo?.tituloMep?.precioCompra));
-    writeCell(clonedRow, "ccl", format(numberFormater, titulo?.cotizacionCcl));
+    writeCell(clonedRow, "gross-ccl", format(numberFormater, titulo?.grossCcl));
+    writeCell(clonedRow, "net-ccl", format(numberFormater, titulo?.netCcl));
     writeCell(clonedRow, "ccl-mep-blue", format(numberFormater, titulo?.cotizacionCclMepBlue));
     writeCell(clonedRow, "porc-ccl-mep-blue", format(numberFormater, titulo?.porcentajeArbitrajeCclMepBlue));
-    writeCell(clonedRow, "porc-ccl-mep", format(numberFormater, titulo?.porcentajeArbitrajeCclMep));
 
     tbody.appendChild(clonedRow);
 }
@@ -87,14 +95,6 @@ function format(formatter, value) {
 
 function writeCell(row, cellId, data) {
     const cell = row.getElementById(cellId);
-    cell.innerHTML = data ?? "";
-}
-
-function clearTableRows(table) {
-    const rows = table.tBodies[0].rows;
-    const count = rows.length;
-
-    for (let i = 0; i < count; i++)
-        table.deleteRow(-1);
+    cell.textContent = data ?? "";
 }
 

@@ -35,10 +35,10 @@
         "moneda": 1
       },
       "vencimiento": "2023-10-31",
-      "cotizacionCcl": 852.8448275862069,
+      "grossCcl": 850.8465909090909,
+      "netCcl": 821.123456789,
       "cotizacionCclMepBlue": 948.0076221743585,
-      "porcentajeArbitrajeCclMepBlue": 11.158277744087329,
-      "porcentajeArbitrajeCclMep": 0.8518746993998434
+      "porcentajeArbitrajeCclMepBlue": 11.158277744087329
     },
     {
       "codigoIsin": "ARARGE520DT9",
@@ -65,10 +65,10 @@
         "moneda": 1
       },
       "vencimiento": "2023-11-23",
-      "cotizacionCcl": 850.8465909090909,
+      "grossCcl": 840.8465909090909,
+      "netCcl": 811.123456789,
       "cotizacionCclMepBlue": 939.9937228714524,
-      "porcentajeArbitrajeCclMepBlue": 10.477462437395673,
-      "porcentajeArbitrajeCclMep": -0.0006677796327210217
+      "porcentajeArbitrajeCclMepBlue": -10.477462437395673
     },
     {
       "codigoIsin": "ARARGE3209S6",
@@ -87,18 +87,12 @@
         "parking": 0,
         "moneda": 0
       },
-      "tituloMep": {
-        "simbolo": "MOCK3D",
-        "precioCompra": 24.99,
-        "precioVenta": 25,
-        "parking": 0,
-        "moneda": 1
-      },
+      "tituloMep": null,
       "vencimiento": "2030-07-09",
-      "cotizacionCcl": 850.8266129032257,
-      "cotizacionCclMepBlue": 946.327065959494,
-      "porcentajeArbitrajeCclMepBlue": 11.224431818181799,
-      "porcentajeArbitrajeCclMep": 0.673092123350429
+      "grossCcl": 830.8465909090909,
+      "netCcl": 801.123456789,
+      "cotizacionCclMepBlue": null,
+      "porcentajeArbitrajeCclMepBlue": null
     },
     {
       "codigoIsin": "US040114HS26",
@@ -125,10 +119,10 @@
         "moneda": 1
       },
       "vencimiento": "2030-07-09",
-      "cotizacionCcl": 721.4434523809523,
+      "grossCcl": 820.8465909090909,
+      "netCcl": 791.123456789,
       "cotizacionCclMepBlue": 800.8682834413468,
-      "porcentajeArbitrajeCclMepBlue": 11.009155436683457,
-      "porcentajeArbitrajeCclMep": -14.80124644240992
+      "porcentajeArbitrajeCclMepBlue": 11.009155436683457
     },
     {
       "codigoIsin": "US040114HT09",
@@ -147,18 +141,12 @@
         "parking": 0,
         "moneda": 0
       },
-      "tituloMep": {
-        "simbolo": "MOCK5D",
-        "precioCompra": 0,
-        "precioVenta": 35,
-        "parking": 0,
-        "moneda": 1
-      },
+      "tituloMep": null,
       "vencimiento": "2035-07-09",
-      "cotizacionCcl": 619.4444444444445,
+      "grossCcl": 810.8465909090909,
+      "netCcl": 781.123456789,
       "cotizacionCclMepBlue": null,
-      "porcentajeArbitrajeCclMepBlue": null,
-      "porcentajeArbitrajeCclMep": null
+      "porcentajeArbitrajeCclMepBlue": null
     }
   ],
   "winningChoice": {

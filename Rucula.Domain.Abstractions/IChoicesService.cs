@@ -4,6 +4,6 @@ namespace Rucula.Domain.Abstractions
 {
     public interface IChoicesService
     {
-        Task<ChoicesInfo> GetChoices();
+        Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions);
     }
 }

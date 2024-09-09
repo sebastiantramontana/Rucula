@@ -1,4 +1,4 @@
-﻿import showTitulosPublicos from "./modules/titulos-publicos.js";
+﻿import { showTitulosPublicos, getCommissions as getBondCommissions } from "./modules/titulos-publicos.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
@@ -65,7 +65,7 @@ async function getAllData() {
 
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices');
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(choices.blue);

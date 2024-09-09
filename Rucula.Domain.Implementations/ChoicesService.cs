@@ -24,7 +24,7 @@ namespace Rucula.Domain.Implementations
             _dolarDiarcoProvider = dolarDiarcoProvider;
         }
 
-        public async Task<ChoicesInfo> GetChoices()
+        public async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions)
         {
             var dolarBlue = _dolarBlueProvider.GetCurrentBlue();
             var dolarCrypto = _dolarCryptoProvider.GetCurrentDolarCrypto();
@@ -33,7 +33,7 @@ namespace Rucula.Domain.Implementations
 
             await Task.WhenAll(dolarBlue, dolarCrypto, dolarWesternUnion, dolarDiarco).ConfigureAwait(false);
 
-            var rankingTitulos = await _titulosService.GetCclRankingTitulosIsin(dolarBlue.Result).ConfigureAwait(false);
+            var rankingTitulos = await _titulosService.GetCclRankingTitulosIsin(dolarBlue.Result, bondCommissions).ConfigureAwait(false);
 
             var bestTitulo = rankingTitulos.FirstOrDefault();
             var winner = GetWinningChoice(bestTitulo, dolarCrypto.Result, dolarWesternUnion.Result);
@@ -61,12 +61,12 @@ namespace Rucula.Domain.Implementations
         }
 
         private static WinningChoice CreateWinner(TituloIsin titulo)
-            => new WinningChoice(titulo.TituloPeso!.Simbolo, "No incluye comisiones ni costos de transferencias", titulo.CotizacionCcl!.Value);
+            => new(titulo.TituloPeso!.Simbolo, "Incluye comisiones, pero no costos de transferencias", titulo.NetCcl!.Value);
 
         private static WinningChoice CreateWinner(DolarCrypto dolarCrypto)
-            => new WinningChoice("Dolar Crypto", string.Empty, dolarCrypto.PrecioCompra);
+            => new("Dolar Crypto", string.Empty, dolarCrypto.PrecioCompra);
 
         private static WinningChoice CreateWinner(DolarWesternUnion dolarWesternUnion)
-            => new WinningChoice("Western Union", "No incluye costos ni fee", dolarWesternUnion.Price!.Value);
+            => new("Western Union", "No incluye costos ni fee", dolarWesternUnion.Price!.Value);
     }
 }
