@@ -1,4 +1,54 @@
-﻿export default function showTitulosPublicos(titulos, numberFormater) {
+﻿addEventListener("DOMContentLoaded", () => {
+    const purchaseInput = document.getElementById("commission-porcentage-purchase-bond");
+    const saleInput = document.getElementById("commission-porcentage-sale-bond");
+    const withdrawalInput = document.getElementById("commission-porcentage-withdrawal-bond");
+
+    addAllCommissionInputEventListeners();
+    addApplyCommissionsClickListener();
+    loadInputs();
+
+    function addAllCommissionInputEventListeners() {
+        addCommissionInputEventListener(purchaseInput);
+        addCommissionInputEventListener(saleInput);
+        addCommissionInputEventListener(withdrawalInput);
+    }
+
+    function addCommissionInputEventListener(input) {
+        input.addEventListener('input', function () {
+            const applyButton = document.getElementById("apply-commissions-button");
+            applyButton.disabled = !(purchaseInput.checkValidity() && saleInput.checkValidity() && withdrawalInput.checkValidity());
+        });
+    }
+
+    function loadInputs() {
+        const commisionsBondSettings = loadSavedCommisionsOrDefault();
+
+        purchaseInput.value = commisionsBondSettings.purchase;
+        saleInput.value = commisionsBondSettings.sale;
+        withdrawalInput.value = commisionsBondSettings.withdrawal;
+    }
+
+    function loadSavedCommisionsOrDefault() {
+        const commisionsBondSettingsJson = localStorage.getItem("commisions-bond-settings");
+
+        return commisionsBondSettingsJson !== null
+            ? JSON.parse(commisionsBondSettingsJson)
+            : { "purchase": 0.0, "sale": 0.0, "withdrawal": 0.0 };
+    }
+
+    function addApplyCommissionsClickListener() {
+        const applyButton = document.getElementById("apply-commissions-button");
+        applyButton.addEventListener("click", applyCommissions);
+    }
+
+    function applyCommissions() {
+        const commissions = { "purchase": purchaseInput.value, "sale": saleInput.value, "withdrawal": withdrawalInput.value };
+
+        localStorage.setItem("commisions-bond-settings", JSON.stringify(commissions));
+    }
+});
+
+export default function showTitulosPublicos(titulos, numberFormater) {
     const table = document.getElementById("tabla-titulos");
 
     clearTableRows(table);
