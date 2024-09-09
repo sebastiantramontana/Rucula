@@ -1,5 +1,5 @@
 ﻿#titulos-publicos-bar:has(#commissions-checkbox:checked) + #commissions-panel {
-    max-height: 176px; /* h-44 */
+    max-height: 288px; /*h-72 */
     padding: 12px;
 }
 
