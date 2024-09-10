@@ -1,4 +1,4 @@
-﻿import { showTitulosPublicos, getCommissions as getBondCommissions } from "./modules/titulos-publicos.js";
+﻿import { showTitulosPublicos, getCommissions as getBondCommissions, disableCommissions as disableBondCommissions, enableCommissions as enableBondCommissions } from "./modules/titulos-publicos.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
@@ -69,6 +69,7 @@ async function getAllData() {
 
     isGettingData = true;
 
+    disableBondCommissions();
     showLoadingIndicator();
 
     const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions());
@@ -81,6 +82,7 @@ async function getAllData() {
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();
+    enableBondCommissions();
 
     isGettingData = false;
 }
@@ -91,6 +93,7 @@ function recalculateChoices() {
 
     isGettingData = true;
 
+    disableBondCommissions();
     showLoadingIndicator();
 
     const choices = DotNet.invokeMethod('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions());
@@ -99,6 +102,7 @@ function recalculateChoices() {
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();
+    enableBondCommissions();
 
     isGettingData = false;
 }

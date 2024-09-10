@@ -1,31 +1,36 @@
 ﻿addEventListener("DOMContentLoaded", () => {
-    const purchaseInput = document.getElementById("commission-porcentage-purchase-bond");
-    const saleInput = document.getElementById("commission-porcentage-sale-bond");
-    const withdrawalInput = document.getElementById("commission-porcentage-withdrawal-bond");
+    const commissionsInputs = getCommissionInputs();
 
-    addAllCommissionInputEventListeners();
+    addCurrentDisabledToApplyButton();
+    addAllCommissionInputEventListeners(commissionsInputs);
     addApplyCommissionsClickListener();
-    loadInputs();
+    loadCommissionInputs(commissionsInputs);
 
-    function addAllCommissionInputEventListeners() {
-        addCommissionInputEventListener(purchaseInput);
-        addCommissionInputEventListener(saleInput);
-        addCommissionInputEventListener(withdrawalInput);
+    function addCurrentDisabledToApplyButton() {
+        const applyButton = document.getElementById("apply-bond-commissions-button");
+        applyButton.currentDisabled = applyButton.disabled;
     }
 
-    function addCommissionInputEventListener(input) {
-        input.addEventListener('input', function () {
+    function addAllCommissionInputEventListeners(inputs) {
+        addCommissionInputEventListener(inputs.purchaseInput, inputs);
+        addCommissionInputEventListener(inputs.saleInput, inputs);
+        addCommissionInputEventListener(inputs.withdrawalInput, inputs);
+    }
+
+    function addCommissionInputEventListener(inputToAddListener, inputs) {
+        inputToAddListener.addEventListener('input', function () {
             const applyButton = document.getElementById("apply-bond-commissions-button");
-            applyButton.disabled = !(purchaseInput.checkValidity() && saleInput.checkValidity() && withdrawalInput.checkValidity());
+            applyButton.disabled = !(inputs.purchaseInput.checkValidity() && inputs.saleInput.checkValidity() && inputs.withdrawalInput.checkValidity());
+            applyButton.currentDisabled = applyButton.disabled;
         });
     }
 
-    function loadInputs() {
+    function loadCommissionInputs(inputs) {
         const commisionsBondSettings = getSavedCommisionsOrDefault();
 
-        purchaseInput.value = commisionsBondSettings.purchasePercentage;
-        saleInput.value = commisionsBondSettings.salePercentage;
-        withdrawalInput.value = commisionsBondSettings.withdrawalPercentage;
+        inputs.purchaseInput.value = commisionsBondSettings.purchasePercentage;
+        inputs.saleInput.value = commisionsBondSettings.salePercentage;
+        inputs.withdrawalInput.value = commisionsBondSettings.withdrawalPercentage;
     }
 
     function addApplyCommissionsClickListener() {
@@ -34,11 +39,20 @@
     }
 
     function saveCommissions() {
-        const commissions = { "purchasePercentage": parseFloat(purchaseInput.value), "salePercentage": parseFloat(saleInput.value), "withdrawalPercentage": parseFloat(withdrawalInput.value) };
+        const commissions = { "purchasePercentage": parseFloat(commissionsInputs.purchaseInput.value), "salePercentage": parseFloat(commissionsInputs.saleInput.value), "withdrawalPercentage": parseFloat(commissionsInputs.withdrawalInput.value) };
         localStorage.setItem("commisions-bond-settings", JSON.stringify(commissions));
         this.disabled = true;
+        this.currentDisabled = true;
     }
 });
+
+function getCommissionInputs() {
+    const purchaseInput = document.getElementById("commission-porcentage-purchase-bond");
+    const saleInput = document.getElementById("commission-porcentage-sale-bond");
+    const withdrawalInput = document.getElementById("commission-porcentage-withdrawal-bond");
+
+    return { purchaseInput, saleInput, withdrawalInput };
+}
 
 function getSavedCommisionsOrDefault() {
     const commisionsBondSettingsJson = localStorage.getItem("commisions-bond-settings");
@@ -46,6 +60,25 @@ function getSavedCommisionsOrDefault() {
     return commisionsBondSettingsJson !== null
         ? JSON.parse(commisionsBondSettingsJson)
         : { "purchasePercentage": 0.0, "salePercentage": 0.0, "withdrawalPercentage": 0.0 };
+}
+
+function toggleEnablingCommissions(isDisabled) {
+    const inputs = getCommissionInputs();
+
+    inputs.purchaseInput.disabled = isDisabled;
+    inputs.saleInput.disabled = isDisabled;
+    inputs.withdrawalInput.disabled = isDisabled;
+
+    const applyButton = document.getElementById("apply-bond-commissions-button");
+    applyButton.disabled = (isDisabled) ? true : applyButton.currentDisabled || false;
+}
+
+export function disableCommissions() {
+    toggleEnablingCommissions(true);
+}
+
+export function enableCommissions() {
+    toggleEnablingCommissions(false);
 }
 
 export function getCommissions() {
