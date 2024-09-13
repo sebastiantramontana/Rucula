@@ -33,3 +33,4 @@ packages/
 _framework/
 node_modules/
 Publish/package*.*
+Publish/tools/.store/

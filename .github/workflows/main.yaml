@@ -1,0 +1,32 @@
+name: Rucula
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Check out Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run the Cake script
+        uses: cake-build/cake-action@v2
+        with:
+            script-path: ./Publish/build.cake
+      - name: Publish generated Blazor webassembly to Netlify
+        uses: nwtgck/actions-netlify@v3.0 
+        env:
+            NETLIFY_AUTH_TOKEN: ${{ secrets.nfp_4Gi9WoDC9Yf3Yo3Gt51iPragzGNvhBGKe5be }}
+            NETLIFY_SITE_ID: ${{ secrets.0e02cedd-bfbc-4b2f-9387-b217e17fceff }}
+        with:
+            publish-dir: ./Release
+            production-branch: main
