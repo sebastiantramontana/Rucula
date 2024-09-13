@@ -11,7 +11,7 @@ string version = String.Empty;
 
 Task("Clean")
     .Does(() => {
-	CleanDirectories("./../Release",new CleanDirectorySettings { Force = true });
+	CleanDirectories("./../dist",new CleanDirectorySettings { Force = true });
     DotNetClean("./../Rucula.WebAssembly/Rucula.WebAssembly.csproj");
 });
 
@@ -75,9 +75,9 @@ Task("Publish")
 										   Framework = "net8.0",
 										   SelfContained = true,
 										   Runtime = "browser-wasm",
-										   OutputDirectory = "./../Release",
+										   OutputDirectory = "./../dist",
 									   };
-		   Information($"Publicando Rúcula");
+		   Information($"Publicando wasm de Rúcula");
 		   DotNetPublish(project.ToString(), publishSettings );
 		 }
 });
@@ -87,29 +87,28 @@ Task("Moving")
 	.Description("Moviendo la carpeta _framework al raiz de la carpeta de publicacion y eliminando wwwroot...")
     .Does(() => {
 		Information("Moviendo _framework y eliminado wwwroot...");
-		CopyDirectory("./../Release/wwwroot/_framework", "./../Release/_framework");
-		DeleteDirectory("./../Release/wwwroot", new DeleteDirectorySettings { Recursive = true, Force = true });
-		DeleteFiles("./../Release/_framework/*.pdb.gz");
+		CopyDirectory("./../dist/wwwroot/_framework", "./../dist/_framework");
+		DeleteDirectory("./../dist/wwwroot", new DeleteDirectorySettings { Recursive = true, Force = true });
+		DeleteFiles("./../dist/_framework/*.pdb.gz");
 });
 
 Task("CopyStatics")
 	.Description("Copiando archivos estaticos")
     .Does(() => {
-		CreateDirectory("../Release/images/");
-		CreateDirectory("../Release/modules/");
-		CopyFiles("../Rucula.Frontend/images/*.*", "../Release/images/");
-		CopyFiles("../Rucula.Frontend/modules/*.*", "../Release/modules/");
-		CopyFiles("../Rucula.Frontend/*.*", "../Release/");
-		DeleteFile("./../Release/web.config");
+		CreateDirectory("../dist/images/");
+		CreateDirectory("../dist/modules/");
+		CopyFiles("../Rucula.Frontend/images/*.*", "../dist/images/");
+		CopyFiles("../Rucula.Frontend/modules/*.*", "../dist/modules/");
+		CopyFiles("../Rucula.Frontend/*.*", "../dist/");
+		DeleteFile("./../dist/web.config");
 });
 
 Task("Css")
 	.Description("Procesando CSS")
     .Does(() => {
-		CreateDirectory("../Release/css/");
-		CopyFiles("../Rucula.Frontend/css/titulos-publicos.css", "../Release/css/");
-		StartProcess("./node_modules/.bin/npx.cmd", "tailwindcss -i ../Rucula.FrontEnd/css/styles.css -o ../Release/css/styles.css --minify");
-		RemoveTailwindCdn("../Release/index.html");
+		CreateDirectory("../dist/css/");
+		CopyFiles("../Rucula.Frontend/css/titulos-publicos.css", "../dist/css/");
+		RemoveTailwindCdn("../dist/index.html");
 });
 
 //////////////////////////////////////////////////////////////////////

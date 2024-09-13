@@ -32,5 +32,5 @@ _ReSharper*/
 packages/
 _framework/
 node_modules/
-Publish/package*.*
+Publish/package-lock.json
 Publish/tools/.store/

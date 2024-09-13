@@ -10,23 +10,61 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-      - name: Check out Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Run the Cake script
-        uses: cake-build/cake-action@v2
-        with:
+        - name: Check out Code
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: 8.0.x
+        - name: Run the Cake script
+          uses: cake-build/cake-action@v2
+          with:
             script-path: ./Publish/build.cake
-      - name: Publish generated Blazor webassembly to Netlify
-        uses: nwtgck/actions-netlify@v3.0 
-        env:
+        - name: Crear artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: artifact-build
+            path: ./dist
+  tailwindcss:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+        - name: Check out Code
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Clean tailwindcss
+          uses: ZoeyVid/tailwindcss-update@main
+          with:
+            input: ./Rucula.FrontEnd/css/styles.css
+            output: ./dist/css/styles.css
+            params: "--minify"
+        - name: Crear artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: artifact-tailwindcss
+            path: ./dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: tailwindcss
+    steps:
+        - name: Descargar artifact Build
+          uses: actions/download-artifact@v4
+          with:
+            name: artifact-build
+            path: ./dist
+        - name: Descargar artifact Tailwind
+          uses: actions/download-artifact@v4
+          with:
+            name: artifact-tailwindcss
+            path: ./dist
+        - name: Publish generated Blazor webassembly to Netlify
+          uses: nwtgck/actions-netlify@v3.0 
+          env:
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-            publish-dir: ./Release
+          with:
+            publish-dir: ./dist
             production-branch: main

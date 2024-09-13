@@ -1,0 +1,13 @@
+{
+  "name": "rucula",
+  "scripts": {
+	"spec": ""
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.9"
+  },
+  "dependencies": {
+    "npx": "^10.2.2",
+	"tailwindcss": "^3.4.9"
+  }
+}
