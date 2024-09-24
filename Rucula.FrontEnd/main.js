@@ -4,6 +4,7 @@ import showDolarCrypto from "./modules/dolar-crypto.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
 import showDolarDiarco from "./modules/dolar-diarco.js";
 import showBestChoice from "./modules/best-choice.js";
+import getValueFromOptional from "./optional-value.js";
 
 let dataIntervalId = null;
 const numberFormater = new Intl.NumberFormat('es-AR', {
@@ -75,10 +76,10 @@ async function getAllData() {
     const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions(), { amountToSend: 100.0 });
 
     showBestChoice(choices.winningChoice, numberFormater);
-    showDolarBlue(choices.blue);
-    showDolarCrypto(choices.dolarCrypto);
-    showDolarWesternUnion(choices.dolarWesternUnion);
-    showDolarDiarco(choices.dolarDiarco);
+    showDolarBlue(getValueFromOptional(choices.blue));
+    showDolarCrypto(getValueFromOptional(choices.dolarCrypto));
+    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion));
+    showDolarDiarco(getValueFromOptional(choices.dolarDiarco));
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();
