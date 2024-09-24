@@ -1,10 +1,9 @@
 ﻿using Rucula.Domain.Entities;
 
-namespace Rucula.Domain.Abstractions
+namespace Rucula.Domain.Abstractions;
+
+public interface IChoicesService
 {
-    public interface IChoicesService
-    {
-        Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions);
-        ChoicesInfo RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions);
-    }
+    Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters);
+    Task<ChoicesInfo> RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters);
 }

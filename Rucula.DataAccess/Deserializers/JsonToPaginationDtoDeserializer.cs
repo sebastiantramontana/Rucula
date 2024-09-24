@@ -1,4 +1,5 @@
 ﻿using Rucula.DataAccess.Dtos;
+using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers
@@ -12,14 +13,18 @@ namespace Rucula.DataAccess.Deserializers
             _valueReader = valueReader;
         }
 
-        public PaginationDto Deserialize(JsonNode node)
+        public Optional<PaginationDto> Deserialize(JsonNode? node)
         {
-            var pageNumber = _valueReader.GetValue<int>(node, "page_number");
-            var pageCount = _valueReader.GetValue<int>(node, "page_count");
-            var pageSize = _valueReader.GetValue<int>(node, "page_size");
-            var totalElementsCount = _valueReader.GetValue<int>(node, "total_elements_count");
+            if (node is null)
+                return Optional<PaginationDto>.Empty;
 
-            return new PaginationDto(pageNumber, pageCount, pageSize, totalElementsCount);
+            var pageNumber = _valueReader.GetValue<int>(node!, "page_number");
+            var pageCount = _valueReader.GetValue<int>(node!, "page_count");
+            var pageSize = _valueReader.GetValue<int>(node!, "page_size");
+            var totalElementsCount = _valueReader.GetValue<int>(node!, "total_elements_count");
+
+
+            return Optional<PaginationDto>.Sure(new PaginationDto(pageNumber.Value, pageCount.Value, pageSize.Value, totalElementsCount.Value));
         }
     }
 }

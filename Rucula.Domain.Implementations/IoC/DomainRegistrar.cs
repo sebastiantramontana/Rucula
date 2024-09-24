@@ -8,6 +8,7 @@ namespace Rucula.Domain.Implementations.IoC
         public static IServiceCollection AddDomain(this IServiceCollection serviceCollection)
             => serviceCollection
                 .AddSingleton<ITitulosService, TitulosService>()
-                .AddSingleton<IChoicesService, ChoicesService>();
+                .AddSingleton<IChoicesService, ChoicesService>()
+                .AddSingleton<IWesternUnionService, WesternUnionService>();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Rucula.DataAccess.Dtos;
+using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers
@@ -14,15 +15,21 @@ namespace Rucula.DataAccess.Deserializers
             _tituloDetailsDeserializer = tituloDetailsDeserializer;
         }
 
-        public TituloDetailsContentDto Deserialize(JsonNode node)
+        public Optional<TituloDetailsContentDto> Deserialize(JsonNode? node)
         {
-            var paginationDto = _paginationDeserializer.Deserialize(node["content"]!);
-            var tituloDetailsDtos = node["data"]!
+            var paginationDto = _paginationDeserializer.Deserialize(node?["content"]);
+
+            if (!paginationDto.HasValue)
+                return Optional<TituloDetailsContentDto>.Empty;
+
+            var tituloDetailsDtos = node!["data"]!
                 .AsArray()
                 .Select(n => _tituloDetailsDeserializer.Deserialize(n!))
+                .Where(t => t.HasValue)
+                .Select(t => t.Value)
                 .ToArray();
 
-            return new TituloDetailsContentDto(paginationDto, tituloDetailsDtos);
+            return Optional<TituloDetailsContentDto>.Sure(new TituloDetailsContentDto(paginationDto.Value, tituloDetailsDtos));
         }
     }
 }

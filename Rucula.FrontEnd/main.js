@@ -72,7 +72,7 @@ async function getAllData() {
     disableBondCommissions();
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions(), { amountToSend: 100.0 });
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(choices.blue);

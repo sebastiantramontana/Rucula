@@ -1,6 +1,5 @@
-﻿namespace Rucula.DataAccess.Providers.Byma
+﻿namespace Rucula.DataAccess.Providers.Byma;
+
+internal interface IBymaTituloDetailsFetcher : IParametrizableFetcher<string>
 {
-    internal interface IBymaTituloDetailsFetcher : IParametrizableFetcher
-    {
-    }
 }

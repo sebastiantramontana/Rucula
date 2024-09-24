@@ -83,7 +83,7 @@ public static class DataAccessRegistrar
             .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
             .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>()
             .AddSingleton<IMapper<DolarCryptoDto, DolarCrypto>, DolarCryptoMapper>()
-            .AddSingleton<IMapper<DolarWesternUnionDto, DolarWesternUnion>, DolarWesternUnionMapper>()
+            .AddSingleton<IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>, DolarWesternUnionMapper>()
             .AddSingleton<IMapper<DolarDiarcoDto, DolarDiarco>, DolarDiarcoMapper>(); ;
     }
 

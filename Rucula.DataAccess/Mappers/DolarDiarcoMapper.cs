@@ -8,19 +8,20 @@ internal class DolarDiarcoMapper : IMapper<DolarDiarcoDto, DolarDiarco>
 {
     private readonly ISpanishNumberConverter _spanishNumberConverter;
 
-    public DolarDiarcoMapper(ISpanishNumberConverter spanishNumberConverter)
-    {
-        _spanishNumberConverter = spanishNumberConverter;
-    }
+    public DolarDiarcoMapper(ISpanishNumberConverter spanishNumberConverter) 
+        => _spanishNumberConverter = spanishNumberConverter;
 
-    public DolarDiarco Map(DolarDiarcoDto from)
+    public Optional<DolarDiarco> Map(Optional<DolarDiarcoDto> from)
     {
-        var description = from.DescriptionContainingPrice;
+        if (!from.HasValue)
+            return Optional<DolarDiarco>.Empty;
+
+        var description = from.Value.DescriptionContainingPrice;
         var priceString = ExtractPriceFromDescription(description);
         var priceStringEnglish = ConvertToEnglishFormat(priceString);
         var price = ParsePrice(priceStringEnglish);
 
-        return new(price);
+        return Optional<DolarDiarco>.Sure(new(price));
     }
 
     private static double? ParsePrice(string? priceString)

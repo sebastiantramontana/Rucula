@@ -1,11 +1,12 @@
 ﻿using Rucula.DataAccess.Dtos;
 using Rucula.Domain.Entities;
 
-namespace Rucula.DataAccess.Mappers
+namespace Rucula.DataAccess.Mappers;
+
+internal class DolarWesternUnionMapper : IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>
 {
-    internal class DolarWesternUnionMapper : IMapper<DolarWesternUnionDto, DolarWesternUnion>
-    {
-        public DolarWesternUnion Map(DolarWesternUnionDto from)
-            => new(from.strikeFxRate);
-    }
+    public Optional<DolarWesternUnionInfo> Map(Optional<DolarWesternUnionDto> from)
+        => from.HasValue
+            ? Optional<DolarWesternUnionInfo>.Sure(new(from.Value.StrikeFxRate, from.Value.GrossFee))
+            : Optional<DolarWesternUnionInfo>.Empty;
 }

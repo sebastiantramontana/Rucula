@@ -21,7 +21,7 @@ internal class TitulosService : ITitulosService
             .Select(t => t with { NetCcl = CalculateNetCcl(t.GrossCcl, bondCommissions) })
             .OrderByDescending(t => t.NetCcl);
 
-    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Blue blue, BondCommissions bondCommissions)
+    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions)
     {
         await _notifier.NotifyProgress("Consultando títulos públicos...").ConfigureAwait(false);
         var titulos = await _titulosProvider.Get().ConfigureAwait(false);
@@ -49,7 +49,7 @@ internal class TitulosService : ITitulosService
     private Task<IEnumerable<TituloDetails>> GetTituloDetails(Titulo titulo)
         => _tituloDetailsProvider.GetTituloDetails(titulo.Simbolo);
 
-    private static IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails? TituloDetails)> details, Blue blue, BondCommissions bondCommissions)
+    private static IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails? TituloDetails)> details, Optional<Blue> blue, BondCommissions bondCommissions)
         => details
             .Where(d => d.TituloDetails is not null)
             .GroupBy(d => d.TituloDetails!)
@@ -57,7 +57,7 @@ internal class TitulosService : ITitulosService
             .Where(t => t.NetCcl is not null)
             .OrderByDescending(t => t.NetCcl);
 
-    private static TituloIsin CreateTituloIsin(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails? TituloDetails)> values, Blue blue, BondCommissions bondCommissions)
+    private static TituloIsin CreateTituloIsin(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails? TituloDetails)> values, Optional<Blue> blue, BondCommissions bondCommissions)
     {
         var isin = values.Key.CodigoIsin;
         var denominacion = values.Key.Denominacion;
@@ -115,8 +115,8 @@ internal class TitulosService : ITitulosService
     private static double? SubstractPercentage(double? value, double percentage)
         => value.HasValue ? value.Value * (1.0 - percentage / 100) : null;
 
-    private static double? CalculateCclMepBlue(Blue blue, double? ccl, double? mep)
-        => blue.PrecioCompra * Divide(ccl, mep);
+    private static double? CalculateCclMepBlue(Optional<Blue> blue, double? ccl, double? mep)
+        => blue.HasValue ? blue.Value.PrecioCompra * Divide(ccl, mep) : null;
 
     private static double? CalculatePercentageCclMepBlue(double? cclMepBlue, double? ccl)
         => ConvertToPercentaje(Divide(cclMepBlue, ccl));

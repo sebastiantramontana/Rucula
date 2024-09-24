@@ -22,7 +22,7 @@ internal class Program
         var notifier = services.GetRequiredService<INotifier>();
         var service = services.GetRequiredService<IChoicesService>();
 
-        var choices = await service.GetChoices(new BondCommissions(1, 1, 1));
+        var choices = await service.GetChoices(new BondCommissions(1, 1, 1), new(100));
 
         await notifier.NotifyProgress($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
 
@@ -31,26 +31,9 @@ internal class Program
             await notifier.NotifyProgress($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.GrossCcl} -> Neto: {titulo.NetCcl} {Environment.NewLine}");
         }
 
-        await notifier.NotifyProgress($"Blue: {choices.Blue.PrecioCompra}{Environment.NewLine}");
-        await notifier.NotifyProgress($"Crypto: {choices.DolarCrypto}{Environment.NewLine}");
-        await notifier.NotifyProgress($"WU: {choices.DolarWesternUnion}{Environment.NewLine}");
-        await notifier.NotifyProgress($"Diarco: {choices.DolarDiarco}{Environment.NewLine}");
-    }
-}
-
-public class ConsoleNotifier : INotifier
-{
-    public Task NotifyProgress(string message)
-    {
-        CleanConsoleLine();
-        Console.Write(message);
-
-        return Task.CompletedTask;
-    }
-
-    private static void CleanConsoleLine()
-    {
-        Console.SetCursorPosition(0, Console.CursorTop);
-        Console.Write("\u001b[2K");
+        await notifier.NotifyProgress($"Blue: {choices.Blue.Value.PrecioCompra}{Environment.NewLine}");
+        await notifier.NotifyProgress($"Crypto: {choices.DolarCrypto.Value}{Environment.NewLine}");
+        await notifier.NotifyProgress($"WU: {choices.DolarWesternUnion.Value}{Environment.NewLine}");
+        await notifier.NotifyProgress($"Diarco: {choices.DolarDiarco.Value}{Environment.NewLine}");
     }
 }

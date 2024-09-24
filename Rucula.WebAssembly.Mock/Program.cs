@@ -42,9 +42,11 @@ namespace Rucula.WebAssembly.Mock
         }
 
         [JSInvokable]
-        public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions)
+        public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
         {
             Console.WriteLine($"Comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
+            Console.WriteLine($"Parámetros WU: {westernUnionParameters.AmountToSend}");
+
             var mockParam = await GetMockParam();
 
             _currentChoices = mockParam switch
@@ -58,9 +60,10 @@ namespace Rucula.WebAssembly.Mock
         }
 
         [JSInvokable]
-        public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions)
+        public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
         {
             Console.WriteLine($"Nuevas comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
+            Console.WriteLine($"Nuevos parámetros WU: {westernUnionParameters.AmountToSend}");
 
             return _currentChoices;
         }

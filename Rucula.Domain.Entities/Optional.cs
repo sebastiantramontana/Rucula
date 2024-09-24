@@ -1,0 +1,46 @@
+﻿using System.Text.Json.Serialization;
+
+namespace Rucula.Domain.Entities;
+
+public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
+{
+    public static Optional<T> Maybe<T2>(T2? value) where T2 : class, T
+        => (value is null) ? Empty : Sure(value);
+
+    public static Optional<T> Sure(T value)
+        => new(value, true);
+
+    public static Optional<T> Empty
+        => new(default, false);
+
+    [JsonConstructor]
+    private Optional(T? value, bool hasValue)
+    {
+        _value = value;
+        HasValue = hasValue;
+    }
+
+    public bool HasValue { get; } = false;
+
+    private readonly T? _value = default;
+    public T Value => HasValue ? _value! : throw new InvalidOperationException("Optional object has not value");
+
+    public override bool Equals(object? obj)
+        => Equals(obj as Optional<T>);
+
+    public bool Equals(Optional<T>? other)
+        => other is not null &&
+            Equals(other.Value);
+
+    public bool Equals(T? otherValue)
+        => otherValue is not null &&
+            HasValue &&
+            (Value?.Equals(otherValue) ?? false);
+
+    public override int GetHashCode()
+        => !HasValue ? HasValue.GetHashCode() : HashCode.Combine(HasValue, Value);
+
+    public override string? ToString()
+        => HasValue ? Value!.ToString() : string.Empty;
+
+}

@@ -1,18 +1,15 @@
-﻿using System.Text.Json.Nodes;
+﻿using Rucula.Domain.Entities;
+using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
 internal class JsonValueReader : IJsonValueReader
 {
-    public T GetRequiredValue<T>(JsonNode node, string key) 
+    public T GetRequiredValue<T>(JsonNode node, string key)
         => node[key]!.GetValue<T>();
 
-    public T? GetValue<T>(JsonNode node, string key)
-    {
-        var nodeValue = node[key];
-
-        return nodeValue is not null
-            ? nodeValue.GetValue<T>()
-            : default;
-    }
+    public Optional<T> GetValue<T>(JsonNode? node, string key)
+        => node?[key] is null
+        ? Optional<T>.Empty
+        : Optional<T>.Sure(GetRequiredValue<T>(node, key));
 }

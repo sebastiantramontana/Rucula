@@ -4,5 +4,5 @@ namespace Rucula.Domain.Abstractions;
 
 public interface IDolarDiarcoProvider
 {
-    Task<DolarDiarco> GetCurrentDolarDiarco();
+    Task<Optional<DolarDiarco>> GetCurrentDolarDiarco();
 }

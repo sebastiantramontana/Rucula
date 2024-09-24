@@ -1,17 +1,16 @@
-﻿namespace Rucula.Domain.Entities
+﻿namespace Rucula.Domain.Entities;
+
+public record class ChoicesInfo(WinningChoice WinningChoice,
+                            IEnumerable<TituloIsin> RankingTitulos,
+                            Optional<Blue> Blue,
+                            Optional<DolarCrypto> DolarCrypto,
+                            Optional<DolarWesternUnion> DolarWesternUnion,
+                            Optional<DolarDiarco> DolarDiarco)
 {
-    public record class ChoicesInfo(WinningChoice WinningChoice,
-                                IEnumerable<TituloIsin> RankingTitulos,
-                                Blue Blue,
-                                DolarCrypto DolarCrypto,
-                                DolarWesternUnion DolarWesternUnion,
-                                DolarDiarco DolarDiarco)
-    {
-        public static readonly ChoicesInfo NoChoices = new ChoicesInfo(WinningChoice.NoWinners,
-                                                                       Enumerable.Empty<TituloIsin>(),
-                                                                       new Blue(null, null),
-                                                                       new DolarCrypto(null, null),
-                                                                       new DolarWesternUnion(null),
-                                                                       new DolarDiarco(null));
-    }
+    public static readonly ChoicesInfo NoChoices = new (WinningChoice.NoWinners,
+                                                        [],
+                                                        Optional<Blue>.Empty,
+                                                        Optional<DolarCrypto>.Empty,
+                                                        Optional<DolarWesternUnion>.Empty,
+                                                        Optional<DolarDiarco>.Empty);
 }

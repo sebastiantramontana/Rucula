@@ -1,4 +1,5 @@
 ﻿using Rucula.DataAccess.Dtos;
+using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
@@ -10,6 +11,8 @@ internal class JsonToDolarDiarcoDtoDeserializer : IJsonDeserializer<DolarDiarcoD
     public JsonToDolarDiarcoDtoDeserializer(IJsonValueReader valueReader)
         => _valueReader = valueReader;
 
-    public DolarDiarcoDto Deserialize(JsonNode node)
-        => new(_valueReader.GetValue<string>(node, "description"));
+    public Optional<DolarDiarcoDto> Deserialize(JsonNode? node)
+        => node is not null
+            ? Optional<DolarDiarcoDto>.Sure(new(_valueReader.GetRequiredValue<string>(node!, "description")))
+            : Optional<DolarDiarcoDto>.Empty;
 }

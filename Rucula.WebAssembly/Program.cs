@@ -35,11 +35,11 @@ public class Program
     }
 
     [JSInvokable]
-    public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions)
+    public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
     {
         try
         {
-            _currentChoices = await _choicesService.GetChoices(bondCommissions).ConfigureAwait(false);
+            _currentChoices = await _choicesService.GetChoices(bondCommissions, westernUnionParameters).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -50,9 +50,9 @@ public class Program
     }
 
     [JSInvokable]
-    public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions)
+    public static async Task<ChoicesInfo> RecalculateChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
     {
-        _currentChoices = _choicesService.RecalculateChoices(_currentChoices, bondCommissions);
+        _currentChoices = await _choicesService.RecalculateChoices(_currentChoices, bondCommissions, westernUnionParameters);
         return _currentChoices;
     }
 

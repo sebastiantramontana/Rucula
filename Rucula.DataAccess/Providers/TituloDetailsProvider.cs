@@ -4,6 +4,7 @@ using Rucula.DataAccess.Mappers;
 using Rucula.DataAccess.Providers.Byma;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using System.ComponentModel;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers
@@ -30,13 +31,15 @@ namespace Rucula.DataAccess.Providers
         }
 
         private IEnumerable<TituloDetailsDto> ConvertContentToDto(string content)
-            => _tituloDetailsContentJsonDeserializer
-                .Deserialize(JsonNode.Parse(content)!)
-                .TitulosDetails;
-
+        {
+            var titulos = _tituloDetailsContentJsonDeserializer.Deserialize(JsonNode.Parse(content));
+            return titulos.HasValue ? titulos.Value.TitulosDetails : [];
+        }
         private IEnumerable<TituloDetails> MapToTituloDetails(IEnumerable<TituloDetailsDto> dtos)
             => dtos
                 .Where(dto => !string.IsNullOrWhiteSpace(dto.FechaVencimiento))
-                .Select(dto => _tituloDetailsMapper.Map(dto));
+                .Select(dto => _tituloDetailsMapper.Map(Optional<TituloDetailsDto>.Maybe(dto)))
+                .Where(dto => dto.HasValue)
+                .Select(dto => dto.Value);
     }
 }

@@ -1,20 +1,22 @@
 ﻿using Rucula.DataAccess.Dtos;
 using Rucula.Domain.Entities;
 
-namespace Rucula.DataAccess.Mappers
+namespace Rucula.DataAccess.Mappers;
+
+internal class TituloDetailsMapper : IMapper<TituloDetailsDto, TituloDetails>
 {
-    internal class TituloDetailsMapper : IMapper<TituloDetailsDto, TituloDetails>
-    {
-        private const string TextoObligacionNacional = "Valores Públicos Nacionales";
+    private const string TextoObligacionNacional = "Valores Públicos Nacionales";
 
-        public TituloDetails Map(TituloDetailsDto from)
-            => new(from.CodigoIsin, from.Denominacion, MapTipoObligacion(from.TipoObligacion), DateOnly.FromDateTime(DateTime.Parse(from.FechaVencimiento)));
+    public Optional<TituloDetails> Map(Optional<TituloDetailsDto> from)
+        => from.HasValue ? Create(from.Value) : Optional<TituloDetails>.Empty;
 
-        private TipoObligacion MapTipoObligacion(string value)
-            => value switch
-            {
-                TextoObligacionNacional => TipoObligacion.Nacional,
-                _ => TipoObligacion.Otro
-            };
-    }
+    Optional<TituloDetails> Create(TituloDetailsDto from)
+        => Optional<TituloDetails>.Sure(new(from.CodigoIsin, from.Denominacion, MapTipoObligacion(from.TipoObligacion), DateOnly.FromDateTime(DateTime.Parse(from.FechaVencimiento))));
+
+    private TipoObligacion MapTipoObligacion(string value)
+        => value switch
+        {
+            TextoObligacionNacional => TipoObligacion.Nacional,
+            _ => TipoObligacion.Otro
+        };
 }

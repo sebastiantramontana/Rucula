@@ -1,9 +1,9 @@
-﻿using System.Text.Json.Nodes;
+﻿using Rucula.Domain.Entities;
+using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Deserializers
+namespace Rucula.DataAccess.Deserializers;
+
+internal interface IJsonDeserializer<T>
 {
-    internal interface IJsonDeserializer<out T>
-    {
-        T Deserialize(JsonNode node);
-    }
+    Optional<T> Deserialize(JsonNode? node);
 }

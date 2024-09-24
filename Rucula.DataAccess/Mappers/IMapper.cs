@@ -1,7 +1,8 @@
-﻿namespace Rucula.DataAccess.Mappers
+﻿using Rucula.Domain.Entities;
+
+namespace Rucula.DataAccess.Mappers;
+
+internal interface IMapper<TFrom, TTo>
 {
-    internal interface IMapper<in TFrom, out TTo>
-    {
-        TTo Map(TFrom from);
-    }
+    Optional<TTo> Map(Optional<TFrom> from);
 }

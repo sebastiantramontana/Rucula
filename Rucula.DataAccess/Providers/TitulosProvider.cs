@@ -53,13 +53,15 @@ internal class TitulosProvider : ITitulosProvider
     }
 
     private IEnumerable<TituloDto> ConvertContentToTitulos(string content)
-        => _jsonTituloDeserializer
-            .Deserialize(JsonNode.Parse(content)!)
-            .Titulos
-            .ToArray();
-
+    {
+        var titulos = _jsonTituloDeserializer.Deserialize(JsonNode.Parse(content));
+        return titulos.HasValue ? titulos.Value.Titulos : [];
+    }
     private IEnumerable<Titulo> MapToTitulo(IEnumerable<TituloDto> dtos)
-        => dtos.Select(_tituloMapper.Map);
+        => dtos
+            .Select(t => _tituloMapper.Map(Optional<TituloDto>.Maybe(t)))
+            .Where(t => t.HasValue)
+            .Select(t => t.Value);
 
     private async Task<bool> IsMarketOpen()
     {

@@ -1,6 +1,5 @@
-﻿namespace Rucula.DataAccess.Providers.WesternUnion
+﻿namespace Rucula.DataAccess.Providers.WesternUnion;
+
+internal interface IWesternUnionFetcher : IParametrizableFetcher<double>
 {
-    internal interface IWesternUnionFetcher : IFetcher
-    {
-    }
 }

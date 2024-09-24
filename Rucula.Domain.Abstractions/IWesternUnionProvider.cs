@@ -1,9 +1,8 @@
 ﻿using Rucula.Domain.Entities;
 
-namespace Rucula.Domain.Abstractions
+namespace Rucula.Domain.Abstractions;
+
+public interface IWesternUnionProvider
 {
-    public interface IWesternUnionProvider
-    {
-        Task<DolarWesternUnion> GetCurrentDolarWesternUnion();
-    }
+    Task<Optional<DolarWesternUnionInfo>> GetCurrentDolarWesternUnion(WesternUnionParameters westernUnionParameters);
 }

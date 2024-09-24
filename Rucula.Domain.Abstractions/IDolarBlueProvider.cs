@@ -1,9 +1,8 @@
 ﻿using Rucula.Domain.Entities;
 
-namespace Rucula.Domain.Abstractions
+namespace Rucula.Domain.Abstractions;
+
+public interface IDolarBlueProvider
 {
-    public interface IDolarBlueProvider
-    {
-        Task<Blue> GetCurrentBlue();
-    }
+    Task<Optional<Blue>> GetCurrentBlue();
 }

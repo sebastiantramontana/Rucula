@@ -1,4 +1,5 @@
 ﻿using Rucula.DataAccess.Dtos;
+using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
@@ -8,15 +9,16 @@ internal class JsonToDolarCryptoDtoDeserializer : IJsonDeserializer<DolarCryptoD
     private readonly IJsonValueReader _valueReader;
 
     public JsonToDolarCryptoDtoDeserializer(IJsonValueReader valueReader)
-    {
-        _valueReader = valueReader;
-    }
+        => _valueReader = valueReader;
 
-    public DolarCryptoDto Deserialize(JsonNode node)
+    public Optional<DolarCryptoDto> Deserialize(JsonNode? node)
     {
-        var compra = _valueReader.GetRequiredValue<string>(node, "compra");
-        var venta = _valueReader.GetRequiredValue<string>(node, "venta");
+        if (node is null)
+            return Optional<DolarCryptoDto>.Empty;
 
-        return new DolarCryptoDto(compra, venta);
+        var compra = _valueReader.GetRequiredValue<string>(node!, "compra");
+        var venta = _valueReader.GetRequiredValue<string>(node!, "venta");
+
+        return Optional<DolarCryptoDto>.Sure(new(compra, venta));
     }
 }

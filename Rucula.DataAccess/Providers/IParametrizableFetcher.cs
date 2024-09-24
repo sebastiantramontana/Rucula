@@ -1,7 +1,6 @@
-﻿namespace Rucula.DataAccess.Providers
+﻿namespace Rucula.DataAccess.Providers;
+
+internal interface IParametrizableFetcher<T>
 {
-    internal interface IParametrizableFetcher
-    {
-        Task<string> Fetch(string parameters);
-    }
+    Task<string> Fetch(T parameters);
 }

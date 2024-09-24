@@ -26,17 +26,17 @@ internal class DolarDiarcoProvider : IDolarDiarcoProvider
         _notifier = notifier;
     }
 
-    public async Task<DolarDiarco> GetCurrentDolarDiarco()
+    public async Task<Optional<DolarDiarco>> GetCurrentDolarDiarco()
     {
         await _notifier.NotifyProgress("Consultando Dolar Diarco...").ConfigureAwait(false);
         var content = await _diarcoFetcher.Fetch().ConfigureAwait(false);
         return MapToDolarDiarco(ConvertContentToDolarDiarco(content));
     }
 
-    private DolarDiarcoDto ConvertContentToDolarDiarco(string content)
+    private Optional<DolarDiarcoDto> ConvertContentToDolarDiarco(string content)
         => _dolarDiarcoJsonDeserializer
             .Deserialize(JsonNode.Parse(content)!);
 
-    private DolarDiarco MapToDolarDiarco(DolarDiarcoDto dto)
+    private Optional<DolarDiarco> MapToDolarDiarco(Optional<DolarDiarcoDto> dto)
         => _dolarDiarcoMapper.Map(dto);
 }

@@ -1,14 +1,33 @@
 {
   "blue": {
-    "precioCompra": 940,
-    "precioVenta": 990
+    "value": {
+      "precioCompra": 940,
+      "precioVenta": 990
+    },
+    "hasValue": true
   },
   "dolarCrypto": {
-    "precioCompra": 853.85,
-    "precioVenta": 910.19
+    "value": {
+      "precioCompra": 853.85,
+      "precioVenta": 910.19
+    },
+    "hasValue": true
   },
-  "dolarWesternUnion": { "price": 850 },
-  "dolarDiarco": { "price": 1234 },
+  "dolarWesternUnion": {
+    "value": {
+      "grossPrice": 850,
+      "netPrice": 820,
+      "fees": {
+        "value": 11.30,
+        "hasValue": true
+      }
+    },
+    "hasValue": true
+  },
+  "dolarDiarco": {
+    "value": { "price": 1234 },
+    "hasValue": true
+  },
   "rankingTitulos": [],
   "winningChoice": {
     "name": "Dolar Crypto",
