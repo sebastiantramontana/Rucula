@@ -1,5 +1,3 @@
-﻿using Rucula.Domain.Entities;
+﻿namespace Rucula.DataAccess.Dtos;
 
-namespace Rucula.DataAccess.Dtos;
-
-internal record class DolarWesternUnionDto(double StrikeFxRate, Optional<double> GrossFee);
+internal record class DolarWesternUnionDto(double StrikeFxRate, double GrossFee);

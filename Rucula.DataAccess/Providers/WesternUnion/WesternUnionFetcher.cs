@@ -33,7 +33,7 @@ internal class WesternUnionFetcher : IWesternUnionFetcher
                         ""cty_iso2_ext"": ""US"",
                         ""curr_iso3"": ""USD"",
                         ""province_state"": ""CA"",
-                        ""funds_in"": ""*"",
+                        ""funds_in"": ""AC"",
                         ""send_amount"": {amountToSend},
                         ""air_requested"": ""Y"",
                         ""efl_type"": ""STATE"",

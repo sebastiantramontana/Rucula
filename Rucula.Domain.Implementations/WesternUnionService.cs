@@ -17,9 +17,7 @@ internal class WesternUnionService : IWesternUnionService
         if (!info.HasValue)
             return Optional<DolarWesternUnion>.Empty;
 
-        var netPrice = info.Value.Fees.HasValue 
-            ? CalculateNetPrice(info.Value.GrossPrice, info.Value.Fees.Value, parameters)
-            : info.Value.GrossPrice;
+        var netPrice = CalculateNetPrice(info.Value.GrossPrice, info.Value.Fees, parameters);
 
         return Optional<DolarWesternUnion>.Sure(new(info.Value.GrossPrice, netPrice, info.Value.Fees));
     }

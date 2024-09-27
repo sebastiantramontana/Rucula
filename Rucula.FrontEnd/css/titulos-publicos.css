@@ -1,4 +1,4 @@
-﻿#titulos-publicos-bar:has(#commissions-checkbox:checked) + #commissions-panel {
+﻿#titulos-publicos-bar:has(#commissions-bond-checkbox:checked) + #commissions-panel-bond {
     max-height: 288px; /*h-72 */
     padding: 12px;
 }
