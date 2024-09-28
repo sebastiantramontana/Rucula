@@ -1,7 +1,7 @@
 ﻿import { showTitulosPublicos, getCommissions as getBondCommissions, disableCommissions as disableBondCommissions, enableCommissions as enableBondCommissions } from "./modules/titulos-publicos.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
-import showDolarWesternUnion from "./modules/dolar-western-union.js";
+import { showDolarWesternUnion, getParameters as getWuParameters, disableParameters as disableWuParameters, enableParameters as enableWuParameters } from "./modules/dolar-western-union.js";
 import showDolarDiarco from "./modules/dolar-diarco.js";
 import showBestChoice from "./modules/best-choice.js";
 import getValueFromOptional from "./optional-value.js";
@@ -22,6 +22,8 @@ addEventListener("load", async () => {
         });
 
         addApplyBondCommissionsClickListener();
+        addApplyWuParametersClickListener();
+
         await runGettingData();
         hookVisibilityEventToRun();
     }
@@ -32,6 +34,11 @@ addEventListener("load", async () => {
 
 function addApplyBondCommissionsClickListener() {
     const applyButton = document.getElementById("apply-bond-commissions-button");
+    applyButton.addEventListener("click", recalculateChoices);
+}
+
+function addApplyWuParametersClickListener() {
+    const applyButton = document.getElementById("apply-amount-to-send-wu");
     applyButton.addEventListener("click", recalculateChoices);
 }
 
@@ -71,9 +78,10 @@ async function getAllData() {
     isGettingData = true;
 
     disableBondCommissions();
+    disableWuParameters();
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions(), { amountToSend: 100.0 });
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions(), getWuParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
@@ -84,6 +92,7 @@ async function getAllData() {
 
     showBestChoiceElement();
     enableBondCommissions();
+    enableWuParameters();
 
     isGettingData = false;
 }
@@ -95,15 +104,18 @@ function recalculateChoices() {
     isGettingData = true;
 
     disableBondCommissions();
+    disableWuParameters();
     showLoadingIndicator();
 
-    const choices = DotNet.invokeMethod('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions());
+    const choices = DotNet.invokeMethod('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions(), getWuParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
+    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion));
 
     showBestChoiceElement();
     enableBondCommissions();
+    enableWuParameters();
 
     isGettingData = false;
 }
