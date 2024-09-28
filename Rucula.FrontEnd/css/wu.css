@@ -1,7 +1,7 @@
 ﻿#wu-panel:has(#commissions-wu-checkbox:checked) #wu-panel-fees {
-    max-height: min-content;
+    max-height: fit-content;
 }
 
 #wu-panel:has(#commissions-wu-checkbox:checked) {
-    height: min-content;
+    height: fit-content;
 }
