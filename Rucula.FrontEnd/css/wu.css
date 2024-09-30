@@ -1,4 +1,16 @@
-﻿#wu-panel:has(#commissions-wu-checkbox:checked) #wu-panel-fees {
+﻿.bg-wu {
+    background-color: #fae000;
+}
+
+.bg-wu-odd {
+    background-color: #ffed4d;
+}
+
+.bg-wu-even {
+    background-color: #e6cf00;
+}
+
+#wu-panel:has(#commissions-wu-checkbox:checked) #wu-panel-fees {
     max-height: fit-content;
 }
 
