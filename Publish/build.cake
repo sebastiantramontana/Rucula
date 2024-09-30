@@ -108,6 +108,7 @@ Task("Css")
     .Does(() => {
 		CreateDirectory("../dist/css/");
 		CopyFiles("../Rucula.Frontend/css/titulos-publicos.css", "../dist/css/");
+		CopyFiles("../Rucula.Frontend/css/wu.css", "../dist/css/");
 		RemoveTailwindCdn("../dist/index.html");
 });
 
