@@ -86,7 +86,7 @@ async function getAllData() {
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
     showDolarCrypto(getValueFromOptional(choices.dolarCrypto));
-    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion));
+    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
     showDolarDiarco(getValueFromOptional(choices.dolarDiarco));
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
@@ -97,7 +97,7 @@ async function getAllData() {
     isGettingData = false;
 }
 
-function recalculateChoices() {
+async function recalculateChoices() {
     if (isGettingData)
         return;
 
@@ -107,11 +107,11 @@ function recalculateChoices() {
     disableWuParameters();
     showLoadingIndicator();
 
-    const choices = DotNet.invokeMethod('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions(), getWuParameters());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions(), getWuParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
-    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion));
+    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
 
     showBestChoiceElement();
     enableBondCommissions();

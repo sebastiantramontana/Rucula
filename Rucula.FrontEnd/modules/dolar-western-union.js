@@ -69,11 +69,11 @@ export function enableParameters() {
 export function getParameters() {
     return getSavedParametersOrDefault();
 }
-export function showDolarWesternUnion(dolarWesternUnion) {
-    showFinalPrice(dolarWesternUnion.netPrice);
-    showGrossPrice(dolarWesternUnion.grossPrice);
-    showFees(dolarWesternUnion.fees);
-    showNetPrice(dolarWesternUnion.netPrice);
+export function showDolarWesternUnion(dolarWesternUnion, numberFormater) {
+    showFinalPrice(numberFormater.format(dolarWesternUnion.netPrice));
+    showGrossPrice(numberFormater.format(dolarWesternUnion.grossPrice));
+    showFees(numberFormater.format(dolarWesternUnion.fees));
+    showNetPrice(numberFormater.format(dolarWesternUnion.netPrice));
 }
 
 function showFinalPrice(price) {
