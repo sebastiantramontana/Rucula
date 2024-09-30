@@ -17,10 +17,7 @@
     "value": {
       "grossPrice": 850,
       "netPrice": 820,
-      "fees": {
-        "value": 11.30,
-        "hasValue": true
-      }
+      "fees": 11.30
     },
     "hasValue": true
   },

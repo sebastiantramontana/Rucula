@@ -70,6 +70,29 @@ export function getParameters() {
     return getSavedParametersOrDefault();
 }
 export function showDolarWesternUnion(dolarWesternUnion) {
-    const dolarWesternUnionElement = document.getElementById("dolar-western-union");
-    dolarWesternUnionElement.textContent = dolarWesternUnion.netPrice;
+    showFinalPrice(dolarWesternUnion.netPrice);
+    showGrossPrice(dolarWesternUnion.grossPrice);
+    showFees(dolarWesternUnion.fees);
+    showNetPrice(dolarWesternUnion.netPrice);
+}
+
+function showFinalPrice(price) {
+    showValueInElement("dolar-western-union", price);
+}
+
+function showGrossPrice(price) {
+    showValueInElement("gross-dolar-western-union", price);
+}
+
+function showFees(fees) {
+    showValueInElement("gross-fees-western-union", fees);
+}
+
+function showNetPrice(price) {
+    showValueInElement("net-dolar-western-union", price);
+}
+
+function showValueInElement(elementId, value) {
+    const element = document.getElementById(elementId);
+    element.textContent = value;
 }
