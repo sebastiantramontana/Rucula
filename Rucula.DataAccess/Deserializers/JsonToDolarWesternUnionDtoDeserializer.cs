@@ -20,7 +20,7 @@ internal class JsonToDolarWesternUnionDtoDeserializer : IJsonDeserializer<DolarW
     {
         return InvocationChainNullable<JsonNode>
             .Create(node)
-            .IfNotNull(node => GetServiceNode(node, "500"))
+            .IfNotNull(node => GetServiceNode(node, "500") ?? GetServiceNode(node, "800"))
             .IfNotNull(service500node => service500node?["pay_groups"]?[acFundInIndex])
             .IfNotNull(acPayGroupNode => GetNodeValue<double>(acPayGroupNode, "strike_fx_rate"))
             .IfNotEmpty((double strikeFxRate, JsonNode? acPayGroupNode) => GetNodeValue<double>(acPayGroupNode, "gross_fee"))
