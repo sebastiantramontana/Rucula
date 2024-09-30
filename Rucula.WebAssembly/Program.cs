@@ -52,7 +52,15 @@ public class Program
     [JSInvokable]
     public static async Task<ChoicesInfo> RecalculateChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
     {
-        _currentChoices = await _choicesService.RecalculateChoices(_currentChoices, bondCommissions, westernUnionParameters);
+        try
+        {
+            _currentChoices = await _choicesService.RecalculateChoices(_currentChoices, bondCommissions, westernUnionParameters).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+
         return _currentChoices;
     }
 
