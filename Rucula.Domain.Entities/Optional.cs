@@ -4,8 +4,8 @@ namespace Rucula.Domain.Entities;
 
 public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 {
-    public static Optional<T> Maybe<T2>(T2? value) where T2 : class, T
-        => (value is null) ? Empty : Sure(value);
+    public static Optional<T> Maybe(T? value)
+        => (value is null) ? Optional<T>.Empty : Optional<T>.Sure(value);
 
     public static Optional<T> Sure(T value)
         => new(value, true);

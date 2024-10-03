@@ -30,14 +30,14 @@ public class InvocationChainOptional<T> : InvocationChainBase
         return new(nextValue, this);
     }
 
-    public TRet? Return<TRet>(Func<T, TRet> objFunc) where TRet : class
+    public TRet? Return<TRet>(Func<T, TRet?> objFunc) where TRet : class
         => _value.HasValue ? objFunc.Invoke(_value.Value) : null;
 
     public Optional<TRet> Return<TRet>(Func<T, Optional<TRet>> objFunc)
         => _value.HasValue ? objFunc.Invoke(_value.Value) : Optional<TRet>.Empty;
 
-    public TRet? Return<TPrev, TRet>(Func<T, TPrev?, TRet> objFunc) where TRet : class
+    public TRet? Return<TPrev, TRet>(Func<T, TPrev?, TRet?> objFunc) where TRet : class
         => _value.HasValue ? objFunc.Invoke(_value.Value, (TPrev?)Previous?.GetValue()) : null;
 
-    public override object GetValue() => _value.Value!;
+    public override object? GetValue() => _value.Value;
 }

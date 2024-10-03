@@ -30,5 +30,5 @@ public class InvocationChainNullable<T> : InvocationChainBase where T : class
     public Optional<TRet> Return<TRet>(Func<T, Optional<TRet>> objFunc)
         => _value is not null ? objFunc.Invoke(_value) : Optional<TRet>.Empty;
 
-    public override object GetValue() => _value!;
+    public override object? GetValue() => _value;
 }
