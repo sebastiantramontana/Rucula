@@ -8,6 +8,10 @@ namespace Rucula.DataAccess.Deserializers;
 internal class JsonToDolarWesternUnionDtoDeserializer : IJsonDeserializer<DolarWesternUnionDto>
 {
     private const int acFundInIndex = 0;
+    private const string fxRateNodeProperty = "fx_rate";
+    private const string grossFeeNodeProperty = "gross_fee";
+    private const string payGroupNodeKey = "pay_groups";
+
     private readonly IJsonValueReader _valueReader;
 
     public JsonToDolarWesternUnionDtoDeserializer(IJsonValueReader valueReader)
@@ -16,16 +20,14 @@ internal class JsonToDolarWesternUnionDtoDeserializer : IJsonDeserializer<DolarW
     public Optional<DolarWesternUnionDto> Deserialize(JsonNode? node)
         => Optional<DolarWesternUnionDto>.Maybe(DeserializeIncludingFees(node));
 
-    private DolarWesternUnionDto? DeserializeIncludingFees(JsonNode? node)
-    {
-        return InvocationChainNullable<JsonNode>
+    private DolarWesternUnionDto? DeserializeIncludingFees(JsonNode? node) 
+        => InvocationChainNullable<JsonNode>
             .Create(node)
             .IfNotNull(node => GetServiceNode(node, "500") ?? GetServiceNode(node, "800"))
-            .IfNotNull(service500node => service500node?["pay_groups"]?[acFundInIndex])
-            .IfNotNull(acPayGroupNode => GetNodeValue<double>(acPayGroupNode, "strike_fx_rate"))
-            .IfNotEmpty((double strikeFxRate, JsonNode? acPayGroupNode) => GetNodeValue<double>(acPayGroupNode, "gross_fee"))
-            .Return((double grossFee, double strikeFxRate) => new DolarWesternUnionDto(strikeFxRate, grossFee));
-    }
+            .IfNotNull(serviceNode => serviceNode?[payGroupNodeKey]?[acFundInIndex])
+            .IfNotNull(acPayGroupNode => GetNodeValue<double>(acPayGroupNode, fxRateNodeProperty))
+            .IfNotEmpty((double fxRate, JsonNode? acPayGroupNode) => GetNodeValue<double>(acPayGroupNode, grossFeeNodeProperty))
+            .Return((double grossFee, double fxRate) => new DolarWesternUnionDto(fxRate, grossFee));
 
     private JsonNode? GetServiceNode(JsonNode node, string serviceNumber)
     {
