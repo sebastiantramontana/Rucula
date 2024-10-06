@@ -18,9 +18,14 @@ public class InvocationChainOptional<T> : InvocationChainBase
         return new(nextValue, this);
     }
 
-    public InvocationChainOptional<TRet> IfNotEmpty<TPrev, TRet>(Func<T, TPrev?, Optional<TRet>> objFunc)
+    public InvocationChainOptional<TRet> IfNotEmpty<TPrev, TRet>(Func<T, TPrev, Optional<TRet>> objFunc)
     {
-        var nextValue = _value.HasValue ? objFunc.Invoke(_value.Value, (TPrev?)Previous?.GetValue()) : Optional<TRet>.Empty;
+        var previousValue = Previous?.GetValue();
+
+        var nextValue = _value.HasValue && previousValue is not null
+            ? objFunc.Invoke(_value.Value, (TPrev)previousValue)
+            : Optional<TRet>.Empty;
+
         return new(nextValue, this);
     }
 
@@ -36,8 +41,14 @@ public class InvocationChainOptional<T> : InvocationChainBase
     public Optional<TRet> Return<TRet>(Func<T, Optional<TRet>> objFunc)
         => _value.HasValue ? objFunc.Invoke(_value.Value) : Optional<TRet>.Empty;
 
-    public TRet? Return<TPrev, TRet>(Func<T, TPrev?, TRet?> objFunc) where TRet : class
-        => _value.HasValue ? objFunc.Invoke(_value.Value, (TPrev?)Previous?.GetValue()) : null;
+    public TRet? Return<TPrev, TRet>(Func<T, TPrev, TRet?> objFunc) where TRet : class
+    {
+        var previousValue = Previous?.GetValue();
 
-    public override object? GetValue() => _value.Value;
+        return _value.HasValue && previousValue is not null
+            ? objFunc.Invoke(_value.Value, (TPrev)previousValue)
+            : null;
+    }
+
+    public override object? GetValue() => _value.HasValue ? _value.Value : null;
 }

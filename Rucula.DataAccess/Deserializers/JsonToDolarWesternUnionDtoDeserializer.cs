@@ -20,13 +20,13 @@ internal class JsonToDolarWesternUnionDtoDeserializer : IJsonDeserializer<DolarW
     public Optional<DolarWesternUnionDto> Deserialize(JsonNode? node)
         => Optional<DolarWesternUnionDto>.Maybe(DeserializeIncludingFees(node));
 
-    private DolarWesternUnionDto? DeserializeIncludingFees(JsonNode? node) 
+    private DolarWesternUnionDto? DeserializeIncludingFees(JsonNode? node)
         => InvocationChainNullable<JsonNode>
             .Create(node)
             .IfNotNull(node => GetServiceNode(node, "500") ?? GetServiceNode(node, "800"))
-            .IfNotNull(serviceNode => serviceNode?[payGroupNodeKey]?[acFundInIndex])
+            .IfNotNull(serviceNode => serviceNode[payGroupNodeKey]?[acFundInIndex])
             .IfNotNull(acPayGroupNode => GetNodeValue<double>(acPayGroupNode, fxRateNodeProperty))
-            .IfNotEmpty((double fxRate, JsonNode? acPayGroupNode) => GetNodeValue<double>(acPayGroupNode, grossFeeNodeProperty))
+            .IfNotEmpty((double fxRate, JsonNode acPayGroupNode) => GetNodeValue<double>(acPayGroupNode, grossFeeNodeProperty))
             .Return((double grossFee, double fxRate) => new DolarWesternUnionDto(fxRate, grossFee));
 
     private JsonNode? GetServiceNode(JsonNode node, string serviceNumber)

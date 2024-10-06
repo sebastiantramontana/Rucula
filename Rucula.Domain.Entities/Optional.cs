@@ -5,7 +5,7 @@ namespace Rucula.Domain.Entities;
 public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 {
     public static Optional<T> Maybe(T? value)
-        => (value is null) ? Optional<T>.Empty : Optional<T>.Sure(value);
+        => (value is null) ? Empty : Optional<T>.Sure(value);
 
     public static Optional<T> Sure(T value)
         => new(value, true);
@@ -20,7 +20,7 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
         HasValue = hasValue;
     }
 
-    public bool HasValue { get; } = false;
+    public bool HasValue { get; }
 
     private readonly T? _value = default;
     public T Value => HasValue ? _value! : throw new InvalidOperationException("Optional object has not value");
