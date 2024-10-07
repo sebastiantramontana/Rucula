@@ -1,0 +1,41 @@
+﻿#crypto-bar:has(#commissions-crypto-checkbox:checked) + #commissions-panel-crypto {
+    max-height: 288px; /*h-72 */
+    padding: 12px;
+}
+
+#tabla-crypto:has(tbody:empty) > caption {
+    display: table-caption;
+}
+
+#tabla-crypto:not(:has(tbody:empty)) > caption {
+    display: none;
+}
+
+#ttabla-crypto > thead {
+    display: none;
+}
+
+@media screen and (min-width: 640px) {
+    #tabla-crypto:not(:has(tbody:empty)) > thead {
+        display: table-header-group;
+    }
+}
+
+/* Alternar colores de fondo de las filas */
+
+td[data-rowspan-group="0"] {
+    background-color: #0074a8; /* Color diferente para filas pares dentro del grupo 1 */
+}
+
+td[data-rowspan-group="1"] {
+    background-color: #768362; /* Color diferente para filas impares dentro del grupo 1 */
+}
+
+/* Alternar colores de fondo de las celdas con rowspan */
+/*td[rowspan]:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+
+td[rowspan]:nth-child(even) {
+    background-color: #cccccc;
+}*/
