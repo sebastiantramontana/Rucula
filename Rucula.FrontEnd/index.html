@@ -127,12 +127,18 @@
                         <th class="border-grey-light dark:border-black border bg-ccl p-3">DAI&nbsp;Neto</th>
                     </tr>
                 </thead>
-                <tbody class="text-black dark:text-white">
+                <tbody class="text-black dark:text-white odd:bg-red-700 even:bg-orange-700">
+                    <tr class="block sm:table-row mb-2 sm:mb-0 text-right text-sm">
+                        <td rowspan="3" data-rowspan-group="odd" data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">Bitso</td>
+                        <td rowspan="3" data-rowspan-group="odd" data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">123.45</td>
+                        <td rowspan="3" data-rowspan-group="odd" data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">234.56</td>
+                        <td rowspan="3" data-rowspan-group="odd" data-label="US$" id="cotizacion-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">134.54</td>
+                        <td class="hidden"></td>
+                        <td class="hidden"></td>
+                        <td class="hidden"></td>
+                        <td class="hidden"></td>
+                    </tr>
                     <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-right text-sm">
-                        <td rowspan="2" data-rowspan-group="0" data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">Bitso</td>
-                        <td rowspan="2" data-rowspan-group="0" data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">123.45</td>
-                        <td rowspan="2" data-rowspan-group="0" data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">234.56</td>
-                        <td rowspan="2" data-rowspan-group="0" data-label="US$" id="cotizacion-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">134.54</td>
                         <td data-label="Comisiones" id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-left"><span class="float-left">Ethereum</span><span class="float-right">4.56</span></td>
                         <td data-label="US$" id="cotizacion-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">122.2</td>
                         <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">133.4</td>
@@ -144,16 +150,23 @@
                         <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">135.4</td>
                         <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 font-bold sm:font-normal sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">162.3</td>
                     </tr>
-
+                </tbody>
+                <tbody class="text-black dark:text-white odd:bg-red-700 even:bg-orange-700">
+                    <tr class="block sm:table-row mb-2 sm:mb-0 text-right text-sm">
+                        <td rowspan="3" data-rowspan-group="even" data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">Lemon Cash</td>
+                        <td rowspan="3" data-rowspan-group="even" data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">123.45</td>
+                        <td rowspan="3" data-rowspan-group="even" data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">234.56</td>
+                        <td rowspan="3" data-rowspan-group="even" data-label="US$" id="cotizacion-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">134.54</td>
+                        <td class="hidden"></td>
+                        <td class="hidden"></td>
+                        <td class="hidden"></td>
+                        <td class="hidden"></td>
+                    </tr>
                     <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-right text-sm">
-                        <td rowspan="2" data-rowspan-group="1" data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">Lemon Cash</td>
-                        <td rowspan="2" data-rowspan-group="1" data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">123.45</td>
-                        <td rowspan="2" data-rowspan-group="1" data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">234.56</td>
-                        <td rowspan="2" data-rowspan-group="1" data-label="US$" id="cotizacion-cable" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">134.54</td>
-                        <td data-label="Comisiones" id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-left"><span class="float-left">Ethereum</span><span class="float-right">4.56</span></td>
-                        <td data-label="US$" id="cotizacion-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">122.2</td>
-                        <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">133.4</td>
-                        <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 font-bold sm:font-normal sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">142.3</td>
+                        <td data-label="Símbolo&nbsp;MEP" id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-left"><span class="float-left">Polygon</span><span class="float-right">3.69</span></td>
+                        <td data-label="US$" id="cotizacion-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right">126.2</td>
+                        <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">135.4</td>
+                        <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell border-grey-light dark:border-black border p-3 font-bold sm:font-normal sm:text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">162.3</td>
                     </tr>
                     <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-right text-sm">
                         <td data-label="Símbolo&nbsp;MEP" id="symbol-mep" class="hidden sm:table-cell border-grey-light dark:border-black border p-3 sm:text-left"><span class="float-left">Polygon</span><span class="float-right">3.69</span></td>
