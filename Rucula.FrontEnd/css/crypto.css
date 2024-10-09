@@ -2,21 +2,3 @@
     max-height: 288px; /*h-72 */
     padding: 12px;
 }
-
-#tabla-crypto:has(tbody:empty) > caption {
-    display: table-caption;
-}
-
-#tabla-crypto:not(:has(tbody:empty)) > caption {
-    display: none;
-}
-
-#ttabla-crypto > thead {
-    display: none;
-}
-
-@media screen and (min-width: 640px) {
-    #tabla-crypto:not(:has(tbody:empty)) > thead {
-        display: table-header-group;
-    }
-}
