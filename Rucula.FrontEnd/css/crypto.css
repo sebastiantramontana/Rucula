@@ -1,4 +1,4 @@
 ﻿#crypto-bar:has(#commissions-crypto-checkbox:checked) + #commissions-panel-crypto {
-    max-height: 288px; /*h-72 */
+    max-height: 160px; /*h-40 */
     padding: 12px;
 }

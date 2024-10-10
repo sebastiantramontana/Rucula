@@ -91,7 +91,7 @@
                 </thead>
                 <tbody class="text-black dark:text-white"></tbody>
             </table>
-            <div class="w-full text-white  dark:border-black border-x">
+            <div class="w-full text-white dark:border-black border-x">
                 <div id="crypto-bar" class="w-full flex bg-dolar">
                     <span class="font-medium sm:text-lg place-content-center grid flex-1">Contado con Crypto</span>
                     <label class="my-2 flex-none mr-2">
@@ -101,14 +101,14 @@
                         </span>
                     </label>
                 </div>
-                <div id="commissions-panel-crypto" class="w-full h-[270] sm:h-20 max-h-0 p-0 overflow-hidden bg-slate-100 dark:bg-transparent text-xs transition-all duration-500 ease-in-out">
+                <div id="commissions-panel-crypto" class="w-full sm:h-20 max-h-0 p-0 overflow-hidden bg-slate-100 dark:bg-transparent text-xs transition-all duration-500 ease-in-out">
                     <div class="dark:opacity-50 font-light sm:inline sm:text-sm mb-3 sm:mr-4 sm:mb-0 text-black dark:text-white">
                         Volumen a operar en USD para calcular las comisiones
                     </div>
-                    <span class="text-black dark:text-white grid grid-cols-1 grid-rows-4 gap-4 sm:inline">
+                    <span class="text-black dark:text-white grid grid-cols-1 grid-rows-2 gap-4 sm:inline">
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Volumen a operar">Volumen</span>
-                            <input id="commission-porcentage-purchase-crypto" class="w-full sm:w-16 h-5 p-0.5 border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="0" required />
+                            <input id="commission-porcentage-purchase-crypto" class="w-full sm:w-16 h-5 p-0.5 border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                         </span>
                         <button id="apply-crypto-commissions-button" disabled class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
                     </span>
