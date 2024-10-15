@@ -1,7 +1,10 @@
-﻿import { showTitulosPublicos, getCommissions as getBondCommissions, disableCommissions as disableBondCommissions, enableCommissions as enableBondCommissions } from "./modules/titulos-publicos.js";
-import showDolarBlue from "./modules/dolar-blue.js";
+﻿import showTitulosPublicos from "./modules/titulos-publicos.js";
+import { getCommissions as getBondCommissions, disableCommissions as disableBondCommissions, enableCommissions as enableBondCommissions } from "./modules/titulos-publicos-commissions.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
-import { showDolarWesternUnion, getParameters as getWuParameters, disableParameters as disableWuParameters, enableParameters as enableWuParameters } from "./modules/dolar-western-union.js";
+import { getParameters as getCryptoParameters, disableParameters as disableCryptoParameters, enableParameters as enableCryptoParameters } from "./modules/dolar-crypto-parameters.js";
+import showDolarWesternUnion from "./modules/dolar-western-union.js";
+import { getParameters as getWuParameters, disableParameters as disableWuParameters, enableParameters as enableWuParameters } from "./modules/dolar-western-union-parameters.js";
+import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarDiarco from "./modules/dolar-diarco.js";
 import showBestChoice from "./modules/best-choice.js";
 import getValueFromOptional from "./optional-value.js";
