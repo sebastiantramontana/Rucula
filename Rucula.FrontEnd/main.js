@@ -1,9 +1,9 @@
 ﻿import showTitulosPublicos from "./modules/titulos-publicos.js";
-import { getCommissions as getBondCommissions, disableCommissions as disableBondCommissions, enableCommissions as enableBondCommissions } from "./modules/titulos-publicos-commissions.js";
+import titulosPublicosParameters from "./modules/titulos-publicos-commissions.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
-import { getParameters as getCryptoParameters, disableParameters as disableCryptoParameters, enableParameters as enableCryptoParameters } from "./modules/dolar-crypto-parameters.js";
+import cryptoParameters from "./modules/dolar-crypto-parameters.js";
 import showDolarWesternUnion from "./modules/dolar-western-union.js";
-import { getParameters as getWuParameters, disableParameters as disableWuParameters, enableParameters as enableWuParameters } from "./modules/dolar-western-union-parameters.js";
+import wuParameters from "./modules/dolar-western-union-parameters.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarDiarco from "./modules/dolar-diarco.js";
 import showBestChoice from "./modules/best-choice.js";
@@ -80,11 +80,13 @@ async function getAllData() {
 
     isGettingData = true;
 
-    disableBondCommissions();
-    disableWuParameters();
+    titulosPublicosParameters.disableParameters();
+    wuParameters.disableParameters();
+    cryptoParameters.disableParameters();
+
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions(), getWuParameters());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
@@ -94,8 +96,9 @@ async function getAllData() {
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();
-    enableBondCommissions();
-    enableWuParameters();
+    titulosPublicosParameters.enableParameters();
+    wuParameters.enableParameters();
+    cryptoParameters.enableParameters();
 
     isGettingData = false;
 }
@@ -106,19 +109,22 @@ async function recalculateChoices() {
 
     isGettingData = true;
 
-    disableBondCommissions();
-    disableWuParameters();
+    titulosPublicosParameters.disableParameters();
+    wuParameters.disableParameters();
+    cryptoParameters.disableParameters();
+
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'RecalculateChoices', getBondCommissions(), getWuParameters());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'RecalculateChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
     showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
 
     showBestChoiceElement();
-    enableBondCommissions();
-    enableWuParameters();
+    titulosPublicosParameters.enableParameters();
+    wuParameters.enableParameters();
+    cryptoParameters.enableParameters();
 
     isGettingData = false;
 }

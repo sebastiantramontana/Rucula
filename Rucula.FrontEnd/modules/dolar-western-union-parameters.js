@@ -1,71 +1,30 @@
-﻿addEventListener("DOMContentLoaded", () => {
-    const amountToSendInput = getAmountToSendInput();
+﻿import ParametersDomHandling from "./ParametersDomHandling.js";
 
-    addCurrentDisabledToApplyButton();
-    addAmountToSendInputEventListener(amountToSendInput);
-    addApplyClickListener();
-    loadAmountToSendInput(amountToSendInput);
-
-    function addCurrentDisabledToApplyButton() {
-        const applyButton = document.getElementById("apply-amount-to-send-wu");
-        applyButton.currentDisabled = applyButton.disabled;
-    }
-
-    function addAmountToSendInputEventListener(amountToSendInput) {
-        amountToSendInput.addEventListener('input', function () {
-            const applyButton = document.getElementById("apply-amount-to-send-wu");
-            applyButton.disabled = !amountToSendInput.checkValidity();
-            applyButton.currentDisabled = applyButton.disabled;
-        });
-    }
-
-    function loadAmountToSendInput(amountToSendInput) {
-        const parametersWuSettings = getSavedParametersOrDefault();
-        amountToSendInput.value = parametersWuSettings.amountToSend;
-    }
-
-    function addApplyClickListener() {
-        const applyButton = document.getElementById("apply-amount-to-send-wu");
-        applyButton.addEventListener("click", saveAmountToSend);
-    }
-
-    function saveAmountToSend() {
-        const parameters = { "amountToSend": parseFloat(amountToSendInput.value) };
-        localStorage.setItem("parameters-wu-settings", JSON.stringify(parameters));
-        this.disabled = true;
-        this.currentDisabled = true;
-    }
-});
-
-function getAmountToSendInput() {
-    return document.getElementById("amount-to-send-wu");
+function getInputs() {
+    const amountToSendInput = document.getElementById("amount-to-send-wu");
+    return { amountToSendInput };
 }
 
-function getSavedParametersOrDefault() {
-    const parametersWuSettingsJson = localStorage.getItem("parameters-wu-settings");
-
-    return parametersWuSettingsJson !== null
-        ? JSON.parse(parametersWuSettingsJson)
-        : { amountToSend: 1000 };
+function getInputsArray() {
+    const inputs = getInputs();
+    return [inputs.amountToSendInput];
 }
 
-function toggleEnablingParameters(isDisabled) {
-    const input = getAmountToSendInput();
+const getApplyButton = () => document.getElementById("apply-amount-to-send-wu");
 
-    input.disabled = isDisabled;
-
-    const applyButton = document.getElementById("apply-amount-to-send-wu");
-    applyButton.disabled = (isDisabled) ? true : applyButton.currentDisabled || false;
+function getParametersFromInputs() {
+    const inputs = getInputs();
+    return { "amountToSend": parseFloat(inputs.amountToSendInput.value) };
 }
 
-export function disableParameters() {
-    toggleEnablingParameters(true);
+const settingsKey = "parameters-wu-settings";
+const defaultParameters = { amountToSend: 1000 };
+
+function setParametersToInputs(parametersSettings) {
+    const inputs = getInputs();
+    inputs.amountToSendInput.value = parametersSettings.amountToSend;
 }
 
-export function enableParameters() {
-    toggleEnablingParameters(false);
-}
+const wuParameters = new ParametersDomHandling(getInputsArray, getApplyButton, getParametersFromInputs, settingsKey, defaultParameters, setParametersToInputs);
 
-export function getParameters() {
-    return getSavedParametersOrDefault();
-}
+export default wuParameters;
