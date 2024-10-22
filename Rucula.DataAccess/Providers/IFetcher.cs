@@ -1,7 +1,6 @@
-﻿namespace Rucula.DataAccess.Providers
+﻿namespace Rucula.DataAccess.Providers;
+
+internal interface IFetcher
 {
-    internal interface IFetcher
-    {
-        Task<string> Fetch();
-    }
+    Task<string> Fetch();
 }

@@ -47,85 +47,84 @@
     </tr>
 </tbody>
 
- dolarCrypto = {
-        exchanges: [
+
+cryptoPrices = [
+    {
+        exchange: "Bitso",
+        grossUsdc: 12.34,
+        grossUsdt: 23.45,
+        grossDai: 34.56,
+        netPrices: [
             {
-                name: "Bitso",
-                grossUsdc: 12.34,
-                grossUsdt: 23.45,
-                grossDai: 34.56,
-                netPrices: [
-                    {
-                        blockchain: { name: "Ethereum", commission: 1.2 },
-                        netUsdc: 11.22,
-                        netUsdt: 22.33,
-                        netDai: 44.55,
-                    },
-                    {
-                        blockchain: { name: "Polygon", commission: 1.3 },
-                        netUsdc: 10.23,
-                        netUsdt: 21.34,
-                        netDai: 43.56
-                    }
-                ]
+                blockchain: { name: "Ethereum", commission: 1.2 },
+                netUsdc: 11.22,
+                netUsdt: 22.33,
+                netDai: 44.55,
             },
             {
-                name: "Argenbit",
-                grossUsdc: 13.34,
-                grossUsdt: 24.45,
-                grossDai: 35.56,
-                netPrices: [
-                    {
-                        blockchain: { name: "Ethereum", commission: 1.4 },
-                        netUsdc: 11.24,
-                        netUsdt: 22.34,
-                        netDai: 44.54,
-                    },
-                    {
-                        blockchain: { name: "Polygon", commission: 1.5 },
-                        netUsdc: 10.26,
-                        netUsdt: 21.36,
-                        netDai: 43.56
-                    },
-                    {
-                        blockchain: { name: "Lalala", commission: 2.5 },
-                        netUsdc: 9.26,
-                        netUsdt: 9.36,
-                        netDai: 9.56
-                    }
-                ]
-            },
-            {
-                name: "Binance",
-                grossUsdc: 23.34,
-                grossUsdt: 34.45,
-                grossDai: 45.56,
-                netPrices: [
-                    {
-                        blockchain: { name: "Ethereum", commission: 1.9 },
-                        netUsdc: 10.24,
-                        netUsdt: 20.34,
-                        netDai: 40.54,
-                    },
-                    {
-                        blockchain: { name: "Polygon", commission: 2.9 },
-                        netUsdc: 10.26,
-                        netUsdt: 20.36,
-                        netDai: 40.56
-                    },
-                    {
-                        blockchain: { name: "Lalala", commission: 3.9 },
-                        netUsdc: 8.26,
-                        netUsdt: 8.36,
-                        netDai: 8.56
-                    },
-                    {
-                        blockchain: { name: "Sarasa", commission: 4.9 },
-                        netUsdc: 7.26,
-                        netUsdt: 7.36,
-                        netDai: 7.56
-                    }
-                ]
+                blockchain: { name: "Polygon", commission: 1.3 },
+                netUsdc: 10.23,
+                netUsdt: 21.34,
+                netDai: 43.56
             }
         ]
-    };
+    },
+    {
+        exchange: "Argenbit",
+        grossUsdc: 13.34,
+        grossUsdt: 24.45,
+        grossDai: 35.56,
+        netPrices: [
+            {
+                blockchain: { name: "Ethereum", commission: 1.4 },
+                netUsdc: 11.24,
+                netUsdt: 22.34,
+                netDai: 44.54,
+            },
+            {
+                blockchain: { name: "Polygon", commission: 1.5 },
+                netUsdc: 10.26,
+                netUsdt: 21.36,
+                netDai: 43.56
+            },
+            {
+                blockchain: { name: "Lalala", commission: 2.5 },
+                netUsdc: 9.26,
+                netUsdt: 9.36,
+                netDai: 9.56
+            }
+        ]
+    },
+    {
+        exchange: "Binance",
+        grossUsdc: 23.34,
+        grossUsdt: 34.45,
+        grossDai: 45.56,
+        netPrices: [
+            {
+                blockchain: { name: "Ethereum", commission: 1.9 },
+                netUsdc: 10.24,
+                netUsdt: 20.34,
+                netDai: 40.54,
+            },
+            {
+                blockchain: { name: "Polygon", commission: 2.9 },
+                netUsdc: 10.26,
+                netUsdt: 20.36,
+                netDai: 40.56
+            },
+            {
+                blockchain: { name: "Lalala", commission: 3.9 },
+                netUsdc: 8.26,
+                netUsdt: 8.36,
+                netDai: 8.56
+            },
+            {
+                blockchain: { name: "Sarasa", commission: 4.9 },
+                netUsdc: 7.26,
+                netUsdt: 7.36,
+                netDai: 7.56
+            }
+        ]
+    }
+];

@@ -1,11 +1,12 @@
-﻿namespace Rucula.DataAccess.Providers.Diarco;
+﻿
+namespace Rucula.DataAccess.Providers.CryptoYa;
 
-internal class DiarcoFetcher : IDiarcoFetcher
+internal class CryptoYaFeesFetcher : ICryptoYaFeesFetcher
 {
-    private const string Url = "https://www.diarco.com.ar/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.diarco.com.ar%2Fdolardiarco%2F";
+    private const string Url = "https://criptoya.com/api/fees";
     private readonly IHttpReader _httpReader;
 
-    public DiarcoFetcher(IHttpReader httpReader) 
+    public CryptoYaFeesFetcher(IHttpReader httpReader)
         => _httpReader = httpReader;
 
     public async Task<string> Fetch()
@@ -17,4 +18,3 @@ internal class DiarcoFetcher : IDiarcoFetcher
     private static HttpRequestMessage CreateRequest()
         => new(HttpMethod.Get, Url);
 }
-

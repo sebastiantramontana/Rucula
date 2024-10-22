@@ -1,9 +1,9 @@
-﻿export default function showDolarCrypto(dolarCrypto, numberFormater) {
+﻿export default function showDolarCrypto(cryptoPrices, numberFormater) {
     const table = document.getElementById("tabla-crypto");
     const newTable = table.cloneNode(true);
 
     removePreviousTBodies(newTable);
-    const tbodies = createExchangeBodies(dolarCrypto.exchanges, numberFormater);
+    const tbodies = createExchangeBodies(cryptoPrices, numberFormater);
     tbodies.forEach(tbody => newTable.appendChild(tbody));
 
     table.replaceWith(newTable);
@@ -17,21 +17,21 @@ function removePreviousTBodies(table) {
     };
 }
 
-function createExchangeBodies(exchanges, numberFormater) {
+function createExchangeBodies(cryptoPrices, numberFormater) {
 
     const tbodies = [];
     const tbodyTemplate = document.getElementById("crypto-exchange-tbody-template").content.querySelector("tbody");
     let arePreviousRowsOdd = false;
 
-    exchanges.forEach(exchange => {
+    cryptoPrices.forEach(cryptoPrice => {
         const tbody = tbodyTemplate.cloneNode(true);
 
-        setRowSpanToExchangeCells(tbody, exchange.netPrices, arePreviousRowsOdd);
-        writeExchangeCells(tbody, exchange, numberFormater);
-        addBlockchainRowsToTBody(tbody, exchange.netPrices, numberFormater);
+        setRowSpanToExchangeCells(tbody, cryptoPrice.netPrices, arePreviousRowsOdd);
+        writeExchangeCells(tbody, cryptoPrice, numberFormater);
+        addBlockchainRowsToTBody(tbody, cryptoPrice.netPrices, numberFormater);
 
         tbodies.push(tbody);
-        arePreviousRowsOdd = isOdd(exchange.netPrices.length);
+        arePreviousRowsOdd = isOdd(cryptoPrice.netPrices.length);
     });
 
     return tbodies;
@@ -50,13 +50,13 @@ function setRowSpanToExchangeCells(tbody, netPrices, arePreviousRowsOdd) {
     setRowSpanAttributeToExchangeCells(tbody, rowspan);
 }
 
-function writeExchangeCells(tbody, exchange, numberFormater) {
+function writeExchangeCells(tbody, cryptoPrice, numberFormater) {
     const firstRow = tbody.firstElementChild;
 
-    writeCell(firstRow, "exchange", exchange.name);
-    writeCell(firstRow, "gross-usdc", format(numberFormater, exchange.grossUsdc));
-    writeCell(firstRow, "gross-usdt", format(numberFormater, exchange.grossUsdt));
-    writeCell(firstRow, "gross-dai", format(numberFormater, exchange.grossDai));
+    writeCell(firstRow, "exchange", cryptoPrice.exchange);
+    writeCell(firstRow, "gross-usdc", format(numberFormater, cryptoPrice.grossUsdc));
+    writeCell(firstRow, "gross-usdt", format(numberFormater, cryptoPrice.grossUsdt));
+    writeCell(firstRow, "gross-dai", format(numberFormater, cryptoPrice.grossDai));
 
 }
 

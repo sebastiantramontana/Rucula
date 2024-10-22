@@ -7,6 +7,7 @@ using Rucula.DataAccess.Providers;
 using Rucula.DataAccess.Providers.Ambito;
 using Rucula.DataAccess.Providers.Byma;
 using Rucula.DataAccess.Providers.Byma.RequestFactories;
+using Rucula.DataAccess.Providers.CryptoYa;
 using Rucula.DataAccess.Providers.Diarco;
 using Rucula.DataAccess.Providers.WesternUnion;
 using Rucula.Domain.Abstractions;
@@ -30,42 +31,34 @@ public static class DataAccessRegistrar
     }
 
     private static void RegisterRequestFactories(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<IBymaRequestFactory, BymaRequestFactory>()
             .AddSingleton<ITituloDetailsRequestFactory, TituloDetailsRequestFactory>()
             .AddSingleton<ILetrasRequestFactory, LetrasRequestFactory>()
             .AddSingleton<IBonosRequestFactory, BonosRequestFactory>()
             .AddSingleton<IBymaIsOpenMarketRequestFactory, BymaIsOpenMarketRequestFactory>();
-    }
 
     private static void RegisterReaders(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<IHttpReader, HttpReader>();
-    }
 
     private static void RegisterGlobalization(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<ISpanishNumberConverter, SpanishNumberConverter>();
-    }
 
     private static void RegisterProviders(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<ITitulosProvider, TitulosProvider>()
             .AddSingleton<IProvider<Titulo>, TitulosProvider>()
             .AddSingleton<ITituloDetailsProvider, TituloDetailsProvider>()
             .AddSingleton<IDolarBlueProvider, DolarBlueProvider>()
             .AddSingleton<IDolarCryptoProvider, DolarCryptoProvider>()
             .AddSingleton<IWesternUnionProvider, WesternUnionProvider>()
-            .AddSingleton<IDolarDiarcoProvider, DolarDiarcoProvider>();
-    }
+            .AddSingleton<IDolarDiarcoProvider, DolarDiarcoProvider>()
+            .AddSingleton<IDolarCryptoFeesProvider, DolarCryptoFeesProvider>();
 
     private static void RegisterFetchers(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<IBymaIsMarketOpenFetcher, BymaIsOpenMarketFetcher>()
             .AddSingleton<IBymaLetrasFetcher, BymaLetrasFetcher>()
             .AddSingleton<IBymaBonosFetcher, BymaBonosFetcher>()
@@ -73,23 +66,21 @@ public static class DataAccessRegistrar
             .AddSingleton<IAmbitoBlueFetcher, AmbitoBlueFetcher>()
             .AddSingleton<IAmbitoDolarCryptoFetcher, AmbitoDolarCryptoFetcher>()
             .AddSingleton<IWesternUnionFetcher, WesternUnionFetcher>()
-            .AddSingleton<IDiarcoFetcher, DiarcoFetcher>();
-    }
+            .AddSingleton<IDiarcoFetcher, DiarcoFetcher>()
+            .AddSingleton<ICryptoYaFeesFetcher, CryptoYaFeesFetcher>();
 
     private static void RegisterMappers(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<IMapper<TituloDto, Titulo>, TituloMapper>()
             .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
             .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>()
             .AddSingleton<IMapper<DolarCryptoDto, DolarCrypto>, DolarCryptoMapper>()
             .AddSingleton<IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>, DolarWesternUnionMapper>()
-            .AddSingleton<IMapper<DolarDiarcoDto, DolarDiarco>, DolarDiarcoMapper>(); ;
-    }
+            .AddSingleton<IMapper<DolarDiarcoDto, DolarDiarco>, DolarDiarcoMapper>()
+            .AddSingleton<IMapper<DolarCryptoFeesDto, DolarCryptoFees>, DolarCrpyoFeesMapper>();
 
     private static void RegisterDeserializers(IServiceCollection serviceCollection)
-    {
-        serviceCollection
+        => serviceCollection
             .AddSingleton<IJsonDeserializer<PaginationDto>, JsonToPaginationDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<TituloDetailsContentDto>, JsonToTituloDetailsContentDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<TituloDto>, JsonToTituloDtoDeserializer>()
@@ -99,6 +90,6 @@ public static class DataAccessRegistrar
             .AddSingleton<IJsonDeserializer<DolarCryptoDto>, JsonToDolarCryptoDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<DolarWesternUnionDto>, JsonToDolarWesternUnionDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<DolarDiarcoDto>, JsonToDolarDiarcoDtoDeserializer>()
+            .AddSingleton<IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>>, DolarCrpyoFeesDtoJsonDeserializer>()
             .AddSingleton<IJsonValueReader, JsonValueReader>();
-    }
 }

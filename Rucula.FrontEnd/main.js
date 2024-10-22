@@ -90,7 +90,7 @@ async function getAllData() {
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
-    showDolarCrypto(choices.dolarCrypto, numberFormater);
+    showDolarCrypto(choices.cryptoPrices, numberFormater);
     showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
     showDolarDiarco(getValueFromOptional(choices.dolarDiarco));
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
