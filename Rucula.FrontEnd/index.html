@@ -117,14 +117,22 @@
             <table id="tabla-crypto" class="w-full border-collapse rounded-lg sm:shadow-lg mb-5 mt-0 text-sm">
                 <thead class="text-white hidden sm:table-header-group">
                     <tr class="mb-0 text-left">
-                        <th class=" dark:border-black border bg-sky-400 p-3">Exchange</th>
-                        <th class=" dark:border-black border bg-emerald-800 p-3">USCD&nbsp;Bruto</th>
-                        <th class=" dark:border-black border bg-emerald-800 p-3">USCT&nbsp;Bruto</th>
-                        <th class=" dark:border-black border bg-emerald-800 p-3">DAI&nbsp;Bruto</th>
-                        <th class=" dark:border-black border bg-teal-700 p-3">Comisiones</th>
-                        <th class=" dark:border-black border bg-ccl p-3">USCD&nbsp;Neto</th>
-                        <th class=" dark:border-black border bg-ccl p-3">USCT&nbsp;Neto</th>
-                        <th class=" dark:border-black border bg-ccl p-3">DAI&nbsp;Neto</th>
+                        <th rowspan="2" class="dark:border-black border bg-sky-400 p-3 text-left">Exchange</th>
+                        <th rowspan="2" class="dark:border-black border bg-emerald-800 p-3 text-right">USCD&nbsp;Bruto</th>
+                        <th rowspan="2" class="dark:border-black border bg-emerald-800 p-3 text-right">USCT&nbsp;Bruto</th>
+                        <th rowspan="2" class="dark:border-black border bg-emerald-800 p-3 text-right">DAI&nbsp;Bruto</th>
+                        <th rowspan="2" class="dark:border-black border bg-teal-700 p-3 text-left">Blockchain</th>
+                        <th colspan="2" class="dark:border-black border bg-teal-700 p-3 text-center">USCD</th>
+                        <th colspan="2" class="dark:border-black border bg-teal-700 p-3 text-center">USCT</th>
+                        <th colspan="2" class="dark:border-black border bg-teal-700 p-3 text-center">DAI</th>
+                    </tr>
+                    <tr>
+                        <th class="dark:border-black border bg-teal-700 p-3 text-right">Comisiones</th>
+                        <th class="dark:border-black border bg-ccl p-3 text-right">Neto</th>
+                        <th class="dark:border-black border bg-teal-700 p-3 text-right">Comisiones</th>
+                        <th class="dark:border-black border bg-ccl p-3 text-right">Neto</th>
+                        <th class="dark:border-black border bg-teal-700 p-3 text-right">Comisiones</th>
+                        <th class="dark:border-black border bg-ccl p-3 text-right">Neto</th>
                     </tr>
                 </thead>
             </table>
@@ -217,9 +225,12 @@
     <tbody class="text-black dark:text-white bg-sky-50 dark:bg-cyan-950 sm:odd:bg-sky-100 sm:even:bg-sky-50 sm:dark:odd:bg-cyan-950 sm:dark:even:bg-cyan-900 block sm:table-row-group mb-2 sm:mb-0">
         <tr class="block sm:table-row">
             <td rowspanned data-label="Exchange" data-crypto-id="exchange" class="block sm:table-cell text-lg font-bold dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left"></td>
-            <td rowspanned data-label="USCD&nbsp;Bruto" data-crypto-id="gross-usdc" class="hidden sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
-            <td rowspanned data-label="USCT&nbsp;Bruto" data-crypto-id="gross-usdt" class="hidden sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
-            <td rowspanned data-label="DAI&nbsp;Bruto" data-crypto-id="gross-dai" class="hidden sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
+            <td rowspanned data-crypto-id="gross-usdc" class="hidden sm:table-cell dark:border-black border p-3 text-right"></td>
+            <td rowspanned data-crypto-id="gross-usdt" class="hidden sm:table-cell dark:border-black border p-3 text-right"></td>
+            <td rowspanned data-crypto-id="gross-dai" class="hidden sm:table-cell dark:border-black border p-3 text-right"></td>
+            <td class="hidden"></td>
+            <td class="hidden"></td>
+            <td class="hidden"></td>
             <td class="hidden"></td>
             <td class="hidden"></td>
             <td class="hidden"></td>
@@ -230,9 +241,12 @@
 
 <template id="crypto-blockchain-net-row-template">
     <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 m-0 p-0">
-        <td class="inline-block text-base font-medium sm:text-sm sm:font-normal w-full sm:w-auto sm:table-cell dark:border-black border p-3"><span data-crypto-id="blockchain-name" class="float-left"></span><span data-crypto-id="blockchain-commission" class="float-right"></span></td>
-        <td data-label="USCD&nbsp;Neto" data-crypto-id="net-usdc" class="block sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
-        <td data-label="USCT&nbsp;Neto" data-crypto-id="net-usdt" class="block sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
-        <td data-label="DAI&nbsp;Neto" data-crypto-id="net-dai" class="block sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
+        <td data-label="Blockchain" data-crypto-id="blockchain-name" class="block sm:table-cell dark:border-black border p-3 text-right sm:text-left before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none text-base font-medium sm:text-sm sm:font-normal"></td>
+        <td data-crypto-id="usdc-fee" class="hidden sm:table-cell dark:border-black border p-3 text-right"></td>
+        <td data-crypto-id="net-usdc" data-label="USCD&nbsp;Neto" class="block sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
+        <td data-crypto-id="usdt-fee" class="hidden sm:table-cell dark:border-black border p-3 text-right"></td>
+        <td data-crypto-id="net-usdt" data-label="USCT&nbsp;Neto" class="block sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
+        <td data-crypto-id="dai-fee" class="hidden sm:table-cell dark:border-black border p-3 text-right"></td>
+        <td data-crypto-id="net-dai" data-label="DAI&nbsp;Neto" class="block sm:table-cell dark:border-black border p-3 text-right before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none"></td>
     </tr>
 </template>

@@ -104,11 +104,13 @@ function createBlockchainNetRows(netPrices, numberFormater) {
 }
 
 function writeBlockchainCells(row, netPrice, numberFormater) {
-    writeCell(row, "blockchain-name", netPrice.blockchain.name);
-    writeCell(row, "blockchain-commission", format(numberFormater, netPrice.blockchain.commission));
-    writeCell(row, "net-usdc", format(numberFormater, netPrice.netUsdc));
-    writeCell(row, "net-usdt", format(numberFormater, netPrice.netUsdt));
-    writeCell(row, "net-dai", format(numberFormater, netPrice.netDai));
+    writeCell(row, "blockchain-name", netPrice.blockchain);
+    writeCell(row, "usdc-fee", format(numberFormater, netPrice.netUsdc.fee));
+    writeCell(row, "net-usdc", format(numberFormater, netPrice.netUsdt.price));
+    writeCell(row, "usdt-fee", format(numberFormater, netPrice.netDai.fee));
+    writeCell(row, "net-usdt", format(numberFormater, netPrice.netUsdc.price));
+    writeCell(row, "dai-fee", format(numberFormater, netPrice.netUsdt.fee));
+    writeCell(row, "net-dai", format(numberFormater, netPrice.netDai.price));
 }
 
 function format(formatter, value) {
