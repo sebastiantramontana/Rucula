@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class DolarCryptoNetPrices(Blockchain Blockchain, double NetUsdc, double NetUsdt, double NetDai);
+public record class DolarCryptoNetPrices(Blockchain Blockchain, DolarCryptoNetPrice NetUsdc, DolarCryptoNetPrice NetUsdt, DolarCryptoNetPrice NetDai);

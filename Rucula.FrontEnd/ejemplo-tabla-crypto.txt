@@ -56,13 +56,13 @@ cryptoPrices = [
             grossDai: 34.56,
             netPrices: [
                 {
-                    blockchain: "Ethereum",
+                    blockchain: { name: "Ethereum" },
                     netUsdc: { price: 11.22, fee: 1.2 },
-                    netUsdt: { price: 11.23, fee: 1.3 }, 
+                    netUsdt: { price: 11.23, fee: 1.3 },
                     netDai: { price: 11.23, fee: 1.4 }
                 },
                 {
-                    blockchain: "Polygon",
+                    blockchain: { name: "Polygon" },
                     netUsdc: { price: 11.32, fee: 2.2 },
                     netUsdt: { price: 11.42, fee: 3.2 },
                     netDai: { price: 11.52, fee: 4.2 }
@@ -76,19 +76,19 @@ cryptoPrices = [
             grossDai: 35.56,
             netPrices: [
                 {
-                    blockchain: "Ethereum",
+                    blockchain: { name: "Ethereum" },
                     netUsdc: { price: 1.22, fee: 1.21 },
                     netUsdt: { price: 2.22, fee: 1.22 },
                     netDai: { price: 3.22, fee: 1.23 }
                 },
                 {
-                    blockchain: "Polygon",
+                    blockchain: { name: "Polygon" },
                     netUsdc: { price: 21.22, fee: 0.1 },
                     netUsdt: { price: 31.22, fee: 0.2 },
                     netDai: { price: 41.22, fee: 0.3 }
                 },
                 {
-                    blockchain: "Lalala",
+                    blockchain: { name: "Lalala" },
                     netUsdc: { price: 11.72, fee: 0.21 },
                     netUsdt: { price: 11.82, fee: 0.22 },
                     netDai: { price: 11.92, fee: 0.23 }
@@ -102,25 +102,25 @@ cryptoPrices = [
             grossDai: 45.56,
             netPrices: [
                 {
-                    blockchain: "Ethereum",
+                    blockchain: { name: "Ethereum" },
                     netUsdc: { price: 211.22, fee: 1.27 },
                     netUsdt: { price: 311.22, fee: 1.28 },
                     netDai: { price: 411.22, fee: 1.29 }
                 },
                 {
-                    blockchain: "Polygon",
+                    blockchain: { name: "Polygon" },
                     netUsdc: { price: 711.22, fee: 0.02 },
                     netUsdt: { price: 811.22, fee: 0.03 },
                     netDai: { price: 911.22, fee: 0.04 }
                 },
                 {
-                    blockchain: "Lalala",
+                    blockchain: { name: "Lalala" },
                     netUsdc: { price: 7.22, fee: 5.21 },
                     netUsdt: { price: 8.22, fee: 5.22 },
                     netDai: { price: 9.22, fee: 5.23 }
                 },
                 {
-                    blockchain: "Sarasa",
+                    blockchain: { name: "Sarasa" },
                     netUsdc: { price: 2.12, fee: 8.21 },
                     netUsdt: { price: 2.22, fee: 8.22 },
                     netDai: { price: 2.32, fee: 8.23 }
