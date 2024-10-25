@@ -1,9 +1,8 @@
-﻿namespace Rucula.Domain.Entities
+﻿namespace Rucula.Domain.Entities;
+
+public enum Moneda
 {
-    public enum Moneda
-    {
-        Peso,
-        DolarMep,
-        DolarCable
-    }
+    Peso,
+    DolarMep,
+    DolarCable
 }

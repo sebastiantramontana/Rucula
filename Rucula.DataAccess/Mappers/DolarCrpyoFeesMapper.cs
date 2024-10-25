@@ -16,9 +16,9 @@ internal class DolarCrpyoFeesMapper : IMapper<DolarCryptoFeesDto, DolarCryptoFee
     private CryptoCurrencyFees Map(CryptoCurrencyFeesDto dto)
         => new(dto.CryptoCurrencyKey, Map(dto.Blockchains));
 
-    private IEnumerable<Blockchain> Map(IEnumerable<BlockchainDto> dtos)
+    private IEnumerable<CurrencyBlockchainFee> Map(IEnumerable<BlockchainDto> dtos)
         => dtos.Select(Map);
 
-    private Blockchain Map(BlockchainDto dto)
-        => new(dto.Name, dto.Fees);
+    private CurrencyBlockchainFee Map(BlockchainDto dto)
+        => new(new Blockchain(dto.Name), dto.Fees);
 }
