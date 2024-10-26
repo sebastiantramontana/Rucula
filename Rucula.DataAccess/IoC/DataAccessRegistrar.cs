@@ -32,7 +32,7 @@ public static class DataAccessRegistrar
 
     private static void RegisterRequestFactories(IServiceCollection serviceCollection)
         => serviceCollection
-            .AddSingleton<IBymaRequestFactory, BymaRequestFactory>()
+            .AddSingleton<IBymaRequestPostFactory, BymaRequestPostFactory>()
             .AddSingleton<ITituloDetailsRequestFactory, TituloDetailsRequestFactory>()
             .AddSingleton<ILetrasRequestFactory, LetrasRequestFactory>()
             .AddSingleton<IBonosRequestFactory, BonosRequestFactory>()
@@ -67,7 +67,8 @@ public static class DataAccessRegistrar
             .AddSingleton<IAmbitoDolarCryptoFetcher, AmbitoDolarCryptoFetcher>()
             .AddSingleton<IWesternUnionFetcher, WesternUnionFetcher>()
             .AddSingleton<IDiarcoFetcher, DiarcoFetcher>()
-            .AddSingleton<ICryptoYaFeesFetcher, CryptoYaFeesFetcher>();
+            .AddSingleton<ICryptoYaFeesFetcher, CryptoYaFeesFetcher>()
+            .AddSingleton<ICryptoYaPricesFetcher, CryptoYaPricesFetcher>();
 
     private static void RegisterMappers(IServiceCollection serviceCollection)
         => serviceCollection

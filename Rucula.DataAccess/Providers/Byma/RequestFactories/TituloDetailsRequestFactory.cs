@@ -4,7 +4,7 @@
     {
         private const string Url = "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/bnown/fichatecnica/especies/general";
 
-        public TituloDetailsRequestFactory(IBymaRequestFactory bymaRequestFactory)
+        public TituloDetailsRequestFactory(IBymaRequestPostFactory bymaRequestFactory)
             : base(Url, bymaRequestFactory)
         {
         }

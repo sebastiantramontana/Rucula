@@ -5,9 +5,9 @@ namespace Rucula.DataAccess.Providers.Byma.RequestFactories
     {
         private const string Url = "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/lebacs";
         private const string JsonContent = @"{ ""excludeZeroPxAndQty"": true, ""T2"": false, ""T1"": false, ""T0"": true }";
-        private readonly IBymaRequestFactory _bymaRequestFactory;
+        private readonly IBymaRequestPostFactory _bymaRequestFactory;
 
-        public LetrasRequestFactory(IBymaRequestFactory bymaRequestFactory)
+        public LetrasRequestFactory(IBymaRequestPostFactory bymaRequestFactory)
         {
             _bymaRequestFactory = bymaRequestFactory;
         }

@@ -5,9 +5,9 @@ namespace Rucula.DataAccess.Providers.Byma.RequestFactories
     internal abstract class ParametrizableRequestFactoryBase : IParametrizableRequestFactory
     {
         private readonly string _url;
-        private readonly IBymaRequestFactory _bymaRequestFactory;
+        private readonly IBymaRequestPostFactory _bymaRequestFactory;
 
-        protected ParametrizableRequestFactoryBase(string url, IBymaRequestFactory bymaRequestFactory)
+        protected ParametrizableRequestFactoryBase(string url, IBymaRequestPostFactory bymaRequestFactory)
         {
             _url = url;
             _bymaRequestFactory = bymaRequestFactory;
