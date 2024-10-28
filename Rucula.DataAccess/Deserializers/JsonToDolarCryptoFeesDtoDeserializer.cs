@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class DolarCrpyoFeesDtoJsonDeserializer : IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>>
+internal class JsonToDolarCryptoFeesDtoDeserializer : IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>>
 {
     public Optional<IEnumerable<DolarCryptoFeesDto>> Deserialize(JsonNode? node)
     {

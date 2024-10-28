@@ -55,7 +55,8 @@ public static class DataAccessRegistrar
             .AddSingleton<IDolarCryptoProvider, DolarCryptoProvider>()
             .AddSingleton<IWesternUnionProvider, WesternUnionProvider>()
             .AddSingleton<IDolarDiarcoProvider, DolarDiarcoProvider>()
-            .AddSingleton<IDolarCryptoFeesProvider, DolarCryptoFeesProvider>();
+            .AddSingleton<IDolarCryptoFeesProvider, DolarCryptoFeesProvider>()
+            .AddSingleton<IDolarCryptoGrossPricesProvider, DolarCryptoGrossPricesProvider>();
 
     private static void RegisterFetchers(IServiceCollection serviceCollection)
         => serviceCollection
@@ -68,7 +69,7 @@ public static class DataAccessRegistrar
             .AddSingleton<IWesternUnionFetcher, WesternUnionFetcher>()
             .AddSingleton<IDiarcoFetcher, DiarcoFetcher>()
             .AddSingleton<ICryptoYaFeesFetcher, CryptoYaFeesFetcher>()
-            .AddSingleton<ICryptoYaPricesFetcher, CryptoYaPricesFetcher>();
+            .AddSingleton<ICryptoYaGrossPricesFetcher, CryptoYaGrossPricesFetcher>();
 
     private static void RegisterMappers(IServiceCollection serviceCollection)
         => serviceCollection
@@ -91,6 +92,7 @@ public static class DataAccessRegistrar
             .AddSingleton<IJsonDeserializer<DolarCryptoDto>, JsonToDolarCryptoDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<DolarWesternUnionDto>, JsonToDolarWesternUnionDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<DolarDiarcoDto>, JsonToDolarDiarcoDtoDeserializer>()
-            .AddSingleton<IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>>, DolarCrpyoFeesDtoJsonDeserializer>()
+            .AddSingleton<IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>>, JsonToDolarCryptoFeesDtoDeserializer>()
+            .AddSingleton<IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>>, JsonToDolarCryptoCurrencyGrossPriceDto>()
             .AddSingleton<IJsonValueReader, JsonValueReader>();
 }
