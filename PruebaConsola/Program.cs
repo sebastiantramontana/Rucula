@@ -11,7 +11,7 @@ internal class Program
     static async Task Main(string[] args)
     {
         var servicesCollection = new ServiceCollection();
-        servicesCollection
+        _ = servicesCollection
             .AddHttpClient()
             .AddDataAccess()
             .AddDomain()
@@ -32,7 +32,6 @@ internal class Program
         }
 
         await notifier.NotifyProgress($"Blue: {GetValueFromOptional(choices.Blue)}{Environment.NewLine}");
-        await notifier.NotifyProgress($"Crypto: {GetValueFromOptional(choices.DolarCrypto)}{Environment.NewLine}");
         await notifier.NotifyProgress($"WU: {GetValueFromOptional(choices.DolarWesternUnion)}{Environment.NewLine}");
         await notifier.NotifyProgress($"Diarco: {GetValueFromOptional(choices.DolarDiarco)}{Environment.NewLine}");
     }

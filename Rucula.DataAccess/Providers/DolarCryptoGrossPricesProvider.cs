@@ -37,7 +37,7 @@ internal class DolarCryptoGrossPricesProvider : IDolarCryptoGrossPricesProvider
 
         foreach (var result in fetchResults)
         {
-            var pricesDto = ConvertContentToCurrencyGrossPriceDto(result.Content, result.CurrencyKey);
+            var pricesDto = ConvertContentToCurrencyGrossPriceDto(result.Content);
             AcumulateMappedGrossPrices(grossPrices, result.CurrencyKey, pricesDto);
         }
 
@@ -69,7 +69,7 @@ internal class DolarCryptoGrossPricesProvider : IDolarCryptoGrossPricesProvider
         return new(parameters.CryptoCurrencyKey, content);
     }
 
-    private IEnumerable<DolarCryptoCurrencyGrossPriceDto> ConvertContentToCurrencyGrossPriceDto(string content, string currencyKey)
+    private IEnumerable<DolarCryptoCurrencyGrossPriceDto> ConvertContentToCurrencyGrossPriceDto(string content)
     {
         var pricesDto = _deserializer.Deserialize(JsonNode.Parse(content)!);
         return pricesDto.HasValue ? pricesDto.Value : [];

@@ -8,10 +8,8 @@ internal class JsonToDolarCryptoCurrencyGrossPriceDto : IJsonDeserializer<IEnume
 {
     private readonly IJsonValueReader _jsonValueReader;
 
-    public JsonToDolarCryptoCurrencyGrossPriceDto(IJsonValueReader jsonValueReader)
-    {
-        _jsonValueReader = jsonValueReader;
-    }
+    public JsonToDolarCryptoCurrencyGrossPriceDto(IJsonValueReader jsonValueReader) 
+        => _jsonValueReader = jsonValueReader;
 
     public Optional<IEnumerable<DolarCryptoCurrencyGrossPriceDto>> Deserialize(JsonNode? node)
     {

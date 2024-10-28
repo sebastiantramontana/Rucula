@@ -19,17 +19,8 @@ internal class JsonToDolarCryptoFeesDtoDeserializer : IJsonDeserializer<IEnumera
         return Optional<IEnumerable<DolarCryptoFeesDto>>.Sure(fees);
     }
 
-    private static IEnumerable<DolarCryptoFeesDto> CreateCryptoFees(JsonObject nodeObject)
-    {
-        var fees = new List<DolarCryptoFeesDto>();
-
-        foreach (var exchangeNode in nodeObject)
-        {
-            fees.Add(CreateDolarCryptoFeesDto(exchangeNode));
-        }
-
-        return fees;
-    }
+    private static IEnumerable<DolarCryptoFeesDto> CreateCryptoFees(JsonObject nodeObject) 
+        => nodeObject.Select(CreateDolarCryptoFeesDto);
 
     private static DolarCryptoFeesDto CreateDolarCryptoFeesDto(KeyValuePair<string, JsonNode?> exchangeNode)
     {
@@ -39,17 +30,8 @@ internal class JsonToDolarCryptoFeesDtoDeserializer : IJsonDeserializer<IEnumera
         return new(exchangeNode.Key, currencies);
     }
 
-    private static IEnumerable<CryptoCurrencyFeesDto> CreateCurrencies(JsonObject currenciesNode)
-    {
-        var currencies = new List<CryptoCurrencyFeesDto>();
-
-        foreach (var currencyNode in currenciesNode)
-        {
-            currencies.Add(CreateCryptoCurrencyFeesDto(currencyNode));
-        }
-
-        return currencies;
-    }
+    private static IEnumerable<CryptoCurrencyFeesDto> CreateCurrencies(JsonObject currenciesNode) 
+        => currenciesNode.Select(CreateCryptoCurrencyFeesDto);
 
     private static CryptoCurrencyFeesDto CreateCryptoCurrencyFeesDto(KeyValuePair<string, JsonNode?> currencyNode)
     {
@@ -59,17 +41,8 @@ internal class JsonToDolarCryptoFeesDtoDeserializer : IJsonDeserializer<IEnumera
         return new(currencyNode.Key, blockchains);
     }
 
-    private static IEnumerable<BlockchainDto> CreateBlockchains(JsonObject blockchainsNode)
-    {
-        var blockchains = new List<BlockchainDto>();
-
-        foreach (var blockchainNode in blockchainsNode)
-        {
-            blockchains.Add(CreateBlockchainDto(blockchainNode));
-        }
-
-        return blockchains;
-    }
+    private static IEnumerable<BlockchainDto> CreateBlockchains(JsonObject blockchainsNode) 
+        => blockchainsNode.Select(CreateBlockchainDto);
 
     private static BlockchainDto CreateBlockchainDto(KeyValuePair<string, JsonNode?> blockchainNode)
     {
