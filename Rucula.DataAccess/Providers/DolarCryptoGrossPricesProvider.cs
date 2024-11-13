@@ -50,11 +50,11 @@ internal class DolarCryptoGrossPricesProvider : IDolarCryptoGrossPricesProvider
         {
             if (!exchanges.TryGetValue(price.ExchangeName, out var currentPrices))
             {
-                currentPrices = new DolarCryptoGrossPrices(price.ExchangeName, []);
-                exchanges.Add(price.ExchangeName, currentPrices);
+                currentPrices = new(price.ExchangeName, []);
+                _ = exchanges.TryAdd(price.ExchangeName, currentPrices);
             }
 
-            var newGrossPrices = currentPrices.GrossPrices.Append(new DolarCryptoCurrencyGrossPrice(currencyKey, price.TotalBid));
+            var newGrossPrices = currentPrices.GrossPrices.Append(new(currencyKey, price.TotalBid));
             var newPrices = currentPrices with { GrossPrices = newGrossPrices };
 
             exchanges[price.ExchangeName] = newPrices;

@@ -4,6 +4,9 @@ namespace Rucula.Domain.Entities;
 
 public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 {
+    public static Optional<T> Maybe<T2>(T2? value) where T2 : struct, T
+        => (value is null) ? Empty : Optional<T>.Sure(value.Value);
+
     public static Optional<T> Maybe(T? value)
         => (value is null) ? Empty : Optional<T>.Sure(value);
 
@@ -18,9 +21,11 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
     {
         _value = value;
         HasValue = hasValue;
+        IsEmpty = !HasValue;
     }
 
     public bool HasValue { get; }
+    public bool IsEmpty { get; }
 
     private readonly T? _value = default;
     public T Value => HasValue ? _value! : throw new InvalidOperationException("Optional object has not value");
@@ -30,6 +35,7 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 
     public bool Equals(Optional<T>? other)
         => other is not null &&
+            other.HasValue &&
             Equals(other.Value);
 
     public bool Equals(T? otherValue)
