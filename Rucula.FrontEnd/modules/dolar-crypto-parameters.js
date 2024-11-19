@@ -1,28 +1,28 @@
 ﻿import ParametersDomHandling from "./ParametersDomHandling.js";
 
 function getInputs() {
-    const amountToSendInput = document.getElementById("trading-volume-crypto");
-    return { amountToSendInput };
+    const volumeInput = document.getElementById("trading-volume-crypto");
+    return { volumeInput };
 }
 
 function getInputsArray() {
     const inputs = getInputs();
-    return [inputs.amountToSendInput];
+    return [inputs.volumeInput];
 }
 
 const getApplyButton = () => document.getElementById("apply-trading-volume-crypto");
 
 function getParametersFromInputs() {
     const inputs = getInputs();
-    return { "amountToSend": parseFloat(inputs.amountToSendInput.value) };
+    return { "volume": parseFloat(inputs.volumeInput.value) };
 }
 
 const settingsKey = "parameters-crypto-settings";
-const defaultParameters = { amountToSend: 1000 };
+const defaultParameters = { volume: 1000 };
 
 function setParametersToInputs(parametersSettings) {
     const inputs = getInputs();
-    inputs.amountToSendInput.value = parametersSettings.amountToSend;
+    inputs.volumeInput.value = parametersSettings.volume;
 }
 
 const cryptoParameters = new ParametersDomHandling(getInputsArray, getApplyButton, getParametersFromInputs, settingsKey, defaultParameters, setParametersToInputs);

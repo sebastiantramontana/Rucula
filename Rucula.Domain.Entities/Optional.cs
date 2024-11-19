@@ -19,16 +19,14 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
     [JsonConstructor]
     private Optional(T? value, bool hasValue)
     {
-        _value = value;
+        Value = value!;
         HasValue = hasValue;
         IsEmpty = !HasValue;
     }
 
     public bool HasValue { get; }
     public bool IsEmpty { get; }
-
-    private readonly T? _value = default;
-    public T Value => HasValue ? _value! : throw new InvalidOperationException("Optional object has not value");
+    public T Value { get; }
 
     public override bool Equals(object? obj)
         => Equals(obj as Optional<T>);

@@ -18,7 +18,9 @@ internal class DolarCryptoMaxPriceService : IDolarCryptoMaxPriceService
         static void AddNetPriceToListIfHasValue(ICollection<DolarCryptoNetPrice> prices, Optional<DolarCryptoNetPrice> netPrice)
         {
             if (netPrice.HasValue)
+            {
                 prices.Add(netPrice.Value);
+            }
         }
     }
 }

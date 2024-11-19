@@ -86,7 +86,7 @@ async function getAllData() {
 
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
@@ -115,7 +115,7 @@ async function recalculateChoices() {
 
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'RecalculateChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'RecalculateChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);

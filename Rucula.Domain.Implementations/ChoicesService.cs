@@ -49,7 +49,7 @@ internal class ChoicesService : IChoicesService
         return CreateWinningChoice(rankingTitulos, choices.Blue, await westernUnionDolarTask, choices.DolarDiarco, await rankingCryptoTask);
     }
 
-    private ChoicesInfo CreateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Optional<Blue> dolarBlue, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarDiarco> dolarDiarco, IEnumerable<DolarCryptoPrices> rankingCryptos)
+    private static ChoicesInfo CreateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Optional<Blue> dolarBlue, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarDiarco> dolarDiarco, IEnumerable<DolarCryptoPrices> rankingCryptos)
     {
         var bestTitulo = MaybeFirst(rankingTitulos);
         var bestCrypto = MaybeFirst(rankingCryptos);
@@ -59,7 +59,7 @@ internal class ChoicesService : IChoicesService
         return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue, dolarWesternUnion, dolarDiarco, rankingCryptos);
     }
 
-    private WinningChoice? GetWinningChoice(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)
+    private static WinningChoice? GetWinningChoice(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)
     {
         var competitors = new List<WinningChoice>(3);
 
