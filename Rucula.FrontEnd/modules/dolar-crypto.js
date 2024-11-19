@@ -1,9 +1,9 @@
-﻿export default function showDolarCrypto(cryptoPrices, numberFormater) {
+﻿export default function showDolarCrypto(rankingCryptos, numberFormater) {
     const table = document.getElementById("tabla-crypto");
     const newTable = table.cloneNode(true);
 
     removePreviousTBodies(newTable);
-    const tbodies = createExchangeBodies(cryptoPrices, numberFormater);
+    const tbodies = createExchangeBodies(rankingCryptos, numberFormater);
     tbodies.forEach(tbody => newTable.appendChild(tbody));
 
     table.replaceWith(newTable);
@@ -17,21 +17,21 @@ function removePreviousTBodies(table) {
     };
 }
 
-function createExchangeBodies(cryptoPrices, numberFormater) {
+function createExchangeBodies(rankingCryptos, numberFormater) {
 
     const tbodies = [];
     const tbodyTemplate = document.getElementById("crypto-exchange-tbody-template").content.querySelector("tbody");
     let arePreviousRowsOdd = false;
 
-    cryptoPrices.forEach(cryptoPrice => {
+    rankingCryptos.forEach(cryptoPrices => {
         const tbody = tbodyTemplate.cloneNode(true);
 
-        setRowSpanToExchangeCells(tbody, cryptoPrice.netPrices, arePreviousRowsOdd);
-        writeExchangeCells(tbody, cryptoPrice, numberFormater);
-        addBlockchainRowsToTBody(tbody, cryptoPrice.netPrices, numberFormater);
+        setRowSpanToExchangeCells(tbody, cryptoPrices.dolarCryptoNetPrices, arePreviousRowsOdd);
+        writeExchangeCells(tbody, cryptoPrices, numberFormater);
+        addBlockchainRowsToTBody(tbody, cryptoPrices.dolarCryptoNetPrices, numberFormater);
 
         tbodies.push(tbody);
-        arePreviousRowsOdd = isOdd(cryptoPrice.netPrices.length);
+        arePreviousRowsOdd = isOdd(cryptoPrices.dolarCryptoNetPrices.length);
     });
 
     return tbodies;
@@ -50,13 +50,13 @@ function setRowSpanToExchangeCells(tbody, netPrices, arePreviousRowsOdd) {
     setRowSpanAttributeToExchangeCells(tbody, rowspan);
 }
 
-function writeExchangeCells(tbody, cryptoPrice, numberFormater) {
+function writeExchangeCells(tbody, cryptoPrices, numberFormater) {
     const firstRow = tbody.firstElementChild;
 
-    writeCell(firstRow, "exchange", cryptoPrice.exchange);
-    writeCell(firstRow, "gross-usdc", format(numberFormater, cryptoPrice.grossUsdc));
-    writeCell(firstRow, "gross-usdt", format(numberFormater, cryptoPrice.grossUsdt));
-    writeCell(firstRow, "gross-dai", format(numberFormater, cryptoPrice.grossDai));
+    writeCell(firstRow, "exchange", cryptoPrices.exchangeName);
+    writeCell(firstRow, "gross-usdc", format(numberFormater, cryptoPrices.grossUsdc));
+    writeCell(firstRow, "gross-usdt", format(numberFormater, cryptoPrices.grossUsdt));
+    writeCell(firstRow, "gross-dai", format(numberFormater, cryptoPrices.grossDai));
 
 }
 
@@ -103,18 +103,22 @@ function createBlockchainNetRows(netPrices, numberFormater) {
     return rows;
 }
 
-function writeBlockchainCells(row, netPrice, numberFormater) {
-    writeCell(row, "blockchain-name", netPrice.blockchain.name);
-    writeCell(row, "usdc-fee", format(numberFormater, netPrice.netUsdc.fee));
-    writeCell(row, "net-usdc", format(numberFormater, netPrice.netUsdt.price));
-    writeCell(row, "usdt-fee", format(numberFormater, netPrice.netDai.fee));
-    writeCell(row, "net-usdt", format(numberFormater, netPrice.netUsdc.price));
-    writeCell(row, "dai-fee", format(numberFormater, netPrice.netUsdt.fee));
-    writeCell(row, "net-dai", format(numberFormater, netPrice.netDai.price));
+function writeBlockchainCells(row, netPrices, numberFormater) {
+    writeCell(row, "blockchain-name", netPrices.blockchain.name);
+    writeCell(row, "usdc-fee", formatObject(numberFormater, netPrices.netUsdc, v => v.fee));
+    writeCell(row, "net-usdc", formatObject(numberFormater, netPrices.netUsdc, v => v.netPrice));
+    writeCell(row, "usdt-fee", formatObject(numberFormater, netPrices.netUsdt, v => v.fee));
+    writeCell(row, "net-usdt", formatObject(numberFormater, netPrices.netUsdt, v => v.netPrice));
+    writeCell(row, "dai-fee", formatObject(numberFormater, netPrices.netDai, v => v.fee));
+    writeCell(row, "net-dai", formatObject(numberFormater, netPrices.netDai, v => v.netPrice));
 }
 
-function format(formatter, value) {
-    return (value) ? formatter.format(value) : "";
+function format(formatter, optional) {
+    return (optional && optional.hasValue) ? formatter.format(optional.value) : "";
+}
+
+function formatObject(formatter, optional, valueCallback) {
+    return (optional && optional.hasValue) ? formatter.format(valueCallback(optional.value)) : "";
 }
 
 function writeCell(row, dataCryptoId, data) {
