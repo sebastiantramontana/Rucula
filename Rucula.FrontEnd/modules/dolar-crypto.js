@@ -21,17 +21,17 @@ function createExchangeBodies(rankingCryptos, numberFormater) {
 
     const tbodies = [];
     const tbodyTemplate = document.getElementById("crypto-exchange-tbody-template").content.querySelector("tbody");
-    let arePreviousRowsOdd = false;
+    let wasPreviousLastRowOdd = false;
 
     rankingCryptos.forEach(cryptoPrices => {
         const tbody = tbodyTemplate.cloneNode(true);
 
-        setRowSpanToExchangeCells(tbody, cryptoPrices.dolarCryptoNetPrices, arePreviousRowsOdd);
+        setRowSpanToExchangeCells(tbody, cryptoPrices.dolarCryptoNetPrices, wasPreviousLastRowOdd);
         writeExchangeCells(tbody, cryptoPrices, numberFormater);
         addBlockchainRowsToTBody(tbody, cryptoPrices.dolarCryptoNetPrices, numberFormater);
 
         tbodies.push(tbody);
-        arePreviousRowsOdd = isOdd(cryptoPrices.dolarCryptoNetPrices.length);
+        wasPreviousLastRowOdd = isAlternatingColorForNextFirstRowNeeded(wasPreviousLastRowOdd, cryptoPrices.dolarCryptoNetPrices.length);
     });
 
     return tbodies;
@@ -42,11 +42,11 @@ function addBlockchainRowsToTBody(tbody, netPrices, numberFormater) {
     rows.forEach(row => tbody.appendChild(row));
 }
 
-function setRowSpanToExchangeCells(tbody, netPrices, arePreviousRowsOdd) {
-    if (arePreviousRowsOdd)
+function setRowSpanToExchangeCells(tbody, netPrices, needAlternatingColorFirstRow) {
+    if (needAlternatingColorFirstRow)
         addHiddenBalancingAlternatingColorFirstRow(tbody);
 
-    const rowspan = calculateRowSpanForExchangeCell(netPrices, arePreviousRowsOdd);
+    const rowspan = calculateRowSpanForExchangeCell(netPrices, needAlternatingColorFirstRow);
     setRowSpanAttributeToExchangeCells(tbody, rowspan);
 }
 
@@ -60,17 +60,21 @@ function writeExchangeCells(tbody, cryptoPrices, numberFormater) {
 
 }
 
+function isAlternatingColorForNextFirstRowNeeded(wasPreviousLastRowOdd, rowsCount) {
+    return wasPreviousLastRowOdd ^ isOdd(rowsCount);
+}
+
 function isOdd(number) {
     return number % 2 !== 0;
 }
 
-function calculateRowSpanForExchangeCell(netPrices, arePreviousRowsOdd) {
+function calculateRowSpanForExchangeCell(netPrices, needAlternatingColorFirstRow) {
     var rowspan = netPrices.length + 1;
-    return incrementRowspanForHiddenBalancingAlternatingColorFirstRow(rowspan, arePreviousRowsOdd);
+    return incrementRowspanForHiddenBalancingAlternatingColorFirstRow(rowspan, needAlternatingColorFirstRow);
 }
 
-function incrementRowspanForHiddenBalancingAlternatingColorFirstRow(rowspan, arePreviousRowsOdd) {
-    if (arePreviousRowsOdd)
+function incrementRowspanForHiddenBalancingAlternatingColorFirstRow(rowspan, needAlternatingColorFirstRow) {
+    if (needAlternatingColorFirstRow)
         rowspan++;
 
     return rowspan;
