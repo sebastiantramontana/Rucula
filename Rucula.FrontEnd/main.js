@@ -26,6 +26,7 @@ addEventListener("load", async () => {
 
         addApplyBondCommissionsClickListener();
         addApplyWuParametersClickListener();
+        addApplyCryptoParametersClickListener();
 
         await runGettingData();
         hookVisibilityEventToRun();
@@ -42,6 +43,11 @@ function addApplyBondCommissionsClickListener() {
 
 function addApplyWuParametersClickListener() {
     const applyButton = document.getElementById("apply-amount-to-send-wu");
+    applyButton.addEventListener("click", recalculateChoices);
+}
+
+function addApplyCryptoParametersClickListener() {
+    const applyButton = document.getElementById("apply-trading-volume-crypto");
     applyButton.addEventListener("click", recalculateChoices);
 }
 
