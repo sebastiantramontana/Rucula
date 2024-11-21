@@ -3,10 +3,52 @@
     const newTable = table.cloneNode(true);
 
     removePreviousTBodies(newTable);
-    const tbodies = createExchangeBodies(rankingCryptos, numberFormater);
-    tbodies.forEach(tbody => newTable.appendChild(tbody));
 
+    const tbodies = createExchangeBodies(rankingCryptos, numberFormater);
+    highlightBestNetPrice(tbodies, rankingCryptos);
+
+    tbodies.forEach(tbody => newTable.appendChild(tbody));
     table.replaceWith(newTable);
+}
+
+function highlightBestNetPrice(tbodies, rankingCryptos) {
+    if (tbodies.length === 0)
+        return;
+
+    const firstNetPrices = rankingCryptos[0].dolarCryptoNetPrices[0];
+    const bestNetColumnIndex = getBestNetColumnIndex(firstNetPrices);
+
+    if (typeof bestNetColumnIndex === "number") {
+        const firstNetPricesRow = tbodies[0].rows[1];
+        highlightBestNetCell(firstNetPricesRow.cells[bestNetColumnIndex]);
+    }
+}
+
+function getBestNetColumnIndex(firstNetPrices) {
+    const topNetPrice = firstNetPrices.topNetPrice.netPrice;
+
+    const netPrices = [
+        { netPrice: firstNetPrices.netUsdc, netColumnIndex: 2 },
+        { netPrice: firstNetPrices.netUsdt, netColumnIndex: 4 },
+        { netPrice: firstNetPrices.netDai, netColumnIndex: 6 }
+    ];
+
+    return netPrices
+        .find(p => IsTopNetPrice(p.netPrice, topNetPrice))
+        .netColumnIndex;
+}
+
+function IsTopNetPrice(optionalNetPrice, topNetPrice) {
+    return optionalNetPrice.hasValue && optionalNetPrice.value.netPrice === topNetPrice;
+}
+
+function highlightBestNetCell(cell) {
+    const cssClasses = ["ring-2", "ring-inset", "ring-sky-500", "dark:ring-white/50"];
+    const cssClassList = cell.classList;
+
+    for (const className of cssClasses) {
+        cssClassList.add(className);
+    }
 }
 
 function removePreviousTBodies(table) {
