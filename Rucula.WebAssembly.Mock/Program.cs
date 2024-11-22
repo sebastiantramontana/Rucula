@@ -29,7 +29,7 @@ namespace Rucula.WebAssembly.Mock
                 await using var host = CreateWebAssemblyHost(builder);
 
                 Register(builder.Services);
-                InstanceServices(builder.Services.BuildServiceProvider());
+                InstanceServices(builder.Services);
 
                 Console.WriteLine("CORRIENDO WASM MOCKEADO...!!!");
 
@@ -41,11 +41,17 @@ namespace Rucula.WebAssembly.Mock
             }
         }
 
+        public static void InstanceServices(IServiceCollection services)
+        {
+            InstanceServices(services.BuildServiceProvider());
+        }
+
         [JSInvokable]
-        public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
+        public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
         {
             Console.WriteLine($"Comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
             Console.WriteLine($"Parámetros WU: {westernUnionParameters.AmountToSend}");
+            Console.WriteLine($"Parámetros Crypto: {dolarCryptoParameters.Volume}");
 
             var mockParam = await GetMockParam();
 
@@ -60,10 +66,11 @@ namespace Rucula.WebAssembly.Mock
         }
 
         [JSInvokable]
-        public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters)
+        public static ChoicesInfo RecalculateChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
         {
             Console.WriteLine($"Nuevas comisiones: {bondCommissions.PurchasePercentage}% - {bondCommissions.SalePercentage}% - {bondCommissions.WithdrawalPercentage}%");
             Console.WriteLine($"Nuevos parámetros WU: {westernUnionParameters.AmountToSend}");
+            Console.WriteLine($"Parámetros Crypto: {dolarCryptoParameters.Volume}");
 
             return _currentChoices;
         }

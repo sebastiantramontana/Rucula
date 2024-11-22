@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.DependencyInjection;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
+using WasmMock = Rucula.WebAssembly.Mock.Program;
 
 namespace PruebaConsola;
 
@@ -15,14 +17,18 @@ internal class Program
             .AddHttpClient()
             .AddDataAccess()
             .AddDomain()
-            .AddSingleton<INotifier, ConsoleNotifier>();
+            .AddSingleton<INotifier, ConsoleNotifier>()
+            .AddSingleton<NavigationManager, PruebaNavigationManager>();
 
         var services = servicesCollection.BuildServiceProvider();
 
         var notifier = services.GetRequiredService<INotifier>();
-        var service = services.GetRequiredService<IChoicesService>();
 
-        var choices = await service.GetChoices(new BondCommissions(1, 1, 1), new(20200), new(10000));
+        bool getFromService = true;
+
+        var choices = getFromService
+            ? await GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000))
+            : await GetChoicesFromWasmMock(servicesCollection, new(1, 1, 1), new(20200), new(10000));
 
         await notifier.NotifyProgress($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
 
@@ -56,6 +62,18 @@ internal class Program
         await notifier.NotifyProgress($"Blue: {GetStringFromOptional(choices.Blue, emptyString)}{Environment.NewLine}");
         await notifier.NotifyProgress($"WU: {GetStringFromOptional(choices.DolarWesternUnion, emptyString)}{Environment.NewLine}");
         await notifier.NotifyProgress($"Diarco: {GetStringFromOptional(choices.DolarDiarco, emptyString)}{Environment.NewLine}");
+    }
+
+    private static Task<ChoicesInfo> GetChoicesFromWasmMock(IServiceCollection servicesCollection, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    {
+        WasmMock.InstanceServices(servicesCollection);
+        return WasmMock.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters);
+    }
+
+    private static Task<ChoicesInfo> GetChoicesFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    {
+        var service = serviceProvider.GetRequiredService<IChoicesService>();
+        return service.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters);
     }
 
     private static string Columnize(Optional<DolarCryptoNetPrice> optionalValue)

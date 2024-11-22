@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Rucula.Domain.Abstractions\Rucula.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\Rucula.Domain.Entities\Rucula.Domain.Entities.csproj" />
     <ProjectReference Include="..\Rucula.Domain.Implementations\Rucula.Domain.Implementations.csproj" />
+    <ProjectReference Include="..\Rucula.WebAssembly.Mock\Rucula.WebAssembly.Mock.csproj" />
   </ItemGroup>
 
 </Project>

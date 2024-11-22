@@ -35,7 +35,7 @@ function getBestNetColumnIndex(firstNetPrices) {
 
     return netPrices
         .find(p => IsTopNetPrice(p.netPrice, topNetPrice))
-        .netColumnIndex;
+        ?.netColumnIndex;
 }
 
 function IsTopNetPrice(optionalNetPrice, topNetPrice) {

@@ -4,26 +4,177 @@
       "precioCompra": 940,
       "precioVenta": 990
     },
-    "hasValue": true
+    "hasValue": true,
+    "isEmpty": false
   },
-  "dolarCrypto": {
-    "value": {
-      "precioCompra": 853.85,
-      "precioVenta": 910.19
+  "rankingCryptos": [
+    {
+      "exchangeName": "Exchange1",
+      "grossUsdc": {
+        "value": 123.456,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "grossUsdt": {
+        "value": 124.556,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "grossDai": {
+        "value": 0,
+        "hasValue": false,
+        "isEmpty": true
+      },
+      "DolarCryptoNetPrices": [
+        {
+          "blockchain": { "name": "blockchain1" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 23.45,
+              "fee": 0.02
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 33.46,
+              "fee": 0.03
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 33.46,
+            "fee": 0.03
+          }
+        }
+      ]
     },
-    "hasValue": true
-  },
+    {
+      "exchangeName": "Exchange2",
+      "grossUsdc": {
+        "value": 133.456,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "grossUsdt": {
+        "value": 0,
+        "hasValue": false,
+        "isEmpty": true
+      },
+      "grossDai": {
+        "value": 134.556,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "DolarCryptoNetPrices": [
+        {
+          "blockchain": { "name": "blockchain2" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 24.45,
+              "fee": 0.02
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 34.46,
+              "fee": 0.03
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 34.46,
+            "fee": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "exchangeName": "Exchange3",
+      "grossUsdc": {
+        "value": 134.956,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "grossUsdt": {
+        "value": 0,
+        "hasValue": false,
+        "isEmpty": true
+      },
+      "grossDai": {
+        "value": 135.557,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "DolarCryptoNetPrices": [
+        {
+          "blockchain": { "name": "blockchain3" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 54.45,
+              "fee": 0.04
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 84.46,
+              "fee": 0.13
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 34.46,
+            "fee": 0.03
+          }
+        }
+      ]
+    }
+  ],
   "dolarWesternUnion": {
     "value": {
       "grossPrice": 850,
       "netPrice": 820,
       "fees": 11.30
     },
-    "hasValue": true
+    "hasValue": true,
+    "isEmpty": false
   },
   "dolarDiarco": {
     "value": { "price": 1234 },
-    "hasValue": true
+    "hasValue": true,
+    "isEmpty": false
   },
   "rankingTitulos": [
     {
