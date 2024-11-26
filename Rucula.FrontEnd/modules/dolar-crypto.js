@@ -1,4 +1,8 @@
 ﻿export default function showDolarCrypto(rankingCryptos, numberFormater) {
+
+    if (rankingCryptos.length === 0)
+        return;
+
     const table = document.getElementById("tabla-crypto");
     const newTable = table.cloneNode(true);
 

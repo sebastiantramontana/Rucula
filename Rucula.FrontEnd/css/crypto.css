@@ -3,11 +3,31 @@
     padding: 12px;
 }
 
+#tabla-crypto > thead {
+    display: none;
+}
+
 #tabla-crypto thead + tbody {
     display: block;
 }
 
+#tabla-crypto:has(tbody) > caption {
+    display: none;
+}
+
+#tabla-crypto:not(:has(tbody)) > caption {
+    display: table-caption;
+}
+
 @media screen and (min-width: 640px) {
+    #tabla-crypto:has(tbody) > thead {
+        display: table-header-group;
+    }
+
+    #tabla-crypto:has(tbody) ~ label {
+        display: unset;
+    }
+
     #tabla-crypto thead + tbody {
         display: table-header-group;
     }
