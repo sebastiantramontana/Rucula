@@ -72,7 +72,7 @@ internal class TitulosProvider : ITitulosProvider
             var content = await _isMarketOpenFetcher.Fetch().ConfigureAwait(false);
             isMarketOpen = bool.Parse(content);
         }
-        catch (HttpRequestException)
+        catch
         {
             isMarketOpen = true;
         }

@@ -56,6 +56,37 @@
             "netPrice": 33.46,
             "fee": 0.03
           }
+        },
+        {
+          "blockchain": { "name": "blockchain1b" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 23.81,
+              "fee": 0.034
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 12.16,
+              "fee": 0.13
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 23.81,
+            "fee": 0.034
+          }
         }
       ]
     },
@@ -107,6 +138,181 @@
             "netPrice": 34.46,
             "fee": 0.03
           }
+        },
+        {
+          "blockchain": { "name": "blockchain2b" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 22.33,
+              "fee": 0.12
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 33.44,
+              "fee": 0.13
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 33.44,
+            "fee": 0.13
+          }
+        },
+        {
+          "blockchain": { "name": "blockchain2c" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 11.11,
+              "fee": 0.22
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 44.11,
+              "fee": 0.33
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 44.11,
+            "fee": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "exchangeName": "Exchange22",
+      "grossUsdc": {
+        "value": 456.456,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "grossUsdt": {
+        "value": 0,
+        "hasValue": false,
+        "isEmpty": true
+      },
+      "grossDai": {
+        "value": 565.556,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "DolarCryptoNetPrices": [
+        {
+          "blockchain": { "name": "blockchain22" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 12.45,
+              "fee": 0.02
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 67.46,
+              "fee": 0.03
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 67.46,
+            "fee": 0.03
+          }
+        },
+        {
+          "blockchain": { "name": "blockchain22b" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 23.33,
+              "fee": 0.22
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 44.55,
+              "fee": 0.23
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 44.55,
+            "fee": 0.23
+          }
+        },
+        {
+          "blockchain": { "name": "blockchain22c" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 15.15,
+              "fee": 0.25
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 45.15,
+              "fee": 0.35
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 45.15,
+            "fee": 0.35
+          }
         }
       ]
     },
@@ -157,6 +363,57 @@
           "topNetPrice": {
             "netPrice": 34.46,
             "fee": 0.03
+          }
+        }
+      ]
+    },
+    {
+      "exchangeName": "Exchange4",
+      "grossUsdc": {
+        "value": 234.123,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "grossUsdt": {
+        "value": 0,
+        "hasValue": false,
+        "isEmpty": true
+      },
+      "grossDai": {
+        "value": 143.111,
+        "hasValue": true,
+        "isEmpty": false
+      },
+      "DolarCryptoNetPrices": [
+        {
+          "blockchain": { "name": "blockchain4" },
+          "netUsdc": {
+            "value": {
+              "netPrice": 11.21,
+              "fee": 0.41
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "netUsdt": {
+            "value": {
+              "netPrice": 0.0,
+              "fee": 0.0
+            },
+            "hasValue": false,
+            "isEmpty": true
+          },
+          "netDai": {
+            "value": {
+              "netPrice": 67.89,
+              "fee": 0.23
+            },
+            "hasValue": true,
+            "isEmpty": false
+          },
+          "topNetPrice": {
+            "netPrice": 67.89,
+            "fee": 0.23
           }
         }
       ]

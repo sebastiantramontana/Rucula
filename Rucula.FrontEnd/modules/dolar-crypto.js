@@ -103,7 +103,7 @@ function writeExchangeCells(tbody, cryptoPrices, numberFormater) {
 }
 
 function isAlternatingColorForNextFirstRowNeeded(wasPreviousLastRowOdd, rowsCount) {
-    return wasPreviousLastRowOdd ^ isOdd(rowsCount);
+    return Boolean(wasPreviousLastRowOdd ^ isOdd(rowsCount));
 }
 
 function isOdd(number) {
@@ -111,7 +111,9 @@ function isOdd(number) {
 }
 
 function calculateRowSpanForExchangeCell(netPrices, needAlternatingColorFirstRow) {
-    var rowspan = netPrices.length + 1;
+    const exchangeRows = 1;
+    const rowspan = netPrices.length + exchangeRows;
+
     return incrementRowspanForHiddenBalancingAlternatingColorFirstRow(rowspan, needAlternatingColorFirstRow);
 }
 
@@ -123,7 +125,10 @@ function incrementRowspanForHiddenBalancingAlternatingColorFirstRow(rowspan, nee
 }
 
 function addHiddenBalancingAlternatingColorFirstRow(tbody) {
-    tbody.appendChild(document.createElement("tr"));
+    const hiddenRow = document.createElement("tr");
+    hiddenRow.style.display = "none";
+
+    tbody.appendChild(hiddenRow);
 }
 
 function setRowSpanAttributeToExchangeCells(tbody, rowspan) {
@@ -160,14 +165,14 @@ function writeBlockchainCells(row, netPrices, numberFormater) {
 }
 
 function format(formatter, optional) {
-    return (optional && optional.hasValue) ? formatter.format(optional.value) : "";
+    return (optional && optional.hasValue) ? formatter.format(optional.value) : "\u00A0";
 }
 
 function formatObject(formatter, optional, valueCallback) {
-    return (optional && optional.hasValue) ? formatter.format(valueCallback(optional.value)) : "";
+    return (optional && optional.hasValue) ? formatter.format(valueCallback(optional.value)) : "\u00A0";
 }
 
 function writeCell(row, dataCryptoId, data) {
     const cell = row.querySelector(`[data-crypto-id = "${dataCryptoId}"]`);
-    cell.textContent = data ?? "";
+    cell.textContent = data ?? "\u00A0";
 }
