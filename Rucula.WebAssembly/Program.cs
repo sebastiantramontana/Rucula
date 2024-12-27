@@ -1,5 +1,12 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+﻿global using System.Net.Http;
+global using System.Net.Http.Json;
+global using Microsoft.AspNetCore.Components.Forms;
+global using Microsoft.AspNetCore.Components.Routing;
+global using Microsoft.AspNetCore.Components.Web;
+global using Microsoft.AspNetCore.Components.Web.Virtualization;
+global using Microsoft.AspNetCore.Components.WebAssembly.Http;
 using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;

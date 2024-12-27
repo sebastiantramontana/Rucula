@@ -81,7 +81,7 @@ async function getAllData() {
     disableWuParameters();
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', getBondCommissions(), getWuParameters());
+    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly.iv4q33jkq2', 'GetChoices', getBondCommissions(), getWuParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
