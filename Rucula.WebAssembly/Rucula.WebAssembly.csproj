@@ -8,13 +8,21 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DebugType>full</DebugType>
+		<InvariantGlobalization>true</InvariantGlobalization>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<DebugType>none</DebugType>
 		<TieredPGO>true</TieredPGO>
 		<BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>
+		<BlazorWebAssemblyEnableDebugging>false</BlazorWebAssemblyEnableDebugging>
+		<BlazorWebAssemblyEnableHotReload>false</BlazorWebAssemblyEnableHotReload>
+		<BlazorWebAssemblyEnablePWA>false</BlazorWebAssemblyEnablePWA>
+		<BlazorWebAssemblyLazyLoadAssemblies>true</BlazorWebAssemblyLazyLoadAssemblies>
+		<UseRazorCompileOnPublish>false</UseRazorCompileOnPublish>
 		<RunAOTCompilation>true</RunAOTCompilation>
+		<BlazorWebAssemblyEnableAot>true</BlazorWebAssemblyEnableAot>
+		<WasmStripILAfterAOT>true</WasmStripILAfterAOT>
 		<BlazorEnableCompression>true</BlazorEnableCompression>
 		<PublishTrimmed>true</PublishTrimmed>
 		<TrimMode>partial</TrimMode>
@@ -30,6 +38,7 @@
 		<UseNativeHttpHandler>true</UseNativeHttpHandler>
 		<BuiltInComInteropSupport>false</BuiltInComInteropSupport>
 		<CustomResourceTypesSupport>false</CustomResourceTypesSupport>
+		<WasmEnableSIMD>true</WasmEnableSIMD>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.10" />
