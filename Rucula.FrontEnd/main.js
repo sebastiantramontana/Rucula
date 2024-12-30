@@ -2,7 +2,6 @@
 import showDolarBlue from "./modules/dolar-blue.js";
 import showDolarCrypto from "./modules/dolar-crypto.js";
 import { showDolarWesternUnion, getParameters as getWuParameters, disableParameters as disableWuParameters, enableParameters as enableWuParameters } from "./modules/dolar-western-union.js";
-import showDolarDiarco from "./modules/dolar-diarco.js";
 import showBestChoice from "./modules/best-choice.js";
 import getValueFromOptional from "./optional-value.js";
 
@@ -87,7 +86,6 @@ async function getAllData() {
     showDolarBlue(getValueFromOptional(choices.blue));
     showDolarCrypto(getValueFromOptional(choices.dolarCrypto));
     showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
-    showDolarDiarco(getValueFromOptional(choices.dolarDiarco));
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();

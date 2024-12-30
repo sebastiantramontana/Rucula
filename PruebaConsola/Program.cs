@@ -34,7 +34,6 @@ internal class Program
         await notifier.NotifyProgress($"Blue: {GetValueFromOptional(choices.Blue)}{Environment.NewLine}");
         await notifier.NotifyProgress($"Crypto: {GetValueFromOptional(choices.DolarCrypto)}{Environment.NewLine}");
         await notifier.NotifyProgress($"WU: {GetValueFromOptional(choices.DolarWesternUnion)}{Environment.NewLine}");
-        await notifier.NotifyProgress($"Diarco: {GetValueFromOptional(choices.DolarDiarco)}{Environment.NewLine}");
     }
 
     private static string GetValueFromOptional<T>(Optional<T> optionalValue)
