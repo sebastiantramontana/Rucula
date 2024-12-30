@@ -22,7 +22,7 @@
 		<UseRazorCompileOnPublish>false</UseRazorCompileOnPublish>
 		<RunAOTCompilation>true</RunAOTCompilation>
 		<BlazorWebAssemblyEnableAot>true</BlazorWebAssemblyEnableAot>
-		<WasmStripILAfterAOT>true</WasmStripILAfterAOT>
+		<WasmStripILAfterAOT>false</WasmStripILAfterAOT>
 		<BlazorEnableCompression>true</BlazorEnableCompression>
 		<PublishTrimmed>true</PublishTrimmed>
 		<TrimMode>partial</TrimMode>
@@ -38,6 +38,8 @@
 		<UseNativeHttpHandler>true</UseNativeHttpHandler>
 		<BuiltInComInteropSupport>false</BuiltInComInteropSupport>
 		<CustomResourceTypesSupport>false</CustomResourceTypesSupport>
+		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
+		<BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
 		<WasmEnableSIMD>true</WasmEnableSIMD>
 	</PropertyGroup>
 	<ItemGroup>
