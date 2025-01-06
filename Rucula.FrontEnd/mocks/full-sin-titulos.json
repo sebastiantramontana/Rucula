@@ -15,10 +15,6 @@
     },
     "hasValue": true
   },
-  "dolarDiarco": {
-    "value": { "price": 1234 },
-    "hasValue": true
-  },
   "rankingTitulos": [],
   "winningChoice": {
     "name": "Dolar Crypto",

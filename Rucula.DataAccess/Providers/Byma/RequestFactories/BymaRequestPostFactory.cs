@@ -5,8 +5,14 @@ namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
 internal class BymaRequestPostFactory : IBymaRequestPostFactory
 {
     public HttpRequestMessage CreateRequestPost(string url, string parameters)
-        => new(HttpMethod.Post, url)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Post, url)
         {
             Content = new StringContent(parameters, new MediaTypeHeaderValue("application/json"))
         };
+
+        request.Headers.CacheControl = new CacheControlHeaderValue() { NoStore = true };
+
+        return request;
+    }
 }

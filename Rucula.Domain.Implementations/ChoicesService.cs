@@ -8,19 +8,16 @@ internal class ChoicesService : IChoicesService
     private readonly ITitulosService _titulosService;
     private readonly IDolarBlueProvider _dolarBlueProvider;
     private readonly IWesternUnionService _westernUnionService;
-    private readonly IDolarDiarcoProvider _dolarDiarcoProvider;
     private readonly IDolarCryptoService _dolarCryptoService;
 
     public ChoicesService(ITitulosService titulosService,
                           IDolarBlueProvider dolarBlueProvider,
                           IWesternUnionService westernUnionService,
-                          IDolarDiarcoProvider dolarDiarcoProvider,
                           IDolarCryptoService dolarCryptoService)
     {
         _titulosService = titulosService;
         _dolarBlueProvider = dolarBlueProvider;
         _westernUnionService = westernUnionService;
-        _dolarDiarcoProvider = dolarDiarcoProvider;
         _dolarCryptoService = dolarCryptoService;
     }
 
@@ -28,14 +25,13 @@ internal class ChoicesService : IChoicesService
     {
         var dolarBlueTask = _dolarBlueProvider.GetCurrentBlue();
         var dolarWesternUnionTask = _westernUnionService.GetDolarWesternUnion(westernUnionParameters);
-        var dolarDiarcoTask = _dolarDiarcoProvider.GetCurrentDolarDiarco();
         var rankingCryptoTask = _dolarCryptoService.GetPriceRanking(cryptoParameters);
 
-        await Task.WhenAll(dolarBlueTask, dolarWesternUnionTask, dolarDiarcoTask, rankingCryptoTask).ConfigureAwait(false);
+        await Task.WhenAll(dolarBlueTask, dolarWesternUnionTask, rankingCryptoTask).ConfigureAwait(false);
 
         var rankingTitulos = await _titulosService.GetNetCclRanking(await dolarBlueTask, bondCommissions).ConfigureAwait(false);
 
-        return CreateWinningChoice(rankingTitulos, await dolarBlueTask, await dolarWesternUnionTask, await dolarDiarcoTask, await rankingCryptoTask);
+        return CreateWinningChoice(rankingTitulos, await dolarBlueTask, await dolarWesternUnionTask, await rankingCryptoTask);
     }
 
     public async Task<ChoicesInfo> RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters)
@@ -46,17 +42,17 @@ internal class ChoicesService : IChoicesService
 
         await Task.WhenAll(westernUnionDolarTask, rankingCryptoTask).ConfigureAwait(false);
 
-        return CreateWinningChoice(rankingTitulos, choices.Blue, await westernUnionDolarTask, choices.DolarDiarco, await rankingCryptoTask);
+        return CreateWinningChoice(rankingTitulos, choices.Blue, await westernUnionDolarTask, await rankingCryptoTask);
     }
 
-    private static ChoicesInfo CreateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Optional<Blue> dolarBlue, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarDiarco> dolarDiarco, IEnumerable<DolarCryptoPrices> rankingCryptos)
+    private static ChoicesInfo CreateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Optional<Blue> dolarBlue, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos)
     {
         var bestTitulo = MaybeFirst(rankingTitulos);
         var bestCrypto = MaybeFirst(rankingCryptos);
 
         var winner = GetWinningChoice(bestTitulo, dolarWesternUnion, bestCrypto);
 
-        return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue, dolarWesternUnion, dolarDiarco, rankingCryptos);
+        return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue, dolarWesternUnion, rankingCryptos);
     }
 
     private static WinningChoice? GetWinningChoice(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)

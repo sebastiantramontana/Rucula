@@ -1,4 +1,4 @@
-﻿export default function showDolarCrypto(rankingCryptos, numberFormater) {
+export default function showDolarCrypto(rankingCryptos, numberFormater) {
 
     if (rankingCryptos.length === 0)
         return;

@@ -61,7 +61,6 @@ internal class Program
 
         await notifier.NotifyProgress($"Blue: {GetStringFromOptional(choices.Blue, emptyString)}{Environment.NewLine}");
         await notifier.NotifyProgress($"WU: {GetStringFromOptional(choices.DolarWesternUnion, emptyString)}{Environment.NewLine}");
-        await notifier.NotifyProgress($"Diarco: {GetStringFromOptional(choices.DolarDiarco, emptyString)}{Environment.NewLine}");
     }
 
     private static Task<ChoicesInfo> GetChoicesFromWasmMock(IServiceCollection servicesCollection, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)

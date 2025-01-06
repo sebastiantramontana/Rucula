@@ -21,10 +21,6 @@
     },
     "hasValue": true
   },
-  "dolarDiarco": {
-    "value": { "price": 1234 },
-    "hasValue": true
-  },
   "rankingTitulos": [
     {
       "codigoIsin": "ARARGE520E22",
