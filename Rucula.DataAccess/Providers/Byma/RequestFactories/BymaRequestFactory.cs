@@ -8,8 +8,14 @@ internal class BymaRequestFactory : IBymaRequestFactory
         => new(HttpMethod.Get, url);
 
     public HttpRequestMessage CreateRequestPost(string url, string parameters)
-        => new HttpRequestMessage(HttpMethod.Post, url)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Post, url)
         {
             Content = new StringContent(parameters, new MediaTypeHeaderValue("application/json"))
         };
+
+        request.Headers.CacheControl = new CacheControlHeaderValue() { NoStore = true };
+
+        return request;
+    }
 }
