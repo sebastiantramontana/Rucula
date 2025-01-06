@@ -50,9 +50,7 @@ Task("Version")
 Task("Build")
     .IsDependentOn("Version")
     .Does(() => {
-     var buildSettings = new DotNetBuildSettings {
-                        Configuration = configuration,
-                       };
+     var buildSettings = new DotNetBuildSettings { Configuration = configuration };
      var projects = GetFiles("./../*/*.csproj");
      foreach(var project in projects )
      {
@@ -109,6 +107,7 @@ Task("Css")
 		CreateDirectory("../dist/css/");
 		CopyFiles("../Rucula.Frontend/css/titulos-publicos.css", "../dist/css/");
 		CopyFiles("../Rucula.Frontend/css/wu.css", "../dist/css/");
+		CopyFiles("../Rucula.Frontend/css/crypto.css", "../dist/css/");
 		RemoveTailwindCdn("../dist/index.html");
 });
 
