@@ -27,8 +27,8 @@ function addNewRow(tbody, templateRow, titulo, numberFormater) {
     writeCell(clonedRow, "cotizacion-mep", format(numberFormater, titulo?.tituloMep?.precioCompra));
     writeCell(clonedRow, "gross-ccl", format(numberFormater, titulo?.grossCcl));
     writeCell(clonedRow, "net-ccl", format(numberFormater, titulo?.netCcl));
-    writeCell(clonedRow, "ccl-mep-blue", format(numberFormater, titulo?.cotizacionCclMepBlue));
-    writeCell(clonedRow, "porc-ccl-mep-blue", format(numberFormater, titulo?.porcentajeArbitrajeCclMepBlue));
+    writeCell(clonedRow, "ccl-over-mep", format(numberFormater, titulo?.cotizacionCclMepBlue));
+    writeCell(clonedRow, "ccl-over-mep-over-blue", format(numberFormater, titulo?.porcentajeArbitrajeCclMepBlue));
 
     tbody.appendChild(clonedRow);
 }
