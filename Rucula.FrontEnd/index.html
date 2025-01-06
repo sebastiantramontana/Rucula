@@ -85,8 +85,8 @@
                         <th class=" dark:border-black border bg-teal-700 p-3">US$</th>
                         <th class=" dark:border-black border bg-ccl p-3">CCL&nbsp;Bruto</th>
                         <th class=" dark:border-black border ring-2 ring-inset ring-sky-500 dark:ring-white/50 bg-ccl p-3">CCL&nbsp;Neto</th>
-                        <th class=" dark:border-black border bg-dolar p-3">CCL&#8702;MEP&#8702;Blue</th>
-                        <th class=" dark:border-black border bg-dolar p-3">%&nbsp;CCL&#8702;MEP&#8702;Blue</th>
+                        <th class=" dark:border-black border bg-dolar p-3">CCL&nbsp;/&nbsp;MEP</th>
+                        <th class=" dark:border-black border bg-dolar p-3">CCL&nbsp;/&nbsp;MEP&nbsp;/&nbsp;Blue</th>
                     </tr>
                 </thead>
                 <tbody class="text-black dark:text-white"></tbody>
@@ -207,16 +207,16 @@
 
 <template id="titulos-table-row-template">
     <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-sm text-right">
-        <td data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
+        <td data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
         <td data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
+        <td data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
         <td data-label="US$" id="cotizacion-cable" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td data-label="Símbolo&nbsp;MEP" id="symbol-mep" class="hidden sm:table-cell  dark:border-black border p-3 sm:text-left">&nbsp;</td>
-        <td data-label="US$" id="cotizacion-mep" class="hidden sm:table-cell  dark:border-black border p-3">&nbsp;</td>
-        <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell  dark:border-black border p-3 font-bold sm:font-normal before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td data-label="CCL&#8702;MEP&#8702;Blue" id="ccl-mep-blue" class="hidden sm:table-cell  dark:border-black border p-3">&nbsp;</td>
-        <td data-label="%&nbsp;CCL&#8702;MEP&#8702;Blue" id="porc-ccl-mep-blue" class="hidden sm:table-cell  dark:border-black border p-3">&nbsp;</td>
+        <td id="symbol-mep" class="hidden sm:table-cell dark:border-black border p-3 sm:text-left">&nbsp;</td>
+        <td id="cotizacion-mep" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
+        <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell dark:border-black border p-3 font-bold sm:font-normal before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td id="ccl-mep-blue" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
+        <td id="porc-ccl-mep-blue" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
     </tr>
 </template>
 
