@@ -68,8 +68,8 @@ internal class TitulosService : ITitulosService
         var grossCcl = CalculateGrossCcl(tituloPeso, tituloCable);
         var netCcl = CalculateNetCcl(grossCcl, bondCommissions);
         var mep = CalculateMep(tituloPeso, tituloMep);
-        var cclMepBlue = CalculateCclMepBlue(blue, netCcl, mep);
-        var percCclMepBlue = CalculatePercentageCclMepBlue(cclMepBlue, netCcl);
+        var mepOverCable = CalculateMepOverCable(tituloMep, tituloCable);
+        var blueOverCcl = CalculateBlueOverCcl(blue, tituloMep, tituloPeso);
 
         return new(isin,
                    denominacion,
@@ -79,8 +79,8 @@ internal class TitulosService : ITitulosService
                    fechaVencimiento,
                    grossCcl,
                    netCcl,
-                   cclMepBlue,
-                   percCclMepBlue);
+                   mepOverCable,
+                   blueOverCcl);
     }
 
     private static Titulo? GetTitulo(IGrouping<TituloDetails, (Titulo Titulo, TituloDetails? TituloDetails)> tuples, Moneda moneda)
@@ -115,20 +115,22 @@ internal class TitulosService : ITitulosService
     private static double? SubstractPercentage(double? value, double percentage)
         => value.HasValue ? value.Value * (1.0 - percentage / 100) : null;
 
-    private static double? CalculateCclMepBlue(Optional<Blue> blue, double? ccl, double? mep)
-        => blue.HasValue ? blue.Value.PrecioCompra * Divide(ccl, mep) : null;
+    private static double? CalculateMepOverCable(Titulo? tituloMep, Titulo? tituloCable)
+        => Divide(tituloMep?.PrecioCompra, tituloCable?.PrecioVenta);
 
-    private static double? CalculatePercentageCclMepBlue(double? cclMepBlue, double? ccl)
-        => ConvertToPercentaje(Divide(cclMepBlue, ccl));
+    private static double? CalculateBlueOverCcl(Optional<Blue> blue, Titulo? tituloMep, Titulo? tituloPesos)
+        => blue.HasValue ? Divide(Multiply(blue.Value.PrecioCompra, tituloMep?.PrecioCompra), tituloPesos?.PrecioCompra) : null;
 
     private static double? CalculateMep(Titulo? tituloPesos, Titulo? tituloMep)
         => Divide(tituloPesos?.PrecioVenta, tituloMep?.PrecioCompra);
 
-    private static double? ConvertToPercentaje(double? valor)
-        => 100 * valor - 100;
-
     private static double? Divide(double? value1, double? value2)
         => value1.HasValue && value2.HasValue && value2.Value != 0
             ? value1.Value / value2.Value
+            : null;
+
+    private static double? Multiply(double? value1, double? value2)
+        => value1.HasValue && value2.HasValue
+            ? value1.Value * value2.Value
             : null;
 }
