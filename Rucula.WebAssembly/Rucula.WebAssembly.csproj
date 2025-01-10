@@ -27,6 +27,9 @@
 		<BlazorEnableCompression>true</BlazorEnableCompression>
 		<PublishTrimmed>true</PublishTrimmed>
 		<TrimMode>partial</TrimMode>
+		<TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
 		<InvariantGlobalization>true</InvariantGlobalization>
 		<EventSourceSupport>false</EventSourceSupport>
 		<UseSystemResourceKeys>true</UseSystemResourceKeys>
