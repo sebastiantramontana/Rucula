@@ -63,7 +63,7 @@ internal class DolarCryptoGrossPricesProvider : IDolarCryptoGrossPricesProvider
 
     private async Task<(string CurrencyKey, string Content)> FetchGrossPrice(CriptoYaGrossPricesFetcherParameters parameters)
     {
-        await _notifier.NotifyProgress($"Consultando precios brutos {parameters.CryptoCurrencyKey}...").ConfigureAwait(false);
+        _notifier.NotifyProgress($"Consultando precios brutos {parameters.CryptoCurrencyKey}...");
         var content = await _fetcher.Fetch(parameters).ConfigureAwait(false);
 
         return new(parameters.CryptoCurrencyKey, content);

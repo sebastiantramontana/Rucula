@@ -28,7 +28,7 @@ internal class DolarCryptoFeesProvider : IDolarCryptoFeesProvider
 
     public async Task<IEnumerable<DolarCryptoFees>> Get()
     {
-        await _notifier.NotifyProgress("Consultando Comisiones Dolar Crypto...").ConfigureAwait(false);
+        _notifier.NotifyProgress("Consultando Comisiones Dolar Crypto...");
         var content = await _fetcher.Fetch().ConfigureAwait(false);
         return MapToDolarCryptoFees(ConvertContentToDolarCryptoFees(content));
     }

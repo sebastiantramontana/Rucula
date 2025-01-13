@@ -30,37 +30,37 @@ internal class Program
             ? await GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000))
             : await GetChoicesFromWasmMock(servicesCollection, new(1, 1, 1), new(20200), new(10000));
 
-        await notifier.NotifyProgress($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
+        notifier.NotifyProgress($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
 
-        await notifier.NotifyProgress($"{Environment.NewLine}");
-        await notifier.NotifyProgress($"Titulos {Environment.NewLine}");
+        notifier.NotifyProgress($"{Environment.NewLine}");
+        notifier.NotifyProgress($"Titulos {Environment.NewLine}");
 
         foreach (var titulo in choices.RankingTitulos)
         {
-            await notifier.NotifyProgress($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.GrossCcl} -> Neto: {titulo.NetCcl} {Environment.NewLine}");
+            notifier.NotifyProgress($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.GrossCcl} -> Neto: {titulo.NetCcl} {Environment.NewLine}");
         }
 
-        await notifier.NotifyProgress($"{Environment.NewLine}");
-        await notifier.NotifyProgress($"Crypto {Environment.NewLine}");
+        notifier.NotifyProgress($"{Environment.NewLine}");
+        notifier.NotifyProgress($"Crypto {Environment.NewLine}");
 
-        await notifier.NotifyProgress($"{Columnize("Exchange")} {Columnize("Blockchain")} {Columnize("USDC")} {Columnize("USDT")} {Columnize("DAI")}{Environment.NewLine}");
+        notifier.NotifyProgress($"{Columnize("Exchange")} {Columnize("Blockchain")} {Columnize("USDC")} {Columnize("USDT")} {Columnize("DAI")}{Environment.NewLine}");
 
         foreach (var crypto in choices.RankingCryptos)
         {
-            await notifier.NotifyProgress($"{Columnize(crypto.ExchangeName)} {Columnize(string.Empty)} {Columnize(crypto.GrossUsdc)} {Columnize(crypto.GrossUsdt)} {Columnize(crypto.GrossDai)}{Environment.NewLine}");
+            notifier.NotifyProgress($"{Columnize(crypto.ExchangeName)} {Columnize(string.Empty)} {Columnize(crypto.GrossUsdc)} {Columnize(crypto.GrossUsdt)} {Columnize(crypto.GrossDai)}{Environment.NewLine}");
 
             foreach (var netPrices in crypto.DolarCryptoNetPrices)
             {
-                await notifier.NotifyProgress($"{Columnize(string.Empty)} {Columnize(netPrices.Blockchain.Name)} {Columnize(netPrices.NetUsdc)} {Columnize(netPrices.NetUsdt)} {Columnize(netPrices.NetDai)}{Environment.NewLine}");
+                notifier.NotifyProgress($"{Columnize(string.Empty)} {Columnize(netPrices.Blockchain.Name)} {Columnize(netPrices.NetUsdc)} {Columnize(netPrices.NetUsdt)} {Columnize(netPrices.NetDai)}{Environment.NewLine}");
             }
         }
 
-        await notifier.NotifyProgress($"{Environment.NewLine}");
+        notifier.NotifyProgress($"{Environment.NewLine}");
 
         const string emptyString = "--";
 
-        await notifier.NotifyProgress($"Blue: {GetStringFromOptional(choices.Blue, emptyString)}{Environment.NewLine}");
-        await notifier.NotifyProgress($"WU: {GetStringFromOptional(choices.DolarWesternUnion, emptyString)}{Environment.NewLine}");
+        notifier.NotifyProgress($"Blue: {GetStringFromOptional(choices.Blue, emptyString)}{Environment.NewLine}");
+        notifier.NotifyProgress($"WU: {GetStringFromOptional(choices.DolarWesternUnion, emptyString)}{Environment.NewLine}");
     }
 
     private static Task<ChoicesInfo> GetChoicesFromWasmMock(IServiceCollection servicesCollection, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)

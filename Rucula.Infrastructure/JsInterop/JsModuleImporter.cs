@@ -9,6 +9,6 @@ internal class JsModuleImporter : IJsModuleImporter
     public JsModuleImporter(IJSRuntime jsInProcessRuntime)
         => _jsInProcessRuntime = (JSInProcessRuntime)jsInProcessRuntime;
 
-    public ValueTask<IJSInProcessObjectReference> Import(string modulePath)
-        => _jsInProcessRuntime.InvokeAsync<IJSInProcessObjectReference>("import", modulePath);
+    public IJSInProcessObjectReference Import(string modulePath)
+        => _jsInProcessRuntime.Invoke<IJSInProcessObjectReference>("import", modulePath);
 }

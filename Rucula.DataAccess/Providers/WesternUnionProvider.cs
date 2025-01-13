@@ -28,7 +28,7 @@ internal class WesternUnionProvider : IWesternUnionProvider
 
     public async Task<Optional<DolarWesternUnionInfo>> GetCurrentDolarWesternUnion(WesternUnionParameters westernUnionComissions)
     {
-        await _notifier.NotifyProgress("Consultando Dolar Western Union...").ConfigureAwait(false);
+        _notifier.NotifyProgress("Consultando Dolar Western Union...");
         var content = await _westernUnionFetcher.Fetch(westernUnionComissions.AmountToSend).ConfigureAwait(false);
         return MapToDolarWesterUnion(ConvertContentToDolarWesterUnion(content));
     }
