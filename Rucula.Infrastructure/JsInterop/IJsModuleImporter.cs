@@ -4,5 +4,5 @@ namespace Rucula.Infrastructure.JsInterop;
 
 internal interface IJsModuleImporter
 {
-    IJSInProcessObjectReference Import(string modulePath);
+    ValueTask<IJSInProcessObjectReference> Import(string modulePath);
 }

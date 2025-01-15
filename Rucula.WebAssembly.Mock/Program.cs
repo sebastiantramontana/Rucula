@@ -87,7 +87,7 @@ namespace Rucula.WebAssembly.Mock
             if (!(queryStrings?.TryGetValue("mock", out StringValues values) ?? false))
                 return null;
 
-            _notifier.NotifyProgress($"params: {values}");
+            await _notifier.Notify($"params: {values}");
             await Task.Delay(1000);
 
             return values[0];
@@ -98,7 +98,7 @@ namespace Rucula.WebAssembly.Mock
 
         private static async Task<ChoicesInfo> FetchMock(string mockName)
         {
-            _notifier.NotifyProgress($"Fetching mock: {mockName}");
+            await _notifier.Notify($"Fetching mock: {mockName}");
             await Task.Delay(1000);
 
             var uri = GetMockUri(mockName);
@@ -128,7 +128,7 @@ namespace Rucula.WebAssembly.Mock
 
         private static async Task<ChoicesInfo> RunForever()
         {
-            _notifier.NotifyProgress("Running forever...");
+            await _notifier.Notify("Running forever...");
 
             await Task.Delay(Timeout.InfiniteTimeSpan);
             return ChoicesInfo.NoChoices;

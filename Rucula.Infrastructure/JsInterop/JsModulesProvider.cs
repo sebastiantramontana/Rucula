@@ -10,6 +10,6 @@ internal class JsModulesProvider : IJsModulesProvider
     public JsModulesProvider(IJsModuleImporter jsModuleImporter)
         => _jsModuleImporter = jsModuleImporter;
 
-    public IJSInProcessObjectReference GetMainModule()
-        => _jsMainModule ??= _jsModuleImporter.Import("./main.js");
+    public async ValueTask<IJSInProcessObjectReference> GetMainModule()
+        => _jsMainModule ??= await _jsModuleImporter.Import("./main.js").ConfigureAwait(false);
 }

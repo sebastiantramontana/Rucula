@@ -4,10 +4,12 @@ namespace PruebaConsola;
 
 public class ConsoleNotifier : INotifier
 {
-    public void NotifyProgress(string message)
+    public Task Notify(string message)
     {
         CleanConsoleLine();
         Console.Write(message);
+
+        return Task.CompletedTask;
     }
 
     private static void CleanConsoleLine()

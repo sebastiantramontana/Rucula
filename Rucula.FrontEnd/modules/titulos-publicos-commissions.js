@@ -17,11 +17,11 @@ const getApplyButton = () => document.getElementById("apply-bond-commissions-but
 
 function getParametersFromInputs() {
     const inputs = getCommissionInputs();
-    return { "purchasePercentage": parseFloat(inputs.purchaseInput.value), "salePercentage": parseFloat(inputs.saleInput.value), "withdrawalPercentage": parseFloat(inputs.withdrawalInput.value) };
+    return { purchasePercentage: parseFloat(inputs.purchaseInput.value), salePercentage: parseFloat(inputs.saleInput.value), withdrawalPercentage: parseFloat(inputs.withdrawalInput.value) };
 }
 
 const settingsKey = "commisions-bond-settings";
-const defaultParameters = { "purchasePercentage": 0.0, "salePercentage": 0.0, "withdrawalPercentage": 0.0 };
+const defaultParameters = { purchasePercentage: 0.0, salePercentage: 0.0, withdrawalPercentage: 0.0 };
 
 function setParametersToInputs(parametersSettings) {
     const inputs = getCommissionInputs();

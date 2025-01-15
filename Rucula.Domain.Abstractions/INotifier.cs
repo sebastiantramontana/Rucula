@@ -2,5 +2,5 @@
 
 public interface INotifier
 {
-    void NotifyProgress(string message);
+    Task Notify(string message);
 }

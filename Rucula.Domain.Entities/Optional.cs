@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Rucula.Domain.Entities;
+﻿namespace Rucula.Domain.Entities;
 
 public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 {
@@ -16,7 +14,6 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
     public static Optional<T> Empty
         => new(default, false);
 
-    [JsonConstructor]
     private Optional(T? value, bool hasValue)
     {
         Value = value!;

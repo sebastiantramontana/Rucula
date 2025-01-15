@@ -14,11 +14,11 @@ const getApplyButton = () => document.getElementById("apply-trading-volume-crypt
 
 function getParametersFromInputs() {
     const inputs = getInputs();
-    return { "volume": parseFloat(inputs.volumeInput.value) };
+    return { volume: parseFloat(inputs.volumeInput.value) };
 }
 
 const settingsKey = "parameters-crypto-settings";
-const defaultParameters = { volume: 1000 };
+const defaultParameters = { volume: 1000.0 };
 
 function setParametersToInputs(parametersSettings) {
     const inputs = getInputs();

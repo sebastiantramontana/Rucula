@@ -37,17 +37,17 @@ addEventListener("load", async () => {
 
 function addApplyBondCommissionsClickListener() {
     const applyButton = document.getElementById("apply-bond-commissions-button");
-    applyButton.addEventListener("click", recalculateChoices);
+    applyButton.addEventListener("click", runRecalculateChoices);
 }
 
 function addApplyWuParametersClickListener() {
     const applyButton = document.getElementById("apply-amount-to-send-wu");
-    applyButton.addEventListener("click", recalculateChoices);
+    applyButton.addEventListener("click", runRecalculateChoices);
 }
 
 function addApplyCryptoParametersClickListener() {
     const applyButton = document.getElementById("apply-trading-volume-crypto");
-    applyButton.addEventListener("click", recalculateChoices);
+    applyButton.addEventListener("click", runRecalculateChoices);
 }
 
 async function runGettingData() {
@@ -91,7 +91,7 @@ async function getAllData() {
 
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'GetChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
+    const choices = await getChoices(titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showDolarBlue(getValueFromOptional(choices.blue));
@@ -107,7 +107,7 @@ async function getAllData() {
     isGettingData = false;
 }
 
-async function recalculateChoices() {
+async function runRecalculateChoices() {
     if (isGettingData)
         return;
 
@@ -119,7 +119,7 @@ async function recalculateChoices() {
 
     showLoadingIndicator();
 
-    const choices = await DotNet.invokeMethodAsync('Rucula.WebAssembly', 'RecalculateChoices', titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
+    const choices = await recalculateChoices(titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
@@ -131,6 +131,26 @@ async function recalculateChoices() {
     cryptoParameters.enableParameters();
 
     isGettingData = false;
+}
+
+async function getChoices(titulosPublicosParameters, wuParameters, cryptoParameters) {
+    const service = await getRuculaService();
+    const choicesJson = await service.GetChoices(titulosPublicosParameters, wuParameters, cryptoParameters);
+
+    return JSON.parse(choicesJson);
+}
+
+async function recalculateChoices(titulosPublicosParameters, wuParameters, cryptoParameters) {
+    const service = await getRuculaService();
+    const choicesJson = await service.RecalculateChoices(titulosPublicosParameters, wuParameters, cryptoParameters);
+
+    return JSON.parse(choicesJson);
+}
+
+async function getRuculaService() {
+    const { getAssemblyExports } = await globalThis.getDotnetRuntime(0);
+    var exports = await getAssemblyExports("Rucula.WebAssembly.dll");
+    return exports.Rucula.WebAssembly.Program;
 }
 
 function showLoadingIndicator() {

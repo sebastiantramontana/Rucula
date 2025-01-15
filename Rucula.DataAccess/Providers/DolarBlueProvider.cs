@@ -29,7 +29,7 @@ internal class DolarBlueProvider : IDolarBlueProvider
 
     public async Task<Optional<Blue>> GetCurrentBlue()
     {
-        _notifier.NotifyProgress("Consultando Dolar Blue...");
+        await _notifier.Notify("Consultando Dolar Blue...");
         var content = await _ambitoBlueFetcher.Fetch().ConfigureAwait(false);
         return MapToBlue(ConvertContentToBlue(content));
     }
