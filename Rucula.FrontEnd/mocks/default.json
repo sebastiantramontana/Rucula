@@ -25,7 +25,7 @@
         "hasValue": false,
         "isEmpty": true
       },
-      "DolarCryptoNetPrices": [
+      "dolarCryptoNetPrices": [
         {
           "blockchain": { "name": "blockchain1" },
           "netUsdc": {
@@ -107,7 +107,7 @@
         "hasValue": true,
         "isEmpty": false
       },
-      "DolarCryptoNetPrices": [
+      "dolarCryptoNetPrices": [
         {
           "blockchain": { "name": "blockchain2" },
           "netUsdc": {
@@ -220,7 +220,7 @@
         "hasValue": true,
         "isEmpty": false
       },
-      "DolarCryptoNetPrices": [
+      "dolarCryptoNetPrices": [
         {
           "blockchain": { "name": "blockchain22" },
           "netUsdc": {
@@ -333,7 +333,7 @@
         "hasValue": true,
         "isEmpty": false
       },
-      "DolarCryptoNetPrices": [
+      "dolarCryptoNetPrices": [
         {
           "blockchain": { "name": "blockchain3" },
           "netUsdc": {
@@ -384,7 +384,7 @@
         "hasValue": true,
         "isEmpty": false
       },
-      "DolarCryptoNetPrices": [
+      "dolarCryptoNetPrices": [
         {
           "blockchain": { "name": "blockchain4" },
           "netUsdc": {
@@ -491,7 +491,7 @@
     },
     {
       "codigoIsin": "ARARGE3209S6",
-      "denominacion": "BONOS DE LA REP�BLICA ARGENTINA EN D�LARES ESTADOUNIDENSES STEP UP 2030",
+      "denominacion": "BONOS DE LA REP BLICA ARGENTINA EN D LARES ESTADOUNIDENSES STEP UP 2030",
       "tituloCable": {
         "simbolo": "MOCK3C",
         "precioCompra": 24.6,
@@ -515,7 +515,7 @@
     },
     {
       "codigoIsin": "US040114HS26",
-      "denominacion": "BONOS GLOBALES DE LA REP�BLICA ARGENTINA AMORTIZABLES EN D�LARES ESTADOUNIDENSES STEP UP 2030",
+      "denominacion": "BONOS GLOBALES DE LA REP BLICA ARGENTINA AMORTIZABLES EN D LARES ESTADOUNIDENSES STEP UP 2030",
       "tituloCable": {
         "simbolo": "MOCK4C",
         "precioCompra": 30,
@@ -545,7 +545,7 @@
     },
     {
       "codigoIsin": "US040114HT09",
-      "denominacion": "BONOS GLOBALES DE LA REP�BLICA ARGENTINA AMORTIZABLES EN D�LARES ESTADOUNIDENSES STEP UP 2035",
+      "denominacion": "BONOS GLOBALES DE LA REP BLICA ARGENTINA AMORTIZABLES EN D LARES ESTADOUNIDENSES STEP UP 2035",
       "tituloCable": {
         "simbolo": "MOCK5C",
         "precioCompra": 25,

@@ -4,7 +4,6 @@ using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
-using WasmMock = Rucula.WebAssembly.Mock.Program;
 
 namespace PruebaConsola;
 
@@ -24,11 +23,7 @@ internal class Program
 
         var notifier = services.GetRequiredService<INotifier>();
 
-        bool getFromService = true;
-
-        var choices = getFromService
-            ? await GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000))
-            : await GetChoicesFromWasmMock(servicesCollection, new(1, 1, 1), new(20200), new(10000));
+        var choices = await GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000));
 
         await notifier.Notify($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
 
@@ -61,12 +56,6 @@ internal class Program
 
         await notifier.Notify($"Blue: {GetStringFromOptional(choices.Blue, emptyString)}{Environment.NewLine}");
         await notifier.Notify($"WU: {GetStringFromOptional(choices.DolarWesternUnion, emptyString)}{Environment.NewLine}");
-    }
-
-    private static Task<ChoicesInfo> GetChoicesFromWasmMock(IServiceCollection servicesCollection, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
-    {
-        WasmMock.InstanceServices(servicesCollection);
-        return WasmMock.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters);
     }
 
     private static Task<ChoicesInfo> GetChoicesFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)

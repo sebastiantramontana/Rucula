@@ -3,6 +3,7 @@ using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
+using Rucula.Infrastructure;
 using Rucula.Infrastructure.IoC;
 using Rucula.WebAssembly.IoC;
 using Rucula.WebAssembly.Parameters;
@@ -85,8 +86,8 @@ public partial class Program
 
     private static async Task WaitAllDependenciesAreReady()
     {
-        while (_choicesService is null || _parametersJSObjectConverter is null)
-            await Task.Delay(1);
+        await NullDependencyAwaiter.AwaitToNotNull(() => _choicesService);
+        await NullDependencyAwaiter.AwaitToNotNull(() => _parametersJSObjectConverter);
     }
 
     private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
