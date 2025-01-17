@@ -11,7 +11,7 @@ internal class JsNotifier : INotifier
     public JsNotifier(IJsModulesProvider jsModulesProvider)
         => _jsModulesProvider = jsModulesProvider;
 
-    public async Task NotifyProgress(string message)
+    public async Task Notify(string message)
     {
         var module = await _jsModulesProvider.GetMainModule().ConfigureAwait(false);
         module.InvokeVoid("notify", message);

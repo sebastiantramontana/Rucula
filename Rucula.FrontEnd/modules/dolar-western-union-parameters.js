@@ -14,11 +14,11 @@ const getApplyButton = () => document.getElementById("apply-amount-to-send-wu");
 
 function getParametersFromInputs() {
     const inputs = getInputs();
-    return { "amountToSend": parseFloat(inputs.amountToSendInput.value) };
+    return { amountToSend: parseFloat(inputs.amountToSendInput.value) };
 }
 
 const settingsKey = "parameters-wu-settings";
-const defaultParameters = { amountToSend: 1000 };
+const defaultParameters = { amountToSend: 1000.0 };
 
 function setParametersToInputs(parametersSettings) {
     const inputs = getInputs();

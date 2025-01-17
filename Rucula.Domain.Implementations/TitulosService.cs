@@ -23,7 +23,7 @@ internal class TitulosService : ITitulosService
 
     public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions)
     {
-        await _notifier.NotifyProgress("Consultando títulos públicos...").ConfigureAwait(false);
+        await _notifier.Notify("Consultando títulos públicos...");
         var titulos = await _titulosProvider.Get().ConfigureAwait(false);
         var details = await GetUsefulTitulosDetails(titulos).ConfigureAwait(false);
 
@@ -37,7 +37,7 @@ internal class TitulosService : ITitulosService
 
         foreach (var t in titulos)
         {
-            await _notifier.NotifyProgress($"Consultando {t.Simbolo}...").ConfigureAwait(false);
+            await _notifier.Notify($"Consultando {t.Simbolo}...");
             var allDetails = await GetTituloDetails(t).ConfigureAwait(false);
             var usefulDetails = allDetails.FirstOrDefault(d => IsDetailsUseful(d, today));
             detailsContentList.Add((t, usefulDetails));

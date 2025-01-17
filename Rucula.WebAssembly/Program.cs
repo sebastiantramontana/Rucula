@@ -1,17 +1,27 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.JSInterop;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
+using Rucula.Infrastructure;
 using Rucula.Infrastructure.IoC;
+using Rucula.WebAssembly.IoC;
+using Rucula.WebAssembly.Parameters;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.Versioning;
+using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rucula.WebAssembly;
 
-public class Program
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+[SupportedOSPlatform("browser")]
+public partial class Program
 {
     private static IChoicesService _choicesService = default!;
     private static ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
+    private static IParametersJSObjectConverter _parametersJSObjectConverter = default!;
 
     public static async Task Main(string[] args)
     {
@@ -34,34 +44,50 @@ public class Program
         }
     }
 
-    [JSInvokable]
-    public static async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    [JSExport]
+    [return: JSMarshalAs<Promise<JSType.String>>]
+    public static async Task<string> GetChoices(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
     {
         try
         {
-            _currentChoices = await _choicesService.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters).ConfigureAwait(false);
+            await WaitAllDependenciesAreReady();
+
+            var parameters = _parametersJSObjectConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
+
+            _currentChoices = await _choicesService.GetChoices(parameters.BondCommissions, parameters.WesternUnionParameters, parameters.DolarCryptoParameters).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
 
-        return _currentChoices;
+        return JsonSerializer.Serialize(_currentChoices, SourceGenerationContext.Default.ChoicesInfo);
     }
 
-    [JSInvokable]
-    public static async Task<ChoicesInfo> RecalculateChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    [JSExport]
+    [return: JSMarshalAs<Promise<JSType.String>>]
+    public static async Task<string> RecalculateChoices(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
     {
         try
         {
-            _currentChoices = await _choicesService.RecalculateChoices(_currentChoices, bondCommissions, westernUnionParameters, dolarCryptoParameters).ConfigureAwait(false);
+            await WaitAllDependenciesAreReady();
+
+            var parameters = _parametersJSObjectConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
+
+            _currentChoices = await _choicesService.RecalculateChoices(_currentChoices, parameters.BondCommissions, parameters.WesternUnionParameters, parameters.DolarCryptoParameters).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
 
-        return _currentChoices;
+        return JsonSerializer.Serialize(_currentChoices, SourceGenerationContext.Default.ChoicesInfo);
+    }
+
+    private static async Task WaitAllDependenciesAreReady()
+    {
+        await NullDependencyAwaiter.AwaitToNotNull(() => _choicesService);
+        await NullDependencyAwaiter.AwaitToNotNull(() => _parametersJSObjectConverter);
     }
 
     private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
@@ -71,12 +97,16 @@ public class Program
         => builder.Build();
 
     private static void InstanceServices(IServiceProvider serviceProvider)
-        => _choicesService = serviceProvider.GetRequiredService<IChoicesService>();
+    {
+        _choicesService = serviceProvider.GetRequiredService<IChoicesService>();
+        _parametersJSObjectConverter = serviceProvider.GetRequiredService<IParametersJSObjectConverter>();
+    }
 
     private static void Register(IServiceCollection serviceCollection)
         => serviceCollection
             .AddHttpClient()
             .AddDataAccess()
             .AddDomain()
-            .AddInfrastructure();
+            .AddInfrastructure()
+            .AddRuculaWebAssembly();
 }
