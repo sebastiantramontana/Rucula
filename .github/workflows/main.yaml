@@ -18,8 +18,8 @@ jobs:
           uses: actions/setup-dotnet@v4
           with:
             dotnet-version: 9.0.x
-        - name: Install wasm-tools-net9 workload
-          run: dotnet workload install wasm-tools-net9
+        - name: Install wasm-tools workload
+          run: dotnet workload install wasm-tools
         - name: Run the Cake script
           uses: cake-build/cake-action@v2
           with:
