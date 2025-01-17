@@ -1,4 +1,4 @@
-#tool "dotnet:?package=GitVersion.Tool&version=5.10.3"
+#tool "dotnet:?package=GitVersion.Tool&version=6.1.0"
 #r "tools/TailwindPlayRemover.dll"
 
 var target = Argument("target", "Default");
@@ -70,7 +70,7 @@ Task("Publish")
 										   NoLogo = true,
 										   NoRestore = true,
 										   NoBuild = false,
-										   Framework = "net8.0",
+										   Framework = "net9.0",
 										   SelfContained = true,
 										   Runtime = "browser-wasm",
 										   OutputDirectory = "./../dist",
