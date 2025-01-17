@@ -27,7 +27,6 @@ namespace Rucula.WebAssembly;
 [JsonSerializable(typeof(Optional<DolarCryptoNetPrice>))]
 [JsonSerializable(typeof(DolarCryptoNetPrice))]
 [JsonSerializable(typeof(Blockchain))]
-[JsonSerializable(typeof(Optional<>))]
 public partial class SourceGenerationContext : JsonSerializerContext
 {
     private static JsonSerializerOptions? _ruculaOptions = null;
