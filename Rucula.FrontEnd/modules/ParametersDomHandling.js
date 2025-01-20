@@ -48,13 +48,13 @@
     #addParameterInputEventListener(inputToAddListener, inputs, applyButton) {
         inputToAddListener.addEventListener('input', () => {
 
-            let isDisabled = false;
+            let isEnabled = true;
 
             for (const input of inputs) {
-                isDisabled &&= !input.checkValidity();
+                isEnabled &&= input.checkValidity();
             }
 
-            applyButton.disabled = isDisabled;
+            applyButton.disabled = !isEnabled;
             this.#setCurrentDisabledToApplyButton(applyButton);
         });
     }
