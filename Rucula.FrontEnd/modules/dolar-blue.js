@@ -1,8 +1,10 @@
-﻿export default function showDolarBlue(dolarBlue)
-{
+﻿export default function showDolarBlue(dolarBlue) {
     const dolarBlueCompra = document.getElementById("dolar-blue-compra");
     const dolarBlueVenta = document.getElementById("dolar-blue-venta");
 
-    dolarBlueCompra.textContent = dolarBlue.precioCompra;
-    dolarBlueVenta.textContent = dolarBlue.precioVenta;
+    dolarBlueCompra.textContent = getValueOrInvalidString(dolarBlue, "precioCompra");
+    dolarBlueVenta.textContent = getValueOrInvalidString(dolarBlue, "precioVenta");
 }
+
+const getValueOrInvalidString = (dolarBlue, propertyKey) =>
+    dolarBlue.hasValue ? dolarBlue.value[propertyKey] : "-";

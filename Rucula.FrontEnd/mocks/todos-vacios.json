@@ -1,0 +1,19 @@
+{
+  "blue": {
+    "hasValue": false,
+    "value": null,
+    "isEmpty": true
+  },
+  "rankingCryptos": [],
+  "dolarWesternUnion": {
+    "value": null,
+    "hasValue": false,
+    "isEmpty": true
+  },
+  "rankingTitulos": [],
+  "winningChoice": {
+    "name": "No hay ganador",
+    "info": "",
+    "dolarPrice": 0.0
+  }
+}

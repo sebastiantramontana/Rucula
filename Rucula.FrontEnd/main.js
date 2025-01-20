@@ -6,7 +6,6 @@ import showDolarWesternUnion from "./modules/dolar-western-union.js";
 import wuParameters from "./modules/dolar-western-union-parameters.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showBestChoice from "./modules/best-choice.js";
-import getValueFromOptional from "./optional-value.js";
 
 let dataIntervalId = null;
 const numberFormater = new Intl.NumberFormat('es-AR', {
@@ -94,9 +93,9 @@ async function getAllData() {
     const choices = await getChoices(titulosPublicosParameters.getParameters(), wuParameters.getParameters(), cryptoParameters.getParameters());
 
     showBestChoice(choices.winningChoice, numberFormater);
-    showDolarBlue(getValueFromOptional(choices.blue));
+    showDolarBlue(choices.blue);
     showDolarCrypto(choices.rankingCryptos, numberFormater);
-    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
+    showDolarWesternUnion(choices.dolarWesternUnion, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
 
     showBestChoiceElement();
@@ -123,7 +122,7 @@ async function runRecalculateChoices() {
 
     showBestChoice(choices.winningChoice, numberFormater);
     showTitulosPublicos(choices.rankingTitulos, numberFormater);
-    showDolarWesternUnion(getValueFromOptional(choices.dolarWesternUnion), numberFormater);
+    showDolarWesternUnion(choices.dolarWesternUnion, numberFormater);
 
     showBestChoiceElement();
     titulosPublicosParameters.enableParameters();

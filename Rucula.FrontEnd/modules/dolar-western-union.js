@@ -1,8 +1,11 @@
 ﻿export default function showDolarWesternUnion(dolarWesternUnion, numberFormater) {
-    showFinalPrice(numberFormater.format(dolarWesternUnion.netPrice));
-    showGrossPrice(numberFormater.format(dolarWesternUnion.grossPrice));
-    showFees(numberFormater.format(dolarWesternUnion.fees));
-    showNetPrice(numberFormater.format(dolarWesternUnion.netPrice));
+
+    const formatedValueFunc = getFormatedValueFunc(dolarWesternUnion, numberFormater);
+
+    showFinalPrice(formatedValueFunc("netPrice"));
+    showGrossPrice(formatedValueFunc("grossPrice"));
+    showFees(formatedValueFunc("fees"));
+    showNetPrice(formatedValueFunc("netPrice"));
 }
 
 function showFinalPrice(price) {
@@ -25,3 +28,8 @@ function showValueInElement(elementId, value) {
     const element = document.getElementById(elementId);
     element.textContent = value;
 }
+
+const getFormatedValueFunc = (dolarWesternUnion, numberFormater) =>
+    dolarWesternUnion.hasValue
+        ? (propertyKey) => numberFormater.format(dolarWesternUnion.value[propertyKey])
+        : () => "-";
