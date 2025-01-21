@@ -15,40 +15,46 @@ internal class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesPro
         var (fees, allGrossPrices) = await GetDataFromProviders(cryptoParameters.Volume);
 
         return fees
-            .Select(fee =>
-            {
-                var grossPrices = GetGrossPricesByExchange(allGrossPrices, fee.ExchangeName);
-
-                if (grossPrices is null)
-                {
-                    return Optional<DolarCryptoPrices>.Empty;
-                }
-
-                var grossUsdc = GetExchangeGrossPriceByCurrency(grossPrices, UsdcKey);
-                var grossUsdt = GetExchangeGrossPriceByCurrency(grossPrices, UsdtKey);
-                var grossDai = GetExchangeGrossPriceByCurrency(grossPrices, DaiKey);
-
-                if (grossUsdc.IsEmpty && grossUsdt.IsEmpty && grossDai.IsEmpty)
-                {
-                    return Optional<DolarCryptoPrices>.Empty;
-                }
-
-                var allNetPrices = CalculateAllNetPrices(cryptoParameters.Volume, grossUsdc, grossUsdt, grossDai, fee.CryptoCurrencyFees);
-
-                if (allNetPrices.Count == 0)
-                {
-                    return Optional<DolarCryptoPrices>.Empty;
-                }
-
-                var rankedAllNetPrices = OrderAllNetPrices(allNetPrices);
-
-                return Optional<DolarCryptoPrices>.Sure(new DolarCryptoPrices(fee.ExchangeName, grossUsdc, grossUsdt, grossDai, rankedAllNetPrices));
-            })
+            .Select(fee => GetDolarCryptoPrices(fee, allGrossPrices, cryptoParameters.Volume))
             .Where(prices => prices.HasValue)
             .Select(prices => prices.Value)
             .OrderByDescending(prices => GetTopNetPrice(prices.DolarCryptoNetPrices.First()))
             .ToArray();
     }
+
+    private Optional<DolarCryptoPrices> GetDolarCryptoPrices(DolarCryptoFees fee, IEnumerable<DolarCryptoGrossPrices> allGrossPrices, double volume)
+    {
+        var grossPrices = GetGrossPricesByExchange(allGrossPrices, fee.ExchangeName);
+
+        if (grossPrices.IsEmpty)
+        {
+            return Optional<DolarCryptoPrices>.Empty;
+        }
+
+        var (grossUsdc, grossUsdt, grossDai) = GetExchangeGrossPrices(grossPrices.Value);
+
+        if (grossUsdc.IsEmpty && grossUsdt.IsEmpty && grossDai.IsEmpty)
+        {
+            return Optional<DolarCryptoPrices>.Empty;
+        }
+
+        var allNetPrices = CalculateAllNetPrices(volume, grossUsdc, grossUsdt, grossDai, fee.CryptoCurrencyFees);
+
+        if (allNetPrices.IsEmpty())
+        {
+            return Optional<DolarCryptoPrices>.Empty;
+        }
+
+        var rankedAllNetPrices = OrderAllNetPrices(allNetPrices);
+
+        return Optional<DolarCryptoPrices>.Sure(new DolarCryptoPrices(fee.ExchangeName, grossUsdc, grossUsdt, grossDai, rankedAllNetPrices));
+    }
+
+    private static (Optional<double> grossUsdc, Optional<double> grossUsdt, Optional<double> grossDai)
+        GetExchangeGrossPrices(DolarCryptoGrossPrices grossPrices)
+        => (GetExchangeGrossPriceByCurrency(grossPrices, UsdcKey),
+            GetExchangeGrossPriceByCurrency(grossPrices, UsdtKey),
+            GetExchangeGrossPriceByCurrency(grossPrices, DaiKey));
 
     private static IEnumerable<DolarCryptoNetPrices> OrderAllNetPrices(IEnumerable<DolarCryptoNetPrices> allNetPrices)
         => allNetPrices.OrderByDescending(p => p.TopNetPrice.NetPrice);
@@ -56,11 +62,14 @@ internal class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesPro
     private static double GetTopNetPrice(DolarCryptoNetPrices prices)
         => prices.TopNetPrice.NetPrice;
 
-    private static DolarCryptoGrossPrices? GetGrossPricesByExchange(IEnumerable<DolarCryptoGrossPrices> allGrossPrices, string exchangeName)
+    private static Optional<DolarCryptoGrossPrices> GetGrossPricesByExchange(IEnumerable<DolarCryptoGrossPrices> allGrossPrices, string exchangeName)
     {
         var normalizedExchangeName = NormalizeExchangeName(exchangeName);
-        return allGrossPrices.SingleOrDefault(g => CompareExchanges(g.ExchangeName, normalizedExchangeName));
+        return Optional<DolarCryptoGrossPrices>.Maybe(GetGrossPricesByNormalizedExchangeName(allGrossPrices, normalizedExchangeName));
     }
+
+    private static DolarCryptoGrossPrices? GetGrossPricesByNormalizedExchangeName(IEnumerable<DolarCryptoGrossPrices> allGrossPrices, string normalizedExchangeName)
+        => allGrossPrices.SingleOrDefault(g => CompareExchanges(g.ExchangeName, normalizedExchangeName));
 
     private static string NormalizeExchangeName(string exchangeName)
         => (exchangeName?.ToLowerInvariant() ?? string.Empty)
@@ -102,7 +111,7 @@ internal class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesPro
         var usdtBlockchainFees = GetCurrencyBlockchainFees(UsdtKey, fees);
         var daiBlockchainFees = GetCurrencyBlockchainFees(DaiKey, fees);
 
-        if (!usdcBlockchainFees.Any() && !usdtBlockchainFees.Any() && !daiBlockchainFees.Any())
+        if (usdcBlockchainFees.IsEmpty() && usdtBlockchainFees.IsEmpty() && daiBlockchainFees.IsEmpty())
         {
             return [];
         }
@@ -150,7 +159,7 @@ internal class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesPro
         => currencyBlockchainFees.SingleOrDefault(bf => bf.Blockchain == blockchain);
 
     private static double CalculateNetPrice(double volume, double grossPrice, double fee)
-        => (volume * grossPrice) / (volume + fee);
+        => volume * grossPrice / (volume + fee);
 
     private static IEnumerable<CurrencyBlockchainFee> GetCurrencyBlockchainFees(string currencyKey, IEnumerable<CryptoCurrencyFees> fees)
         => fees
