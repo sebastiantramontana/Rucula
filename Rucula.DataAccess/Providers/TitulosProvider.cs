@@ -8,31 +8,18 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class TitulosProvider : ITitulosProvider
+internal class TitulosProvider(IBymaLetrasFetcher letrasFetcher,
+                       IBymaBonosFetcher bonosFetcher,
+                       IBymaIsMarketOpenFetcher isMarketOpenFetcher,
+                       IJsonDeserializer<TitulosContentDto> jsonTituloDeserializer,
+                       IMapper<TituloDto, Titulo> tituloMapper) : ITitulosProvider
 {
-    private readonly IBymaLetrasFetcher _letrasFetcher;
-    private readonly IBymaBonosFetcher _bonosFetcher;
-    private readonly IBymaIsMarketOpenFetcher _isMarketOpenFetcher;
-    private readonly IJsonDeserializer<TitulosContentDto> _jsonTituloDeserializer;
-    private readonly IMapper<TituloDto, Titulo> _tituloMapper;
-
-    public TitulosProvider(IBymaLetrasFetcher letrasFetcher,
-                           IBymaBonosFetcher bonosFetcher,
-                           IBymaIsMarketOpenFetcher isMarketOpenFetcher,
-                           IJsonDeserializer<TitulosContentDto> jsonTituloDeserializer,
-                           IMapper<TituloDto, Titulo> tituloMapper)
-    {
-        _letrasFetcher = letrasFetcher;
-        _bonosFetcher = bonosFetcher;
-        _isMarketOpenFetcher = isMarketOpenFetcher;
-        _jsonTituloDeserializer = jsonTituloDeserializer;
-        _tituloMapper = tituloMapper;
-    }
-
     public async Task<IEnumerable<Titulo>> Get()
     {
         if (!await IsMarketOpen().ConfigureAwait(false))
+        {
             return [];
+        }
 
         var letrasTask = await GetLetras().ConfigureAwait(false);
         var bonosTask = await GetBonos().ConfigureAwait(false);
@@ -41,10 +28,10 @@ internal class TitulosProvider : ITitulosProvider
     }
 
     public Task<IEnumerable<Titulo>> GetBonos()
-        => GetTitulos(_bonosFetcher);
+        => GetTitulos(bonosFetcher);
 
     public Task<IEnumerable<Titulo>> GetLetras()
-        => GetTitulos(_letrasFetcher);
+        => GetTitulos(letrasFetcher);
 
     private async Task<IEnumerable<Titulo>> GetTitulos(IFetcher fetcher)
     {
@@ -54,12 +41,12 @@ internal class TitulosProvider : ITitulosProvider
 
     private IEnumerable<TituloDto> ConvertContentToTitulos(string content)
     {
-        var titulos = _jsonTituloDeserializer.Deserialize(JsonNode.Parse(content));
+        var titulos = jsonTituloDeserializer.Deserialize(JsonNode.Parse(content));
         return titulos.HasValue ? titulos.Value.Titulos : [];
     }
     private IEnumerable<Titulo> MapToTitulo(IEnumerable<TituloDto> dtos)
         => dtos
-            .Select(t => _tituloMapper.Map(Optional<TituloDto>.Maybe(t)))
+            .Select(t => tituloMapper.Map(Optional<TituloDto>.Maybe(t)))
             .Where(t => t.HasValue)
             .Select(t => t.Value);
 
@@ -69,7 +56,7 @@ internal class TitulosProvider : ITitulosProvider
 
         try
         {
-            var content = await _isMarketOpenFetcher.Fetch().ConfigureAwait(false);
+            var content = await isMarketOpenFetcher.Fetch().ConfigureAwait(false);
             isMarketOpen = bool.Parse(content);
         }
         catch

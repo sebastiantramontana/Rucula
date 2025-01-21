@@ -4,20 +4,17 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonToBlueDtoDeserializer : IJsonDeserializer<BlueDto>
+internal class JsonToBlueDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<BlueDto>
 {
-    private readonly IJsonValueReader _valueReader;
-
-    public JsonToBlueDtoDeserializer(IJsonValueReader valueReader)
-        => _valueReader = valueReader;
-
     public Optional<BlueDto> Deserialize(JsonNode? node)
     {
         if (node is null)
+        {
             return Optional<BlueDto>.Empty;
+        }
 
-        var compra = _valueReader.GetRequiredValue<string>(node!, "compra");
-        var venta = _valueReader.GetRequiredValue<string>(node!, "venta");
+        var compra = valueReader.GetRequiredValue<string>(node!, "compra");
+        var venta = valueReader.GetRequiredValue<string>(node!, "venta");
 
         return Optional<BlueDto>.Sure(new(compra, venta));
     }

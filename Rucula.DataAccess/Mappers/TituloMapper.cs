@@ -8,10 +8,10 @@ internal class TituloMapper : IMapper<TituloDto, Titulo>
     public Optional<Titulo> Map(Optional<TituloDto> from)
         => from.HasValue ? Sure(from.Value) : Optional<Titulo>.Empty;
 
-    public Optional<Titulo> Sure(TituloDto from)
+    private static Optional<Titulo> Sure(TituloDto from)
         => Optional<Titulo>.Sure(new Titulo(from.Simbolo, from.PrecioCompra, from.PrecioVenta, MapToParking(from.Parking), MapToMoneda(from.Moneda)));
 
-    private Parking MapToParking(string settlementType)
+    private static Parking MapToParking(string settlementType)
         => settlementType switch
         {
             "1" => Parking.CI,
@@ -20,7 +20,7 @@ internal class TituloMapper : IMapper<TituloDto, Titulo>
             _ => throw new NotImplementedException($"Valor inválido para parking: {settlementType}")
         };
 
-    private Moneda MapToMoneda(string denominationCcy)
+    private static Moneda MapToMoneda(string denominationCcy)
         => denominationCcy switch
         {
             "ARS" => Moneda.Peso,

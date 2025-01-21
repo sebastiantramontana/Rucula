@@ -1,11 +1,10 @@
-﻿namespace Rucula.DataAccess.Globalization
+﻿namespace Rucula.DataAccess.Globalization;
+
+internal class SpanishNumberConverter : ISpanishNumberConverter
 {
-    internal class SpanishNumberConverter : ISpanishNumberConverter
-    {
-        public string ConvertToEnglish(string number)
-            => number
-                .Replace(",", "@")
-                .Replace(".", ",")
-                .Replace("@", ".");
-    }
+    public string ConvertToEnglish(string number)
+        => number
+            .Replace(",", "@")
+            .Replace(".", ",")
+            .Replace("@", ".");
 }

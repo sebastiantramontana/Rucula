@@ -1,9 +1,8 @@
 ﻿using Rucula.Domain.Entities;
 
-namespace Rucula.Domain.Abstractions
+namespace Rucula.Domain.Abstractions;
+
+public interface ITituloDetailsProvider
 {
-    public interface ITituloDetailsProvider
-    {
-        Task<IEnumerable<TituloDetails>> GetTituloDetails(string symbol);
-    }
+    Task<IEnumerable<TituloDetails>> GetTituloDetails(string symbol);
 }

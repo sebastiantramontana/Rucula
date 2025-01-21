@@ -3,19 +3,8 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class TitulosService : ITitulosService
+internal class TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier) : ITitulosService
 {
-    private readonly ITitulosProvider _titulosProvider;
-    private readonly ITituloDetailsProvider _tituloDetailsProvider;
-    private readonly INotifier _notifier;
-
-    public TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier)
-    {
-        _titulosProvider = titulosProvider;
-        _tituloDetailsProvider = tituloDetailsProvider;
-        _notifier = notifier;
-    }
-
     public IEnumerable<TituloIsin> RecalculateNetCclRanking(IEnumerable<TituloIsin> titulos, BondCommissions bondCommissions)
         => titulos
             .Select(t => t with { NetCcl = CalculateNetCcl(t.GrossCcl, bondCommissions) })
@@ -23,8 +12,8 @@ internal class TitulosService : ITitulosService
 
     public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions)
     {
-        await _notifier.Notify("Consultando títulos públicos...");
-        var titulos = await _titulosProvider.Get().ConfigureAwait(false);
+        await notifier.Notify("Consultando títulos públicos...");
+        var titulos = await titulosProvider.Get().ConfigureAwait(false);
         var details = await GetUsefulTitulosDetails(titulos).ConfigureAwait(false);
 
         return CreateTitulosIsin(details, blue, bondCommissions);
@@ -37,7 +26,7 @@ internal class TitulosService : ITitulosService
 
         foreach (var t in titulos)
         {
-            await _notifier.Notify($"Consultando {t.Simbolo}...");
+            await notifier.Notify($"Consultando {t.Simbolo}...");
             var allDetails = await GetTituloDetails(t).ConfigureAwait(false);
             var usefulDetails = allDetails.FirstOrDefault(d => IsDetailsUseful(d, today));
             detailsContentList.Add((t, usefulDetails));
@@ -47,7 +36,7 @@ internal class TitulosService : ITitulosService
     }
 
     private Task<IEnumerable<TituloDetails>> GetTituloDetails(Titulo titulo)
-        => _tituloDetailsProvider.GetTituloDetails(titulo.Simbolo);
+        => tituloDetailsProvider.GetTituloDetails(titulo.Simbolo);
 
     private static IEnumerable<TituloIsin> CreateTitulosIsin(IEnumerable<(Titulo Titulo, TituloDetails? TituloDetails)> details, Optional<Blue> blue, BondCommissions bondCommissions)
         => details
@@ -67,7 +56,6 @@ internal class TitulosService : ITitulosService
         var fechaVencimiento = values.Key.FechaVencimiento;
         var grossCcl = CalculateGrossCcl(tituloPeso, tituloCable);
         var netCcl = CalculateNetCcl(grossCcl, bondCommissions);
-        var mep = CalculateMep(tituloPeso, tituloMep);
         var mepOverCable = CalculateMepOverCable(tituloMep, tituloCable);
         var blueOverCcl = CalculateBlueOverCcl(blue, tituloMep, tituloPeso);
 
@@ -120,9 +108,6 @@ internal class TitulosService : ITitulosService
 
     private static double? CalculateBlueOverCcl(Optional<Blue> blue, Titulo? tituloMep, Titulo? tituloPesos)
         => blue.HasValue ? Divide(Multiply(blue.Value.PrecioCompra, tituloMep?.PrecioCompra), tituloPesos?.PrecioCompra) : null;
-
-    private static double? CalculateMep(Titulo? tituloPesos, Titulo? tituloMep)
-        => Divide(tituloPesos?.PrecioVenta, tituloMep?.PrecioCompra);
 
     private static double? Divide(double? value1, double? value2)
         => value1.HasValue && value2.HasValue && value2.Value != 0

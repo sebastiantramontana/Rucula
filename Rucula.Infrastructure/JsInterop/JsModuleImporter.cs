@@ -2,12 +2,9 @@
 
 namespace Rucula.Infrastructure.JsInterop;
 
-internal class JsModuleImporter : IJsModuleImporter
+internal class JsModuleImporter(IJSRuntime jsInProcessRuntime) : IJsModuleImporter
 {
-    private readonly JSInProcessRuntime _jsInProcessRuntime;
-
-    public JsModuleImporter(IJSRuntime jsInProcessRuntime)
-        => _jsInProcessRuntime = (JSInProcessRuntime)jsInProcessRuntime;
+    private readonly JSInProcessRuntime _jsInProcessRuntime = (JSInProcessRuntime)jsInProcessRuntime;
 
     public ValueTask<IJSInProcessObjectReference> Import(string modulePath)
         => _jsInProcessRuntime.InvokeAsync<IJSInProcessObjectReference>("import", modulePath);

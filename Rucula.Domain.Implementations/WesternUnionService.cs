@@ -3,19 +3,16 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class WesternUnionService : IWesternUnionService
+internal class WesternUnionService(IWesternUnionProvider westernUnionProvider) : IWesternUnionService
 {
-    private readonly IWesternUnionProvider _westernUnionProvider;
-
-    public WesternUnionService(IWesternUnionProvider westernUnionProvider)
-        => _westernUnionProvider = westernUnionProvider;
-
     public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters)
     {
-        var info = await _westernUnionProvider.GetCurrentDolarWesternUnion(parameters).ConfigureAwait(false);
+        var info = await westernUnionProvider.GetCurrentDolarWesternUnion(parameters).ConfigureAwait(false);
 
         if (!info.HasValue)
+        {
             return Optional<DolarWesternUnion>.Empty;
+        }
 
         var netPrice = CalculateNetPrice(info.Value.GrossPrice, info.Value.Fees, parameters);
 

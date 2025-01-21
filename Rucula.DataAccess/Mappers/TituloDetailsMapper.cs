@@ -10,13 +10,9 @@ internal class TituloDetailsMapper : IMapper<TituloDetailsDto, TituloDetails>
     public Optional<TituloDetails> Map(Optional<TituloDetailsDto> from)
         => from.HasValue ? Create(from.Value) : Optional<TituloDetails>.Empty;
 
-    Optional<TituloDetails> Create(TituloDetailsDto from)
+    private static Optional<TituloDetails> Create(TituloDetailsDto from)
         => Optional<TituloDetails>.Sure(new(from.CodigoIsin, from.Denominacion, MapTipoObligacion(from.TipoObligacion), DateOnly.FromDateTime(DateTime.Parse(from.FechaVencimiento))));
 
-    private TipoObligacion MapTipoObligacion(string value)
-        => value switch
-        {
-            TextoObligacionNacional => TipoObligacion.Nacional,
-            _ => TipoObligacion.Otro
-        };
+    private static TipoObligacion MapTipoObligacion(string value)
+        => value == TextoObligacionNacional ? TipoObligacion.Nacional : TipoObligacion.Otro;
 }

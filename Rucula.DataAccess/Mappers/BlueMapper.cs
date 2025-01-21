@@ -4,15 +4,8 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.Mappers;
 
-internal class BlueMapper : IMapper<BlueDto, Blue>
+internal class BlueMapper(ISpanishNumberConverter spanishNumberConverter) : IMapper<BlueDto, Blue>
 {
-    private readonly ISpanishNumberConverter _spanishNumberConverter;
-
-    public BlueMapper(ISpanishNumberConverter spanishNumberConverter)
-    {
-        _spanishNumberConverter = spanishNumberConverter;
-    }
-
     public Optional<Blue> Map(Optional<BlueDto> from)
         => from.HasValue ? Parse(from.Value) : Optional<Blue>.Empty;
 
@@ -23,5 +16,5 @@ internal class BlueMapper : IMapper<BlueDto, Blue>
         => double.Parse(ConvertToEnglishFormat(value));
 
     private string ConvertToEnglishFormat(string value)
-        => _spanishNumberConverter.ConvertToEnglish(value);
+        => spanishNumberConverter.ConvertToEnglish(value);
 }

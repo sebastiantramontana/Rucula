@@ -10,7 +10,10 @@ public class InvocationChainNullable<T> : InvocationChainBase where T : class
     private readonly T? _value;
 
     internal InvocationChainNullable(T? value, InvocationChainBase? previous)
-        : base(previous) => _value = value;
+        : base(previous)
+    {
+        _value = value;
+    }
 
     public InvocationChainNullable<TRet> IfNotNull<TRet>(Func<T, TRet?> objFunc) where TRet : class
     {

@@ -5,17 +5,12 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonToDolarWesternUnionDtoDeserializer : IJsonDeserializer<DolarWesternUnionDto>
+internal class JsonToDolarWesternUnionDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<DolarWesternUnionDto>
 {
     private const int acFundInIndex = 0;
     private const string fxRateNodeProperty = "fx_rate";
     private const string grossFeeNodeProperty = "gross_fee";
     private const string payGroupNodeKey = "pay_groups";
-
-    private readonly IJsonValueReader _valueReader;
-
-    public JsonToDolarWesternUnionDtoDeserializer(IJsonValueReader valueReader)
-        => _valueReader = valueReader;
 
     public Optional<DolarWesternUnionDto> Deserialize(JsonNode? node)
         => Optional<DolarWesternUnionDto>.Maybe(DeserializeIncludingFees(node));
@@ -38,5 +33,5 @@ internal class JsonToDolarWesternUnionDtoDeserializer : IJsonDeserializer<DolarW
     }
 
     private Optional<T> GetNodeValue<T>(JsonNode? node, string property)
-        => _valueReader.GetValue<T>(node, property);
+        => valueReader.GetValue<T>(node, property);
 }

@@ -1,10 +1,7 @@
 ﻿namespace Rucula.DataAccess.Helpers;
 
-public abstract class InvocationChainBase
+public abstract class InvocationChainBase(InvocationChainBase? previous)
 {
-    public InvocationChainBase(InvocationChainBase? previous)
-        => Previous = previous;
-
     public abstract object? GetValue();
-    public InvocationChainBase? Previous { get; }
+    public InvocationChainBase? Previous { get; } = previous;
 }

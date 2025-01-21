@@ -2,34 +2,26 @@
 using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Deserializers
+namespace Rucula.DataAccess.Deserializers;
+
+internal class JsonToTituloDetailsContentDtoDeserializer(IJsonDeserializer<PaginationDto> paginationDeserializer, IJsonDeserializer<TituloDetailsDto> tituloDetailsDeserializer) : IJsonDeserializer<TituloDetailsContentDto>
 {
-    internal class JsonToTituloDetailsContentDtoDeserializer : IJsonDeserializer<TituloDetailsContentDto>
+    public Optional<TituloDetailsContentDto> Deserialize(JsonNode? node)
     {
-        private readonly IJsonDeserializer<PaginationDto> _paginationDeserializer;
-        private readonly IJsonDeserializer<TituloDetailsDto> _tituloDetailsDeserializer;
+        var paginationDto = paginationDeserializer.Deserialize(node?["content"]);
 
-        public JsonToTituloDetailsContentDtoDeserializer(IJsonDeserializer<PaginationDto> paginationDeserializer, IJsonDeserializer<TituloDetailsDto> tituloDetailsDeserializer)
+        if (!paginationDto.HasValue)
         {
-            _paginationDeserializer = paginationDeserializer;
-            _tituloDetailsDeserializer = tituloDetailsDeserializer;
+            return Optional<TituloDetailsContentDto>.Empty;
         }
 
-        public Optional<TituloDetailsContentDto> Deserialize(JsonNode? node)
-        {
-            var paginationDto = _paginationDeserializer.Deserialize(node?["content"]);
+        var tituloDetailsDtos = node!["data"]!
+            .AsArray()
+            .Select(n => tituloDetailsDeserializer.Deserialize(n!))
+            .Where(t => t.HasValue)
+            .Select(t => t.Value)
+            .ToArray();
 
-            if (!paginationDto.HasValue)
-                return Optional<TituloDetailsContentDto>.Empty;
-
-            var tituloDetailsDtos = node!["data"]!
-                .AsArray()
-                .Select(n => _tituloDetailsDeserializer.Deserialize(n!))
-                .Where(t => t.HasValue)
-                .Select(t => t.Value)
-                .ToArray();
-
-            return Optional<TituloDetailsContentDto>.Sure(new TituloDetailsContentDto(paginationDto.Value, tituloDetailsDtos));
-        }
+        return Optional<TituloDetailsContentDto>.Sure(new TituloDetailsContentDto(paginationDto.Value, tituloDetailsDtos));
     }
 }

@@ -7,21 +7,10 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class DolarCryptoGrossPricesProvider : IDolarCryptoGrossPricesProvider
+internal class DolarCryptoGrossPricesProvider(ICryptoYaGrossPricesFetcher fetcher,
+                               IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>> deserializer,
+                               INotifier notifier) : IDolarCryptoGrossPricesProvider
 {
-    private readonly ICryptoYaGrossPricesFetcher _fetcher;
-    private readonly IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>> _deserializer;
-    private readonly INotifier _notifier;
-
-    public DolarCryptoGrossPricesProvider(ICryptoYaGrossPricesFetcher fetcher,
-                                   IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>> deserializer,
-                                   INotifier notifier)
-    {
-        _fetcher = fetcher;
-        _deserializer = deserializer;
-        _notifier = notifier;
-    }
-
     public async Task<IEnumerable<DolarCryptoGrossPrices>> GetGrossPrices(double volume, IEnumerable<string> currencyKeys)
     {
         var fetchTasks = new List<Task<(string CurrencyKey, string Content)>>();
@@ -63,15 +52,15 @@ internal class DolarCryptoGrossPricesProvider : IDolarCryptoGrossPricesProvider
 
     private async Task<(string CurrencyKey, string Content)> FetchGrossPrice(CriptoYaGrossPricesFetcherParameters parameters)
     {
-        await _notifier.Notify($"Consultando precios brutos {parameters.CryptoCurrencyKey}...");
-        var content = await _fetcher.Fetch(parameters).ConfigureAwait(false);
+        await notifier.Notify($"Consultando precios brutos {parameters.CryptoCurrencyKey}...");
+        var content = await fetcher.Fetch(parameters).ConfigureAwait(false);
 
         return new(parameters.CryptoCurrencyKey, content);
     }
 
     private IEnumerable<DolarCryptoCurrencyGrossPriceDto> ConvertContentToCurrencyGrossPriceDto(string content)
     {
-        var pricesDto = _deserializer.Deserialize(JsonNode.Parse(content)!);
+        var pricesDto = deserializer.Deserialize(JsonNode.Parse(content)!);
         return pricesDto.HasValue ? pricesDto.Value : [];
     }
 

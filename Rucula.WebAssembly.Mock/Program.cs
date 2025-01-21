@@ -29,7 +29,7 @@ public partial class Program
         {
             var builder = CreateWebAssemblyBuilder(args);
 
-            builder.Logging.SetMinimumLevel(LogLevel.Trace);
+            _ = builder.Logging.SetMinimumLevel(LogLevel.Trace);
 
             Register(builder.Services);
             InstanceServices(builder.Services.BuildServiceProvider());
@@ -89,12 +89,16 @@ public partial class Program
         var uri = _navigationManager.ToAbsoluteUri(_navigationManager.Uri);
 
         if (string.IsNullOrEmpty(uri.Query))
+        {
             return null;
+        }
 
         var queryStrings = QueryHelpers.ParseNullableQuery(uri.Query);
 
         if (!(queryStrings?.TryGetValue("mock", out var values) ?? false))
+        {
             return null;
+        }
 
         await _notifier.Notify($"params: {values}");
         await Task.Delay(1000);

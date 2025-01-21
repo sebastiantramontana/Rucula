@@ -1,8 +1,7 @@
-﻿namespace Rucula.Domain.Entities
+﻿namespace Rucula.Domain.Entities;
+
+public enum TipoObligacion
 {
-    public enum TipoObligacion
-    {
-        Nacional,
-        Otro
-    }
+    Nacional,
+    Otro
 }

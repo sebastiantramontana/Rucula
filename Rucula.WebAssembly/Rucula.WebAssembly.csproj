@@ -7,12 +7,18 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisLevel>latest</AnalysisLevel>
+	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DebugType>full</DebugType>
 		<InvariantGlobalization>true</InvariantGlobalization>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 		<DebugType>none</DebugType>
 		<TieredPGO>true</TieredPGO>
 		<BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>

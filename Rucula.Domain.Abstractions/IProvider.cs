@@ -1,7 +1,6 @@
-﻿namespace Rucula.Domain.Abstractions
+﻿namespace Rucula.Domain.Abstractions;
+
+public interface IProvider<T>
 {
-    public interface IProvider<T>
-    {
-        Task<IEnumerable<T>> Get();
-    }
+    Task<IEnumerable<T>> Get();
 }

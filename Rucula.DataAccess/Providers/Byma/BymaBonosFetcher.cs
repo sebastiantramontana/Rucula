@@ -2,8 +2,6 @@
 
 namespace Rucula.DataAccess.Providers.Byma;
 
-internal class BymaBonosFetcher : BymaFetcherBase, IBymaBonosFetcher
+internal class BymaBonosFetcher(IBonosRequestFactory bonosRequestFactory, IHttpReader httpReader) : BymaFetcherBase(bonosRequestFactory, httpReader), IBymaBonosFetcher
 {
-    public BymaBonosFetcher(IBonosRequestFactory bonosRequestFactory, IHttpReader httpReader)
-        : base(bonosRequestFactory, httpReader) { }
 }

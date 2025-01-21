@@ -3,42 +3,29 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class ChoicesService : IChoicesService
+internal class ChoicesService(ITitulosService titulosService,
+                      IDolarBlueProvider dolarBlueProvider,
+                      IWesternUnionService westernUnionService,
+                      IDolarCryptoService dolarCryptoService) : IChoicesService
 {
-    private readonly ITitulosService _titulosService;
-    private readonly IDolarBlueProvider _dolarBlueProvider;
-    private readonly IWesternUnionService _westernUnionService;
-    private readonly IDolarCryptoService _dolarCryptoService;
-
-    public ChoicesService(ITitulosService titulosService,
-                          IDolarBlueProvider dolarBlueProvider,
-                          IWesternUnionService westernUnionService,
-                          IDolarCryptoService dolarCryptoService)
-    {
-        _titulosService = titulosService;
-        _dolarBlueProvider = dolarBlueProvider;
-        _westernUnionService = westernUnionService;
-        _dolarCryptoService = dolarCryptoService;
-    }
-
     public async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters)
     {
-        var dolarBlueTask = _dolarBlueProvider.GetCurrentBlue();
-        var dolarWesternUnionTask = _westernUnionService.GetDolarWesternUnion(westernUnionParameters);
-        var rankingCryptoTask = _dolarCryptoService.GetPriceRanking(cryptoParameters);
+        var dolarBlueTask = dolarBlueProvider.GetCurrentBlue();
+        var dolarWesternUnionTask = westernUnionService.GetDolarWesternUnion(westernUnionParameters);
+        var rankingCryptoTask = dolarCryptoService.GetPriceRanking(cryptoParameters);
 
         await Task.WhenAll(dolarBlueTask, dolarWesternUnionTask, rankingCryptoTask).ConfigureAwait(false);
 
-        var rankingTitulos = await _titulosService.GetNetCclRanking(await dolarBlueTask, bondCommissions).ConfigureAwait(false);
+        var rankingTitulos = await titulosService.GetNetCclRanking(await dolarBlueTask, bondCommissions).ConfigureAwait(false);
 
         return CreateWinningChoice(rankingTitulos, await dolarBlueTask, await dolarWesternUnionTask, await rankingCryptoTask);
     }
 
     public async Task<ChoicesInfo> RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters)
     {
-        var rankingTitulos = _titulosService.RecalculateNetCclRanking(choices.RankingTitulos, bondCommissions);
-        var westernUnionDolarTask = _westernUnionService.GetDolarWesternUnion(westernUnionParameters);
-        var rankingCryptoTask = _dolarCryptoService.GetPriceRanking(cryptoParameters);
+        var rankingTitulos = titulosService.RecalculateNetCclRanking(choices.RankingTitulos, bondCommissions);
+        var westernUnionDolarTask = westernUnionService.GetDolarWesternUnion(westernUnionParameters);
+        var rankingCryptoTask = dolarCryptoService.GetPriceRanking(cryptoParameters);
 
         await Task.WhenAll(westernUnionDolarTask, rankingCryptoTask).ConfigureAwait(false);
 

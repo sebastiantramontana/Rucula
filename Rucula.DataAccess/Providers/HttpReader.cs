@@ -1,19 +1,11 @@
-﻿namespace Rucula.DataAccess.Providers.Byma
+﻿namespace Rucula.DataAccess.Providers;
+
+internal class HttpReader(IHttpClientFactory httpClientFactory) : IHttpReader
 {
-    internal class HttpReader : IHttpReader
+    public async Task<string> Read(HttpRequestMessage request)
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
-        public HttpReader(IHttpClientFactory httpClientFactory)
-        {
-            _httpClientFactory = httpClientFactory;
-        }
-
-        public async Task<string> Read(HttpRequestMessage request)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var msg = await client.SendAsync(request).ConfigureAwait(false);
-            return await msg.Content.ReadAsStringAsync().ConfigureAwait(false);
-        }
+        var client = httpClientFactory.CreateClient();
+        var msg = await client.SendAsync(request).ConfigureAwait(false);
+        return await msg.Content.ReadAsStringAsync().ConfigureAwait(false);
     }
 }

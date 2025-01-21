@@ -1,9 +1,8 @@
-﻿namespace Rucula.Domain.Entities
+﻿namespace Rucula.Domain.Entities;
+
+public enum Parking
 {
-    public enum Parking
-    {
-        CI,
-        T24,
-        T48
-    }
+    CI,
+    T24,
+    T48
 }

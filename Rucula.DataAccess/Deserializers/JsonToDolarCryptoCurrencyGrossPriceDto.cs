@@ -4,13 +4,8 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonToDolarCryptoCurrencyGrossPriceDto : IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>>
+internal class JsonToDolarCryptoCurrencyGrossPriceDto(IJsonValueReader jsonValueReader) : IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>>
 {
-    private readonly IJsonValueReader _jsonValueReader;
-
-    public JsonToDolarCryptoCurrencyGrossPriceDto(IJsonValueReader jsonValueReader) 
-        => _jsonValueReader = jsonValueReader;
-
     public Optional<IEnumerable<DolarCryptoCurrencyGrossPriceDto>> Deserialize(JsonNode? node)
     {
         if (node is null)
@@ -30,7 +25,7 @@ internal class JsonToDolarCryptoCurrencyGrossPriceDto : IJsonDeserializer<IEnume
     private DolarCryptoCurrencyGrossPriceDto CreateGrossPriceDto(KeyValuePair<string, JsonNode?> exchangeNode)
     {
         var valuesNode = exchangeNode.Value!.AsObject();
-        var totalBid = _jsonValueReader.GetRequiredValue<double>(valuesNode, "totalBid");
+        var totalBid = jsonValueReader.GetRequiredValue<double>(valuesNode, "totalBid");
 
         return new(exchangeNode.Key, totalBid);
     }

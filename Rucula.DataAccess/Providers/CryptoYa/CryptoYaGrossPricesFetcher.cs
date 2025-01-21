@@ -1,18 +1,14 @@
 ﻿
 namespace Rucula.DataAccess.Providers.CryptoYa;
 
-internal class CryptoYaGrossPricesFetcher : ICryptoYaGrossPricesFetcher
+internal class CryptoYaGrossPricesFetcher(IHttpReader httpReader) : ICryptoYaGrossPricesFetcher
 {
     private const string Url = "https://criptoya.com/api/{0}/ARS/{1}";
-    private readonly IHttpReader _httpReader;
-
-    public CryptoYaGrossPricesFetcher(IHttpReader httpReader)
-        => _httpReader = httpReader;
 
     public async Task<string> Fetch(CriptoYaGrossPricesFetcherParameters parameters)
     {
         using var request = CreateRequest(parameters);
-        return await _httpReader.Read(request).ConfigureAwait(false);
+        return await httpReader.Read(request).ConfigureAwait(false);
     }
 
     private static HttpRequestMessage CreateRequest(CriptoYaGrossPricesFetcherParameters parameters)

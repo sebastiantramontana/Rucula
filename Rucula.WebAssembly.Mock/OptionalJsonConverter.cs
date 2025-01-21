@@ -3,7 +3,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure: Necesario para ser llamado desde JS
 namespace Rucula.WebAssembly;
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 
 public class OptionalJsonConverter<T>(JsonTypeInfo<T> jsonTypeInfo) : JsonConverter<Optional<T>>
 {
@@ -33,7 +35,7 @@ public class OptionalJsonConverter<T>(JsonTypeInfo<T> jsonTypeInfo) : JsonConver
             }
 
             var propertyName = reader.GetString();
-            reader.Read(); // Mover al valor de la propiedad
+            _ = reader.Read(); // Mover al valor de la propiedad
 
             switch (propertyName)
             {

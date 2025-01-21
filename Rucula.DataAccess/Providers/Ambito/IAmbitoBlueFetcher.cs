@@ -1,6 +1,5 @@
-﻿namespace Rucula.DataAccess.Providers.Ambito
+﻿namespace Rucula.DataAccess.Providers.Ambito;
+
+internal interface IAmbitoBlueFetcher : IFetcher
 {
-    internal interface IAmbitoBlueFetcher : IFetcher
-    {
-    }
 }

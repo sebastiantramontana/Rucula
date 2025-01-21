@@ -1,25 +1,19 @@
 ﻿namespace Rucula.DataAccess.Providers.WesternUnion;
 
-internal class WesternUnionFetcher : IWesternUnionFetcher
+internal class WesternUnionFetcher(IHttpReader httpReader) : IWesternUnionFetcher
 {
     private const string Url = "https://www.westernunion.com/wuconnect/prices/catalog";
-    private readonly IHttpReader _httpReader;
-
-    public WesternUnionFetcher(IHttpReader httpReader)
-    {
-        _httpReader = httpReader;
-    }
 
     public async Task<string> Fetch(double amountToSend)
     {
         using var request = CreateRequest(amountToSend);
-        return await _httpReader.Read(request).ConfigureAwait(false);
+        return await httpReader.Read(request).ConfigureAwait(false);
     }
 
-    private HttpRequestMessage CreateRequest(double amountToSend)
+    private static HttpRequestMessage CreateRequest(double amountToSend)
         => new(HttpMethod.Post, Url) { Content = new StringContent(CreateJsonParameter(amountToSend)) };
 
-    private string CreateJsonParameter(double amountToSend)
+    private static string CreateJsonParameter(double amountToSend)
         => $@"{{
                     ""header_request"": {{
                     ""version"": ""0.5"",

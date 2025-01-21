@@ -1,7 +1,6 @@
-﻿namespace Rucula.DataAccess.Providers
+﻿namespace Rucula.DataAccess.Providers;
+
+internal interface IHttpReader
 {
-    internal interface IHttpReader
-    {
-        Task<string> Read(HttpRequestMessage request);
-    }
+    Task<string> Read(HttpRequestMessage request);
 }

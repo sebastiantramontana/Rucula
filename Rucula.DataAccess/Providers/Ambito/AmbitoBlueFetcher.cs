@@ -1,22 +1,15 @@
-﻿namespace Rucula.DataAccess.Providers.Ambito
+﻿namespace Rucula.DataAccess.Providers.Ambito;
+
+internal class AmbitoBlueFetcher(IHttpReader httpReader) : IAmbitoBlueFetcher
 {
-    internal class AmbitoBlueFetcher : IAmbitoBlueFetcher
+    private const string Url = "https://mercados.ambito.com//dolar/informal/variacion";
+
+    public async Task<string> Fetch()
     {
-        private const string Url = "https://mercados.ambito.com//dolar/informal/variacion";
-        private readonly IHttpReader _httpReader;
-
-        public AmbitoBlueFetcher(IHttpReader httpReader)
-        {
-            _httpReader = httpReader;
-        }
-
-        public async Task<string> Fetch()
-        {
-            using var request = CreateRequest();
-            return await _httpReader.Read(request).ConfigureAwait(false);
-        }
-
-        private HttpRequestMessage CreateRequest()
-            => new HttpRequestMessage(HttpMethod.Get, Url);
+        using var request = CreateRequest();
+        return await httpReader.Read(request).ConfigureAwait(false);
     }
+
+    private static HttpRequestMessage CreateRequest()
+        => new(HttpMethod.Get, Url);
 }

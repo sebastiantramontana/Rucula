@@ -2,29 +2,22 @@
 using Rucula.Domain.Entities;
 using System.Text.Json.Nodes;
 
-namespace Rucula.DataAccess.Deserializers
+namespace Rucula.DataAccess.Deserializers;
+
+internal class JsonToPaginationDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<PaginationDto>
 {
-    internal class JsonToPaginationDtoDeserializer : IJsonDeserializer<PaginationDto>
+    public Optional<PaginationDto> Deserialize(JsonNode? node)
     {
-        private readonly IJsonValueReader _valueReader;
-
-        public JsonToPaginationDtoDeserializer(IJsonValueReader valueReader)
+        if (node is null)
         {
-            _valueReader = valueReader;
+            return Optional<PaginationDto>.Empty;
         }
 
-        public Optional<PaginationDto> Deserialize(JsonNode? node)
-        {
-            if (node is null)
-                return Optional<PaginationDto>.Empty;
+        var pageNumber = valueReader.GetValue<int>(node!, "page_number");
+        var pageCount = valueReader.GetValue<int>(node!, "page_count");
+        var pageSize = valueReader.GetValue<int>(node!, "page_size");
+        var totalElementsCount = valueReader.GetValue<int>(node!, "total_elements_count");
 
-            var pageNumber = _valueReader.GetValue<int>(node!, "page_number");
-            var pageCount = _valueReader.GetValue<int>(node!, "page_count");
-            var pageSize = _valueReader.GetValue<int>(node!, "page_size");
-            var totalElementsCount = _valueReader.GetValue<int>(node!, "total_elements_count");
-
-
-            return Optional<PaginationDto>.Sure(new PaginationDto(pageNumber.Value, pageCount.Value, pageSize.Value, totalElementsCount.Value));
-        }
+        return Optional<PaginationDto>.Sure(new PaginationDto(pageNumber.Value, pageCount.Value, pageSize.Value, totalElementsCount.Value));
     }
 }

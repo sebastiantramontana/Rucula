@@ -3,23 +3,12 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class DolarCryptoService : IDolarCryptoService
+internal class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesProvider, IDolarCryptoFeesProvider feesProvider, IDolarCryptoMaxPriceService maxPriceService) : IDolarCryptoService
 {
     private const string UsdcKey = "USDC";
     private const string UsdtKey = "USDT";
     private const string DaiKey = "DAI";
     private readonly string[] CurrencyKeys = [UsdcKey, UsdtKey, DaiKey];
-
-    private readonly IDolarCryptoGrossPricesProvider _grossPricesProvider;
-    private readonly IDolarCryptoFeesProvider _feesProvider;
-    private readonly IDolarCryptoMaxPriceService _maxPriceService;
-
-    public DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesProvider, IDolarCryptoFeesProvider feesProvider, IDolarCryptoMaxPriceService maxPriceService)
-    {
-        _grossPricesProvider = grossPricesProvider;
-        _feesProvider = feesProvider;
-        _maxPriceService = maxPriceService;
-    }
 
     public async Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters)
     {
@@ -91,8 +80,8 @@ internal class DolarCryptoService : IDolarCryptoService
 
     private async Task<(IEnumerable<DolarCryptoFees> Fees, IEnumerable<DolarCryptoGrossPrices> GrossPrices)> GetDataFromProviders(double volume)
     {
-        var feesTask = _feesProvider.Get();
-        var grossPricesTask = _grossPricesProvider.GetGrossPrices(volume, CurrencyKeys);
+        var feesTask = feesProvider.Get();
+        var grossPricesTask = grossPricesProvider.GetGrossPrices(volume, CurrencyKeys);
 
         await Task.WhenAll(feesTask, grossPricesTask).ConfigureAwait(false);
 
@@ -128,7 +117,7 @@ internal class DolarCryptoService : IDolarCryptoService
 
             if (netUsdc.HasValue || netUsdt.HasValue || netDai.HasValue)
             {
-                var topPrice = _maxPriceService.MaxNetPrice(netUsdc, netUsdt, netDai);
+                var topPrice = maxPriceService.MaxNetPrice(netUsdc, netUsdt, netDai);
                 var netPrices = new DolarCryptoNetPrices(blockchain, netUsdc, netUsdt, netDai, topPrice!);
 
                 allNetPrices.Add(netPrices);

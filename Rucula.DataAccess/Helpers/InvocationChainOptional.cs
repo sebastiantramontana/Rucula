@@ -10,7 +10,10 @@ public class InvocationChainOptional<T> : InvocationChainBase
     private readonly Optional<T> _value;
 
     internal InvocationChainOptional(Optional<T> value, InvocationChainBase? previous)
-        : base(previous) => _value = value;
+        : base(previous)
+    {
+        _value = value;
+    }
 
     public InvocationChainOptional<TRet> IfNotEmpty<TRet>(Func<T, Optional<TRet>> objFunc)
     {

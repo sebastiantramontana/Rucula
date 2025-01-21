@@ -8,36 +8,23 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class DolarBlueProvider : IDolarBlueProvider
+internal class DolarBlueProvider(
+    IAmbitoBlueFetcher ambitoBlueFetcher,
+    IJsonDeserializer<BlueDto> blueJsonDeserializer,
+    IMapper<BlueDto, Blue> blueMapper,
+    INotifier notifier) : IDolarBlueProvider
 {
-    private readonly IAmbitoBlueFetcher _ambitoBlueFetcher;
-    private readonly IJsonDeserializer<BlueDto> _blueJsonDeserializer;
-    private readonly IMapper<BlueDto, Blue> _blueMapper;
-    private readonly INotifier _notifier;
-
-    public DolarBlueProvider(
-        IAmbitoBlueFetcher ambitoBlueFetcher,
-        IJsonDeserializer<BlueDto> blueJsonDeserializer,
-        IMapper<BlueDto, Blue> blueMapper,
-        INotifier notifier)
-    {
-        _ambitoBlueFetcher = ambitoBlueFetcher;
-        _blueJsonDeserializer = blueJsonDeserializer;
-        _blueMapper = blueMapper;
-        _notifier = notifier;
-    }
-
     public async Task<Optional<Blue>> GetCurrentBlue()
     {
-        await _notifier.Notify("Consultando Dolar Blue...");
-        var content = await _ambitoBlueFetcher.Fetch().ConfigureAwait(false);
+        await notifier.Notify("Consultando Dolar Blue...");
+        var content = await ambitoBlueFetcher.Fetch().ConfigureAwait(false);
         return MapToBlue(ConvertContentToBlue(content));
     }
 
     private Optional<BlueDto> ConvertContentToBlue(string content)
-        => _blueJsonDeserializer
+        => blueJsonDeserializer
             .Deserialize(JsonNode.Parse(content)!);
 
     private Optional<Blue> MapToBlue(Optional<BlueDto> dto)
-        => _blueMapper.Map(dto);
+        => blueMapper.Map(dto);
 }
