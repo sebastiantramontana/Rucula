@@ -30,7 +30,7 @@ jobs:
             name: artifact-build
             path: ./dist
   tailwindcss:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
     steps:
         - name: Check out Code
@@ -49,7 +49,7 @@ jobs:
             name: artifact-tailwindcss
             path: ./dist
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: tailwindcss
     steps:
         - name: Descargar artifact Build
