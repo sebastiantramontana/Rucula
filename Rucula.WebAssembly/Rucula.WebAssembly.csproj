@@ -18,33 +18,26 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 		<DebugType>none</DebugType>
 		<TieredPGO>true</TieredPGO>
 		<BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>
 		<WasmEnableLinking>true</WasmEnableLinking>
 		<BlazorWebAssemblyEnableDebugging>false</BlazorWebAssemblyEnableDebugging>
 		<BlazorWebAssemblyEnableHotReload>false</BlazorWebAssemblyEnableHotReload>
-		<BlazorWebAssemblyEnablePrerendering>false</BlazorWebAssemblyEnablePrerendering>
 		<BlazorWebAssemblyEnablePWA>false</BlazorWebAssemblyEnablePWA>
 		<BlazorWebAssemblyLazyLoadAssemblies>true</BlazorWebAssemblyLazyLoadAssemblies>
-		<BlazorWebAssemblyEnableLazyLoading>true</BlazorWebAssemblyEnableLazyLoading>
-		<BlazorWebAssemblyEnableServiceWorker>true</BlazorWebAssemblyEnableServiceWorker>
-		<BlazorWebAssemblyEnableWebAssemblyStreaming>true</BlazorWebAssemblyEnableWebAssemblyStreaming>
-		<BlazorWebAssemblyEnableWebAssemblyThreads>true</BlazorWebAssemblyEnableWebAssemblyThreads>
 		<UseRazorCompileOnPublish>false</UseRazorCompileOnPublish>
 		<RunAOTCompilation>true</RunAOTCompilation>
 		<BlazorWebAssemblyEnableAot>true</BlazorWebAssemblyEnableAot>
 		<WasmStripILAfterAOT>false</WasmStripILAfterAOT>
 		<BlazorEnableCompression>true</BlazorEnableCompression>
-		<BlazorWebAssemblyEnableCompression>true</BlazorWebAssemblyEnableCompression>
 		<PublishTrimmed>true</PublishTrimmed>
 		<TrimMode>partial</TrimMode>
 		<TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
 		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
 		<SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
-		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 		<InvariantGlobalization>true</InvariantGlobalization>
-		<BlazorWebAssemblyLoadAllGlobalizationData>false</BlazorWebAssemblyLoadAllGlobalizationData>
 		<EventSourceSupport>false</EventSourceSupport>
 		<UseSystemResourceKeys>true</UseSystemResourceKeys>
 		<DebuggerSupport>false</DebuggerSupport>
@@ -59,18 +52,6 @@
 		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
 		<BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
 		<WasmEnableSIMD>true</WasmEnableSIMD>
-		<BlazorWebAssemblyEnableWebAssemblySimd>true</BlazorWebAssemblyEnableWebAssemblySimd>
-		<BlazorWebAssemblyEnableWebAssemblyMultiValue>true</BlazorWebAssemblyEnableWebAssemblyMultiValue>
-		<BlazorWebAssemblyEnableWebAssemblyBigInt>false</BlazorWebAssemblyEnableWebAssemblyBigInt>
-		<BlazorWebAssemblyEnableWebAssemblySignExtension>true</BlazorWebAssemblyEnableWebAssemblySignExtension>
-		<BlazorWebAssemblyEnableWebAssemblyNonTrappingF2I>true</BlazorWebAssemblyEnableWebAssemblyNonTrappingF2I>
-		<BlazorWebAssemblyEnableWebAssemblySatF2I>true</BlazorWebAssemblyEnableWebAssemblySatF2I>
-		<BlazorWebAssemblyEnableWebAssemblyExceptions>true</BlazorWebAssemblyEnableWebAssemblyExceptions>
-		<BlazorWebAssemblyEnableWebAssemblyGC>true</BlazorWebAssemblyEnableWebAssemblyGC>
-		<BlazorWebAssemblyEnableWebAssemblyMemory64>false</BlazorWebAssemblyEnableWebAssemblyMemory64>
-		<BlazorWebAssemblyEnableWebAssemblyBulkMemory>true</BlazorWebAssemblyEnableWebAssemblyBulkMemory>
-		<BlazorWebAssemblyEnableWebAssemblyReferenceTypes>true</BlazorWebAssemblyEnableWebAssemblyReferenceTypes>
-		<BlazorWebAssemblyEnableWebAssemblyTailCalls>true</BlazorWebAssemblyEnableWebAssemblyTailCalls>
 		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
 	</PropertyGroup>
 	<ItemGroup>
