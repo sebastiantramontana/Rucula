@@ -8,7 +8,7 @@ internal class JsNotifier(IJsModulesProvider jsModulesProvider) : INotifier
 {
     public async Task Notify(string message)
     {
-        var module = await jsModulesProvider.GetMainModule().ConfigureAwait(false);
+        var module = await jsModulesProvider.GetNotifyModule().ConfigureAwait(false);
         module.InvokeVoid("notify", message);
     }
 }

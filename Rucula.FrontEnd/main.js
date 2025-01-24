@@ -6,6 +6,7 @@ import showDolarWesternUnion from "./modules/dolar-western-union.js";
 import wuParameters from "./modules/dolar-western-union-parameters.js";
 import showDolarBlue from "./modules/dolar-blue.js";
 import showBestChoice from "./modules/best-choice.js";
+import { notify } from "./modules/notify.js";
 
 let dataIntervalId = null;
 const numberFormater = new Intl.NumberFormat('es-AR', {
@@ -193,9 +194,4 @@ function showElementAsInlineBlock(id) {
 function hideElement(id) {
     const element = document.getElementById(id);
     element.style.display = "none";
-}
-
-export function notify(message) {
-    const msgElement = document.getElementById("notify-progress");
-    msgElement.textContent = message;
 }
