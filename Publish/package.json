@@ -4,10 +4,9 @@
     "spec": ""
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.0.0",
     "npx": "^10.2.2",
-    "postcss": "^8.5.1"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.4.16"
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.0"
   }
 }

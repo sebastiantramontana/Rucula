@@ -70,4 +70,3 @@ jobs:
           with:
             publish-dir: ./dist
             production-branch: main
-            production-deploy: true
