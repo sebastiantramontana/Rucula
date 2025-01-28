@@ -1,6 +1,6 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class ChoicesInfo(WinningChoice WinningChoice,
+public sealed record class ChoicesInfo(WinningChoice WinningChoice,
                             IEnumerable<TituloIsin> RankingTitulos,
                             Optional<Blue> Blue,
                             Optional<DolarWesternUnion> DolarWesternUnion,

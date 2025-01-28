@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.Mappers;
 
-internal class DolarCrpyoFeesMapper : IMapper<DolarCryptoFeesDto, DolarCryptoFees>
+internal sealed class DolarCrpyoFeesMapper : IMapper<DolarCryptoFeesDto, DolarCryptoFees>
 {
     public Optional<DolarCryptoFees> Map(Optional<DolarCryptoFeesDto> from)
         => from.HasValue

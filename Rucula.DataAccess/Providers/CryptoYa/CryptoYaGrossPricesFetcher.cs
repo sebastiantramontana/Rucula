@@ -1,7 +1,6 @@
-﻿
-namespace Rucula.DataAccess.Providers.CryptoYa;
+﻿namespace Rucula.DataAccess.Providers.CryptoYa;
 
-internal class CryptoYaGrossPricesFetcher(IHttpReader httpReader) : ICryptoYaGrossPricesFetcher
+internal sealed class CryptoYaGrossPricesFetcher(IHttpReader httpReader) : ICryptoYaGrossPricesFetcher
 {
     private const string Url = "https://criptoya.com/api/{0}/ARS/{1}";
 

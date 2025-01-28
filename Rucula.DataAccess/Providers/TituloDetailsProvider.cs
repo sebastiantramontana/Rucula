@@ -8,7 +8,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class TituloDetailsProvider(IBymaTituloDetailsFetcher bymaTituloDetailsFetcher, IJsonDeserializer<TituloDetailsContentDto> tituloDetailsContentJsonDeserializer, IMapper<TituloDetailsDto, TituloDetails> tituloDetailsMapper) : ITituloDetailsProvider
+internal sealed class TituloDetailsProvider(IBymaTituloDetailsFetcher bymaTituloDetailsFetcher, IJsonDeserializer<TituloDetailsContentDto> tituloDetailsContentJsonDeserializer, IMapper<TituloDetailsDto, TituloDetails> tituloDetailsMapper) : ITituloDetailsProvider
 {
     public async Task<IEnumerable<TituloDetails>> GetTituloDetails(string symbol)
     {

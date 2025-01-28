@@ -8,7 +8,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class WesternUnionProvider(IWesternUnionFetcher westernUnionFetcher,
+internal sealed class WesternUnionProvider(IWesternUnionFetcher westernUnionFetcher,
                             IJsonDeserializer<DolarWesternUnionDto> dolarWesternUnionJsonDeserializer,
                             IMapper<DolarWesternUnionDto, DolarWesternUnionInfo> dolarWesterUnionMapper,
                             INotifier notifier) : IWesternUnionProvider

@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class CryptoCurrencyFees(string CryptoCurrencyKey, IEnumerable<CurrencyBlockchainFee> BlockchainFees);
+public sealed record class CryptoCurrencyFees(string CryptoCurrencyKey, IEnumerable<CurrencyBlockchainFee> BlockchainFees);

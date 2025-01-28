@@ -4,7 +4,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.Mappers;
 
-internal class BlueMapper(ISpanishNumberConverter spanishNumberConverter) : IMapper<BlueDto, Blue>
+internal sealed class BlueMapper(ISpanishNumberConverter spanishNumberConverter) : IMapper<BlueDto, Blue>
 {
     public Optional<Blue> Map(Optional<BlueDto> from)
         => from.HasValue ? Parse(from.Value) : Optional<Blue>.Empty;

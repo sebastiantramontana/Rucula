@@ -2,7 +2,7 @@
 
 namespace Rucula.DataAccess.Helpers;
 
-public class InvocationChainOptional<T> : InvocationChainBase
+public sealed class InvocationChainOptional<T> : InvocationChainBase
 {
     public static InvocationChainOptional<T> Create(Optional<T> value)
         => new(value, null);

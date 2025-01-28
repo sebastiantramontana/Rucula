@@ -5,7 +5,7 @@ using System.Runtime.Versioning;
 namespace Rucula.WebAssembly.Parameters;
 
 [SupportedOSPlatform("browser")]
-internal class BondCommissionsJSObjectConverter : IJSObjectConverter<BondCommissions>
+internal sealed class BondCommissionsJSObjectConverter : IJSObjectConverter<BondCommissions>
 {
     public BondCommissions Convert(JSObject jsObj)
         => new(jsObj.GetPropertyAsDouble("purchasePercentage"),

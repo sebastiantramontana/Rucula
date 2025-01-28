@@ -1,3 +1,3 @@
 ﻿namespace Rucula.DataAccess.Dtos;
 
-internal record class DolarCryptoCurrencyGrossPriceDto(string ExchangeName, double TotalBid);
+internal sealed record class DolarCryptoCurrencyGrossPriceDto(string ExchangeName, double TotalBid);

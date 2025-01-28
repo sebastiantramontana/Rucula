@@ -1,6 +1,6 @@
 ﻿namespace Rucula.DataAccess.Providers;
 
-internal class HttpReader(IHttpClientFactory httpClientFactory) : IHttpReader
+internal sealed class HttpReader(IHttpClientFactory httpClientFactory) : IHttpReader
 {
     public async Task<string> Read(HttpRequestMessage request)
     {

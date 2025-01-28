@@ -1,7 +1,6 @@
-﻿
-namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
 
-internal class BymaIsOpenMarketRequestFactory : IBymaIsOpenMarketRequestFactory
+internal sealed class BymaIsOpenMarketRequestFactory : IBymaIsOpenMarketRequestFactory
 {
     private const string Url = "https://open.bymadata.com.ar/vanoms-be-core/rest/api/bymadata/free/market-open";
 

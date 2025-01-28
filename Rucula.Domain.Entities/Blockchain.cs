@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class Blockchain(string Name);
+public sealed record class Blockchain(string Name);

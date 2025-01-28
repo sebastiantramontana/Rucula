@@ -8,7 +8,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class DolarCryptoFeesProvider(ICryptoYaFeesFetcher fetcher,
+internal sealed class DolarCryptoFeesProvider(ICryptoYaFeesFetcher fetcher,
                                IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>> dolarCrpyoFeesDtoJsonDeserializer,
                                IMapper<DolarCryptoFeesDto, DolarCryptoFees> dolarCrpyoFeesMapper,
                                INotifier notifier) : IDolarCryptoFeesProvider
@@ -25,6 +25,7 @@ internal class DolarCryptoFeesProvider(ICryptoYaFeesFetcher fetcher,
         var feesDtos = dolarCrpyoFeesDtoJsonDeserializer.Deserialize(JsonNode.Parse(content)!);
         return feesDtos.HasValue ? feesDtos.Value : [];
     }
+
     private IEnumerable<DolarCryptoFees> MapToDolarCryptoFees(IEnumerable<DolarCryptoFeesDto> dtos)
         => dtos
         .Select(dto => dolarCrpyoFeesMapper.Map(Optional<DolarCryptoFeesDto>.Maybe(dto)))

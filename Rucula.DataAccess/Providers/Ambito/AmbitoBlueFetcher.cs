@@ -1,6 +1,6 @@
 ﻿namespace Rucula.DataAccess.Providers.Ambito;
 
-internal class AmbitoBlueFetcher(IHttpReader httpReader) : IAmbitoBlueFetcher
+internal sealed class AmbitoBlueFetcher(IHttpReader httpReader) : IAmbitoBlueFetcher
 {
     private const string Url = "https://mercados.ambito.com//dolar/informal/variacion";
 

@@ -2,7 +2,7 @@
 
 namespace Rucula.DataAccess.Helpers;
 
-public class InvocationChainNullable<T> : InvocationChainBase where T : class
+public sealed class InvocationChainNullable<T> : InvocationChainBase where T : class
 {
     public static InvocationChainNullable<T> Create(T? value)
         => new(value, null);

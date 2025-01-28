@@ -8,7 +8,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class DolarBlueProvider(
+internal sealed class DolarBlueProvider(
     IAmbitoBlueFetcher ambitoBlueFetcher,
     IJsonDeserializer<BlueDto> blueJsonDeserializer,
     IMapper<BlueDto, Blue> blueMapper,

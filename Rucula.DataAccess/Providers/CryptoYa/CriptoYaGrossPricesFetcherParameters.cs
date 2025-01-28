@@ -1,4 +1,3 @@
-﻿
-namespace Rucula.DataAccess.Providers.CryptoYa;
+﻿namespace Rucula.DataAccess.Providers.CryptoYa;
 
-internal record class CriptoYaGrossPricesFetcherParameters(string CryptoCurrencyKey, double Volume);
+internal sealed record class CriptoYaGrossPricesFetcherParameters(string CryptoCurrencyKey, double Volume);

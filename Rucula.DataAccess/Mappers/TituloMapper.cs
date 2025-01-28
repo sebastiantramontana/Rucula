@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.Mappers;
 
-internal class TituloMapper : IMapper<TituloDto, Titulo>
+internal sealed class TituloMapper : IMapper<TituloDto, Titulo>
 {
     public Optional<Titulo> Map(Optional<TituloDto> from)
         => from.HasValue ? Sure(from.Value) : Optional<Titulo>.Empty;

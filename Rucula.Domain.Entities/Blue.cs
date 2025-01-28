@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class Blue(double? PrecioCompra, double? PrecioVenta);
+public sealed record class Blue(double? PrecioCompra, double? PrecioVenta);

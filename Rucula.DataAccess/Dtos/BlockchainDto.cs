@@ -1,3 +1,3 @@
 ﻿namespace Rucula.DataAccess.Dtos;
 
-internal record class BlockchainDto(string Name, double Fees);
+internal sealed record class BlockchainDto(string Name, double Fees);

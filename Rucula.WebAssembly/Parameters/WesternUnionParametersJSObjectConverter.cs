@@ -5,7 +5,7 @@ using System.Runtime.Versioning;
 namespace Rucula.WebAssembly.Parameters;
 
 [SupportedOSPlatform("browser")]
-internal class WesternUnionParametersJSObjectConverter : IJSObjectConverter<WesternUnionParameters>
+internal sealed class WesternUnionParametersJSObjectConverter : IJSObjectConverter<WesternUnionParameters>
 {
     public WesternUnionParameters Convert(JSObject jsObj)
         => new(jsObj.GetPropertyAsDouble("amountToSend"));

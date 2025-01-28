@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier) : ITitulosService
+internal sealed class TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier) : ITitulosService
 {
     public IEnumerable<TituloIsin> RecalculateNetCclRanking(IEnumerable<TituloIsin> titulos, BondCommissions bondCommissions)
         => titulos

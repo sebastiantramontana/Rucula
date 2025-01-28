@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonToBlueDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<BlueDto>
+internal sealed class JsonToBlueDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<BlueDto>
 {
     public Optional<BlueDto> Deserialize(JsonNode? node)
     {

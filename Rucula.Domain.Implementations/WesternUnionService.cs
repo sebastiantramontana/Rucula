@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class WesternUnionService(IWesternUnionProvider westernUnionProvider) : IWesternUnionService
+internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProvider) : IWesternUnionService
 {
     public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters)
     {

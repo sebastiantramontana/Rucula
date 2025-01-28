@@ -2,7 +2,7 @@
 
 namespace Rucula.Infrastructure.JsInterop;
 
-internal class JsModuleImporter(IJSRuntime jsInProcessRuntime) : IJsModuleImporter
+internal sealed class JsModuleImporter(IJSRuntime jsInProcessRuntime) : IJsModuleImporter
 {
     private readonly JSInProcessRuntime _jsInProcessRuntime = (JSInProcessRuntime)jsInProcessRuntime;
 

@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesProvider, IDolarCryptoFeesProvider feesProvider, IDolarCryptoMaxPriceService maxPriceService) : IDolarCryptoService
+internal sealed class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPricesProvider, IDolarCryptoFeesProvider feesProvider, IDolarCryptoMaxPriceService maxPriceService) : IDolarCryptoService
 {
     private const string UsdcKey = "USDC";
     private const string UsdtKey = "USDT";

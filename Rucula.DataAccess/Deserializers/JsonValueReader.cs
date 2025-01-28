@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonValueReader : IJsonValueReader
+internal sealed class JsonValueReader : IJsonValueReader
 {
     public T GetRequiredValue<T>(JsonNode node, string key)
         => node[key]!.GetValue<T>();

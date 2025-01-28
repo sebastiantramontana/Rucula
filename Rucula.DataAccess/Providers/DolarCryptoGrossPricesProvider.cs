@@ -7,7 +7,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class DolarCryptoGrossPricesProvider(ICryptoYaGrossPricesFetcher fetcher,
+internal sealed class DolarCryptoGrossPricesProvider(ICryptoYaGrossPricesFetcher fetcher,
                                IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>> deserializer,
                                INotifier notifier) : IDolarCryptoGrossPricesProvider
 {

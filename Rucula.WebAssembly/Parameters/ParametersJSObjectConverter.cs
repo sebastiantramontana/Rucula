@@ -3,7 +3,7 @@ using System.Runtime.InteropServices.JavaScript;
 
 namespace Rucula.WebAssembly.Parameters;
 
-internal class ParametersJSObjectConverter(
+internal sealed class ParametersJSObjectConverter(
     IJSObjectConverter<BondCommissions> bondJSObjectConverter,
     IJSObjectConverter<WesternUnionParameters> wuJSObjectConverter,
     IJSObjectConverter<DolarCryptoParameters> cryptojSObjectConverter) : IParametersJSObjectConverter

@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonToPaginationDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<PaginationDto>
+internal sealed class JsonToPaginationDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<PaginationDto>
 {
     public Optional<PaginationDto> Deserialize(JsonNode? node)
     {

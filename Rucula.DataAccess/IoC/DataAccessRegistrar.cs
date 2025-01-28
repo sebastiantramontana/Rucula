@@ -17,19 +17,16 @@ namespace Rucula.DataAccess.IoC;
 public static class DataAccessRegistrar
 {
     public static IServiceCollection AddDataAccess(this IServiceCollection serviceCollection)
-    {
-        RegisterDeserializers(serviceCollection);
-        RegisterProviders(serviceCollection);
-        RegisterReaders(serviceCollection);
-        RegisterFetchers(serviceCollection);
-        RegisterRequestFactories(serviceCollection);
-        RegisterMappers(serviceCollection);
-        RegisterGlobalization(serviceCollection);
+        => serviceCollection
+            .RegisterDeserializers()
+            .RegisterProviders()
+            .RegisterReaders()
+            .RegisterFetchers()
+            .RegisterRequestFactories()
+            .RegisterMappers()
+            .RegisterGlobalization();
 
-        return serviceCollection;
-    }
-
-    private static void RegisterRequestFactories(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterRequestFactories(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<IBymaRequestPostFactory, BymaRequestPostFactory>()
             .AddSingleton<ITituloDetailsRequestFactory, TituloDetailsRequestFactory>()
@@ -37,15 +34,15 @@ public static class DataAccessRegistrar
             .AddSingleton<IBonosRequestFactory, BonosRequestFactory>()
             .AddSingleton<IBymaIsOpenMarketRequestFactory, BymaIsOpenMarketRequestFactory>();
 
-    private static void RegisterReaders(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterReaders(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<IHttpReader, HttpReader>();
 
-    private static void RegisterGlobalization(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterGlobalization(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<ISpanishNumberConverter, SpanishNumberConverter>();
 
-    private static void RegisterProviders(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterProviders(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<ITitulosProvider, TitulosProvider>()
             .AddSingleton<IProvider<Titulo>, TitulosProvider>()
@@ -55,7 +52,7 @@ public static class DataAccessRegistrar
             .AddSingleton<IDolarCryptoFeesProvider, DolarCryptoFeesProvider>()
             .AddSingleton<IDolarCryptoGrossPricesProvider, DolarCryptoGrossPricesProvider>();
 
-    private static void RegisterFetchers(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterFetchers(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<IBymaIsMarketOpenFetcher, BymaIsOpenMarketFetcher>()
             .AddSingleton<IBymaLetrasFetcher, BymaLetrasFetcher>()
@@ -66,7 +63,7 @@ public static class DataAccessRegistrar
             .AddSingleton<ICryptoYaFeesFetcher, CryptoYaFeesFetcher>()
             .AddSingleton<ICryptoYaGrossPricesFetcher, CryptoYaGrossPricesFetcher>();
 
-    private static void RegisterMappers(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterMappers(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<IMapper<TituloDto, Titulo>, TituloMapper>()
             .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
@@ -74,7 +71,7 @@ public static class DataAccessRegistrar
             .AddSingleton<IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>, DolarWesternUnionMapper>()
             .AddSingleton<IMapper<DolarCryptoFeesDto, DolarCryptoFees>, DolarCrpyoFeesMapper>();
 
-    private static void RegisterDeserializers(IServiceCollection serviceCollection)
+    private static IServiceCollection RegisterDeserializers(this IServiceCollection serviceCollection)
         => serviceCollection
             .AddSingleton<IJsonDeserializer<PaginationDto>, JsonToPaginationDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<TituloDetailsContentDto>, JsonToTituloDetailsContentDtoDeserializer>()

@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class WesternUnionParameters(double AmountToSend);
+public sealed record class WesternUnionParameters(double AmountToSend);

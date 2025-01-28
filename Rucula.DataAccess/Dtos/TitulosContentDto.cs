@@ -1,3 +1,3 @@
 ﻿namespace Rucula.DataAccess.Dtos;
 
-public record class TitulosContentDto(PaginationDto Pagination, IEnumerable<TituloDto> Titulos);
+internal sealed record class TitulosContentDto(PaginationDto Pagination, IEnumerable<TituloDto> Titulos);

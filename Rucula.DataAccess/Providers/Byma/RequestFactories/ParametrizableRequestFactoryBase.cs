@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
+﻿namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
 
 internal abstract class ParametrizableRequestFactoryBase(string url, IBymaRequestPostFactory bymaRequestFactory) : IParametrizableRequestFactory
 {

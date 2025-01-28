@@ -2,7 +2,7 @@
 
 namespace Rucula.DataAccess.Providers.Byma.RequestFactories;
 
-internal class BymaRequestPostFactory : IBymaRequestPostFactory
+internal sealed class BymaRequestPostFactory : IBymaRequestPostFactory
 {
     public HttpRequestMessage CreateRequestPost(string url, string parameters)
     {

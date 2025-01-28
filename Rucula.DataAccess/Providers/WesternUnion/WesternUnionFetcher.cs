@@ -1,6 +1,6 @@
 ﻿namespace Rucula.DataAccess.Providers.WesternUnion;
 
-internal class WesternUnionFetcher(IHttpReader httpReader) : IWesternUnionFetcher
+internal sealed class WesternUnionFetcher(IHttpReader httpReader) : IWesternUnionFetcher
 {
     private const string Url = "https://www.westernunion.com/wuconnect/prices/catalog";
 

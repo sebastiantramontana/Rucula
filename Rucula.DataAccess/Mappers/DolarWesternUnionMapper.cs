@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.Mappers;
 
-internal class DolarWesternUnionMapper : IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>
+internal sealed class DolarWesternUnionMapper : IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>
 {
     public Optional<DolarWesternUnionInfo> Map(Optional<DolarWesternUnionDto> from)
         => from.HasValue

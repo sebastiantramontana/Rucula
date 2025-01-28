@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.DataAccess.Mappers;
 
-internal class TituloDetailsMapper : IMapper<TituloDetailsDto, TituloDetails>
+internal sealed class TituloDetailsMapper : IMapper<TituloDetailsDto, TituloDetails>
 {
     private const string TextoObligacionNacional = "Valores Públicos Nacionales";
 

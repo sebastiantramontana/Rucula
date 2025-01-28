@@ -8,7 +8,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
 
-internal class TitulosProvider(IBymaLetrasFetcher letrasFetcher,
+internal sealed class TitulosProvider(IBymaLetrasFetcher letrasFetcher,
                        IBymaBonosFetcher bonosFetcher,
                        IBymaIsMarketOpenFetcher isMarketOpenFetcher,
                        IJsonDeserializer<TitulosContentDto> jsonTituloDeserializer,

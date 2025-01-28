@@ -3,7 +3,7 @@ using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal class ChoicesService(ITitulosService titulosService,
+internal sealed class ChoicesService(ITitulosService titulosService,
                       IDolarBlueProvider dolarBlueProvider,
                       IWesternUnionService westernUnionService,
                       IDolarCryptoService dolarCryptoService) : IChoicesService

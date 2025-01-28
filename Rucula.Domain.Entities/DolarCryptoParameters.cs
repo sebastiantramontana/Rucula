@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class DolarCryptoParameters(double Volume);
+public sealed record class DolarCryptoParameters(double Volume);

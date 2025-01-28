@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Deserializers;
 
-internal class JsonToDolarWesternUnionDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<DolarWesternUnionDto>
+internal sealed class JsonToDolarWesternUnionDtoDeserializer(IJsonValueReader valueReader) : IJsonDeserializer<DolarWesternUnionDto>
 {
     private const int acFundInIndex = 0;
     private const string fxRateNodeProperty = "fx_rate";

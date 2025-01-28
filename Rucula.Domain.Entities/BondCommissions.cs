@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class BondCommissions(double PurchasePercentage, double SalePercentage, double WithdrawalPercentage);
+public sealed record class BondCommissions(double PurchasePercentage, double SalePercentage, double WithdrawalPercentage);

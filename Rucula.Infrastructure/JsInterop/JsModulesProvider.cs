@@ -2,7 +2,7 @@
 
 namespace Rucula.Infrastructure.JsInterop;
 
-internal class JsModulesProvider(IJsModuleImporter jsModuleImporter) : IJsModulesProvider
+internal sealed class JsModulesProvider(IJsModuleImporter jsModuleImporter) : IJsModulesProvider
 {
     private IJSInProcessObjectReference? _jsNotifyModule;
 

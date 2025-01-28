@@ -1,7 +1,6 @@
-﻿
-namespace Rucula.DataAccess.Providers.CryptoYa;
+﻿namespace Rucula.DataAccess.Providers.CryptoYa;
 
-internal class CryptoYaFeesFetcher(IHttpReader httpReader) : ICryptoYaFeesFetcher
+internal sealed class CryptoYaFeesFetcher(IHttpReader httpReader) : ICryptoYaFeesFetcher
 {
     private const string Url = "https://criptoya.com/api/fees";
 

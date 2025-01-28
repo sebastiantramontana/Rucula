@@ -1,3 +1,3 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class DolarWesternUnionInfo(double GrossPrice, double Fees);
+public sealed record class DolarWesternUnionInfo(double GrossPrice, double Fees);

@@ -4,7 +4,7 @@ using Rucula.Infrastructure.JsInterop;
 
 namespace Rucula.Infrastructure;
 
-internal class JsNotifier(IJsModulesProvider jsModulesProvider) : INotifier
+internal sealed class JsNotifier(IJsModulesProvider jsModulesProvider) : INotifier
 {
     public async Task Notify(string message)
     {

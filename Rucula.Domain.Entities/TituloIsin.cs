@@ -1,6 +1,6 @@
 ﻿namespace Rucula.Domain.Entities;
 
-public record class TituloIsin(string CodigoIsin,
+public sealed record class TituloIsin(string CodigoIsin,
                                string Denominacion,
                                Titulo? TituloCable,
                                Titulo? TituloPeso,
