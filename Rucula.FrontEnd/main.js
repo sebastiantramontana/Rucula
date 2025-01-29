@@ -149,7 +149,7 @@ async function recalculateChoices(titulosPublicosParameters, wuParameters, crypt
 
 async function getRuculaService() {
     const { getAssemblyExports } = await globalThis.getDotnetRuntime(0);
-    var exports = await getAssemblyExports("Rucula.WebAssembly.dll");
+    const exports = await getAssemblyExports("Rucula.WebAssembly.dll");
     return exports.Rucula.WebAssembly.Program;
 }
 
