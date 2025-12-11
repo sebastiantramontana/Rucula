@@ -1,4 +1,4 @@
-#tool "dotnet:?package=GitVersion.Tool&version=6.1.0"
+#tool "dotnet:?package=GitVersion.Tool&version=6.5.1"
 #r "tools/TailwindPlayRemover.dll"
 
 var target = Argument("target", "Default");
@@ -70,9 +70,10 @@ Task("Publish")
 										   NoLogo = true,
 										   NoRestore = true,
 										   NoBuild = false,
-										   Framework = "net9.0",
+										   Framework = "net10.0",
 										   SelfContained = true,
 										   Runtime = "browser-wasm",
+										   PublishTrimmed = true,
 										   OutputDirectory = "./../dist",
 									   };
 		   Information($"Publicando wasm de Rúcula");

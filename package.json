@@ -1,0 +1,25 @@
+{
+  "name": "rucula",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastiantramontana/Rucula.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sebastiantramontana/Rucula/issues"
+  },
+  "homepage": "https://github.com/sebastiantramontana/Rucula#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.17",
+    "@tailwindcss/cli": "^4.1.17"
+  }
+}

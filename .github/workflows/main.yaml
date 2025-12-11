@@ -11,17 +11,17 @@ jobs:
     runs-on: windows-latest
     steps:
         - name: Check out Code
-          uses: actions/checkout@v4
+          uses: actions/checkout@v6
           with:
             fetch-depth: 0
         - name: Setup .NET
-          uses: actions/setup-dotnet@v4
+          uses: actions/setup-dotnet@v5
           with:
-            dotnet-version: 9.0.x
+            dotnet-version: 10.0.x
         - name: Install wasm-tools workload
           run: dotnet workload install wasm-tools
         - name: Run the Cake script
-          uses: cake-build/cake-action@v2
+          uses: cake-build/cake-action@v3
           with:
             script-path: ./Publish/build.cake
         - name: Crear artifact
@@ -30,26 +30,28 @@ jobs:
             name: artifact-build
             path: ./dist
   tailwindcss:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     needs: build
     steps:
         - name: Check out Code
-          uses: actions/checkout@v4
+          uses: actions/checkout@v6
           with:
             fetch-depth: 0
-        - name: Clean tailwindcss
-          uses: ZoeyVid/tailwindcss-update@main
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
           with:
-            input: ./Rucula.FrontEnd/css/styles.css
-            output: ./dist/css/styles.css
-            params: "--minify"
+            node-version: '20'
+        - name: Install dependencies
+          run: npm install
+        - name: Clean tailwindcss
+          run: npx @tailwindcss/cli -i ./Rucula.FrontEnd/css/styles.css -o ./dist/css/styles.css --minify
         - name: Crear artifact
           uses: actions/upload-artifact@v4
           with:
             name: artifact-tailwindcss
             path: ./dist
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     needs: tailwindcss
     steps:
         - name: Descargar artifact Build
@@ -62,11 +64,8 @@ jobs:
           with:
             name: artifact-tailwindcss
             path: ./dist
-        - name: Publish generated Blazor webassembly to Netlify
-          uses: nwtgck/actions-netlify@v3.0 
+        - name: Deploy to Netlify
           env:
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          with:
-            publish-dir: ./dist
-            production-branch: main
+          run: npx netlify-cli deploy --prod --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN" --dir=./dist
