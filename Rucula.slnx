@@ -26,6 +26,7 @@
     </Properties>
   </Project>
   <Project Path="Rucula.Infrastructure/Rucula.Infrastructure.csproj" />
+  <Project Path="Rucula.Presentation/Rucula.Presentation.csproj" Id="743e1fbb-c2de-4cb3-a9c8-9ca15b38372f" />
   <Project Path="Rucula.WebAssembly.Mock/Rucula.WebAssembly.Mock.csproj" />
   <Project Path="Rucula.WebAssembly/Rucula.WebAssembly.csproj" />
 </Solution>

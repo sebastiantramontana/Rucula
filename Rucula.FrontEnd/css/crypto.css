@@ -3,36 +3,25 @@
     padding: 12px;
 }
 
-#tabla-crypto > thead {
+#crypto-table-container table:first-child {
+    display: table;
+}
+
+#crypto-table-container:has(table) + #crypto-info-msg {
     display: none;
 }
 
-#tabla-crypto thead + tbody {
+#crypto-table-container:not(:has(table)) + #crypto-info-msg {
     display: block;
 }
 
-#tabla-crypto:has(tbody) > caption {
-    display: none;
-}
-
-#tabla-crypto:not(:has(tbody)) > caption {
-    display: table-caption;
-}
-
 @media screen and (min-width: 640px) {
-    #tabla-crypto:has(tbody) > thead {
-        display: table-header-group;
+    td[data-best-crypto-price] {
+        box-shadow: 0 0 0 2px #0ea5e9;
+        box-shadow: inset 0 0 0 2px #0ea5e9;
     }
 
-    #tabla-crypto:has(tbody) ~ label {
-        display: unset;
-    }
-
-    #tabla-crypto thead + tbody {
-        display: table-header-group;
-    }
-
-    #tabla-crypto-container:has(#expand-table-crypto-checkbox:checked) #tabla-crypto > tbody {
-        display: table-header-group;
+    #crypto-table-container table {
+        display: table;
     }
 }
