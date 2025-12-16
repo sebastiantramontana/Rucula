@@ -3,7 +3,7 @@
     padding: 12px;
 }
 
-#crypto-table-container table:first-child {
+#crypto-table-container > table:first-child {
     display: table;
 }
 
@@ -21,7 +21,11 @@
         box-shadow: inset 0 0 0 2px #0ea5e9;
     }
 
-    #crypto-table-container table {
+    #crypto-table-container:has(table:nth-of-type(2)) ~ label {
+        display: unset;
+    }
+
+    #crypto-container:has(#expand-table-crypto-checkbox:checked) #crypto-table-container > table {
         display: table;
     }
 }
