@@ -12,10 +12,10 @@ internal sealed class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPr
 
     public async Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters)
     {
-        var (fees, allGrossPrices) = await GetDataFromProviders(cryptoParameters.Volume);
+        var (fees, allGrossPrices) = await GetDataFromProviders(cryptoParameters.TradingVolume);
 
         return fees
-            .Select(fee => GetDolarCryptoPrices(fee, allGrossPrices, cryptoParameters.Volume))
+            .Select(fee => GetDolarCryptoPrices(fee, allGrossPrices, cryptoParameters.TradingVolume))
             .Where(prices => prices.HasValue)
             .Select(prices => prices.Value)
             .OrderByDescending(prices => GetTopNetPrice(prices.DolarCryptoNetPrices.First()))

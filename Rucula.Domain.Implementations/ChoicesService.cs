@@ -14,11 +14,12 @@ internal sealed class ChoicesService(ITitulosService titulosService,
         var dolarWesternUnionTask = westernUnionService.GetDolarWesternUnion(westernUnionParameters);
         var rankingCryptoTask = dolarCryptoService.GetPriceRanking(cryptoParameters);
 
-        await Task.WhenAll(dolarBlueTask, dolarWesternUnionTask, rankingCryptoTask).ConfigureAwait(false);
+        var nonRankingTitulosTasks = Task.WhenAll(dolarBlueTask, dolarWesternUnionTask, rankingCryptoTask);
+        var rankingTitulosTask = titulosService.GetNetCclRanking(await dolarBlueTask, bondCommissions);
 
-        var rankingTitulos = await titulosService.GetNetCclRanking(await dolarBlueTask, bondCommissions).ConfigureAwait(false);
+        await Task.WhenAll(nonRankingTitulosTasks, rankingTitulosTask).ConfigureAwait(false);
 
-        return CreateWinningChoice(rankingTitulos, await dolarBlueTask, await dolarWesternUnionTask, await rankingCryptoTask);
+        return CreateWinningChoice(await rankingTitulosTask, await dolarBlueTask, await dolarWesternUnionTask, await rankingCryptoTask);
     }
 
     public async Task<ChoicesInfo> RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters)
@@ -73,7 +74,7 @@ internal sealed class ChoicesService(ITitulosService titulosService,
         => topCryptoNetPrices.DolarCryptoNetPrices.First().TopNetPrice;
 
     private static WinningChoice CreateWinner(TituloIsin titulo)
-        => new(titulo.TituloPeso!.Simbolo, "Incluye comisiones, pero no costos de transferencias", titulo.NetCcl!.Value);
+        => new(titulo.TituloPeso!.Simbolo, "Incluye comisiones, pero no costos de transferencias", titulo.NetCcl);
 
     private static WinningChoice CreateWinner(DolarWesternUnion dolarWesternUnion)
         => new("Western Union", "Incluye costos", dolarWesternUnion.NetPrice);

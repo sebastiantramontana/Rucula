@@ -1,23 +1,16 @@
-﻿using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities;
-using Rucula.WebAssembly.ViewModels;
+﻿using Rucula.Domain.Entities;
+using Rucula.Presentation.ViewModels;
+using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
-internal interface IWinningChoicePresenter
+internal sealed class WinningChoicePresenter(
+    WinningChoiceViewModel winningChoiceViewModel,
+    IViewUpdater<WinningChoiceViewModel> viewUpdater) : IWinningChoicePresenter
 {
-    Task GetChoices(WinningChoiceViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters);
-    Task RecalculateChoices(WinningChoiceViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters);
-}
-
-internal class WinningChoicePresenter(IChoicesService choiceService) : IWinningChoicePresenter
-{
-    private ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
-
-    public async Task GetChoices(WinningChoiceViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    public Task ShowWinner(WinningChoice winningChoice)
     {
-        _currentChoices = await choiceService.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters);
+        winningChoiceViewModel.Update(winningChoice);
+        return viewUpdater.Update(winningChoiceViewModel);
     }
-
-    public Task RecalculateChoices(WinningChoiceViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters) => throw new NotImplementedException();
 }

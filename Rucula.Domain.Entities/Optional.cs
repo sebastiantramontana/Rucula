@@ -43,5 +43,4 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 
     public override string? ToString()
         => HasValue ? Value!.ToString() : string.Empty;
-
 }

@@ -11,13 +11,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
 }
 
 html,
@@ -35,4 +35,23 @@ body {
 
 .hover-bg-ccl:hover {
     background-color: #548217;
+}
+
+.hover-bg-ccl-darker:hover {
+    background-color: rgb(from #548217 calc(r - 30) calc(g - 30) calc(b - 30));
+}
+
+.disabled-button:disabled {
+    background-color: rgb(128 128 128 / 50%);
+    cursor: not-allowed;
+    border: 1px solid rgb(128 128 128);
+    box-shadow: none;
+}
+
+[data-hidden] {
+    display: none;
+}
+
+[data-inline-block] {
+    display: inline-block;
 }

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Vitraux" Version="1.2.6-rc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Rucula.Domain.Abstractions\Rucula.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\Rucula.Domain.Entities\Rucula.Domain.Entities.csproj" />
   </ItemGroup>

@@ -23,6 +23,8 @@ addEventListener("load", async () => {
             }
         });
 
+        hideDownloadingIndicator();
+
         addApplyBondCommissionsClickListener();
         addApplyWuParametersClickListener();
         addApplyCryptoParametersClickListener();
@@ -155,14 +157,13 @@ async function getRuculaService() {
 
 function showLoadingIndicator() {
     hideBestChoice();
-    hideDownloadingIndicator();
     showLoadingIndicatorElement();
     showAllIndicatorsContainer();
 }
 
 function showBestChoiceElement() {
 
-    showElementAsInlineBlock("mejor-opcion");
+    showElementAsInlineBlock("winning-choice");
     hideAllIndicatorsContainer();
 }
 
@@ -179,7 +180,7 @@ function hideAllIndicatorsContainer() {
 }
 
 function hideBestChoice() {
-    hideElement("mejor-opcion");
+    hideElement("winning-choice");
 }
 
 function showLoadingIndicatorElement() {

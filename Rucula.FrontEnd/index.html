@@ -20,26 +20,41 @@
     </header>
     <main>
         <div class="w-full block px-5">
-            <div class="font-bold text-sm sm:text-xl grid grid-flow-row-dense grid-cols-2 grid-rows-1 text-white border border-black bg-dolar my-10">
-                <div>
-                    <span class="inline-block float-right align-middle p-2">Mejor opción:</span>
+            <div class="text-white border border-black bg-dolar my-10">
+                <div class="font-bold text-sm sm:text-xl grid grid-flow-row-dense grid-cols-2 grid-rows-1">
+                    <div>
+                        <span class="inline-block float-right align-middle p-2">Mejor opción:</span>
+                    </div>
+                    <div>
+                        <span id="winning-choice" class="hidden float-left h-full align-middle p-2">
+                            <span id="winner-name"></span> a $<span id="winner-price"></span>
+                        </span>
+                        <span id="all-indicators-container" class="inline-block align-middle float-left p-2 w-full h-full">
+                            <span id="downloading-packages-indicator" class="inline-block float-left align-middle mr-1 animate-bounce bg-transparent p-1 w-7 h-7 ring-1 ring-green-900/5 dark:ring-green-200/20 shadow-lg rounded-full">
+                                <svg class="w-full h-full text-green-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </span>
+                            <span id="loading-indicator" class="hidden float-left align-middle mr-1 mt-0 sm:mt-px">
+                                <svg class="w-6 h-6 mr-0 text-gray-200 animate-spin dark:text-gray-600 fill-green-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                </svg>
+                            </span>
+                            <span id="notify-progress" class="inline-block float-left p-0 align-middle font-light text-nowrap truncate max-w-28 sm:max-w-fit"></span>
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <span id="mejor-opcion" class="hidden float-left h-full align-middle p-2"></span>
-                    <span id="all-indicators-container" class="inline-block align-middle float-left p-2 w-full h-full">
-                        <span id="downloading-packages-indicator" class="inline-block float-left align-middle mr-1 animate-bounce bg-transparent p-1 w-7 h-7 ring-1 ring-green-900/5 dark:ring-green-200/20 shadow-lg rounded-full">
-                            <svg class="w-full h-full text-green-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </span>
-                        <span id="loading-indicator" class="hidden float-left align-middle mr-1 mt-0 sm:mt-px">
-                            <svg class="w-6 h-6 mr-0 text-gray-200 animate-spin dark:text-gray-600 fill-green-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-                            </svg>
-                        </span>
-                        <span id="notify-progress" class="inline-block float-left p-0 align-middle font-light text-nowrap truncate max-w-28 sm:max-w-fit"></span>
-                    </span>
+                <div class="pt-2 pb-3 px-3 flex justify-center">
+                    <button id="refresh-button" data-disabled-when-running class="w-full md:w-fit align-middle px-2 py-1.5 md:px-3 md:py-2 rounded-xl font-semibold tracking-tight
+                        bg-ccl shadow-md shadow-green-950/30
+                        hover-bg-ccl-darker hover:shadow-md hover:shadow-green-950/40
+                        disabled-button
+                        active:shadow-none
+                        focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-100/50
+                        transition-all duration-200 motion-safe:animate-none">
+                        Refrescar
+                    </button>
                 </div>
             </div>
             <div class="w-full text-white  dark:border-black border-x">
@@ -69,7 +84,7 @@
                             <span class="block mb-1" title="Porcentaje por retiro o transferencia a tu banco local">% Retiro</span>
                             <input id="commission-porcentage-withdrawal-bond" class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
-                        <button id="apply-bond-commissions-button" disabled class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
+                        <button id="apply-bond-commissions-button" disabled data-disabled-when-running data-recalculate class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
                     </span>
                 </div>
             </div>
@@ -110,7 +125,7 @@
                             <span class="block mb-1" title="Volumen a operar">Volumen</span>
                             <input id="trading-volume-crypto" class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                         </span>
-                        <button id="apply-trading-volume-crypto" disabled class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
+                        <button id="apply-trading-volume-crypto" disabled data-disabled-when-running data-recalculate class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
                     </span>
                 </div>
             </div>
@@ -158,7 +173,7 @@
                                     <span class="content-end">Monto a transferir (impacta en la tarifa)</span>
                                     <input id="amount-to-send-wu" class="text-right py-0.5 bg-white border border-black text-black invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                                 </span>
-                                <span class="flex-initial"><button id="apply-amount-to-send-wu" disabled class="h-full text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5">Aplicar</button></span>
+                                <span class="flex-initial"><button id="apply-amount-to-send-wu" disabled data-disabled-when-running data-recalculate class="h-full text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5">Aplicar</button></span>
                             </div>
                             <div class="w-full h-7 mt-5 p-1 grid grid-cols-2 grid-rows-1 bg-wu-odd"><span class="text-left">Cotización bruta</span><span id="gross-dolar-western-union" class="text-right"></span></div>
                             <div class="w-full h-7 mt-0 p-1 grid grid-cols-2 grid-rows-1 bg-wu-even"><span class="text-left">Tarifa</span><span id="gross-fees-western-union" class="text-right"></span></div>
