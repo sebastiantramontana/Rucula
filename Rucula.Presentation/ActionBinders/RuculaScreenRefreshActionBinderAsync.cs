@@ -6,12 +6,12 @@ namespace Rucula.Presentation.ActionBinders;
 
 internal sealed class RuculaScreenRefreshActionBinderAsync(
     IRuculaScreenPresenter ruculaScreenPresenter,
-    IRuculaScreenParametersParser ruculaScreenParametersParser)
+    IRuculaParametersParser ruculaScreenParametersParser)
     : ActionParametersBinderAsyncBase<RuculaScreenViewModel>, IRuculaScreenRefreshActionBinderAsync
 {
     public override Task BindActionAsync(RuculaScreenViewModel viewModel, IDictionary<string, IEnumerable<string>> parameters)
     {
         var parsedParams = ruculaScreenParametersParser.Parse(parameters);
-        return ruculaScreenPresenter.ShowChoices(viewModel, parsedParams.BondCommissions, parsedParams.WesternUnionParameters, parsedParams.DolarCryptoParameters);
+        return ruculaScreenPresenter.StartShowChoices(viewModel, parsedParams.Value);
     }
 }

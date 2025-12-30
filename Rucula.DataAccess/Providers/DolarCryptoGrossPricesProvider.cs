@@ -21,7 +21,7 @@ internal sealed class DolarCryptoGrossPricesProvider(ICryptoYaGrossPricesFetcher
             fetchTasks.Add(fetchTask);
         }
 
-        var fetchResults = await Task.WhenAll(fetchTasks).ConfigureAwait(false);
+        var fetchResults = await Task.WhenAll(fetchTasks);
         var grossPrices = new Dictionary<string, DolarCryptoGrossPrices>();
 
         foreach (var result in fetchResults)
@@ -53,7 +53,7 @@ internal sealed class DolarCryptoGrossPricesProvider(ICryptoYaGrossPricesFetcher
     private async Task<(string CurrencyKey, string Content)> FetchGrossPrice(CriptoYaGrossPricesFetcherParameters parameters)
     {
         await notifier.Notify($"Consultando precios brutos {parameters.CryptoCurrencyKey}...");
-        var content = await fetcher.Fetch(parameters).ConfigureAwait(false);
+        var content = await fetcher.Fetch(parameters);
 
         return new(parameters.CryptoCurrencyKey, content);
     }

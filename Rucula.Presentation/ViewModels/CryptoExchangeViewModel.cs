@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed record class CryptoExchangeViewModel(string ExchangeName,
+internal sealed record class CryptoExchangeViewModel(string ExchangeName,
                                                    double? GrossUsdc,
                                                    double? GrossUsdt,
                                                    double? GrossDai,

@@ -4,6 +4,7 @@ using Rucula.DataAccess.Mappers;
 using Rucula.DataAccess.Providers.WesternUnion;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 using System.Text.Json.Nodes;
 
 namespace Rucula.DataAccess.Providers;
@@ -16,7 +17,7 @@ internal sealed class WesternUnionProvider(IWesternUnionFetcher westernUnionFetc
     public async Task<Optional<DolarWesternUnionInfo>> GetCurrentDolarWesternUnion(WesternUnionParameters westernUnionComissions)
     {
         await notifier.Notify("Consultando Dolar Western Union...");
-        var content = await westernUnionFetcher.Fetch(westernUnionComissions.AmountToSend).ConfigureAwait(false);
+        var content = await westernUnionFetcher.Fetch(westernUnionComissions.AmountToSend);
         return MapToDolarWesterUnion(ConvertContentToDolarWesterUnion(content));
     }
 

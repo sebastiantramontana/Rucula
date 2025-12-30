@@ -2,6 +2,6 @@
 
 namespace Rucula.DataAccess.Providers.Byma;
 
-internal sealed class BymaIsOpenMarketFetcher(IBymaIsOpenMarketRequestFactory isOpenMarketRequestFactory, IHttpReader httpReader) : BymaFetcherBase(isOpenMarketRequestFactory, httpReader), IBymaIsMarketOpenFetcher
+internal sealed class BymaIsOpenMarketFetcher(IBymaIsOpenMarketRequestFactory isOpenMarketRequestFactory, IHttpReader httpReader) : BymaFetcherBase("BymaOpenMarket", isOpenMarketRequestFactory, httpReader), IBymaIsMarketOpenFetcher
 {
 }

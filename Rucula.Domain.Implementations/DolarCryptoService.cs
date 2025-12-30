@@ -1,5 +1,6 @@
 ﻿using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Implementations;
 
@@ -10,16 +11,20 @@ internal sealed class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPr
     private const string DaiKey = "DAI";
     private readonly string[] CurrencyKeys = [UsdcKey, UsdtKey, DaiKey];
 
-    public async Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters)
+    public async Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters, Func<IEnumerable<DolarCryptoPrices>, Task> notifyFunc)
     {
         var (fees, allGrossPrices) = await GetDataFromProviders(cryptoParameters.TradingVolume);
 
-        return fees
+        var cryptos = fees
             .Select(fee => GetDolarCryptoPrices(fee, allGrossPrices, cryptoParameters.TradingVolume))
             .Where(prices => prices.HasValue)
             .Select(prices => prices.Value)
             .OrderByDescending(prices => GetTopNetPrice(prices.DolarCryptoNetPrices.First()))
             .ToArray();
+
+        await notifyFunc.Invoke(cryptos);
+
+        return cryptos;
     }
 
     private Optional<DolarCryptoPrices> GetDolarCryptoPrices(DolarCryptoFees fee, IEnumerable<DolarCryptoGrossPrices> allGrossPrices, double volume)
@@ -92,10 +97,10 @@ internal sealed class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPr
         var feesTask = feesProvider.Get();
         var grossPricesTask = grossPricesProvider.GetGrossPrices(volume, CurrencyKeys);
 
-        await Task.WhenAll(feesTask, grossPricesTask).ConfigureAwait(false);
+        await Task.WhenAll(feesTask, grossPricesTask);
 
-        var fees = await feesTask.ConfigureAwait(false);
-        var grossPrices = await grossPricesTask.ConfigureAwait(false);
+        var fees = await feesTask;
+        var grossPrices = await grossPricesTask;
 
         return (fees, grossPrices);
     }

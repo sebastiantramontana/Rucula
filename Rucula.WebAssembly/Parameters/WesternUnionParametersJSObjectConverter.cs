@@ -1,4 +1,4 @@
-﻿using Rucula.Domain.Entities;
+﻿using Rucula.Domain.Entities.Parameters;
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 

@@ -1,17 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Rucula.DataAccess.IoC;
-using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities;
 using Rucula.Domain.Implementations.IoC;
 using Rucula.Infrastructure;
-using Rucula.Infrastructure.IoC;
+using Rucula.Presentation.IoC;
+using Rucula.Presentation.Presenters;
 using Rucula.WebAssembly.IoC;
 using Rucula.WebAssembly.Parameters;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
-using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rucula.WebAssembly;
 
@@ -19,9 +16,7 @@ namespace Rucula.WebAssembly;
 [SupportedOSPlatform("browser")]
 public partial class Program
 {
-    private static IChoicesService _choicesService = default!;
-    private static ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
-    private static IParametersJSObjectConverter _parametersJSObjectConverter = default!;
+    private static IServiceProvider _serviceProvider = default!;
 
     public static async Task Main(string[] args)
     {
@@ -31,11 +26,13 @@ public partial class Program
 
             _ = builder.Logging.SetMinimumLevel(LogLevel.Warning);
 
+            Register(builder.Services);
+
             await using var host = CreateWebAssemblyHost(builder);
 
-            Register(builder.Services);
-            InstanceServices(builder.Services.BuildServiceProvider());
+            _serviceProvider = host.Services;
 
+            await _serviceProvider.BuildPresentation();
             await host.RunAsync();
         }
         catch (Exception ex)
@@ -45,49 +42,22 @@ public partial class Program
     }
 
     [JSExport]
-    [return: JSMarshalAs<Promise<JSType.String>>]
-    public static async Task<string> GetChoices(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
+    public static async Task StartShowChoices(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
     {
         try
         {
-            await WaitAllDependenciesAreReady();
+            await NullDependencyAwaiter.AwaitToNotNull(() => _serviceProvider);
 
-            var parameters = _parametersJSObjectConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
+            var _parametersConverter = _serviceProvider.GetRequiredService<IParametersJSObjectConverter>();
+            var parameters = _parametersConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
+            var presenter = _serviceProvider.GetRequiredService<IRuculaScreenPresenter>();
 
-            _currentChoices = await _choicesService.GetChoices(parameters.BondCommissions, parameters.WesternUnionParameters, parameters.DolarCryptoParameters).ConfigureAwait(false);
+            await presenter.StartShowChoicesFromScratch(parameters);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
-
-        return JsonSerializer.Serialize(_currentChoices, SourceGenerationContext.Default.ChoicesInfo);
-    }
-
-    [JSExport]
-    [return: JSMarshalAs<Promise<JSType.String>>]
-    public static async Task<string> RecalculateChoices(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
-    {
-        try
-        {
-            await WaitAllDependenciesAreReady();
-
-            var parameters = _parametersJSObjectConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
-
-            _currentChoices = await _choicesService.RecalculateChoices(_currentChoices, parameters.BondCommissions, parameters.WesternUnionParameters, parameters.DolarCryptoParameters).ConfigureAwait(false);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.ToString());
-        }
-
-        return JsonSerializer.Serialize(_currentChoices, SourceGenerationContext.Default.ChoicesInfo);
-    }
-
-    private static async Task WaitAllDependenciesAreReady()
-    {
-        await NullDependencyAwaiter.AwaitToNotNull(() => _choicesService);
-        await NullDependencyAwaiter.AwaitToNotNull(() => _parametersJSObjectConverter);
     }
 
     private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
@@ -96,17 +66,11 @@ public partial class Program
     private static WebAssemblyHost CreateWebAssemblyHost(WebAssemblyHostBuilder builder)
         => builder.Build();
 
-    private static void InstanceServices(IServiceProvider serviceProvider)
-    {
-        _choicesService = serviceProvider.GetRequiredService<IChoicesService>();
-        _parametersJSObjectConverter = serviceProvider.GetRequiredService<IParametersJSObjectConverter>();
-    }
-
     private static void Register(IServiceCollection serviceCollection)
         => serviceCollection
             .AddHttpClient()
             .AddDataAccess()
             .AddDomain()
-            .AddInfrastructure()
+            .AddPresentation()
             .AddRuculaWebAssembly();
 }

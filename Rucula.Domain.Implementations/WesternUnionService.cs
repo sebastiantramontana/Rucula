@@ -1,22 +1,25 @@
 ﻿using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Implementations;
 
 internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProvider) : IWesternUnionService
 {
-    public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters)
+    public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters, Func<Optional<DolarWesternUnion>, Task> notifyFunc)
     {
-        var info = await westernUnionProvider.GetCurrentDolarWesternUnion(parameters).ConfigureAwait(false);
+        var wu = Optional<DolarWesternUnion>.Empty;
+        var info = await westernUnionProvider.GetCurrentDolarWesternUnion(parameters);
 
-        if (!info.HasValue)
+        if (info.HasValue)
         {
-            return Optional<DolarWesternUnion>.Empty;
+            var netPrice = CalculateNetPrice(info.Value.GrossPrice, info.Value.Fees, parameters);
+            wu = Optional<DolarWesternUnion>.Sure(new(info.Value.GrossPrice, netPrice, info.Value.Fees));
         }
 
-        var netPrice = CalculateNetPrice(info.Value.GrossPrice, info.Value.Fees, parameters);
+        await notifyFunc.Invoke(wu);
 
-        return Optional<DolarWesternUnion>.Sure(new(info.Value.GrossPrice, netPrice, info.Value.Fees));
+        return wu;
     }
 
     private static double CalculateNetPrice(double grossPrice, double fees, WesternUnionParameters parameters)

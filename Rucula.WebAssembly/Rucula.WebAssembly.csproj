@@ -6,6 +6,7 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<OverrideHtmlAssetPlaceholders>false</OverrideHtmlAssetPlaceholders>
+		<WasmEnableHotReload>false</WasmEnableHotReload>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -74,12 +75,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<Using Include="System.Text.Json.Serialization" />
-	</ItemGroup>
-	<ItemGroup>
 		<ProjectReference Include="..\Rucula.DataAccess\Rucula.DataAccess.csproj" />
 		<ProjectReference Include="..\Rucula.Domain.Implementations\Rucula.Domain.Implementations.csproj" />
 		<ProjectReference Include="..\Rucula.Infrastructure\Rucula.Infrastructure.csproj" />
+		<ProjectReference Include="..\Rucula.Presentation\Rucula.Presentation.csproj" />
 		<TrimmerRootAssembly Include="Rucula.WebAssembly" />
 	</ItemGroup>
 </Project>

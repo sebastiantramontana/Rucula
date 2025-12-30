@@ -13,7 +13,7 @@ internal sealed class TituloDetailsProvider(IBymaTituloDetailsFetcher bymaTitulo
     public async Task<IEnumerable<TituloDetails>> GetTituloDetails(string symbol)
     {
         var parameters = @$"{{ ""symbol"": ""{symbol}""}}";
-        var content = await bymaTituloDetailsFetcher.Fetch(parameters).ConfigureAwait(false);
+        var content = await bymaTituloDetailsFetcher.Fetch(parameters);
 
         return MapToTituloDetails(ConvertContentToDto(content));
     }

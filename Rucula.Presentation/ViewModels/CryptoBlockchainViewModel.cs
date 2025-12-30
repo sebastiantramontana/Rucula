@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed record class CryptoBlockchainViewModel(string BlockchainName,
+internal sealed record class CryptoBlockchainViewModel(string BlockchainName,
                                                      double? UsdcFee,
                                                      double? NetUsdc,
                                                      double? UsdtFee,

@@ -1,9 +1,8 @@
-﻿using Rucula.Domain.Entities;
+﻿using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Abstractions;
 
 public interface IChoicesService
 {
-    Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters);
-    Task<ChoicesInfo> RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters);
+    Task ProcessChoices(ChoicesParameters parameters, ChoicesCallbacks choicesCallbacks);
 }

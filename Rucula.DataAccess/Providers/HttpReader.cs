@@ -2,10 +2,10 @@
 
 internal sealed class HttpReader(IHttpClientFactory httpClientFactory) : IHttpReader
 {
-    public async Task<string> Read(HttpRequestMessage request)
+    public async Task<string> Read(string readerKey, HttpRequestMessage request)
     {
-        var client = httpClientFactory.CreateClient();
-        var msg = await client.SendAsync(request).ConfigureAwait(false);
-        return await msg.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var client = httpClientFactory.CreateClient(readerKey);
+        var msg = await client.SendAsync(request);
+        return await msg.Content.ReadAsStringAsync();
     }
 }

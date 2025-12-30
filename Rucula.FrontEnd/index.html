@@ -6,6 +6,7 @@
     <title>Rúcula</title>
     <script src="main.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="vitraux-1.2.6-rc-min.js"></script>
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <link href="css/titulos-publicos.css" rel="stylesheet" type="text/css" />
     <link href="css/wu.css" rel="stylesheet" type="text/css" />
@@ -46,7 +47,7 @@
                     </div>
                 </div>
                 <div class="pt-2 pb-3 px-3 flex justify-center">
-                    <button id="refresh-button" data-disabled-when-running class="w-full md:w-fit align-middle px-2 py-1.5 md:px-3 md:py-2 rounded-xl font-semibold tracking-tight
+                    <button id="refresh-button" disabled data-disabled-when-running class="w-full md:w-fit align-middle px-2 py-1.5 md:px-3 md:py-2 rounded-xl font-semibold tracking-tight
                         bg-ccl shadow-md shadow-green-950/30
                         hover-bg-ccl-darker hover:shadow-md hover:shadow-green-950/40
                         disabled-button
@@ -74,21 +75,21 @@
                     <span class="text-black dark:text-white grid grid-cols-1 grid-rows-4 gap-4 sm:inline">
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Porcentaje por compra del bono">% Compra</span>
-                            <input id="commission-porcentage-purchase-bond" class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
+                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Porcentaje por venta del bono">% Venta</span>
-                            <input id="commission-porcentage-sale-bond" class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
+                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Porcentaje por retiro o transferencia a tu banco local">% Retiro</span>
-                            <input id="commission-porcentage-withdrawal-bond" class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
+                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
-                        <button id="apply-bond-commissions-button" disabled data-disabled-when-running data-recalculate class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
+                        <button data-save-parameters disabled data-disabled-when-running class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Guardar</button>
                     </span>
                 </div>
             </div>
-            <table id="tabla-titulos" class="w-full border-collapse rounded-lg sm:shadow-lg mb-5 mt-0">
+            <table id="bonds-table" class="w-full border-collapse rounded-lg sm:shadow-lg mb-5 mt-0">
                 <caption id="titulos-caption" class="hidden text-black dark:text-white m-0 p-3 dark:border-black border">Información aún no disponible...</caption>
                 <thead class="text-white">
                     <tr class="mb-0 text-sm text-left">
@@ -104,7 +105,7 @@
                         <th class=" dark:border-black border bg-dolar p-3">Blue&nbsp;/&nbsp;CCL</th>
                     </tr>
                 </thead>
-                <tbody class="text-black dark:text-white"></tbody>
+                <tbody></tbody>
             </table>
             <div class="w-full text-white dark:border-black border-x">
                 <div id="crypto-bar" class="w-full flex bg-dolar">
@@ -123,9 +124,9 @@
                     <span class="text-black dark:text-white grid grid-cols-1 grid-rows-2 gap-4 sm:inline">
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Volumen a operar">Volumen</span>
-                            <input id="trading-volume-crypto" class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
+                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                         </span>
-                        <button id="apply-trading-volume-crypto" disabled data-disabled-when-running data-recalculate class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Aplicar</button>
+                        <button data-save-parameters disabled data-disabled-when-running class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Guardar</button>
                     </span>
                 </div>
             </div>
@@ -146,8 +147,8 @@
                         <div class="items-center grid grid-flow-row-dense grid-cols-2 grid-rows-2 text-[10pt]">
                             <div class="justify-center flex p-1">Compra</div>
                             <div class="justify-center flex p-1">Venta</div>
-                            <div class="justify-center flex p-1" id="dolar-blue-compra"></div>
-                            <div class="justify-center flex p-1" id="dolar-blue-venta"></div>
+                            <div class="justify-center flex p-1" id="blue-purchase"></div>
+                            <div class="justify-center flex p-1" id="blue-sale"></div>
                         </div>
                     </div>
                 </div>
@@ -171,9 +172,9 @@
                             <div class="w-full h-10 flex items-end gap-2">
                                 <span class="flex-1 grid grid-cols-1 grid-rows-2 h-full text-xs">
                                     <span class="content-end">Monto a transferir (impacta en la tarifa)</span>
-                                    <input id="amount-to-send-wu" class="text-right py-0.5 bg-white border border-black text-black invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
+                                    <input data-input-parameter class="text-right py-0.5 bg-white border border-black text-black invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                                 </span>
-                                <span class="flex-initial"><button id="apply-amount-to-send-wu" disabled data-disabled-when-running data-recalculate class="h-full text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5">Aplicar</button></span>
+                                <span class="flex-initial"><button data-save-parameters disabled data-disabled-when-running class="h-full text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5">Guardar</button></span>
                             </div>
                             <div class="w-full h-7 mt-5 p-1 grid grid-cols-2 grid-rows-1 bg-wu-odd"><span class="text-left">Cotización bruta</span><span id="gross-dolar-western-union" class="text-right"></span></div>
                             <div class="w-full h-7 mt-0 p-1 grid grid-cols-2 grid-rows-1 bg-wu-even"><span class="text-left">Tarifa</span><span id="gross-fees-western-union" class="text-right"></span></div>
@@ -199,23 +200,23 @@
 </body>
 </html>
 
-<template id="titulos-table-row-template">
-    <tr class="block sm:table-row odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-sm text-right">
-        <td data-label="Símbolo&nbsp;Pesos" id="symbol-pesos" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
-        <td data-label="AR$" id="cotizacion-pesos" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td data-label="Símbolo&nbsp;Cable" id="symbol-cable" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
-        <td data-label="US$" id="cotizacion-cable" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td id="symbol-mep" class="hidden sm:table-cell dark:border-black border p-3 sm:text-left">&nbsp;</td>
-        <td id="cotizacion-mep" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
-        <td data-label="CCL&nbsp;Bruto" id="gross-ccl" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td data-label="CCL&nbsp;Neto" id="net-ccl" class="block sm:table-cell dark:border-black border p-3 font-bold sm:font-normal before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
-        <td id="mep-over-cable" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
-        <td id="blue-over-ccl" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
+<template id="bonds-table-row-template">
+    <tr class="block sm:table-row text-black dark:text-white odd:bg-white even:bg-slate-100 dark:odd:bg-slate-900 dark:even:bg-slate-800 mb-2 sm:mb-0 text-sm text-right">
+        <td data-label="Símbolo&nbsp;Pesos" data-bonds-id="symbol-pesos" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
+        <td data-label="AR$" data-bonds-id="price-pesos" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="Símbolo&nbsp;Cable" data-bonds-id="symbol-cable" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none sm:text-left">&nbsp;</td>
+        <td data-label="US$" data-bonds-id="price-cable" class="block sm:table-cell  dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-bonds-id="symbol-mep" class="hidden sm:table-cell dark:border-black border p-3 sm:text-left">&nbsp;</td>
+        <td data-bonds-id="price-mep" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
+        <td data-label="CCL&nbsp;Bruto" data-bonds-id="gross-ccl" class="block sm:table-cell dark:border-black border p-3 before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-label="CCL&nbsp;Neto" data-bonds-id="net-ccl" class="block sm:table-cell dark:border-black border p-3 font-bold sm:font-normal before:content-[attr(data-label)] sm:before:content-none before:float-left sm:before:float-none">&nbsp;</td>
+        <td data-bonds-id="mep-over-cable" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
+        <td data-bonds-id="blue-over-ccl" class="hidden sm:table-cell dark:border-black border p-3">&nbsp;</td>
     </tr>
 </template>
 
 <template id="crypto-template">
-    <table class="hidden w-full border-collapse sm:shadow-lg mb-2 text-base text-black dark:text-white">
+    <table data-crypto-id="crypto-table" class="hidden w-full border-collapse sm:shadow-lg mb-2 text-base text-black dark:text-white">
         <tbody class="sm:table-header-group">
             <tr class="hidden sm:table-row text-center bg-slate-100 dark:bg-emerald-800">
                 <th colspan="2" class="border-slate-300 dark:border-black border p-3">Exchange</th>

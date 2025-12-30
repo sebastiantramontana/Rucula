@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed record class BondViewModel(string ArLabel,
+internal sealed record class BondViewModel(string ArLabel,
                                          double ArPrice,
                                          string CableLabel,
                                          double CablePrice,

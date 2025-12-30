@@ -16,13 +16,13 @@ internal sealed class TitulosProvider(IBymaLetrasFetcher letrasFetcher,
 {
     public async Task<IEnumerable<Titulo>> Get()
     {
-        if (!await IsMarketOpen().ConfigureAwait(false))
+        if (!await IsMarketOpen())
         {
             return [];
         }
 
-        var letrasTask = await GetLetras().ConfigureAwait(false);
-        var bonosTask = await GetBonos().ConfigureAwait(false);
+        var letrasTask = await GetLetras();
+        var bonosTask = await GetBonos();
 
         return letrasTask.Concat(bonosTask);
     }
@@ -35,7 +35,7 @@ internal sealed class TitulosProvider(IBymaLetrasFetcher letrasFetcher,
 
     private async Task<IEnumerable<Titulo>> GetTitulos(IFetcher fetcher)
     {
-        var content = await fetcher.Fetch().ConfigureAwait(false);
+        var content = await fetcher.Fetch();
         return MapToTitulo(ConvertContentToTitulos(content));
     }
 
@@ -56,7 +56,7 @@ internal sealed class TitulosProvider(IBymaLetrasFetcher letrasFetcher,
 
         try
         {
-            var content = await isMarketOpenFetcher.Fetch().ConfigureAwait(false);
+            var content = await isMarketOpenFetcher.Fetch();
             isMarketOpen = bool.Parse(content);
         }
         catch

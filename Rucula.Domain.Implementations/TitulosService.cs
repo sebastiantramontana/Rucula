@@ -1,22 +1,21 @@
 ﻿using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Implementations;
 
 internal sealed class TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier) : ITitulosService
 {
-    public IEnumerable<TituloIsin> RecalculateNetCclRanking(IEnumerable<TituloIsin> titulos, BondCommissions bondCommissions)
-        => titulos
-            .Select(t => t with { NetCcl = CalculateNetCcl(t.GrossCcl, bondCommissions) })
-            .OrderByDescending(t => t.NetCcl);
-
-    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions)
+    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions, Func<IEnumerable<TituloIsin>, Task> notifyFunc)
     {
         await notifier.Notify("Consultando títulos públicos...");
-        var titulos = await titulosProvider.Get().ConfigureAwait(false);
-        var details = await GetUsefulTitulosDetails(titulos).ConfigureAwait(false);
+        var titulos = await titulosProvider.Get();
+        var details = await GetUsefulTitulosDetails(titulos);
+        var bonds = CreateTitulosIsin(details, blue, bondCommissions);
 
-        return CreateTitulosIsin(details, blue, bondCommissions);
+        await notifyFunc.Invoke(bonds);
+
+        return bonds;
     }
 
     private async Task<IEnumerable<(Titulo Titulo, TituloDetails Details)>> GetUsefulTitulosDetails(IEnumerable<Titulo> titulos)
@@ -29,7 +28,7 @@ internal sealed class TitulosService(ITitulosProvider titulosProvider, ITituloDe
             if (IsTituloValid(titulo))
             {
                 await notifier.Notify($"Consultando {titulo.Simbolo}...");
-                var allDetails = await GetTituloDetails(titulo).ConfigureAwait(false);
+                var allDetails = await GetTituloDetails(titulo);
                 var usefulDetails = allDetails.FirstOrDefault(d => IsDetailsUseful(d, today));
 
                 if (usefulDetails is not null)

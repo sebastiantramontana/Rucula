@@ -1,11 +1,10 @@
-﻿using Rucula.Domain.Entities;
+﻿using Rucula.Domain.Entities.Parameters;
 using Rucula.Presentation.ViewModels;
 
 namespace Rucula.Presentation.Presenters;
 
-internal interface IRuculaScreenPresenter
+public interface IRuculaScreenPresenter
 {
-    Task Start();
-    Task ShowChoices(RuculaScreenViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters);
-    Task ShowRecalculatedChoices(RuculaScreenViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters);
+    Task StartShowChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters);
+    Task StartShowChoicesFromScratch(ChoicesParameters parameters);
 }

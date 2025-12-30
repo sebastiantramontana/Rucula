@@ -2,5 +2,5 @@
 
 internal interface IHttpReader
 {
-    Task<string> Read(HttpRequestMessage request);
+    Task<string> Read(string readerKey, HttpRequestMessage request);
 }

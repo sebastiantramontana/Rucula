@@ -2,12 +2,13 @@
 
 internal sealed class WesternUnionFetcher(IHttpReader httpReader) : IWesternUnionFetcher
 {
+    private const string ReaderKey = "WU";
     private const string Url = "https://www.westernunion.com/wuconnect/prices/catalog";
 
     public async Task<string> Fetch(double amountToSend)
     {
         using var request = CreateRequest(amountToSend);
-        return await httpReader.Read(request).ConfigureAwait(false);
+        return await httpReader.Read(ReaderKey, request);
     }
 
     private static HttpRequestMessage CreateRequest(double amountToSend)

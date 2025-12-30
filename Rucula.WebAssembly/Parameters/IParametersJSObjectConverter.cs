@@ -1,8 +1,9 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using Rucula.Domain.Entities.Parameters;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace Rucula.WebAssembly.Parameters;
 
 internal interface IParametersJSObjectConverter
 {
-    AllParameters GetParameters(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject);
+    ChoicesParameters GetParameters(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject);
 }

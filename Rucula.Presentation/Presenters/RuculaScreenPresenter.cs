@@ -1,12 +1,12 @@
 ﻿using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 using Rucula.Presentation.ViewModels;
 using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
 internal sealed class RuculaScreenPresenter(
-    IChoicesService choicesService,
+    IPeriodicChoicesService periodicChoicesService,
     IWinningChoicePresenter winningChoicePresenter,
     IBondsPresenter bondsPresenter,
     IWesternUnionPresenter westernUnionPresenter,
@@ -14,47 +14,35 @@ internal sealed class RuculaScreenPresenter(
     IBluePresenter bluePresenter,
     IViewUpdater<RuculaScreenViewModel> viewUpdater) : IRuculaScreenPresenter
 {
-    private ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
+    public Task StartShowChoicesFromScratch(ChoicesParameters parameters)
+        => StartShowChoices(new RuculaScreenViewModel(), parameters);
 
-    public async Task ShowChoices(RuculaScreenViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    public async Task StartShowChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters)
     {
         if (viewmodel.IsRunning)
             return;
 
-        await StartRunning(viewmodel).ConfigureAwait(false);
+        await ShowStartRunning(viewmodel);
 
-        _currentChoices = await choicesService.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters).ConfigureAwait(false);
+        var callbacks = new ChoicesCallbacks(
+            winningChoicePresenter.ShowWinner,
+            bondsPresenter.ShowBonds,
+            bluePresenter.ShowBlue,
+            westernUnionPresenter.ShowWesternUnion,
+            cryptosPresenter.ShowCryptos);
 
-        var winnerTask = winningChoicePresenter.ShowWinner(_currentChoices.WinningChoice);
-        var bondsTask = bondsPresenter.ShowBonds(_currentChoices.RankingTitulos);
-        var wuTask = westernUnionPresenter.ShowWesternUnion(_currentChoices.DolarWesternUnion);
-        var cryptosTask = cryptosPresenter.ShowCryptos(_currentChoices.RankingCryptos);
-        var blueTask = bluePresenter.ShowBlue(_currentChoices.Blue);
+        await periodicChoicesService.StartProcessChoices(parameters, TimeSpan.FromMinutes(1), callbacks);
 
-        await Task.WhenAll(winnerTask, bondsTask, wuTask, cryptosTask, blueTask).ConfigureAwait(false);
-
-        await StopRunning(viewmodel).ConfigureAwait(false);
+        await ShowStopRunning(viewmodel);
     }
 
-    public async Task ShowRecalculatedChoices(RuculaScreenViewModel viewmodel, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
-    {
-        if (viewmodel.IsRunning)
-            return;
+    private Task ShowStartRunning(RuculaScreenViewModel viewmodel)
+        => ShowRunning(viewmodel, true);
 
-        await StartRunning(viewmodel).ConfigureAwait(false);
+    private Task ShowStopRunning(RuculaScreenViewModel viewmodel)
+        => ShowRunning(viewmodel, false);
 
-        _currentChoices = await choicesService.RecalculateChoices(_currentChoices, bondCommissions, westernUnionParameters, dolarCryptoParameters).ConfigureAwait(false);
-
-        await StopRunning(viewmodel).ConfigureAwait(false);
-    }
-
-    private Task StartRunning(RuculaScreenViewModel viewmodel)
-        => UpdateRunning(viewmodel, true);
-
-    private Task StopRunning(RuculaScreenViewModel viewmodel)
-        => UpdateRunning(viewmodel, false);
-
-    private Task UpdateRunning(RuculaScreenViewModel viewmodel, bool isRunning)
+    private Task ShowRunning(RuculaScreenViewModel viewmodel, bool isRunning)
     {
         viewmodel.Update(isRunning);
         return viewUpdater.Update(viewmodel);

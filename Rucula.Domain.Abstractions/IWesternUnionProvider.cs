@@ -1,4 +1,5 @@
 ﻿using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Abstractions;
 

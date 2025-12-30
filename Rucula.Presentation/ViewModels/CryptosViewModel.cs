@@ -2,9 +2,9 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed class CryptosViewModel
+internal sealed class CryptosViewModel
 {
-    public IEnumerable<CryptoExchangeViewModel> Exchanges { get; private set; } = [];
+    internal IEnumerable<CryptoExchangeViewModel> Exchanges { get; private set; } = [];
 
     internal void Update(IEnumerable<DolarCryptoPrices> cryptos) 
         => Exchanges = cryptos.Select(CryptoExchangeViewModel.FromEntity);

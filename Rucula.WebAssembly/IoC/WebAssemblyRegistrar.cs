@@ -1,4 +1,4 @@
-﻿using Rucula.Domain.Entities;
+﻿using Rucula.Domain.Entities.Parameters;
 using Rucula.WebAssembly.Parameters;
 using System.Runtime.Versioning;
 

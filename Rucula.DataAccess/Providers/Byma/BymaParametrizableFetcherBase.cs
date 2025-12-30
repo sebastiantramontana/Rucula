@@ -2,11 +2,11 @@
 
 namespace Rucula.DataAccess.Providers.Byma;
 
-internal abstract class BymaParametrizableFetcherBase(IParametrizableRequestFactory parametrizableRequestFactory, IHttpReader httpReader) : IParametrizableFetcher<string>
+internal abstract class BymaParametrizableFetcherBase(string readerKey, IParametrizableRequestFactory parametrizableRequestFactory, IHttpReader httpReader) : IParametrizableFetcher<string>
 {
     public async Task<string> Fetch(string parameters)
     {
         using var request = parametrizableRequestFactory.CreateRequest(parameters);
-        return await httpReader.Read(request).ConfigureAwait(false);
+        return await httpReader.Read(readerKey, request);
     }
 }

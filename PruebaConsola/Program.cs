@@ -3,13 +3,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 using Rucula.Domain.Implementations.IoC;
 
 namespace PruebaConsola;
 
 internal class Program
 {
-    static async Task Main()
+    private const string emptyString = "--";
+    private static INotifier _notifier = default!;
+
+    static Task Main()
     {
         var servicesCollection = new ServiceCollection();
         _ = servicesCollection
@@ -21,48 +25,62 @@ internal class Program
 
         var services = servicesCollection.BuildServiceProvider();
 
-        var notifier = services.GetRequiredService<INotifier>();
+        _notifier = services.GetRequiredService<INotifier>();
 
-        var choices = await GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000));
+        return GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000));
+    }
 
-        await notifier.Notify($"Mejor opción: {choices.WinningChoice}{Environment.NewLine}");
+    private static Task GetChoicesFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    {
+        var service = serviceProvider.GetRequiredService<IChoicesService>();
+        var parameters = new ChoicesParameters(bondCommissions, dolarCryptoParameters, westernUnionParameters);
+        var callbacks = new ChoicesCallbacks(OnWinningChoice, OnBonds, OnBlue, OnWesternUnion, OnCryptos);
 
-        await notifier.Notify($"{Environment.NewLine}");
-        await notifier.Notify($"Titulos {Environment.NewLine}");
+        return service.ProcessChoices(parameters, callbacks);
+    }
 
-        foreach (var titulo in choices.RankingTitulos)
+    private static async Task OnWinningChoice(WinningChoice winningChoice)
+    {
+        await _notifier.Notify($"Mejor opción: {winningChoice}{Environment.NewLine}");
+        await _notifier.Notify($"{Environment.NewLine}");
+    }
+
+    private static async Task OnBonds(IEnumerable<TituloIsin> bonds)
+    {
+        await _notifier.Notify($"Titulos {Environment.NewLine}");
+
+        foreach (var bond in bonds)
         {
-            await notifier.Notify($"{titulo.TituloCable?.Simbolo}/{titulo.TituloPeso?.Simbolo}: {titulo.GrossCcl} -> Neto: {titulo.NetCcl} {Environment.NewLine}");
+            await _notifier.Notify($"{bond.TituloCable?.Simbolo}/{bond.TituloPeso?.Simbolo}: {bond.GrossCcl} -> Neto: {bond.NetCcl} {Environment.NewLine}");
         }
 
-        await notifier.Notify($"{Environment.NewLine}");
-        await notifier.Notify($"Crypto {Environment.NewLine}");
+        await _notifier.Notify($"{Environment.NewLine}");
+    }
 
-        await notifier.Notify($"{Columnize("Exchange")} {Columnize("Blockchain")} {Columnize("USDC")} {Columnize("USDT")} {Columnize("DAI")}{Environment.NewLine}");
+    private static async Task OnCryptos(IEnumerable<DolarCryptoPrices> cryptos)
+    {
+        await _notifier.Notify($"Crypto {Environment.NewLine}");
 
-        foreach (var crypto in choices.RankingCryptos)
+        await _notifier.Notify($"{Columnize("Exchange")} {Columnize("Blockchain")} {Columnize("USDC")} {Columnize("USDT")} {Columnize("DAI")}{Environment.NewLine}");
+
+        foreach (var crypto in cryptos)
         {
-            await notifier.Notify($"{Columnize(crypto.ExchangeName)} {Columnize(string.Empty)} {Columnize(crypto.GrossUsdc)} {Columnize(crypto.GrossUsdt)} {Columnize(crypto.GrossDai)}{Environment.NewLine}");
+            await _notifier.Notify($"{Columnize(crypto.ExchangeName)} {Columnize(string.Empty)} {Columnize(crypto.GrossUsdc)} {Columnize(crypto.GrossUsdt)} {Columnize(crypto.GrossDai)}{Environment.NewLine}");
 
             foreach (var netPrices in crypto.DolarCryptoNetPrices)
             {
-                await notifier.Notify($"{Columnize(string.Empty)} {Columnize(netPrices.Blockchain.Name)} {Columnize(netPrices.NetUsdc)} {Columnize(netPrices.NetUsdt)} {Columnize(netPrices.NetDai)}{Environment.NewLine}");
+                await _notifier.Notify($"{Columnize(string.Empty)} {Columnize(netPrices.Blockchain.Name)} {Columnize(netPrices.NetUsdc)} {Columnize(netPrices.NetUsdt)} {Columnize(netPrices.NetDai)}{Environment.NewLine}");
             }
         }
 
-        await notifier.Notify($"{Environment.NewLine}");
-
-        const string emptyString = "--";
-
-        await notifier.Notify($"Blue: {GetStringFromOptional(choices.Blue, emptyString)}{Environment.NewLine}");
-        await notifier.Notify($"WU: {GetStringFromOptional(choices.DolarWesternUnion, emptyString)}{Environment.NewLine}");
+        await _notifier.Notify($"{Environment.NewLine}");
     }
 
-    private static Task<ChoicesInfo> GetChoicesFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
-    {
-        var service = serviceProvider.GetRequiredService<IChoicesService>();
-        return service.GetChoices(bondCommissions, westernUnionParameters, dolarCryptoParameters);
-    }
+    private static Task OnBlue(Optional<Blue> blue)
+        => _notifier.Notify($"Blue: {GetStringFromOptional(blue, emptyString)}{Environment.NewLine}");
+
+    private static Task OnWesternUnion(Optional<DolarWesternUnion> wu)
+        => _notifier.Notify($"WU: {GetStringFromOptional(wu, emptyString)}{Environment.NewLine}");
 
     private static string Columnize(Optional<DolarCryptoNetPrice> optionalValue)
         => Columnize(GetStringFromOptional(optionalValue, value => FormatPrice(value.NetPrice), string.Empty));

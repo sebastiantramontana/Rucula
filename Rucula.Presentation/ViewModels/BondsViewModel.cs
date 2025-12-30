@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed class BondsViewModel
+internal sealed class BondsViewModel
 {
     internal IEnumerable<BondViewModel> Bonds { get; private set; } = [];
 

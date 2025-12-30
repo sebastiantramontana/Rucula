@@ -2,14 +2,14 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.WebUtilities;
 using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities;
 using Rucula.Infrastructure;
-using Rucula.Infrastructure.IoC;
+using Rucula.Presentation.IoC;
+using Rucula.Presentation.Presenters;
+using Rucula.WebAssembly.Mock;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rucula.WebAssembly;
 
@@ -20,8 +20,9 @@ public partial class Program
     private static NavigationManager _navigationManager = default!;
     private static IHttpClientFactory _httpClientFactory = default!;
     private static INotifier _notifier = default!;
+    private static IRuculaScreenPresenter _presenter = default!;
+    private static PeriodicChoicesServiceMock _choiceService = default!;
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new(JsonSerializerDefaults.Web);
-    private static ChoicesInfo _currentChoices = ChoicesInfo.NoChoices;
 
     public static async Task Main(string[] args)
     {
@@ -32,11 +33,14 @@ public partial class Program
             _ = builder.Logging.SetMinimumLevel(LogLevel.Trace);
 
             Register(builder.Services);
-            InstanceServices(builder.Services.BuildServiceProvider());
 
             Console.WriteLine("CORRIENDO WASM MOCKEADO...!!!");
 
             await using var host = CreateWebAssemblyHost(builder);
+
+            InstanceServices(host.Services);
+            await host.Services.BuildPresentation();
+
             await host.RunAsync();
         }
         catch (Exception ex)
@@ -46,35 +50,28 @@ public partial class Program
     }
 
     [JSExport]
-    [return: JSMarshalAs<Promise<JSType.String>>]
-    public static async Task<string> GetChoices(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+    public static async Task StartShowChoices(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
     {
         ShowParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters);
 
         await NullDependencyAwaiter.AwaitToNotNull(() => _navigationManager);
         await NullDependencyAwaiter.AwaitToNotNull(() => _httpClientFactory);
         await NullDependencyAwaiter.AwaitToNotNull(() => _notifier);
+        await NullDependencyAwaiter.AwaitToNotNull(() => _presenter);
+        await NullDependencyAwaiter.AwaitToNotNull(() => _choiceService);
 
         var mockParam = await GetMockParam();
 
-        _currentChoices = mockParam switch
+        var currentChoices = mockParam switch
         {
             null or "" => await FetchDefaultMock(),
             "forever" => await RunForever(),
             _ => await FetchMock(mockParam!)
         };
 
-        return JsonSerializer.Serialize(_currentChoices, SourceGenerationContext.Default.ChoicesInfo);
-    }
+        _choiceService.UpdateMokedChoices(currentChoices);
 
-    [JSExport]
-    [return: JSMarshalAs<Promise<JSType.String>>]
-    public static Task<string> RecalculateChoices(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
-    {
-        ShowParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters);
-
-        var json = JsonSerializer.Serialize(_currentChoices, SourceGenerationContext.Default.ChoicesInfo);
-        return Task.FromResult(json);
+        await _presenter.StartShowChoicesFromScratch(null!);
     }
 
     private static void ShowParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
@@ -124,8 +121,8 @@ public partial class Program
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, uri);
         using var client = _httpClientFactory.CreateClient();
-        using var msg = await client.SendAsync(request).ConfigureAwait(false);
-        return await msg.Content.ReadAsStringAsync().ConfigureAwait(false);
+        using var msg = await client.SendAsync(request);
+        return await msg.Content.ReadAsStringAsync();
     }
 
     private static string GetMockUri(string mock)
@@ -159,10 +156,14 @@ public partial class Program
         _navigationManager = serviceProvider.GetRequiredService<NavigationManager>();
         _httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
         _notifier = serviceProvider.GetRequiredService<INotifier>();
+        _presenter = serviceProvider.GetRequiredService<IRuculaScreenPresenter>();
+        _choiceService = serviceProvider.GetRequiredService<PeriodicChoicesServiceMock>();
     }
 
     private static void Register(IServiceCollection serviceCollection)
         => serviceCollection
             .AddHttpClient()
-            .AddInfrastructure();
+            .AddSingleton<PeriodicChoicesServiceMock>()
+            .AddSingleton<IPeriodicChoicesService, PeriodicChoicesServiceMock>()
+            .AddPresentation();
 }

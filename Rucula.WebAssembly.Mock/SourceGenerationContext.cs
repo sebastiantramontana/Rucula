@@ -1,4 +1,5 @@
 ﻿using Rucula.Domain.Entities;
+using Rucula.WebAssembly.Mock;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 

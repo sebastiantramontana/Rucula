@@ -1,88 +1,25 @@
 ﻿using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Implementations;
 
 internal sealed class ChoicesService(ITitulosService titulosService,
                       IDolarBlueProvider dolarBlueProvider,
                       IWesternUnionService westernUnionService,
-                      IDolarCryptoService dolarCryptoService) : IChoicesService
+                      IDolarCryptoService dolarCryptoService,
+                      IWinningChoiceService winningChoiceService) : IChoicesService
 {
-    public async Task<ChoicesInfo> GetChoices(BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters)
+    public async Task ProcessChoices(ChoicesParameters parameters, ChoicesCallbacks choicesCallbacks)
     {
-        var dolarBlueTask = dolarBlueProvider.GetCurrentBlue();
-        var dolarWesternUnionTask = westernUnionService.GetDolarWesternUnion(westernUnionParameters);
-        var rankingCryptoTask = dolarCryptoService.GetPriceRanking(cryptoParameters);
+        var rankingCryptoTask = dolarCryptoService.GetPriceRanking(parameters.CryptoParameters, choicesCallbacks.OnCrypto);
+        var dolarBlueTask = dolarBlueProvider.GetCurrentBlue(choicesCallbacks.OnBlue);
+        var dolarWesternUnionTask = westernUnionService.GetDolarWesternUnion(parameters.WesternUnionParameters, choicesCallbacks.OnWesternUnion);
 
         var nonRankingTitulosTasks = Task.WhenAll(dolarBlueTask, dolarWesternUnionTask, rankingCryptoTask);
-        var rankingTitulosTask = titulosService.GetNetCclRanking(await dolarBlueTask, bondCommissions);
+        var rankingTitulosTask = titulosService.GetNetCclRanking(await dolarBlueTask, parameters.BondCommissions, choicesCallbacks.OnBonds);
 
-        await Task.WhenAll(nonRankingTitulosTasks, rankingTitulosTask).ConfigureAwait(false);
+        await Task.WhenAll(nonRankingTitulosTasks, rankingTitulosTask);
 
-        return CreateWinningChoice(await rankingTitulosTask, await dolarBlueTask, await dolarWesternUnionTask, await rankingCryptoTask);
+        await winningChoiceService.CalculateWinningChoice(await rankingTitulosTask, await dolarWesternUnionTask, await rankingCryptoTask, choicesCallbacks.OnWinningChoice);
     }
-
-    public async Task<ChoicesInfo> RecalculateChoices(ChoicesInfo choices, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters cryptoParameters)
-    {
-        var rankingTitulos = titulosService.RecalculateNetCclRanking(choices.RankingTitulos, bondCommissions);
-        var westernUnionDolarTask = westernUnionService.GetDolarWesternUnion(westernUnionParameters);
-        var rankingCryptoTask = dolarCryptoService.GetPriceRanking(cryptoParameters);
-
-        await Task.WhenAll(westernUnionDolarTask, rankingCryptoTask).ConfigureAwait(false);
-
-        return CreateWinningChoice(rankingTitulos, choices.Blue, await westernUnionDolarTask, await rankingCryptoTask);
-    }
-
-    private static ChoicesInfo CreateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Optional<Blue> dolarBlue, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos)
-    {
-        var bestTitulo = MaybeFirst(rankingTitulos);
-        var bestCrypto = MaybeFirst(rankingCryptos);
-
-        var winner = GetWinningChoice(bestTitulo, dolarWesternUnion, bestCrypto);
-
-        return new ChoicesInfo(winner ?? WinningChoice.NoWinners, rankingTitulos, dolarBlue, dolarWesternUnion, rankingCryptos);
-    }
-
-    private static WinningChoice? GetWinningChoice(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)
-    {
-        var competitors = new List<WinningChoice>(3);
-
-        if (titulo.HasValue)
-        {
-            competitors.Add(CreateWinner(titulo.Value));
-        }
-
-        if (dolarWesternUnion.HasValue)
-        {
-            competitors.Add(CreateWinner(dolarWesternUnion.Value));
-        }
-
-        if (bestCrypto.HasValue)
-        {
-            var bestNetPrice = GetBestCryptoNetPrice(bestCrypto.Value);
-            competitors.Add(CreateWinner(bestNetPrice));
-        }
-
-        var winner = competitors
-                    .OrderByDescending(w => w.DolarPrice)
-                    .FirstOrDefault();
-
-        return winner;
-    }
-
-    private static DolarCryptoNetPrice GetBestCryptoNetPrice(DolarCryptoPrices topCryptoNetPrices)
-        => topCryptoNetPrices.DolarCryptoNetPrices.First().TopNetPrice;
-
-    private static WinningChoice CreateWinner(TituloIsin titulo)
-        => new(titulo.TituloPeso!.Simbolo, "Incluye comisiones, pero no costos de transferencias", titulo.NetCcl);
-
-    private static WinningChoice CreateWinner(DolarWesternUnion dolarWesternUnion)
-        => new("Western Union", "Incluye costos", dolarWesternUnion.NetPrice);
-
-    private static WinningChoice CreateWinner(DolarCryptoNetPrice dolarCryptoNetPrice)
-        => new("Contado con Crypto", "Incluye comisiones de exchange y de retiro", dolarCryptoNetPrice.NetPrice);
-
-    private static Optional<T> MaybeFirst<T>(IEnumerable<T> values)
-        => Optional<T>.Maybe(values.FirstOrDefault());
-
 }
