@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed class WesternUnionViewModel
+public sealed record class WesternUnionViewModel
 {
     public double GrossPrice { get; private set; }
     public double NetPrice { get; private set; }

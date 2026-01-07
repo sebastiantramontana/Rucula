@@ -1,6 +1,6 @@
 ﻿namespace Rucula.Presentation.ViewModels;
 
-internal sealed class NotifyProgressViewModel
+internal sealed record class NotifyProgressViewModel
 {
     internal string Message { get; private set; } = string.Empty;
 

@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels.Parameters;
 
-internal sealed class CryptoParameterValuesViewModel
+internal sealed record class CryptoParameterValuesViewModel
 {
     internal double Volume { get; private set; } = 1000.0;
 

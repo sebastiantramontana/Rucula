@@ -66,7 +66,7 @@ internal sealed class RuculaParametersParser : IRuculaParametersParser
     private readonly record struct ParameterRange(double Min, double Max)
     {
         internal bool Contains(double value)
-            => double.IsNaN(value) && value >= Min && value <= Max;
+            => (!double.IsNaN(value)) && value >= Min && value <= Max;
 
         public override string ToString()
             => $"{Min} - {Max}";

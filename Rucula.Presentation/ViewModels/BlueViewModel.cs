@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-internal sealed class BlueViewModel
+internal sealed record class BlueViewModel
 {
     internal double? PurchasePrice { get; private set; } = null;
     internal double? SalePrice { get; private set; } = null;

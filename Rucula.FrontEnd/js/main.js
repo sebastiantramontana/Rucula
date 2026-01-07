@@ -1,17 +1,18 @@
-﻿import getBondParameters from "./modules/bond-parameters.js";
-import getCryptoParameters from "./modules/crypto-parameters.js";
-import getWUParameters from "./modules/wu-parameters.js";
-import { showDownloadingPackage } from "./modules/showDownloadingPackage.js";
+﻿import getBondParameters from "./bond-parameters.js";
+import getCryptoParameters from "./crypto-parameters.js";
+import getWUParameters from "./wu-parameters.js";
+import { showDownloadingPackageName, removeDownloadingPackagesIndicator } from "./wasmPackagesDownload.js";
 
 addEventListener("load", async () => {
     try {
         await Blazor.start({
             loadBootResource: function (type, name, defaultUri, integrity) {
-                showDownloadingPackage(name);
+                showDownloadingPackageName(name);
                 return null;
             }
         });
 
+        removeDownloadingPackagesIndicator();
         await StartShowChoices();
     }
     catch (ex) {

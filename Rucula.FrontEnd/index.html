@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rúcula</title>
-    <script src="main.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/vitraux-1.2.7-rc-min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="vitraux-1.2.6-rc-min.js"></script>
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <link href="css/titulos-publicos.css" rel="stylesheet" type="text/css" />
     <link href="css/wu.css" rel="stylesheet" type="text/css" />
@@ -75,15 +75,15 @@
                     <span class="text-black dark:text-white grid grid-cols-1 grid-rows-4 gap-4 sm:inline">
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Porcentaje por compra del bono">% Compra</span>
-                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
+                            <input id="commission-porcentage-purchase-bond" data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Porcentaje por venta del bono">% Venta</span>
-                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
+                            <input id="commission-porcentage-sale-bond" data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Porcentaje por retiro o transferencia a tu banco local">% Retiro</span>
-                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
+                            <input id="commission-porcentage-withdrawal-bond" data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="0.0" max="5.0" step="0.1" value="0" required />
                         </span>
                         <button data-save-parameters disabled data-disabled-when-running class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Guardar</button>
                     </span>
@@ -124,7 +124,7 @@
                     <span class="text-black dark:text-white grid grid-cols-1 grid-rows-2 gap-4 sm:inline">
                         <span class="sm:mr-4 inline-block">
                             <span class="block mb-1" title="Volumen a operar">Volumen</span>
-                            <input data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
+                            <input id="trading-volume-crypto" data-input-parameter class="w-full sm:w-16 h-5 p-0.5 bg-white border border-black text-black mr-0.5 invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                         </span>
                         <button data-save-parameters disabled data-disabled-when-running class="text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5 align-super">Guardar</button>
                     </span>
@@ -172,7 +172,7 @@
                             <div class="w-full h-10 flex items-end gap-2">
                                 <span class="flex-1 grid grid-cols-1 grid-rows-2 h-full text-xs">
                                     <span class="content-end">Monto a transferir (impacta en la tarifa)</span>
-                                    <input data-input-parameter class="text-right py-0.5 bg-white border border-black text-black invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
+                                    <input id="amount-to-send-wu" data-input-parameter class="text-right py-0.5 bg-white border border-black text-black invalid:text-red-500 invalid:border-red-500" type="number" min="100" max="10000" step="100" value="1000" required />
                                 </span>
                                 <span class="flex-initial"><button data-save-parameters disabled data-disabled-when-running class="h-full text-white bg-dolar hover-bg-ccl active:opacity-50 disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 font-medium rounded-lg text-sm px-3 py-1.5">Guardar</button></span>
                             </div>

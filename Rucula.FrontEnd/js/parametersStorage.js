@@ -1,5 +1,8 @@
-export function saveParameters(p) {
-    localStorage.setItem(p.settingsKey, JSON.stringify(p.values));
+export async function saveParameters(stringifiedJsonSettings) {
+    const settings = JSON.parse(stringifiedJsonSettings);
+    localStorage.setItem(settings.key, JSON.stringify(settings.values));
+
+    return Promise.resolve();
 }
 
 export function getParameters(settingsKey, defaultParameters) {

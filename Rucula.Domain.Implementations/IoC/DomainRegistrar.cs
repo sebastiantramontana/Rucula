@@ -10,7 +10,7 @@ public static class DomainRegistrar
             .AddSingleton<IWinningChoiceService, WinningChoiceService>()
             .AddSingleton<ITitulosService, TitulosService>()
             .AddSingleton<IChoicesService, ChoicesService>()
-            .AddSingleton<IPeriodicChoicesService, PeriodicChoicesService>()
+            .AddSingleton<IRestartingPeriodicRunnerService, RestartingPeriodicRunnerService>()
             .AddSingleton<IWesternUnionService, WesternUnionService>()
             .AddSingleton<IDolarCryptoService, DolarCryptoService>()
             .AddSingleton<IDolarCryptoMaxPriceService, DolarCryptoMaxPriceService>()

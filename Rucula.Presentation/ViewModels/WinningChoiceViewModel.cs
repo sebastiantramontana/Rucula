@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed class WinningChoiceViewModel
+public sealed record class WinningChoiceViewModel
 {
     public string Name { get; private set; } = string.Empty;
     public string Info { get; private set; } = string.Empty;

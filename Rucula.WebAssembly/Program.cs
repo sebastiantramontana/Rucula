@@ -17,6 +17,7 @@ namespace Rucula.WebAssembly;
 public partial class Program
 {
     private static IServiceProvider _serviceProvider = default!;
+    private static bool _isInitializationFinished = false;
 
     public static async Task Main(string[] args)
     {
@@ -33,6 +34,9 @@ public partial class Program
             _serviceProvider = host.Services;
 
             await _serviceProvider.BuildPresentation();
+
+            _isInitializationFinished = true;
+
             await host.RunAsync();
         }
         catch (Exception ex)
@@ -46,7 +50,8 @@ public partial class Program
     {
         try
         {
-            await NullDependencyAwaiter.AwaitToNotNull(() => _serviceProvider);
+            await AwaitToFinishInitialization();
+            await AwaitToDependencies();
 
             var _parametersConverter = _serviceProvider.GetRequiredService<IParametersJSObjectConverter>();
             var parameters = _parametersConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
@@ -59,6 +64,12 @@ public partial class Program
             Console.WriteLine(ex.ToString());
         }
     }
+
+    private static Task AwaitToDependencies()
+        => Awaiter.AwaitToDependencyNotNull(() => _serviceProvider);
+
+    private static Task AwaitToFinishInitialization()
+        => Awaiter.KeepAwaiting(() => _isInitializationFinished);
 
     private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
         => WebAssemblyHostBuilder.CreateDefault(args);

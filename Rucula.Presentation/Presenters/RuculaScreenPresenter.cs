@@ -6,7 +6,8 @@ using Vitraux;
 namespace Rucula.Presentation.Presenters;
 
 internal sealed class RuculaScreenPresenter(
-    IPeriodicChoicesService periodicChoicesService,
+    IRestartingPeriodicRunnerService restartingPeriodicRunnerService,
+    IChoicesService choicesService,
     IWinningChoicePresenter winningChoicePresenter,
     IBondsPresenter bondsPresenter,
     IWesternUnionPresenter westernUnionPresenter,
@@ -17,11 +18,13 @@ internal sealed class RuculaScreenPresenter(
     public Task StartShowChoicesFromScratch(ChoicesParameters parameters)
         => StartShowChoices(new RuculaScreenViewModel(), parameters);
 
-    public async Task StartShowChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters)
-    {
-        if (viewmodel.IsRunning)
-            return;
+    public Task StartShowChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters)
+        => viewmodel.IsRunning
+            ? Task.CompletedTask
+            : restartingPeriodicRunnerService.Restart(() => RunChoices(viewmodel, parameters), TimeSpan.FromMinutes(1));
 
+    private async Task RunChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters)
+    {
         await ShowStartRunning(viewmodel);
 
         var callbacks = new ChoicesCallbacks(
@@ -31,7 +34,7 @@ internal sealed class RuculaScreenPresenter(
             westernUnionPresenter.ShowWesternUnion,
             cryptosPresenter.ShowCryptos);
 
-        await periodicChoicesService.StartProcessChoices(parameters, TimeSpan.FromMinutes(1), callbacks);
+        await choicesService.ProcessChoices(parameters, callbacks);
 
         await ShowStopRunning(viewmodel);
     }

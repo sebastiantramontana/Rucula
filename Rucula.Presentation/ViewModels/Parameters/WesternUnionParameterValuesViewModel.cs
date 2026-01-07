@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels.Parameters;
 
-internal sealed class WesternUnionParameterValuesViewModel
+internal sealed record class WesternUnionParameterValuesViewModel
 {
     internal double AmountToSend { get; private set; } = 1000.0;
 

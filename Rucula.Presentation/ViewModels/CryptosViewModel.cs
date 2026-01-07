@@ -2,7 +2,7 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-internal sealed class CryptosViewModel
+internal sealed record class CryptosViewModel
 {
     internal IEnumerable<CryptoExchangeViewModel> Exchanges { get; private set; } = [];
 

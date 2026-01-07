@@ -21,8 +21,9 @@ public partial class Program
     private static IHttpClientFactory _httpClientFactory = default!;
     private static INotifier _notifier = default!;
     private static IRuculaScreenPresenter _presenter = default!;
-    private static PeriodicChoicesServiceMock _choiceService = default!;
+    private static ChoicesServiceMock _choiceService = default!;
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new(JsonSerializerDefaults.Web);
+    private static bool _isInitializationFinished = false;
 
     public static async Task Main(string[] args)
     {
@@ -41,6 +42,8 @@ public partial class Program
             InstanceServices(host.Services);
             await host.Services.BuildPresentation();
 
+            _isInitializationFinished = true;
+
             await host.RunAsync();
         }
         catch (Exception ex)
@@ -52,13 +55,15 @@ public partial class Program
     [JSExport]
     public static async Task StartShowChoices(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
     {
+        await Awaiter.KeepAwaiting(() => _isInitializationFinished);
+
         ShowParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters);
 
-        await NullDependencyAwaiter.AwaitToNotNull(() => _navigationManager);
-        await NullDependencyAwaiter.AwaitToNotNull(() => _httpClientFactory);
-        await NullDependencyAwaiter.AwaitToNotNull(() => _notifier);
-        await NullDependencyAwaiter.AwaitToNotNull(() => _presenter);
-        await NullDependencyAwaiter.AwaitToNotNull(() => _choiceService);
+        await Awaiter.AwaitToDependencyNotNull(() => _navigationManager);
+        await Awaiter.AwaitToDependencyNotNull(() => _httpClientFactory);
+        await Awaiter.AwaitToDependencyNotNull(() => _notifier);
+        await Awaiter.AwaitToDependencyNotNull(() => _presenter);
+        await Awaiter.AwaitToDependencyNotNull(() => _choiceService);
 
         var mockParam = await GetMockParam();
 
@@ -157,13 +162,14 @@ public partial class Program
         _httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
         _notifier = serviceProvider.GetRequiredService<INotifier>();
         _presenter = serviceProvider.GetRequiredService<IRuculaScreenPresenter>();
-        _choiceService = serviceProvider.GetRequiredService<PeriodicChoicesServiceMock>();
+        _choiceService = serviceProvider.GetRequiredService<ChoicesServiceMock>();
     }
 
     private static void Register(IServiceCollection serviceCollection)
         => serviceCollection
             .AddHttpClient()
-            .AddSingleton<PeriodicChoicesServiceMock>()
-            .AddSingleton<IPeriodicChoicesService, PeriodicChoicesServiceMock>()
+            .AddSingleton<ChoicesServiceMock>()
+            .AddSingleton<IChoicesService, ChoicesServiceMock>()
+            .AddSingleton<IRestartingPeriodicRunnerService, RestartingPeriodicRunnerServiceMock>()
             .AddPresentation();
 }
