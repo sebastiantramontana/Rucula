@@ -23,7 +23,7 @@ internal sealed record class CryptoBlockchainViewModel(string BlockchainName,
         => GetValue(price, p => p.Fee);
 
     private static double? GetNet(Optional<DolarCryptoNetPrice> price)
-    => GetValue(price, p => p.NetPrice);
+        => GetValue(price, p => p.NetPrice);
 
     private static double? GetValue(Optional<DolarCryptoNetPrice> price, Func<DolarCryptoNetPrice, double> getValueFunc)
         => price.HasValue ? getValueFunc.Invoke(price.Value) : null;

@@ -4,11 +4,8 @@ using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
-internal sealed class BondsPresenter(BondsViewModel bondsViewModel, IViewUpdater<BondsViewModel> viewUpdater) : IBondsPresenter
+internal sealed class BondsPresenter(IViewUpdater<BondsViewModel> viewUpdater) : IBondsPresenter
 {
     public Task ShowBonds(IEnumerable<TituloIsin> bonds)
-    {
-        bondsViewModel.Update(bonds);
-        return viewUpdater.Update(bondsViewModel);
-    }
+        => viewUpdater.Update(BondsViewModel.FromEntity(bonds));
 }

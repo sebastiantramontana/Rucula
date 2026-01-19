@@ -2,25 +2,10 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed record class WesternUnionViewModel
+internal sealed record class WesternUnionViewModel(double? GrossPrice, double? NetPrice, double? Fees)
 {
-    public double GrossPrice { get; private set; }
-    public double NetPrice { get; private set; }
-    public double Fees { get; private set; }
-
-    internal void Update(Optional<DolarWesternUnion> dolarWesternUnion)
-    {
-        if (dolarWesternUnion.HasValue)
-        {
-            GrossPrice = dolarWesternUnion.Value.GrossPrice;
-            NetPrice = dolarWesternUnion.Value.NetPrice;
-            Fees = dolarWesternUnion.Value.Fees;
-        }
-        else
-        {
-            GrossPrice = 0.0;
-            NetPrice = 0.0;
-            Fees = 0.0;
-        }
-    }
+    internal static WesternUnionViewModel FromEntity(Optional<DolarWesternUnion> dolarWesternUnion)
+        => dolarWesternUnion.HasValue
+            ? new(dolarWesternUnion.Value.GrossPrice, dolarWesternUnion.Value.NetPrice, dolarWesternUnion.Value.Fees)
+            : new(null, null, null);
 }

@@ -8,6 +8,6 @@ internal static class SaveParametersMappingExt
     private static readonly Uri _saveParametersModuleUri = new("./parametersStorage.js", UriKind.Relative);
     private const string SaveParametersFunctionName = "saveParameters";
 
-    internal static IRootValueFinallizable<ParametersViewModel, TValue> ToSaveParametersJs<TValue>(this IRootValueTargetBuilder<ParametersViewModel, TValue> builder)
+    internal static IRootValueFinallizable<SaveParametersViewModel, TValue> ToSaveParametersJs<TValue>(this IRootValueTargetBuilder<SaveParametersViewModel, TValue> builder)
         => builder.ToJsFunction(SaveParametersFunctionName).FromModule(_saveParametersModuleUri);
 }

@@ -4,13 +4,8 @@ using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
-internal sealed class WesternUnionPresenter(
-    WesternUnionViewModel westernUnionViewModel,
-    IViewUpdater<WesternUnionViewModel> viewUpdater) : IWesternUnionPresenter
+internal sealed class WesternUnionPresenter(IViewUpdater<WesternUnionViewModel> viewUpdater) : IWesternUnionPresenter
 {
     public Task ShowWesternUnion(Optional<DolarWesternUnion> dolarWesternUnion)
-    {
-        westernUnionViewModel.Update(dolarWesternUnion);
-        return viewUpdater.Update(westernUnionViewModel);
-    }
+        => viewUpdater.Update(WesternUnionViewModel.FromEntity(dolarWesternUnion));
 }

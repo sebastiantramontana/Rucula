@@ -2,16 +2,8 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-public sealed record class WinningChoiceViewModel
+internal sealed record class WinningChoiceViewModel(string Name, string Info, double? DolarPrice)
 {
-    public string Name { get; private set; } = string.Empty;
-    public string Info { get; private set; } = string.Empty;
-    public double? DolarPrice { get; private set; } = null;
-
-    public void Update(WinningChoice winningChoice)
-    {
-        Name = winningChoice.Name;
-        Info = winningChoice.Info;
-        DolarPrice = winningChoice.DolarPrice;
-    }
+    internal static WinningChoiceViewModel FromEntity(WinningChoice winningChoice)
+        => new(winningChoice.Name, winningChoice.Info, winningChoice.DolarPrice);
 }

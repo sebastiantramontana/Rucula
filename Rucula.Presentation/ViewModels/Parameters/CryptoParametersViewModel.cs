@@ -1,6 +1,6 @@
 ﻿namespace Rucula.Presentation.ViewModels.Parameters;
 
-internal sealed record class CryptoParametersViewModel() : ParametersViewModelBase<CryptoParameterValuesViewModel>("parameters-crypto-settings")
+internal sealed record class CryptoParametersViewModel(CryptoParameterValuesViewModel Values) : ParametersViewModelBase<CryptoParameterValuesViewModel>("parameters-crypto-settings", Values)
 {
     protected override string GetStringifiedJsonValues() 
         => $$"""
@@ -10,5 +10,5 @@ internal sealed record class CryptoParametersViewModel() : ParametersViewModelBa
             """;
 
     public override string ToString()
-        => StringifydJson();
+        => StringifyJson();
 }

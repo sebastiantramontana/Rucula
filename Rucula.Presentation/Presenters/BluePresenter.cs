@@ -4,11 +4,8 @@ using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
-internal sealed class BluePresenter(BlueViewModel blueViewModel, IViewUpdater<BlueViewModel> viewUpdater) : IBluePresenter
+internal sealed class BluePresenter(IViewUpdater<BlueViewModel> viewUpdater) : IBluePresenter
 {
     public Task ShowBlue(Optional<Blue> blue)
-    {
-        blueViewModel.Update(blue);
-        return viewUpdater.Update(blueViewModel);
-    }
+        => viewUpdater.Update(BlueViewModel.FromEntity(blue));
 }

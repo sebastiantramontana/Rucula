@@ -2,22 +2,10 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-internal sealed record class BlueViewModel
+internal sealed record class BlueViewModel(double? PurchasePrice, double? SalePrice)
 {
-    internal double? PurchasePrice { get; private set; } = null;
-    internal double? SalePrice { get; private set; } = null;
-
-    internal void Update(Optional<Blue> blue)
-    {
-        if (blue.IsEmpty)
-        {
-            PurchasePrice = null;
-            SalePrice = null;
-        }
-        else
-        {
-            PurchasePrice = blue.Value.PrecioCompra;
-            SalePrice = blue.Value.PrecioVenta;
-        }
-    }
+    internal static BlueViewModel FromEntity(Optional<Blue> blue)
+        => blue.IsEmpty
+            ? new BlueViewModel(null, null)
+            : new BlueViewModel(blue.Value.PrecioCompra, blue.Value.PrecioVenta);
 }

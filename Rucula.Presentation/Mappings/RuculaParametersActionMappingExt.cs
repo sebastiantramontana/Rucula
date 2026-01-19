@@ -1,4 +1,4 @@
-﻿using Rucula.Presentation.ActionBinders.Constants;
+﻿using Rucula.Presentation.ActionBinders.Constants.ActionParameterKeys;
 using Vitraux.Modeling.Building.Contracts.ElementBuilders.Actions;
 
 namespace Rucula.Presentation.Mappings;

@@ -4,6 +4,7 @@ using Rucula.Presentation.ActionBinders;
 using Rucula.Presentation.Format;
 using Rucula.Presentation.Mappings;
 using Rucula.Presentation.Presenters;
+using Rucula.Presentation.Repositories;
 using Rucula.Presentation.ViewModels;
 using Rucula.Presentation.ViewModels.Parameters;
 using Vitraux;
@@ -17,13 +18,19 @@ public static class PresentationRegistrar
             .AddPresenters()
             .AddActionBinders()
             .AddFormatters()
-            .AddMappings();
+            .AddMappings()
+            .AddParameterUtils();
+
+    private static IServiceCollection AddParameterUtils(this IServiceCollection serviceCollection)
+        => serviceCollection
+            .AddSingleton<IParametersRepository, ParametersRepository>()
+            .AddSingleton<IParametersProvider>((sp) => sp.GetRequiredService<IParametersRepository>());
 
     private static IServiceCollection AddActionBinders(this IServiceCollection serviceCollection)
         => serviceCollection
-            .AddSingleton<IRuculaScreenRefreshActionBinderAsync, RuculaScreenRefreshActionBinderAsync>()
-            .AddSingleton<IRuculaParametersActionBinderAsync, RuculaParametersActionBinderAsync>()
-            .AddSingleton<IRuculaParametersParser, RuculaParametersParser>();
+            .AddSingleton<IRuculaParametersSaver, RuculaParametersSaver>()
+            .AddSingleton<IRuculaParametersParser, RuculaParametersParser>()
+            .AddSingleton<IRuculaValidateParametersActionBinderAsync, RuculaValidateParametersActionBinderAsync>();
 
     private static IServiceCollection AddFormatters(this IServiceCollection serviceCollection)
         => serviceCollection
@@ -31,6 +38,7 @@ public static class PresentationRegistrar
 
     private static IServiceCollection AddPresenters(this IServiceCollection serviceCollection)
         => serviceCollection
+            .AddSingleton<IRuculaStarterPresenter, RuculaStarterPresenter>()
             .AddSingleton<IRuculaScreenPresenter, RuculaScreenPresenter>()
             .AddSingleton<IBluePresenter, BluePresenter>()
             .AddSingleton<IBondsPresenter, BondsPresenter>()
@@ -45,19 +53,21 @@ public static class PresentationRegistrar
         _ = serviceCollection
                 .AddSingleton<IConfigurationBehaviorProvider, ConfigurationBehaviorProvider>()
                 .AddVitraux()
-                .AddConfiguration(() => new VitrauxConfiguration{ UseShadowDom = false })
-                .AddViewModel<WinningChoiceViewModel>().AddConfiguration<WinningChoiceConfigurationMapping>()
-                .AddViewModel<BondsViewModel>().AddConfiguration<BondsConfigurationMapping>()
-                .AddViewModel<CryptosViewModel>().AddConfiguration<CryptosConfigurationMapping>()
-                .AddViewModel<BlueViewModel>().AddConfiguration<BlueConfigurationMapping>()
-                .AddViewModel<WesternUnionViewModel>().AddConfiguration<WesternUnionConfigurationMapping>()
-                .AddViewModel<NotifyProgressViewModel>().AddConfiguration<NotifyProgressConfigurationMapping>()
-                .AddViewModel<ParametersViewModel>()
-                    .AddConfiguration<ParametersConfigurationMapping>()
-                    .AddActionParameterBinderAsync<RuculaParametersActionBinderAsync>()
+                .AddConfiguration(() => new VitrauxConfiguration { UseShadowDom = false })
+                .AddViewModelConfiguration<WinningChoiceViewModel, WinningChoiceConfigurationMapping>()
+                .AddViewModelConfiguration<BondsViewModel, BondsConfigurationMapping>()
+                .AddViewModelConfiguration<CryptosViewModel, CryptosConfigurationMapping>()
+                .AddViewModelConfiguration<BlueViewModel, BlueConfigurationMapping>()
+                .AddViewModelConfiguration<WesternUnionViewModel, WesternUnionConfigurationMapping>()
+                .AddViewModelConfiguration<NotifyProgressViewModel, NotifyProgressConfigurationMapping>()
+                .AddViewModelConfiguration<BondParameterValuesViewModel, BondParametersConfigurationMapping>()
+                .AddViewModelConfiguration<CryptoParameterValuesViewModel, CryptoParametersConfigurationMapping>()
+                .AddViewModelConfiguration<WesternUnionParameterValuesViewModel, WesternUnionParametersConfigurationMapping>()
                 .AddViewModel<RuculaScreenViewModel>()
                     .AddConfiguration<RuculaScreenConfigurationMapping>()
-                    .AddActionParameterBinderAsync<RuculaScreenRefreshActionBinderAsync>();
+                    .AddActionParameterBinderAsync<RuculaValidateParametersActionBinderAsync>()
+                .AddViewModel<SaveParametersViewModel>()
+                    .AddConfiguration<SaveParametersConfigurationMapping>();
 
         return serviceCollection;
     }

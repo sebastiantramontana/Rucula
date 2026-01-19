@@ -1,9 +1,3 @@
 ﻿namespace Rucula.Presentation.ViewModels;
 
-public sealed record class RuculaScreenViewModel
-{
-    public bool IsRunning { get; private set; } = false;
-
-    public void Update(bool isRunning)
-        => IsRunning = isRunning;
-}
+internal sealed record class RuculaScreenViewModel(bool IsRunning = false, bool AreParametersInvalid = false, bool AreParametersDirty = false);

@@ -1,6 +1,6 @@
 ﻿namespace Rucula.Presentation.ViewModels.Parameters;
 
-internal sealed record class WesternUnionParametersViewModel() : ParametersViewModelBase<WesternUnionParameterValuesViewModel>("parameters-wu-settings")
+internal sealed record class WesternUnionParametersViewModel(WesternUnionParameterValuesViewModel Values) : ParametersViewModelBase<WesternUnionParameterValuesViewModel>("parameters-wu-settings", Values)
 {
     protected override string GetStringifiedJsonValues() 
         => $$"""
@@ -10,5 +10,5 @@ internal sealed record class WesternUnionParametersViewModel() : ParametersViewM
             """;
 
     public override string ToString()
-        => StringifydJson();
+        => StringifyJson();
 }

@@ -55,9 +55,9 @@ public partial class Program
 
             var _parametersConverter = _serviceProvider.GetRequiredService<IParametersJSObjectConverter>();
             var parameters = _parametersConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
-            var presenter = _serviceProvider.GetRequiredService<IRuculaScreenPresenter>();
+            var starter = _serviceProvider.GetRequiredService<IRuculaStarterPresenter>();
 
-            await presenter.StartShowChoicesFromScratch(parameters);
+            await starter.Start(parameters);
         }
         catch (Exception ex)
         {

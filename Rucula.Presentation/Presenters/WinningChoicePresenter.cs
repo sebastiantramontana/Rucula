@@ -4,13 +4,8 @@ using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
-internal sealed class WinningChoicePresenter(
-    WinningChoiceViewModel winningChoiceViewModel,
-    IViewUpdater<WinningChoiceViewModel> viewUpdater) : IWinningChoicePresenter
+internal sealed class WinningChoicePresenter(IViewUpdater<WinningChoiceViewModel> viewUpdater) : IWinningChoicePresenter
 {
     public Task ShowWinner(WinningChoice winningChoice)
-    {
-        winningChoiceViewModel.Update(winningChoice);
-        return viewUpdater.Update(winningChoiceViewModel);
-    }
+        => viewUpdater.Update(WinningChoiceViewModel.FromEntity(winningChoice));
 }

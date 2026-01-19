@@ -4,11 +4,8 @@ using Vitraux;
 
 namespace Rucula.Presentation.Presenters;
 
-internal sealed class NotifyProgressPresenter(NotifyProgressViewModel viewModel, IViewUpdater<NotifyProgressViewModel> viewUpdater) : INotifier
+internal sealed class NotifyProgressPresenter(IViewUpdater<NotifyProgressViewModel> viewUpdater) : INotifier
 {
     public Task Notify(string message)
-    {
-        viewModel.Update(message);
-        return viewUpdater.Update(viewModel);
-    }
+        => viewUpdater.Update(new(message));
 }

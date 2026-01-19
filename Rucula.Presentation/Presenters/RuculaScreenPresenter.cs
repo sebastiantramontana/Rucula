@@ -1,5 +1,5 @@
 ﻿using Rucula.Domain.Abstractions;
-using Rucula.Domain.Entities.Parameters;
+using Rucula.Presentation.Repositories;
 using Rucula.Presentation.ViewModels;
 using Vitraux;
 
@@ -13,41 +13,55 @@ internal sealed class RuculaScreenPresenter(
     IWesternUnionPresenter westernUnionPresenter,
     ICryptosPresenter cryptosPresenter,
     IBluePresenter bluePresenter,
+    IParametersProvider parametersProvider,
     IViewUpdater<RuculaScreenViewModel> viewUpdater) : IRuculaScreenPresenter
 {
-    public Task StartShowChoicesFromScratch(ChoicesParameters parameters)
-        => StartShowChoices(new RuculaScreenViewModel(), parameters);
-
-    public Task StartShowChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters)
+    public Task StartShowChoices(RuculaScreenViewModel viewmodel)
         => viewmodel.IsRunning
             ? Task.CompletedTask
-            : restartingPeriodicRunnerService.Restart(() => RunChoices(viewmodel, parameters), TimeSpan.FromMinutes(1));
+            : restartingPeriodicRunnerService.Restart(RunChoices, TimeSpan.FromMinutes(5));
 
-    private async Task RunChoices(RuculaScreenViewModel viewmodel, ChoicesParameters parameters)
+    private async Task RunChoices()
     {
-        await ShowStartRunning(viewmodel);
+        var parameters = parametersProvider.GetParameters();
 
-        var callbacks = new ChoicesCallbacks(
-            winningChoicePresenter.ShowWinner,
+        if (parameters.IsSuccess)
+        {
+            await ShowStartRunning(parametersProvider.AreDirty);
+
+            var callbacks = CreateCallbacks();
+            await choicesService.ProcessChoices(parameters.Value, callbacks);
+
+            await ShowStopRunning(parametersProvider.AreDirty);
+        }
+        else
+        {
+            await ShowByInvalidParameters(parametersProvider.AreDirty);
+        }
+    }
+
+    private ChoicesCallbacks CreateCallbacks()
+        => new(winningChoicePresenter.ShowWinner,
             bondsPresenter.ShowBonds,
             bluePresenter.ShowBlue,
             westernUnionPresenter.ShowWesternUnion,
             cryptosPresenter.ShowCryptos);
 
-        await choicesService.ProcessChoices(parameters, callbacks);
+    private Task ShowStartRunning(bool areParametersDirty)
+        => ShowRunning(true, areParametersDirty);
 
-        await ShowStopRunning(viewmodel);
-    }
+    private Task ShowStopRunning(bool areParametersDirty)
+        => ShowRunning(false, areParametersDirty);
 
-    private Task ShowStartRunning(RuculaScreenViewModel viewmodel)
-        => ShowRunning(viewmodel, true);
+    private Task ShowRunning(bool isRunning, bool areParametersDirty)
+        => UpdateView(isRunning, false, areParametersDirty);
 
-    private Task ShowStopRunning(RuculaScreenViewModel viewmodel)
-        => ShowRunning(viewmodel, false);
+    private Task ShowByInvalidParameters(bool areParametersDirty)
+        => UpdateView(false, true, areParametersDirty);
 
-    private Task ShowRunning(RuculaScreenViewModel viewmodel, bool isRunning)
+    private Task UpdateView(bool isRunning, bool areParametersInvalid, bool areParametersDirty)
     {
-        viewmodel.Update(isRunning);
+        var viewmodel = new RuculaScreenViewModel(isRunning, areParametersInvalid, areParametersDirty);
         return viewUpdater.Update(viewmodel);
     }
 }

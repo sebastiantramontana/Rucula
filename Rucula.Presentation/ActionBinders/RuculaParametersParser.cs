@@ -1,5 +1,7 @@
-﻿using Rucula.Domain.Entities.Parameters;
-using Rucula.Presentation.ActionBinders.Constants;
+﻿using Rucula.Domain.Entities;
+using Rucula.Domain.Entities.Parameters;
+using Rucula.Presentation.ActionBinders.Constants.ActionParameterKeys;
+using Rucula.Presentation.ActionBinders.Constants.Ranges;
 
 namespace Rucula.Presentation.ActionBinders;
 
@@ -26,7 +28,7 @@ internal sealed class RuculaParametersParser : IRuculaParametersParser
 
     private static BondCommissions ParseBondCommissions(IDictionary<string, IEnumerable<string>> parameters)
     {
-        var range = new ParameterRange(0.0, 5.0);
+        var range = new ParameterRange(BondParametersRange.LowRange, BondParametersRange.HiRange);
 
         var commissionPurchaseBond = ParseParameter(BondCommissionActionParameterKeys.PurchasePercentage, parameters, range);
         var commissionSaleBond = ParseParameter(BondCommissionActionParameterKeys.SalePercentage, parameters, range);
@@ -36,10 +38,10 @@ internal sealed class RuculaParametersParser : IRuculaParametersParser
     }
 
     private static WesternUnionParameters ParseWesternUnionParameters(IDictionary<string, IEnumerable<string>> parameters)
-        => new(ParseParameter(WesternUnionActionParameterKeys.AmountToSend, parameters, new ParameterRange(100.0, 10000.0)));
+        => new(ParseParameter(WesternUnionActionParameterKeys.AmountToSend, parameters, new ParameterRange(WesternUnionParametersRange.AmountToSendLowRange, WesternUnionParametersRange.AmountToSendHiRange)));
 
     private static DolarCryptoParameters ParseDolarCryptoParameters(IDictionary<string, IEnumerable<string>> parameters)
-        => new(ParseParameter(CryptoActionParameterKeys.TradingVolume, parameters, new ParameterRange(100.0, 10000.0)));
+        => new(ParseParameter(CryptoActionParameterKeys.TradingVolume, parameters, new ParameterRange(CryptoParametersRange.VolumeLowRange, CryptoParametersRange.VolumeHiRange)));
 
     private static double ParseParameter(string paramKey, IDictionary<string, IEnumerable<string>> parameters, ParameterRange range)
     {

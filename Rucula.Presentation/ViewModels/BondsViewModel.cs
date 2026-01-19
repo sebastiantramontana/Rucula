@@ -2,10 +2,8 @@
 
 namespace Rucula.Presentation.ViewModels;
 
-internal sealed record class BondsViewModel
+internal sealed record class BondsViewModel(IEnumerable<BondViewModel> Bonds)
 {
-    internal IEnumerable<BondViewModel> Bonds { get; private set; } = [];
-
-    internal void Update(IEnumerable<TituloIsin> bonds) 
-        => Bonds = bonds.Select(BondViewModel.FromEntity);
+    internal static BondsViewModel FromEntity(IEnumerable<TituloIsin> bonds)
+        => new(bonds.Select(BondViewModel.FromEntity));
 }

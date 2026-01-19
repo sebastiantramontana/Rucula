@@ -20,7 +20,7 @@ public partial class Program
     private static NavigationManager _navigationManager = default!;
     private static IHttpClientFactory _httpClientFactory = default!;
     private static INotifier _notifier = default!;
-    private static IRuculaScreenPresenter _presenter = default!;
+    private static IRuculaStarterPresenter _starter = default!;
     private static ChoicesServiceMock _choiceService = default!;
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new(JsonSerializerDefaults.Web);
     private static bool _isInitializationFinished = false;
@@ -62,7 +62,7 @@ public partial class Program
         await Awaiter.AwaitToDependencyNotNull(() => _navigationManager);
         await Awaiter.AwaitToDependencyNotNull(() => _httpClientFactory);
         await Awaiter.AwaitToDependencyNotNull(() => _notifier);
-        await Awaiter.AwaitToDependencyNotNull(() => _presenter);
+        await Awaiter.AwaitToDependencyNotNull(() => _starter);
         await Awaiter.AwaitToDependencyNotNull(() => _choiceService);
 
         var mockParam = await GetMockParam();
@@ -76,7 +76,7 @@ public partial class Program
 
         _choiceService.UpdateMokedChoices(currentChoices);
 
-        await _presenter.StartShowChoicesFromScratch(null!);
+        await _starter.Start(null!);
     }
 
     private static void ShowParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
@@ -161,7 +161,7 @@ public partial class Program
         _navigationManager = serviceProvider.GetRequiredService<NavigationManager>();
         _httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
         _notifier = serviceProvider.GetRequiredService<INotifier>();
-        _presenter = serviceProvider.GetRequiredService<IRuculaScreenPresenter>();
+        _starter = serviceProvider.GetRequiredService<IRuculaStarterPresenter>();
         _choiceService = serviceProvider.GetRequiredService<ChoicesServiceMock>();
     }
 

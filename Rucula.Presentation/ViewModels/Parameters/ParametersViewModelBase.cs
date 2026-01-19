@@ -1,13 +1,8 @@
 ﻿namespace Rucula.Presentation.ViewModels.Parameters;
 
-internal abstract record class ParametersViewModelBase<TValues>(string SettingsKey) where TValues : new()
+internal abstract record class ParametersViewModelBase<TValues>(string SettingsKey, TValues Values)
 {
-    internal TValues Values { get; private set; } = new();
-    internal void Update(TValues values)
-        => Values = values;
-
-    public override abstract string ToString();
-    protected string StringifydJson()
+    protected string StringifyJson()
         => $$"""
             {
                 "key": "{{SettingsKey}}",

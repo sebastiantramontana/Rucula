@@ -1,4 +1,4 @@
-﻿namespace Rucula.Presentation.ActionBinders.Constants;
+﻿namespace Rucula.Presentation.ActionBinders.Constants.ActionParameterKeys;
 
 internal sealed class WesternUnionActionParameterKeys
 {
