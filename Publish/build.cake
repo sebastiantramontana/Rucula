@@ -95,9 +95,9 @@ Task("CopyStatics")
 	.Description("Copiando archivos estaticos")
     .Does(() => {
 		CreateDirectory("../dist/images/");
-		CreateDirectory("../dist/modules/");
+		CreateDirectory("../dist/js/");
 		CopyFiles("../Rucula.Frontend/images/*.*", "../dist/images/");
-		CopyFiles("../Rucula.Frontend/modules/*.*", "../dist/modules/");
+		CopyFiles("../Rucula.Frontend/js/*.*", "../dist/js/");
 		CopyFiles("../Rucula.Frontend/*.*", "../dist/");
 		DeleteFile("./../dist/web.config");
 });
