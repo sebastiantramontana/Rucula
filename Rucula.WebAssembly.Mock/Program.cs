@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.WebUtilities;
 using Rucula.Domain.Abstractions;
+using Rucula.Domain.Entities.Parameters;
 using Rucula.Infrastructure;
 using Rucula.Presentation.IoC;
 using Rucula.Presentation.Presenters;
@@ -57,7 +58,8 @@ public partial class Program
     {
         await Awaiter.KeepAwaiting(() => _isInitializationFinished);
 
-        ShowParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters);
+        var initialParameters = ConvertParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters);
+        ShowParameters(initialParameters);
 
         await Awaiter.AwaitToDependencyNotNull(() => _navigationManager);
         await Awaiter.AwaitToDependencyNotNull(() => _httpClientFactory);
@@ -74,16 +76,25 @@ public partial class Program
             _ => await FetchMock(mockParam!)
         };
 
-        _choiceService.UpdateMokedChoices(currentChoices);
+        _choiceService.UpdateMockedChoices(currentChoices);
 
-        await _starter.Start(null!);
+        await _starter.Start(initialParameters);
     }
 
-    private static void ShowParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+    private static ChoicesParameters ConvertParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+        => new(
+            new(bondCommissions.GetPropertyAsDouble("purchasePercentage"),
+                bondCommissions.GetPropertyAsDouble("salePercentage"),
+                bondCommissions.GetPropertyAsDouble("withdrawalPercentage")),
+            new(dolarCryptoParameters.GetPropertyAsDouble("volume")),
+            new(westernUnionParameters.GetPropertyAsDouble("amountToSend"))
+            );
+
+    private static void ShowParameters(ChoicesParameters parameters)
     {
-        Console.WriteLine($"Comisiones: {bondCommissions.GetPropertyAsDouble("purchasePercentage")}% - {bondCommissions.GetPropertyAsDouble("salePercentage")}% - {bondCommissions.GetPropertyAsDouble("withdrawalPercentage")}%");
-        Console.WriteLine($"Parámetros WU: {westernUnionParameters.GetPropertyAsDouble("amountToSend")}");
-        Console.WriteLine($"Parámetros Crypto: {dolarCryptoParameters.GetPropertyAsDouble("volume")}");
+        Console.WriteLine($"Comisiones: {parameters.BondCommissions.PurchasePercentage}% - {parameters.BondCommissions.SalePercentage}% - {parameters.BondCommissions.WithdrawalPercentage}%");
+        Console.WriteLine($"Parámetros WU: {parameters.WesternUnionParameters.AmountToSend}");
+        Console.WriteLine($"Parámetros Crypto: {parameters.CryptoParameters.TradingVolume}");
     }
 
     private static async Task<string?> GetMockParam()
@@ -103,7 +114,7 @@ public partial class Program
         }
 
         await _notifier.Notify($"params: {values}");
-        await Task.Delay(1000);
+        await Task.Delay(100);
 
         return values[0];
     }
@@ -114,7 +125,7 @@ public partial class Program
     private static async Task<ChoicesInfo> FetchMock(string mockName)
     {
         await _notifier.Notify($"Fetching mock: {mockName}");
-        await Task.Delay(1000);
+        await Task.Delay(100);
 
         var uri = GetMockUri(mockName);
         var json = await RequestMock(uri);
@@ -169,7 +180,7 @@ public partial class Program
         => serviceCollection
             .AddHttpClient()
             .AddSingleton<ChoicesServiceMock>()
-            .AddSingleton<IChoicesService, ChoicesServiceMock>()
+            .AddSingleton<IChoicesService>(sp => sp.GetRequiredService<ChoicesServiceMock>())
             .AddSingleton<IRestartingPeriodicRunnerService, RestartingPeriodicRunnerServiceMock>()
             .AddPresentation();
 }

@@ -4,16 +4,10 @@ using Rucula.WebAssembly.Mock;
 
 namespace Rucula.WebAssembly;
 
-public sealed class RestartingPeriodicRunnerServiceMock : IRestartingPeriodicRunnerService
-{
-    public Task Restart(Func<Task> executeFunc, TimeSpan interval)
-        => executeFunc.Invoke();
-}
-
 public sealed class ChoicesServiceMock : IChoicesService
 {
     private ChoicesInfo _choicesInfo = default!;
-    public void UpdateMokedChoices(ChoicesInfo choicesInfo)
+    public void UpdateMockedChoices(ChoicesInfo choicesInfo)
         => _choicesInfo = choicesInfo;
 
     public Task ProcessChoices(ChoicesParameters parameters, ChoicesCallbacks choicesCallbacks)
