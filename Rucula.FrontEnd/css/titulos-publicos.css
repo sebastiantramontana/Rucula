@@ -3,20 +3,20 @@
     padding: 12px;
 }
 
-#tabla-titulos:has(tbody:empty) > caption {
+#bonds-table:has(tbody:empty) > caption {
     display: table-caption;
 }
 
-#tabla-titulos:not(:has(tbody:empty)) > caption {
+#bonds-table:not(:has(tbody:empty)) > caption {
     display: none;
 }
 
-#tabla-titulos > thead {
+#bonds-table > thead {
     display: none;
 }
 
 @media screen and (min-width: 640px) {
-    #tabla-titulos:not(:has(tbody:empty)) > thead {
+    #bonds-table:not(:has(tbody:empty)) > thead {
         display: table-header-group;
     }
 }
