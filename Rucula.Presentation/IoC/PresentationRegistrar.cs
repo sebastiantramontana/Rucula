@@ -34,7 +34,8 @@ public static class PresentationRegistrar
 
     private static IServiceCollection AddFormatters(this IServiceCollection serviceCollection)
         => serviceCollection
-            .AddSingleton<ISpanishPriceFormatter, SpanishPriceFormatter>();
+            .AddSingleton<ISpanishNumberFormatter, SpanishNumberFormatter>()
+            .AddSingleton<IHtmlSpanishNumberFormatter, HtmlSpanishNumberFormatter>();
 
     private static IServiceCollection AddPresenters(this IServiceCollection serviceCollection)
         => serviceCollection

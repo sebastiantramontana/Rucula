@@ -4,7 +4,7 @@ using Vitraux;
 
 namespace Rucula.Presentation.Mappings;
 
-internal class WinningChoiceConfigurationMapping(ISpanishPriceFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<WinningChoiceViewModel>
+internal class WinningChoiceConfigurationMapping(IHtmlSpanishNumberFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<WinningChoiceViewModel>
 {
     public ConfigurationBehavior ConfigurationBehavior { get; } = behaviorProvider.DefaultConfigurationBehavior;
 

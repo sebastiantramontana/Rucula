@@ -4,7 +4,7 @@ using Vitraux;
 
 namespace Rucula.Presentation.Mappings;
 
-internal sealed class BondsConfigurationMapping(ISpanishPriceFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<BondsViewModel>
+internal sealed class BondsConfigurationMapping(IHtmlSpanishNumberFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<BondsViewModel>
 {
     public ConfigurationBehavior ConfigurationBehavior { get; } = behaviorProvider.DefaultConfigurationBehavior;
 

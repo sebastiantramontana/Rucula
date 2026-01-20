@@ -4,7 +4,7 @@ using Vitraux;
 
 namespace Rucula.Presentation.Mappings;
 
-internal sealed class CryptosConfigurationMapping(ISpanishPriceFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<CryptosViewModel>
+internal sealed class CryptosConfigurationMapping(IHtmlSpanishNumberFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<CryptosViewModel>
 {
     public ConfigurationBehavior ConfigurationBehavior { get; } = behaviorProvider.DefaultConfigurationBehavior;
 

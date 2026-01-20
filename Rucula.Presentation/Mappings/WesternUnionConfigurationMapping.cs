@@ -4,7 +4,7 @@ using Vitraux;
 
 namespace Rucula.Presentation.Mappings;
 
-internal sealed class WesternUnionConfigurationMapping(ISpanishPriceFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<WesternUnionViewModel>
+internal sealed class WesternUnionConfigurationMapping(IHtmlSpanishNumberFormatter formatter, IConfigurationBehaviorProvider behaviorProvider) : IViewModelConfiguration<WesternUnionViewModel>
 {
     public ConfigurationBehavior ConfigurationBehavior { get; } = behaviorProvider.DefaultConfigurationBehavior;
 
