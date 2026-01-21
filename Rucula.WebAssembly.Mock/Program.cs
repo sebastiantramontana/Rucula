@@ -114,7 +114,7 @@ public partial class Program
         }
 
         await _notifier.Notify($"params: {values}");
-        await Task.Delay(100);
+        await Task.Delay(1000);
 
         return values[0];
     }
@@ -125,7 +125,7 @@ public partial class Program
     private static async Task<ChoicesInfo> FetchMock(string mockName)
     {
         await _notifier.Notify($"Fetching mock: {mockName}");
-        await Task.Delay(100);
+        await Task.Delay(1000);
 
         var uri = GetMockUri(mockName);
         var json = await RequestMock(uri);
