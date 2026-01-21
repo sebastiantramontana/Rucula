@@ -1,0 +1,3 @@
+﻿namespace Rucula.Domain.Entities.Parameters;
+
+public sealed record class OptionParameters(BondCommissions BondCommissions, DolarCryptoParameters CryptoParameters, WesternUnionParameters WesternUnionParameters);

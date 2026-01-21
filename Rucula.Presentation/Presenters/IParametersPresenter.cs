@@ -5,8 +5,8 @@ namespace Rucula.Presentation.Presenters;
 
 internal interface IParametersPresenter
 {
-    Task SaveParameters(Result<ChoicesParameters> parameters);
-    Task UpdateUIStateByParameters(Result<ChoicesParameters> parameters, bool areParametersDirty);
+    Task SaveParameters(Result<OptionParameters> parameters);
+    Task UpdateUIStateByParameters(Result<OptionParameters> parameters, bool areParametersDirty);
     Task ShowBondParameters(BondCommissions bondCommissions);
     Task ShowCryptoParameters(DolarCryptoParameters cryptoParameters);
     Task ShowWesternUnionParameters(WesternUnionParameters wuParameters);

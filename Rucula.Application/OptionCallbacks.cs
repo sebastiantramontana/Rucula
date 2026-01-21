@@ -1,8 +1,8 @@
 ﻿using Rucula.Domain.Entities;
 
-namespace Rucula.Domain.Abstractions;
+namespace Rucula.Application;
 
-public sealed record class ChoicesCallbacks(Func<WinningChoice, Task> OnWinningChoice,
+public sealed record class OptionCallbacks(Func<WinningOption, Task> OnWinningOption,
                                             Func<IEnumerable<TituloIsin>, Task> OnBonds,
                                             Func<Optional<Blue>, Task> OnBlue,
                                             Func<Optional<DolarWesternUnion>, Task> OnWesternUnion,

@@ -8,11 +8,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
-    <PackageReference Include="Vitraux" Version="1.2.10-rc" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rucula.Application\Rucula.Application.csproj" />
     <ProjectReference Include="..\Rucula.Domain.Abstractions\Rucula.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\Rucula.Domain.Entities\Rucula.Domain.Entities.csproj" />
   </ItemGroup>

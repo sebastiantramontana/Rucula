@@ -5,6 +5,6 @@ namespace Rucula.Presentation.Repositories;
 
 internal interface IParametersRepository : IParametersProvider
 {
-    void StoreParameters(Result<ChoicesParameters> parameters, bool areDirty);
+    void StoreParameters(Result<OptionParameters> parameters, bool areDirty);
     void Clean();
 }

@@ -11,16 +11,16 @@ internal sealed class RuculaStarterPresenter(
     IParametersPresenter parametersPresenter,
     IParametersRepository parametersRepository) : IRuculaStarterPresenter
 {
-    public Task Start(ChoicesParameters initialParameters)
+    public Task Start(OptionParameters initialParameters)
     {
         const bool ParametersAreDirty = false;
-        parametersRepository.StoreParameters(Result<ChoicesParameters>.Success(initialParameters), ParametersAreDirty);
+        parametersRepository.StoreParameters(Result<OptionParameters>.Success(initialParameters), ParametersAreDirty);
 
         var bondParamsTask = parametersPresenter.ShowBondParameters(initialParameters.BondCommissions);
         var cryptoParamsTask = parametersPresenter.ShowCryptoParameters(initialParameters.CryptoParameters);
         var wuParamsTask = parametersPresenter.ShowWesternUnionParameters(initialParameters.WesternUnionParameters);
-        var startChoicesTask = screenPresenter.StartShowChoices(viewModel);
+        var startOptionTask = screenPresenter.ShowOptions(viewModel);
 
-        return Task.WhenAll(bondParamsTask, cryptoParamsTask, wuParamsTask, startChoicesTask);
+        return Task.WhenAll(bondParamsTask, cryptoParamsTask, wuParamsTask, startOptionTask);
     }
 }

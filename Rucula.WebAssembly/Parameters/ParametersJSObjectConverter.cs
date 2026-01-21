@@ -8,7 +8,7 @@ internal sealed class ParametersJSObjectConverter(
     IJSObjectConverter<WesternUnionParameters> wuJSObjectConverter,
     IJSObjectConverter<DolarCryptoParameters> cryptojSObjectConverter) : IParametersJSObjectConverter
 {
-    public ChoicesParameters GetParameters(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
+    public OptionParameters GetParameters(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
     {
         var bondCommissions = bondJSObjectConverter.Convert(bondCommissionsJSObject);
         var westernUnionParameters = wuJSObjectConverter.Convert(westernUnionParametersJSObject);

@@ -1,4 +1,5 @@
-﻿using Rucula.Domain.Abstractions;
+﻿using Rucula.Application;
+using Rucula.Domain.Abstractions;
 using Rucula.Presentation.Repositories;
 using Rucula.Presentation.ViewModels;
 using Vitraux;
@@ -7,8 +8,8 @@ namespace Rucula.Presentation.Presenters;
 
 internal sealed class RuculaScreenPresenter(
     IRestartingPeriodicRunnerService restartingPeriodicRunnerService,
-    IChoicesService choicesService,
-    IWinningChoicePresenter winningChoicePresenter,
+    IBestOptionService bestOptionService,
+    IWinningOptionPresenter winningOptionPresenter,
     IBondsPresenter bondsPresenter,
     IWesternUnionPresenter westernUnionPresenter,
     ICryptosPresenter cryptosPresenter,
@@ -16,12 +17,12 @@ internal sealed class RuculaScreenPresenter(
     IParametersProvider parametersProvider,
     IViewUpdater<RuculaScreenViewModel> viewUpdater) : IRuculaScreenPresenter
 {
-    public Task StartShowChoices(RuculaScreenViewModel viewmodel)
+    public Task ShowOptions(RuculaScreenViewModel viewmodel)
         => viewmodel.IsRunning
             ? Task.CompletedTask
-            : restartingPeriodicRunnerService.Restart(RunChoices, TimeSpan.FromMinutes(5));
+            : restartingPeriodicRunnerService.Restart(RunOptions, TimeSpan.FromMinutes(5));
 
-    private async Task RunChoices()
+    private async Task RunOptions()
     {
         var parameters = parametersProvider.GetParameters();
 
@@ -30,7 +31,7 @@ internal sealed class RuculaScreenPresenter(
             await ShowStartRunning(parametersProvider.AreDirty);
 
             var callbacks = CreateCallbacks();
-            await choicesService.ProcessChoices(parameters.Value, callbacks);
+            await bestOptionService.ProcessOptions(parameters.Value, callbacks);
 
             await ShowStopRunning(parametersProvider.AreDirty);
         }
@@ -40,8 +41,8 @@ internal sealed class RuculaScreenPresenter(
         }
     }
 
-    private ChoicesCallbacks CreateCallbacks()
-        => new(winningChoicePresenter.ShowWinner,
+    private OptionCallbacks CreateCallbacks()
+        => new(winningOptionPresenter.ShowWinner,
             bondsPresenter.ShowBonds,
             bluePresenter.ShowBlue,
             westernUnionPresenter.ShowWesternUnion,

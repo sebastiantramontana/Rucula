@@ -7,9 +7,8 @@ public static class DomainRegistrar
 {
     public static IServiceCollection AddDomain(this IServiceCollection serviceCollection)
         => serviceCollection
-            .AddSingleton<IWinningChoiceService, WinningChoiceService>()
+            .AddSingleton<IWinningOptionService, WinningOptionService>()
             .AddSingleton<ITitulosService, TitulosService>()
-            .AddSingleton<IChoicesService, ChoicesService>()
             .AddSingleton<IRestartingPeriodicRunnerService, RestartingPeriodicRunnerService>()
             .AddSingleton<IWesternUnionService, WesternUnionService>()
             .AddSingleton<IDolarCryptoService, DolarCryptoService>()

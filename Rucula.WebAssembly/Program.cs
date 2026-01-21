@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Rucula.Application;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Implementations.IoC;
 using Rucula.Infrastructure;
@@ -46,7 +47,7 @@ public partial class Program
     }
 
     [JSExport]
-    public static async Task StartShowChoices(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
+    public static async Task StartShowOptions(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
     {
         try
         {
@@ -82,6 +83,7 @@ public partial class Program
             .AddHttpClient()
             .AddDataAccess()
             .AddDomain()
+            .AddApplication()
             .AddPresentation()
             .AddRuculaWebAssembly();
 }

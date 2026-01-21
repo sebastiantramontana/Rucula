@@ -13,21 +13,21 @@ addEventListener("load", async () => {
         });
 
         removeDownloadingPackagesIndicator();
-        await StartShowChoices();
+        await StartShowOptions();
     }
     catch (ex) {
         console.log(`Algo salió mal: ${ex}`);
     }
 });
 
-async function StartShowChoices() {
+async function StartShowOptions() {
 
     const titulosPublicosParameters = getBondParameters();
     const wuParameters = getWUParameters();
     const cryptoParameters = getCryptoParameters();
 
     const service = await getRuculaService();
-    await service.StartShowChoices(titulosPublicosParameters, wuParameters, cryptoParameters);
+    await service.StartShowOptions(titulosPublicosParameters, wuParameters, cryptoParameters);
 }
 
 async function getRuculaService() {

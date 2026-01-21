@@ -4,5 +4,5 @@ namespace Rucula.Presentation.Presenters;
 
 internal interface IRuculaScreenPresenter
 {
-    Task StartShowChoices(RuculaScreenViewModel viewmodel);
+    Task ShowOptions(RuculaScreenViewModel viewmodel);
 }

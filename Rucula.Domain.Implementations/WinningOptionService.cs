@@ -1,21 +1,22 @@
-﻿using Rucula.Domain.Entities;
+﻿using Rucula.Domain.Abstractions;
+using Rucula.Domain.Entities;
 
 namespace Rucula.Domain.Implementations;
 
-internal sealed class WinningChoiceService : IWinningChoiceService
+internal sealed class WinningOptionService : IWinningOptionService
 {
-    public Task CalculateWinningChoice(IEnumerable<TituloIsin> rankingTitulos, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos, Func<WinningChoice, Task> OnWinningChoice)
+    public Task CalculateWinner(IEnumerable<TituloIsin> rankingTitulos, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos, Func<WinningOption, Task> OnWinningOption)
     {
         var bestTitulo = MaybeFirst(rankingTitulos);
         var bestCrypto = MaybeFirst(rankingCryptos);
-        var winner= GetWinningChoice(bestTitulo, dolarWesternUnion, bestCrypto);
+        var winner= GetWinner(bestTitulo, dolarWesternUnion, bestCrypto);
 
-        return OnWinningChoice.Invoke(winner);
+        return OnWinningOption.Invoke(winner);
     }
 
-    private static WinningChoice GetWinningChoice(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)
+    private static WinningOption GetWinner(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)
     {
-        var competitors = new List<WinningChoice>(3);
+        var competitors = new List<WinningOption>(3);
 
         if (titulo.HasValue)
         {
@@ -37,19 +38,19 @@ internal sealed class WinningChoiceService : IWinningChoiceService
                     .OrderByDescending(w => w.DolarPrice)
                     .FirstOrDefault();
 
-        return winner ?? WinningChoice.NoWinners;
+        return winner ?? WinningOption.NoWinners;
     }
 
     private static DolarCryptoNetPrice GetBestCryptoNetPrice(DolarCryptoPrices topCryptoNetPrices)
         => topCryptoNetPrices.DolarCryptoNetPrices.First().TopNetPrice;
 
-    private static WinningChoice CreateWinner(TituloIsin titulo)
+    private static WinningOption CreateWinner(TituloIsin titulo)
         => new(titulo.TituloPeso.Simbolo, "Incluye comisiones, pero no costos de transferencias", titulo.NetCcl);
 
-    private static WinningChoice CreateWinner(DolarWesternUnion dolarWesternUnion)
+    private static WinningOption CreateWinner(DolarWesternUnion dolarWesternUnion)
         => new("Western Union", "Incluye costos", dolarWesternUnion.NetPrice);
 
-    private static WinningChoice CreateWinner(DolarCryptoNetPrice dolarCryptoNetPrice)
+    private static WinningOption CreateWinner(DolarCryptoNetPrice dolarCryptoNetPrice)
         => new("Contado con Crypto", "Incluye comisiones de exchange y de retiro", dolarCryptoNetPrice.NetPrice);
 
     private static Optional<T> MaybeFirst<T>(IEnumerable<T> values)

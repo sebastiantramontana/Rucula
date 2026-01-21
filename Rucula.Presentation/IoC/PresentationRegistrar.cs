@@ -45,7 +45,7 @@ public static class PresentationRegistrar
             .AddSingleton<IBondsPresenter, BondsPresenter>()
             .AddSingleton<ICryptosPresenter, CryptosPresenter>()
             .AddSingleton<IWesternUnionPresenter, WesternUnionPresenter>()
-            .AddSingleton<IWinningChoicePresenter, WinningChoicePresenter>()
+            .AddSingleton<IWinningOptionPresenter, WinningOptionPresenter>()
             .AddSingleton<INotifier, NotifyProgressPresenter>()
             .AddSingleton<IParametersPresenter, ParametersPresenter>();
 
@@ -55,7 +55,7 @@ public static class PresentationRegistrar
                 .AddSingleton<IConfigurationBehaviorProvider, ConfigurationBehaviorProvider>()
                 .AddVitraux()
                 .AddConfiguration(() => new VitrauxConfiguration { UseShadowDom = false })
-                .AddViewModelConfiguration<WinningChoiceViewModel, WinningChoiceConfigurationMapping>()
+                .AddViewModelConfiguration<WinningOptionViewModel, WinningOptionConfigurationMapping>()
                 .AddViewModelConfiguration<BondsViewModel, BondsConfigurationMapping>()
                 .AddViewModelConfiguration<CryptosViewModel, CryptosConfigurationMapping>()
                 .AddViewModelConfiguration<BlueViewModel, BlueConfigurationMapping>()

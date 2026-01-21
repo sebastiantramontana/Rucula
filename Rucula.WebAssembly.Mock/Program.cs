@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.WebUtilities;
+using Rucula.Application;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities.Parameters;
 using Rucula.Infrastructure;
@@ -22,7 +23,7 @@ public partial class Program
     private static IHttpClientFactory _httpClientFactory = default!;
     private static INotifier _notifier = default!;
     private static IRuculaStarterPresenter _starter = default!;
-    private static ChoicesServiceMock _choiceService = default!;
+    private static BestOptionServiceMock _bestOptionService = default!;
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new(JsonSerializerDefaults.Web);
     private static bool _isInitializationFinished = false;
 
@@ -54,7 +55,7 @@ public partial class Program
     }
 
     [JSExport]
-    public static async Task StartShowChoices(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+    public static async Task StartShowOptions(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
     {
         await Awaiter.KeepAwaiting(() => _isInitializationFinished);
 
@@ -65,23 +66,23 @@ public partial class Program
         await Awaiter.AwaitToDependencyNotNull(() => _httpClientFactory);
         await Awaiter.AwaitToDependencyNotNull(() => _notifier);
         await Awaiter.AwaitToDependencyNotNull(() => _starter);
-        await Awaiter.AwaitToDependencyNotNull(() => _choiceService);
+        await Awaiter.AwaitToDependencyNotNull(() => _bestOptionService);
 
         var mockParam = await GetMockParam();
 
-        var currentChoices = mockParam switch
+        var currentOptions = mockParam switch
         {
             null or "" => await FetchDefaultMock(),
             "forever" => await RunForever(),
             _ => await FetchMock(mockParam!)
         };
 
-        _choiceService.UpdateMockedChoices(currentChoices);
+        _bestOptionService.UpdateMockedOptions(currentOptions);
 
         await _starter.Start(initialParameters);
     }
 
-    private static ChoicesParameters ConvertParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+    private static OptionParameters ConvertParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
         => new(
             new(bondCommissions.GetPropertyAsDouble("purchasePercentage"),
                 bondCommissions.GetPropertyAsDouble("salePercentage"),
@@ -90,7 +91,7 @@ public partial class Program
             new(westernUnionParameters.GetPropertyAsDouble("amountToSend"))
             );
 
-    private static void ShowParameters(ChoicesParameters parameters)
+    private static void ShowParameters(OptionParameters parameters)
     {
         Console.WriteLine($"Comisiones: {parameters.BondCommissions.PurchasePercentage}% - {parameters.BondCommissions.SalePercentage}% - {parameters.BondCommissions.WithdrawalPercentage}%");
         Console.WriteLine($"Parámetros WU: {parameters.WesternUnionParameters.AmountToSend}");
@@ -119,10 +120,10 @@ public partial class Program
         return values[0];
     }
 
-    private static Task<ChoicesInfo> FetchDefaultMock()
+    private static Task<OptionsInfo> FetchDefaultMock()
         => FetchMock("default.json");
 
-    private static async Task<ChoicesInfo> FetchMock(string mockName)
+    private static async Task<OptionsInfo> FetchMock(string mockName)
     {
         await _notifier.Notify($"Fetching mock: {mockName}");
         await Task.Delay(1000);
@@ -130,7 +131,7 @@ public partial class Program
         var uri = GetMockUri(mockName);
         var json = await RequestMock(uri);
 
-        return JsonSerializer.Deserialize<ChoicesInfo>(json, SourceGenerationContext.RuculaOptions)!;
+        return JsonSerializer.Deserialize<OptionsInfo>(json, SourceGenerationContext.RuculaOptions)!;
     }
 
     private static async Task<string> RequestMock(string uri)
@@ -153,12 +154,12 @@ public partial class Program
             .ToAbsoluteUri(_navigationManager.Uri)
             .GetLeftPart(UriPartial.Path);
 
-    private static async Task<ChoicesInfo> RunForever()
+    private static async Task<OptionsInfo> RunForever()
     {
         await _notifier.Notify("Running forever...");
 
         await Task.Delay(Timeout.InfiniteTimeSpan);
-        return ChoicesInfo.NoChoices;
+        return OptionsInfo.NoOptions;
     }
 
     private static WebAssemblyHostBuilder CreateWebAssemblyBuilder(string[] args)
@@ -173,14 +174,14 @@ public partial class Program
         _httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
         _notifier = serviceProvider.GetRequiredService<INotifier>();
         _starter = serviceProvider.GetRequiredService<IRuculaStarterPresenter>();
-        _choiceService = serviceProvider.GetRequiredService<ChoicesServiceMock>();
+        _bestOptionService = serviceProvider.GetRequiredService<BestOptionServiceMock>();
     }
 
     private static void Register(IServiceCollection serviceCollection)
         => serviceCollection
             .AddHttpClient()
-            .AddSingleton<ChoicesServiceMock>()
-            .AddSingleton<IChoicesService>(sp => sp.GetRequiredService<ChoicesServiceMock>())
+            .AddSingleton<BestOptionServiceMock>()
+            .AddSingleton<IBestOptionService>(sp => sp.GetRequiredService<BestOptionServiceMock>())
             .AddSingleton<IRestartingPeriodicRunnerService, RestartingPeriodicRunnerServiceMock>()
             .AddPresentation();
 }

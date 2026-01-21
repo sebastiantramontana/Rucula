@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
+using Rucula.Application;
 using Rucula.DataAccess.IoC;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
@@ -20,6 +21,7 @@ internal class Program
             .AddHttpClient()
             .AddDataAccess()
             .AddDomain()
+            .AddApplication()
             .AddSingleton<INotifier, ConsoleNotifier>()
             .AddSingleton<NavigationManager, PruebaNavigationManager>();
 
@@ -27,21 +29,21 @@ internal class Program
 
         _notifier = services.GetRequiredService<INotifier>();
 
-        return GetChoicesFromService(services, new(1, 1, 1), new(20200), new(10000));
+        return GetOptionsFromService(services, new(1, 1, 1), new(20200), new(10000));
     }
 
-    private static Task GetChoicesFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    private static Task GetOptionsFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
     {
-        var service = serviceProvider.GetRequiredService<IChoicesService>();
-        var parameters = new ChoicesParameters(bondCommissions, dolarCryptoParameters, westernUnionParameters);
-        var callbacks = new ChoicesCallbacks(OnWinningChoice, OnBonds, OnBlue, OnWesternUnion, OnCryptos);
+        var service = serviceProvider.GetRequiredService<IBestOptionService>();
+        var parameters = new OptionParameters(bondCommissions, dolarCryptoParameters, westernUnionParameters);
+        var callbacks = new OptionCallbacks(OnWinningOption, OnBonds, OnBlue, OnWesternUnion, OnCryptos);
 
-        return service.ProcessChoices(parameters, callbacks);
+        return service.ProcessOptions(parameters, callbacks);
     }
 
-    private static async Task OnWinningChoice(WinningChoice winningChoice)
+    private static async Task OnWinningOption(WinningOption winningOption)
     {
-        await _notifier.Notify($"Mejor opción: {winningChoice}{Environment.NewLine}");
+        await _notifier.Notify($"Mejor opción: {winningOption}{Environment.NewLine}");
         await _notifier.Notify($"{Environment.NewLine}");
     }
 

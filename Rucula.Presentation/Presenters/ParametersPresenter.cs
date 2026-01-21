@@ -13,13 +13,13 @@ internal sealed class ParametersPresenter(
     IViewUpdater<CryptoParameterValuesViewModel> cryptoParameterViewUpdater,
     IViewUpdater<WesternUnionParameterValuesViewModel> WesternUnionParameterViewUpdater) : IParametersPresenter
 {
-    public Task SaveParameters(Result<ChoicesParameters> parameters)
+    public Task SaveParameters(Result<OptionParameters> parameters)
     {
         var viewModel = UpdateParametersViewModel(parameters.Value);
         return saveViewUpdater.Update(viewModel);
     }
 
-    public Task UpdateUIStateByParameters(Result<ChoicesParameters> parameters, bool areParametersDirty)
+    public Task UpdateUIStateByParameters(Result<OptionParameters> parameters, bool areParametersDirty)
     {
         var viewModel = new RuculaScreenViewModel(false, !parameters.IsSuccess, areParametersDirty);
         return validateViewUpdater.Update(viewModel);
@@ -43,7 +43,7 @@ internal sealed class ParametersPresenter(
         return WesternUnionParameterViewUpdater.Update(wuViewModel.Values);
     }
 
-    private static SaveParametersViewModel UpdateParametersViewModel(ChoicesParameters parameters)
+    private static SaveParametersViewModel UpdateParametersViewModel(OptionParameters parameters)
     {
         var bondParameters = UpdateBondParametersViewModel(parameters.BondCommissions);
         var cryptoParameters = UpdateCryptoParametersViewModel(parameters.CryptoParameters);

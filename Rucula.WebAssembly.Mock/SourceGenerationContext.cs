@@ -9,8 +9,8 @@ namespace Rucula.WebAssembly;
     WriteIndented = false,
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
     GenerationMode = JsonSourceGenerationMode.Default)]
-[JsonSerializable(typeof(ChoicesInfo))]
-[JsonSerializable(typeof(WinningChoice))]
+[JsonSerializable(typeof(OptionsInfo))]
+[JsonSerializable(typeof(WinningOption))]
 [JsonSerializable(typeof(IEnumerable<TituloIsin>))]
 [JsonSerializable(typeof(TituloIsin))]
 [JsonSerializable(typeof(Optional<Blue>))]

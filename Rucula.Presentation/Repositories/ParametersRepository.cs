@@ -5,14 +5,14 @@ namespace Rucula.Presentation.Repositories;
 
 internal class ParametersRepository : IParametersRepository
 {
-    private Result<ChoicesParameters> _parameters = default;
+    private Result<OptionParameters> _parameters = default;
 
     public bool AreDirty { get; private set; } = false;
 
-    public Result<ChoicesParameters> GetParameters()
+    public Result<OptionParameters> GetParameters()
         => _parameters;
 
-    public void StoreParameters(Result<ChoicesParameters> parameters, bool areDirty)
+    public void StoreParameters(Result<OptionParameters> parameters, bool areDirty)
     {
         _parameters = parameters;
         AreDirty = areDirty;

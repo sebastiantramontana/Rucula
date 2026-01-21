@@ -7,20 +7,20 @@ namespace Rucula.Presentation.ActionBinders;
 
 internal sealed class RuculaParametersParser : IRuculaParametersParser
 {
-    public Result<ChoicesParameters> Parse(IDictionary<string, IEnumerable<string>> parameters)
+    public Result<OptionParameters> Parse(IDictionary<string, IEnumerable<string>> parameters)
     {
-        Result<ChoicesParameters> result;
+        Result<OptionParameters> result;
 
         try
         {
             var bondCommissions = ParseBondCommissions(parameters);
             var westernUnionParameters = ParseWesternUnionParameters(parameters);
             var cryptoParameters = ParseDolarCryptoParameters(parameters);
-            result = Result<ChoicesParameters>.Success(new(bondCommissions, cryptoParameters, westernUnionParameters));
+            result = Result<OptionParameters>.Success(new(bondCommissions, cryptoParameters, westernUnionParameters));
         }
         catch (ArgumentException ex)
         {
-            result = Result<ChoicesParameters>.Failure(ex);
+            result = Result<OptionParameters>.Failure(ex);
         }
 
         return result;

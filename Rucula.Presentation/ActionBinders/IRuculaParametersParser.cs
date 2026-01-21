@@ -5,5 +5,5 @@ namespace Rucula.Presentation.ActionBinders;
 
 internal interface IRuculaParametersParser
 {
-    Result<ChoicesParameters> Parse(IDictionary<string, IEnumerable<string>> parameters);
+    Result<OptionParameters> Parse(IDictionary<string, IEnumerable<string>> parameters);
 }

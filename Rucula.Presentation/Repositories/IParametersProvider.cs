@@ -5,6 +5,6 @@ namespace Rucula.Presentation.Repositories;
 
 internal interface IParametersProvider
 {
-    Result<ChoicesParameters> GetParameters();
+    Result<OptionParameters> GetParameters();
     bool AreDirty { get; }
 }
