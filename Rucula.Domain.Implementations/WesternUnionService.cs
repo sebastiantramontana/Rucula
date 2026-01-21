@@ -6,7 +6,7 @@ namespace Rucula.Domain.Implementations;
 
 internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProvider) : IWesternUnionService
 {
-    public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters, Func<Optional<DolarWesternUnion>, Task> notifyFunc)
+    public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters, Action<Optional<DolarWesternUnion>> notifyFunc)
     {
         var wu = Optional<DolarWesternUnion>.Empty;
         var info = await westernUnionProvider.GetCurrentDolarWesternUnion(parameters);
@@ -17,8 +17,7 @@ internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProv
             wu = Optional<DolarWesternUnion>.Sure(new(info.Value.GrossPrice, netPrice, info.Value.Fees));
         }
 
-        await notifyFunc.Invoke(wu);
-
+        notifyFunc.Invoke(wu);
         return wu;
     }
 

@@ -5,13 +5,13 @@ namespace Rucula.Domain.Implementations;
 
 internal sealed class WinningOptionService : IWinningOptionService
 {
-    public Task CalculateWinner(IEnumerable<TituloIsin> rankingTitulos, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos, Func<WinningOption, Task> OnWinningOption)
+    public void CalculateWinner(IEnumerable<TituloIsin> rankingTitulos, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos, Action<WinningOption> OnWinningOption)
     {
         var bestTitulo = MaybeFirst(rankingTitulos);
         var bestCrypto = MaybeFirst(rankingCryptos);
-        var winner= GetWinner(bestTitulo, dolarWesternUnion, bestCrypto);
+        var winner = GetWinner(bestTitulo, dolarWesternUnion, bestCrypto);
 
-        return OnWinningOption.Invoke(winner);
+        OnWinningOption.Invoke(winner);
     }
 
     private static WinningOption GetWinner(Optional<TituloIsin> titulo, Optional<DolarWesternUnion> dolarWesternUnion, Optional<DolarCryptoPrices> bestCrypto)

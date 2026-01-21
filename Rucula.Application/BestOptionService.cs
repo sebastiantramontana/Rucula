@@ -20,6 +20,6 @@ internal sealed class BestOptionService(ITitulosService titulosService,
 
         await Task.WhenAll(nonRankingTitulosTasks, rankingTitulosTask);
 
-        await winningOptionService.CalculateWinner(await rankingTitulosTask, await dolarWesternUnionTask, await rankingCryptoTask, optionCallbacks.OnWinningOption);
+        winningOptionService.CalculateWinner(rankingTitulosTask.Result, dolarWesternUnionTask.Result, rankingCryptoTask.Result, optionCallbacks.OnWinningOption);
     }
 }

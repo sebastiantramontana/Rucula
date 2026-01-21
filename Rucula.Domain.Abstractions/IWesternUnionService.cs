@@ -5,5 +5,5 @@ namespace Rucula.Domain.Abstractions;
 
 public interface IWesternUnionService
 {
-    Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters, Func<Optional<DolarWesternUnion>, Task> notifyFunc);
+    Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters, Action<Optional<DolarWesternUnion>> notifyFunc);
 }

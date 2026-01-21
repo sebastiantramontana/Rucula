@@ -5,5 +5,5 @@ namespace Rucula.Domain.Abstractions;
 
 public interface ITitulosService
 {
-    Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions, Func<IEnumerable<TituloIsin>, Task> notifyFunc);
+    Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions, Action<IEnumerable<TituloIsin>> notifyFunc);
 }

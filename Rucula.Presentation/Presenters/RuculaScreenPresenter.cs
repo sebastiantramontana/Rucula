@@ -1,5 +1,6 @@
 ﻿using Rucula.Application;
 using Rucula.Domain.Abstractions;
+using Rucula.Domain.Entities;
 using Rucula.Presentation.Repositories;
 using Rucula.Presentation.ViewModels;
 using Vitraux;
@@ -42,11 +43,15 @@ internal sealed class RuculaScreenPresenter(
     }
 
     private OptionCallbacks CreateCallbacks()
-        => new(winningOptionPresenter.ShowWinner,
-            bondsPresenter.ShowBonds,
-            bluePresenter.ShowBlue,
-            westernUnionPresenter.ShowWesternUnion,
-            cryptosPresenter.ShowCryptos);
+        => new(
+            CreateFireForgetCallback<WinningOption>(winningOptionPresenter.ShowWinner),
+            CreateFireForgetCallback<IEnumerable<TituloIsin>>(bondsPresenter.ShowBonds),
+            CreateFireForgetCallback<Optional<Blue>>(bluePresenter.ShowBlue),
+            CreateFireForgetCallback<Optional<DolarWesternUnion>>(westernUnionPresenter.ShowWesternUnion),
+            CreateFireForgetCallback<IEnumerable<DolarCryptoPrices>>(cryptosPresenter.ShowCryptos));
+
+    private static Action<T> CreateFireForgetCallback<T>(Func<T, Task> forgottenAsyncFunc)
+        => (obj) => _ = forgottenAsyncFunc(obj);
 
     private Task ShowStartRunning(bool areParametersDirty)
         => ShowRunning(true, areParametersDirty);

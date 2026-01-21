@@ -14,14 +14,13 @@ internal sealed class DolarBlueProvider(
     IMapper<BlueDto, Blue> blueMapper,
     INotifier notifier) : IDolarBlueProvider
 {
-    public async Task<Optional<Blue>> GetCurrentBlue(Func<Optional<Blue>, Task> notifyFunc)
+    public async Task<Optional<Blue>> GetCurrentBlue(Action<Optional<Blue>> notifyFunc)
     {
         await notifier.Notify("Consultando Dolar Blue...");
         var content = await ambitoBlueFetcher.Fetch();
         var blue = MapToBlue(ConvertContentToBlue(content));
 
-        await notifyFunc.Invoke(blue);
-
+        notifyFunc.Invoke(blue);
         return blue;
     }
 

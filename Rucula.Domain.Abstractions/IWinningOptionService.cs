@@ -4,5 +4,5 @@ namespace Rucula.Domain.Abstractions;
 
 public interface IWinningOptionService
 {
-    Task CalculateWinner(IEnumerable<TituloIsin> rankingTitulos, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos, Func<WinningOption, Task> OnWinningOption);
+    void CalculateWinner(IEnumerable<TituloIsin> rankingTitulos, Optional<DolarWesternUnion> dolarWesternUnion, IEnumerable<DolarCryptoPrices> rankingCryptos, Action<WinningOption> OnWinningOption);
 }

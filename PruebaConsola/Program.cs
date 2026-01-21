@@ -41,48 +41,48 @@ internal class Program
         return service.ProcessOptions(parameters, callbacks);
     }
 
-    private static async Task OnWinningOption(WinningOption winningOption)
+    private static void OnWinningOption(WinningOption winningOption)
     {
-        await _notifier.Notify($"Mejor opción: {winningOption}{Environment.NewLine}");
-        await _notifier.Notify($"{Environment.NewLine}");
+        _ = _notifier.Notify($"Mejor opción: {winningOption}{Environment.NewLine}");
+        _ = _notifier.Notify($"{Environment.NewLine}");
     }
 
-    private static async Task OnBonds(IEnumerable<TituloIsin> bonds)
+    private static void OnBonds(IEnumerable<TituloIsin> bonds)
     {
-        await _notifier.Notify($"Titulos {Environment.NewLine}");
+        _ = _notifier.Notify($"Titulos {Environment.NewLine}");
 
         foreach (var bond in bonds)
         {
-            await _notifier.Notify($"{bond.TituloCable?.Simbolo}/{bond.TituloPeso?.Simbolo}: {bond.GrossCcl} -> Neto: {bond.NetCcl} {Environment.NewLine}");
+            _ = _notifier.Notify($"{bond.TituloCable?.Simbolo}/{bond.TituloPeso?.Simbolo}: {bond.GrossCcl} -> Neto: {bond.NetCcl} {Environment.NewLine}");
         }
 
-        await _notifier.Notify($"{Environment.NewLine}");
+        _ = _notifier.Notify($"{Environment.NewLine}");
     }
 
-    private static async Task OnCryptos(IEnumerable<DolarCryptoPrices> cryptos)
+    private static void OnCryptos(IEnumerable<DolarCryptoPrices> cryptos)
     {
-        await _notifier.Notify($"Crypto {Environment.NewLine}");
+        _ = _notifier.Notify($"Crypto {Environment.NewLine}");
 
-        await _notifier.Notify($"{Columnize("Exchange")} {Columnize("Blockchain")} {Columnize("USDC")} {Columnize("USDT")} {Columnize("DAI")}{Environment.NewLine}");
+        _ = _notifier.Notify($"{Columnize("Exchange")} {Columnize("Blockchain")} {Columnize("USDC")} {Columnize("USDT")} {Columnize("DAI")}{Environment.NewLine}");
 
         foreach (var crypto in cryptos)
         {
-            await _notifier.Notify($"{Columnize(crypto.ExchangeName)} {Columnize(string.Empty)} {Columnize(crypto.GrossUsdc)} {Columnize(crypto.GrossUsdt)} {Columnize(crypto.GrossDai)}{Environment.NewLine}");
+            _ = _notifier.Notify($"{Columnize(crypto.ExchangeName)} {Columnize(string.Empty)} {Columnize(crypto.GrossUsdc)} {Columnize(crypto.GrossUsdt)} {Columnize(crypto.GrossDai)}{Environment.NewLine}");
 
             foreach (var netPrices in crypto.DolarCryptoNetPrices)
             {
-                await _notifier.Notify($"{Columnize(string.Empty)} {Columnize(netPrices.Blockchain.Name)} {Columnize(netPrices.NetUsdc)} {Columnize(netPrices.NetUsdt)} {Columnize(netPrices.NetDai)}{Environment.NewLine}");
+                _ = _notifier.Notify($"{Columnize(string.Empty)} {Columnize(netPrices.Blockchain.Name)} {Columnize(netPrices.NetUsdc)} {Columnize(netPrices.NetUsdt)} {Columnize(netPrices.NetDai)}{Environment.NewLine}");
             }
         }
 
-        await _notifier.Notify($"{Environment.NewLine}");
+        _ = _notifier.Notify($"{Environment.NewLine}");
     }
 
-    private static Task OnBlue(Optional<Blue> blue)
-        => _notifier.Notify($"Blue: {GetStringFromOptional(blue, emptyString)}{Environment.NewLine}");
+    private static void OnBlue(Optional<Blue> blue)
+        => _ = _notifier.Notify($"Blue: {GetStringFromOptional(blue, emptyString)}{Environment.NewLine}");
 
-    private static Task OnWesternUnion(Optional<DolarWesternUnion> wu)
-        => _notifier.Notify($"WU: {GetStringFromOptional(wu, emptyString)}{Environment.NewLine}");
+    private static void OnWesternUnion(Optional<DolarWesternUnion> wu)
+        => _ = _notifier.Notify($"WU: {GetStringFromOptional(wu, emptyString)}{Environment.NewLine}");
 
     private static string Columnize(Optional<DolarCryptoNetPrice> optionalValue)
         => Columnize(GetStringFromOptional(optionalValue, value => FormatPrice(value.NetPrice), string.Empty));

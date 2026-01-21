@@ -5,5 +5,5 @@ namespace Rucula.Domain.Abstractions;
 
 public interface IDolarCryptoService
 {
-    Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters, Func<IEnumerable<DolarCryptoPrices>, Task> notifyFunc);
+    Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters, Action<IEnumerable<DolarCryptoPrices>> notifyFunc);
 }

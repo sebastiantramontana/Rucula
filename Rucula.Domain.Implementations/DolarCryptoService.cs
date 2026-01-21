@@ -11,7 +11,7 @@ internal sealed class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPr
     private const string DaiKey = "DAI";
     private readonly string[] CurrencyKeys = [UsdcKey, UsdtKey, DaiKey];
 
-    public async Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters, Func<IEnumerable<DolarCryptoPrices>, Task> notifyFunc)
+    public async Task<IEnumerable<DolarCryptoPrices>> GetPriceRanking(DolarCryptoParameters cryptoParameters, Action<IEnumerable<DolarCryptoPrices>> notifyFunc)
     {
         var (fees, allGrossPrices) = await GetDataFromProviders(cryptoParameters.TradingVolume);
 
@@ -22,8 +22,7 @@ internal sealed class DolarCryptoService(IDolarCryptoGrossPricesProvider grossPr
             .OrderByDescending(prices => GetTopNetPrice(prices.DolarCryptoNetPrices.First()))
             .ToArray();
 
-        await notifyFunc.Invoke(cryptos);
-
+        notifyFunc.Invoke(cryptos);
         return cryptos;
     }
 

@@ -6,15 +6,14 @@ namespace Rucula.Domain.Implementations;
 
 internal sealed class TitulosService(ITitulosProvider titulosProvider, ITituloDetailsProvider tituloDetailsProvider, INotifier notifier) : ITitulosService
 {
-    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions, Func<IEnumerable<TituloIsin>, Task> notifyFunc)
+    public async Task<IEnumerable<TituloIsin>> GetNetCclRanking(Optional<Blue> blue, BondCommissions bondCommissions, Action<IEnumerable<TituloIsin>> notifyFunc)
     {
         await notifier.Notify("Consultando títulos públicos...");
         var titulos = await titulosProvider.Get();
         var details = await GetUsefulTitulosDetails(titulos);
         var bonds = CreateTitulosIsin(details, blue, bondCommissions);
 
-        await notifyFunc.Invoke(bonds);
-
+        notifyFunc.Invoke(bonds);
         return bonds;
     }
 

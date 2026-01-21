@@ -12,12 +12,12 @@ public sealed class BestOptionServiceMock : IBestOptionService
 
     public Task ProcessOptions(OptionParameters parameters, OptionCallbacks optionCallbacks)
     {
-        var winnerTask = optionCallbacks.OnWinningOption.Invoke(_optionInfo.WinningOption);
-        var bondsTask = optionCallbacks.OnBonds.Invoke(_optionInfo.RankingTitulos);
-        var cryptoTask = optionCallbacks.OnCrypto.Invoke(_optionInfo.RankingCryptos);
-        var blueTask = optionCallbacks.OnBlue.Invoke(_optionInfo.Blue);
-        var wuTask = optionCallbacks.OnWesternUnion.Invoke(_optionInfo.DolarWesternUnion);
+        optionCallbacks.OnWinningOption.Invoke(_optionInfo.WinningOption);
+        optionCallbacks.OnBonds.Invoke(_optionInfo.RankingTitulos);
+        optionCallbacks.OnCrypto.Invoke(_optionInfo.RankingCryptos);
+        optionCallbacks.OnBlue.Invoke(_optionInfo.Blue);
+        optionCallbacks.OnWesternUnion.Invoke(_optionInfo.DolarWesternUnion);
 
-        return Task.WhenAll(winnerTask, bondsTask, cryptoTask, blueTask, wuTask);
+        return Task.CompletedTask;
     }
 }
