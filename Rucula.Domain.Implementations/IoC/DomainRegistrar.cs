@@ -9,9 +9,7 @@ public static class DomainRegistrar
         => serviceCollection
             .AddSingleton<IWinningOptionService, WinningOptionService>()
             .AddSingleton<ITitulosService, TitulosService>()
-            .AddSingleton<IRestartingPeriodicRunnerService, RestartingPeriodicRunnerService>()
             .AddSingleton<IWesternUnionService, WesternUnionService>()
             .AddSingleton<IDolarCryptoService, DolarCryptoService>()
-            .AddSingleton<IDolarCryptoMaxPriceService, DolarCryptoMaxPriceService>()
-            .AddSingleton<IPeriodicRunnerService, PeriodicRunnerService>();
+            .AddSingleton<IDolarCryptoMaxPriceService, DolarCryptoMaxPriceService>();
 }

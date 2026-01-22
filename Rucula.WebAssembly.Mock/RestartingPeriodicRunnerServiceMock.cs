@@ -1,4 +1,4 @@
-﻿using Rucula.Domain.Abstractions;
+﻿using Rucula.Application;
 
 namespace Rucula.WebAssembly;
 

@@ -1,6 +1,4 @@
-﻿using Rucula.Domain.Abstractions;
-
-namespace Rucula.Domain.Implementations;
+﻿namespace Rucula.Application;
 
 internal sealed class RestartingPeriodicRunnerService(IPeriodicRunnerService periodicRunnerService) : IRestartingPeriodicRunnerService
 {

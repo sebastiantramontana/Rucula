@@ -1,5 +1,4 @@
 ﻿using Rucula.Application;
-using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
 using Rucula.Presentation.Repositories;
 using Rucula.Presentation.ViewModels;

@@ -1,4 +1,4 @@
-﻿namespace Rucula.Domain.Abstractions;
+﻿namespace Rucula.Application;
 
 public interface IPeriodicRunnerService
 {
