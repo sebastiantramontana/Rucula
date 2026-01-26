@@ -9,8 +9,9 @@ internal sealed class BondParametersConfigurationMapping(IConfigurationBehaviorP
 
     public ModelMappingData ConfigureMapping(IModelMapper<BondParameterValuesViewModel> modelMapper)
         => modelMapper
-            .MapValue(b => b.PurchasePercentage).ToElements.ById("commission-porcentage-purchase-bond").ToAttribute("value")
-            .MapValue(b => b.SalePercentage).ToElements.ById("commission-porcentage-sale-bond").ToAttribute("value")
-            .MapValue(b => b.WithdrawalPercentage).ToElements.ById("commission-porcentage-withdrawal-bond").ToAttribute("value")
+            .MapParameterValue(b => b.PurchasePercentage, InputParameterIds.BondPurchaseInputParameterId)
+            .MapParameterValue(b => b.SalePercentage, InputParameterIds.BondSaleInputParameterId)
+            .MapParameterValue(b => b.WithdrawalPercentage, InputParameterIds.BondWithdrawalInputParameterId)
+            .MapParametersRange([InputParameterIds.BondPurchaseInputParameterId, InputParameterIds.BondSaleInputParameterId, InputParameterIds.BondWithdrawalInputParameterId])
             .Data;
 }

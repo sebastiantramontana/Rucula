@@ -16,15 +16,14 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
 
     private Optional(T? value, bool hasValue)
     {
-        Value = value!;
+        Value = value;
         HasValue = hasValue;
         IsEmpty = !HasValue;
     }
 
     public bool HasValue { get; }
     public bool IsEmpty { get; }
-    public T Value { get; }
-
+    public T Value => HasValue ? field! : throw new InvalidOperationException("Se intentó acceder a un Optional.Value cuando HasValue es false");
     public override bool Equals(object? obj)
         => Equals(obj as Optional<T>);
 
@@ -42,5 +41,5 @@ public class Optional<T> : IEquatable<Optional<T>>, IEquatable<T>
         => !HasValue ? HasValue.GetHashCode() : HashCode.Combine(HasValue, Value);
 
     public override string? ToString()
-        => HasValue ? Value!.ToString() : string.Empty;
+        => HasValue ? Value?.ToString() ?? string.Empty : string.Empty;
 }

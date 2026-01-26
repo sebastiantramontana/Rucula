@@ -54,19 +54,19 @@ internal sealed class ParametersPresenter(
 
     private static BondParametersViewModel UpdateBondParametersViewModel(BondCommissions bondCommissions)
     {
-        var parameterValues = new BondParameterValuesViewModel(bondCommissions.PurchasePercentage, bondCommissions.SalePercentage, bondCommissions.WithdrawalPercentage);
+        var parameterValues = new BondParameterValuesViewModel(bondCommissions.PurchasePercentage, bondCommissions.SalePercentage, bondCommissions.WithdrawalPercentage, BondCommissions.Range.Min, BondCommissions.Range.Max);
         return new(parameterValues);
     }
 
     private static CryptoParametersViewModel UpdateCryptoParametersViewModel(DolarCryptoParameters cryptoParameters)
     {
-        var parameterValues = new CryptoParameterValuesViewModel(cryptoParameters.TradingVolume);
+        var parameterValues = new CryptoParameterValuesViewModel(cryptoParameters.TradingVolume, DolarCryptoParameters.Range.Min, DolarCryptoParameters.Range.Max);
         return new(parameterValues);
     }
 
     private static WesternUnionParametersViewModel UpdateWesternUnionParametersViewModel(WesternUnionParameters westernUnionParameters)
     {
-        var parameterValues = new WesternUnionParameterValuesViewModel(westernUnionParameters.AmountToSend);
+        var parameterValues = new WesternUnionParameterValuesViewModel(westernUnionParameters.AmountToSend, WesternUnionParameters.Range.Min, WesternUnionParameters.Range.Max);
         return new(parameterValues);
     }
 }

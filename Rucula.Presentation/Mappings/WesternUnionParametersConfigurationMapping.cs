@@ -9,6 +9,7 @@ internal sealed class WesternUnionParametersConfigurationMapping(IConfigurationB
 
     public ModelMappingData ConfigureMapping(IModelMapper<WesternUnionParameterValuesViewModel> modelMapper)
         => modelMapper
-            .MapValue(wu => wu.AmountToSend).ToElements.ById("amount-to-send-wu").ToAttribute("value")
+            .MapParameterValue(wu => wu.AmountToSend, InputParameterIds.WesternUnionVolumeInputParameterId)
+            .MapParametersRange([InputParameterIds.WesternUnionVolumeInputParameterId])
             .Data;
 }

@@ -5,10 +5,10 @@ export async function saveParameters(stringifiedJsonSettings) {
     return Promise.resolve();
 }
 
-export function getParameters(settingsKey, defaultParameters) {
+export function getParameters(settingsKey) {
     const parametersSettingsJson = localStorage.getItem(settingsKey);
 
     return parametersSettingsJson !== null
         ? JSON.parse(parametersSettingsJson)
-        : defaultParameters;
+        : null;
 }

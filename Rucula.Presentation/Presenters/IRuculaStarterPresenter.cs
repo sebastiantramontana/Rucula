@@ -4,5 +4,5 @@ namespace Rucula.Presentation.Presenters;
 
 public interface IRuculaStarterPresenter
 {
-    Task Start(OptionParameters initialParameters);
+    Task Start(OptionalOptionParameters initialParameters);
 }

@@ -9,6 +9,7 @@ internal sealed class CryptoParametersConfigurationMapping(IConfigurationBehavio
 
     public ModelMappingData ConfigureMapping(IModelMapper<CryptoParameterValuesViewModel> modelMapper)
         => modelMapper
-            .MapValue(c => c.Volume).ToElements.ById("trading-volume-crypto").ToAttribute("value")
+            .MapParameterValue(c => c.Volume, InputParameterIds.CryptoVolumeInputParameterId)
+            .MapParametersRange([InputParameterIds.CryptoVolumeInputParameterId])
             .Data;
 }

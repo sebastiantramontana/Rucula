@@ -47,7 +47,7 @@ public partial class Program
     }
 
     [JSExport]
-    public static async Task StartShowOptions(JSObject bondCommissionsJSObject, JSObject westernUnionParametersJSObject, JSObject dolarCryptoParametersJSObject)
+    public static async Task StartShowOptions(JSObject? bondCommissionsJSObject, JSObject? westernUnionParametersJSObject, JSObject? dolarCryptoParametersJSObject)
     {
         try
         {

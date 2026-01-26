@@ -1,21 +1,20 @@
 ﻿using Rucula.Domain.Entities;
 using Rucula.Domain.Entities.Parameters;
 using Rucula.Presentation.ActionBinders.Constants.ActionParameterKeys;
-using Rucula.Presentation.ActionBinders.Constants.Ranges;
 
 namespace Rucula.Presentation.ActionBinders;
 
-internal sealed class RuculaParametersParser : IRuculaParametersParser
+internal sealed partial class RuculaParametersParser : IRuculaParametersParser
 {
-    public Result<OptionParameters> Parse(IDictionary<string, IEnumerable<string>> parameters)
+    public Result<OptionParameters> Parse(IDictionary<string, IEnumerable<string>> parameters, ParameterRange bondParameterRange, ParameterRange cryptoParameterRange, ParameterRange wuParameterRange)
     {
         Result<OptionParameters> result;
 
         try
         {
-            var bondCommissions = ParseBondCommissions(parameters);
-            var westernUnionParameters = ParseWesternUnionParameters(parameters);
-            var cryptoParameters = ParseDolarCryptoParameters(parameters);
+            var bondCommissions = ParseBondCommissions(parameters, bondParameterRange);
+            var cryptoParameters = ParseCryptoParameters(parameters, cryptoParameterRange);
+            var westernUnionParameters = ParseWesternUnionParameters(parameters, wuParameterRange);
             result = Result<OptionParameters>.Success(new(bondCommissions, cryptoParameters, westernUnionParameters));
         }
         catch (ArgumentException ex)
@@ -26,10 +25,8 @@ internal sealed class RuculaParametersParser : IRuculaParametersParser
         return result;
     }
 
-    private static BondCommissions ParseBondCommissions(IDictionary<string, IEnumerable<string>> parameters)
+    private static BondCommissions ParseBondCommissions(IDictionary<string, IEnumerable<string>> parameters, ParameterRange range)
     {
-        var range = new ParameterRange(BondParametersRange.LowRange, BondParametersRange.HiRange);
-
         var commissionPurchaseBond = ParseParameter(BondCommissionActionParameterKeys.PurchasePercentage, parameters, range);
         var commissionSaleBond = ParseParameter(BondCommissionActionParameterKeys.SalePercentage, parameters, range);
         var commissionWithdrawalBond = ParseParameter(BondCommissionActionParameterKeys.WithdrawalPercentage, parameters, range);
@@ -37,11 +34,11 @@ internal sealed class RuculaParametersParser : IRuculaParametersParser
         return new(commissionPurchaseBond, commissionSaleBond, commissionWithdrawalBond);
     }
 
-    private static WesternUnionParameters ParseWesternUnionParameters(IDictionary<string, IEnumerable<string>> parameters)
-        => new(ParseParameter(WesternUnionActionParameterKeys.AmountToSend, parameters, new ParameterRange(WesternUnionParametersRange.AmountToSendLowRange, WesternUnionParametersRange.AmountToSendHiRange)));
+    private static WesternUnionParameters ParseWesternUnionParameters(IDictionary<string, IEnumerable<string>> parameters, ParameterRange range)
+        => new(ParseParameter(WesternUnionActionParameterKeys.AmountToSend, parameters, range));
 
-    private static DolarCryptoParameters ParseDolarCryptoParameters(IDictionary<string, IEnumerable<string>> parameters)
-        => new(ParseParameter(CryptoActionParameterKeys.TradingVolume, parameters, new ParameterRange(CryptoParametersRange.VolumeLowRange, CryptoParametersRange.VolumeHiRange)));
+    private static DolarCryptoParameters ParseCryptoParameters(IDictionary<string, IEnumerable<string>> parameters, ParameterRange range)
+        => new(ParseParameter(CryptoActionParameterKeys.TradingVolume, parameters, range));
 
     private static double ParseParameter(string paramKey, IDictionary<string, IEnumerable<string>> parameters, ParameterRange range)
     {
@@ -63,14 +60,5 @@ internal sealed class RuculaParametersParser : IRuculaParametersParser
         return range.Contains(value)
             ? value
             : throw new ArgumentOutOfRangeException($"Parametro inválido: parametro '{paramKey}' fuera de rango: El valor es {value}, pero el rango permitido es: {range}");
-    }
-
-    private readonly record struct ParameterRange(double Min, double Max)
-    {
-        internal bool Contains(double value)
-            => (!double.IsNaN(value)) && value >= Min && value <= Max;
-
-        public override string ToString()
-            => $"{Min} - {Max}";
     }
 }

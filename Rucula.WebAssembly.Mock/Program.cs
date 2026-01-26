@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.WebUtilities;
 using Rucula.Application;
 using Rucula.Domain.Abstractions;
+using Rucula.Domain.Entities;
 using Rucula.Domain.Entities.Parameters;
 using Rucula.Infrastructure;
 using Rucula.Presentation.IoC;
@@ -55,7 +56,7 @@ public partial class Program
     }
 
     [JSExport]
-    public static async Task StartShowOptions(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+    public static async Task StartShowOptions(JSObject? bondCommissions, JSObject? westernUnionParameters, JSObject? dolarCryptoParameters)
     {
         await Awaiter.KeepAwaiting(() => _isInitializationFinished);
 
@@ -82,20 +83,27 @@ public partial class Program
         await _starter.Start(initialParameters);
     }
 
-    private static OptionParameters ConvertParameters(JSObject bondCommissions, JSObject westernUnionParameters, JSObject dolarCryptoParameters)
+    private static OptionalOptionParameters ConvertParameters(JSObject? bondCommissions, JSObject? westernUnionParameters, JSObject? dolarCryptoParameters)
         => new(
-            new(bondCommissions.GetPropertyAsDouble("purchasePercentage"),
-                bondCommissions.GetPropertyAsDouble("salePercentage"),
-                bondCommissions.GetPropertyAsDouble("withdrawalPercentage")),
-            new(dolarCryptoParameters.GetPropertyAsDouble("volume")),
-            new(westernUnionParameters.GetPropertyAsDouble("amountToSend"))
+           bondCommissions is null
+                ? Optional<BondCommissions>.Empty
+                : Optional<BondCommissions>.Sure(new(
+                    bondCommissions.GetPropertyAsDouble("purchasePercentage"),
+                    bondCommissions.GetPropertyAsDouble("salePercentage"),
+                    bondCommissions.GetPropertyAsDouble("withdrawalPercentage"))),
+            dolarCryptoParameters is null
+                ? Optional<DolarCryptoParameters>.Empty
+                : Optional<DolarCryptoParameters>.Sure(new(dolarCryptoParameters.GetPropertyAsDouble("volume"))),
+            westernUnionParameters is null
+                ? Optional<WesternUnionParameters>.Empty
+                : Optional<WesternUnionParameters>.Sure(new(westernUnionParameters.GetPropertyAsDouble("amountToSend")))
             );
 
-    private static void ShowParameters(OptionParameters parameters)
+    private static void ShowParameters(OptionalOptionParameters parameters)
     {
-        Console.WriteLine($"Comisiones: {parameters.BondCommissions.PurchasePercentage}% - {parameters.BondCommissions.SalePercentage}% - {parameters.BondCommissions.WithdrawalPercentage}%");
-        Console.WriteLine($"Parámetros WU: {parameters.WesternUnionParameters.AmountToSend}");
-        Console.WriteLine($"Parámetros Crypto: {parameters.CryptoParameters.TradingVolume}");
+        Console.WriteLine($"Comisiones: {parameters.BondCommissions}");
+        Console.WriteLine($"Parámetros WU: {parameters.WesternUnionParameters}");
+        Console.WriteLine($"Parámetros Crypto: {parameters.CryptoParameters}");
     }
 
     private static async Task<string?> GetMockParam()

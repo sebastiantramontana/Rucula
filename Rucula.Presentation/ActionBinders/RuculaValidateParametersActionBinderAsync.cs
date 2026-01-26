@@ -1,4 +1,5 @@
-﻿using Rucula.Presentation.Presenters;
+﻿using Rucula.Domain.Entities.Parameters;
+using Rucula.Presentation.Presenters;
 using Rucula.Presentation.Repositories;
 using Rucula.Presentation.ViewModels;
 using Vitraux;
@@ -11,7 +12,7 @@ internal sealed class RuculaValidateParametersActionBinderAsync(IParametersPrese
     {
         const bool ParametersAreDirty = true;
 
-        var parsedParams = parser.Parse(parameters);
+        var parsedParams = parser.Parse(parameters, BondCommissions.Range, DolarCryptoParameters.Range, WesternUnionParameters.Range);
         parametersRepository.StoreParameters(parsedParams, ParametersAreDirty);
 
         return presenter.UpdateUIStateByParameters(parsedParams, ParametersAreDirty);
