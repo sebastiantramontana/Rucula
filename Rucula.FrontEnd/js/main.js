@@ -1,7 +1,7 @@
 ﻿import getBondParameters from "./bond-parameters.js";
 import getCryptoParameters from "./crypto-parameters.js";
 import getWUParameters from "./wu-parameters.js";
-import { showDownloadingPackageName, removeDownloadingPackagesIndicator } from "./wasmPackagesDownload.js";
+import { notifyMessage, removeDownloadingPackagesIndicator } from "./notification.js";
 
 addEventListener("load", async () => {
     try {
@@ -12,13 +12,23 @@ addEventListener("load", async () => {
             }
         });
 
+        showAwaitingMessage();
         removeDownloadingPackagesIndicator();
+
         await StartShowOptions();
     }
     catch (ex) {
         console.log(`Algo salió mal: ${ex}`);
     }
 });
+
+function showDownloadingPackageName(packageName) {
+    notifyMessage(`Cargando ${packageName}...`);
+}
+
+function showAwaitingMessage() {
+    notifyMessage(`Preparando todo...`);
+}
 
 async function StartShowOptions() {
 

@@ -1,8 +1,8 @@
 let msgElement;
 
-export function showDownloadingPackageName(packageName) {
+export function notifyMessage(message) {
     msgElement = msgElement || document.getElementById("notify-progress");
-    msgElement.textContent = packageName;
+    msgElement.textContent = message;
 }
 
 export function removeDownloadingPackagesIndicator() {
