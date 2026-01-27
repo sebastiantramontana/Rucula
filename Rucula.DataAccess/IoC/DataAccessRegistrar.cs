@@ -8,6 +8,7 @@ using Rucula.DataAccess.Providers.Ambito;
 using Rucula.DataAccess.Providers.Byma;
 using Rucula.DataAccess.Providers.Byma.RequestFactories;
 using Rucula.DataAccess.Providers.CryptoYa;
+using Rucula.DataAccess.Providers.DolarApp;
 using Rucula.DataAccess.Providers.WesternUnion;
 using Rucula.Domain.Abstractions;
 using Rucula.Domain.Entities;
@@ -50,7 +51,8 @@ public static class DataAccessRegistrar
             .AddSingleton<IDolarBlueProvider, DolarBlueProvider>()
             .AddSingleton<IWesternUnionProvider, WesternUnionProvider>()
             .AddSingleton<IDolarCryptoFeesProvider, DolarCryptoFeesProvider>()
-            .AddSingleton<IDolarCryptoGrossPricesProvider, DolarCryptoGrossPricesProvider>();
+            .AddSingleton<IDolarCryptoGrossPricesProvider, DolarCryptoGrossPricesProvider>()
+            .AddSingleton<IDolarAppProvider, DolarAppProvider>();
 
     private static IServiceCollection RegisterFetchers(this IServiceCollection serviceCollection)
         => serviceCollection
@@ -61,7 +63,8 @@ public static class DataAccessRegistrar
             .AddSingleton<IAmbitoBlueFetcher, AmbitoBlueFetcher>()
             .AddSingleton<IWesternUnionFetcher, WesternUnionFetcher>()
             .AddSingleton<ICryptoYaFeesFetcher, CryptoYaFeesFetcher>()
-            .AddSingleton<ICryptoYaGrossPricesFetcher, CryptoYaGrossPricesFetcher>();
+            .AddSingleton<ICryptoYaGrossPricesFetcher, CryptoYaGrossPricesFetcher>()
+            .AddSingleton<IDolarAppFetcher, DolarAppFetcher>();
 
     private static IServiceCollection RegisterMappers(this IServiceCollection serviceCollection)
         => serviceCollection
@@ -69,7 +72,8 @@ public static class DataAccessRegistrar
             .AddSingleton<IMapper<TituloDetailsDto, TituloDetails>, TituloDetailsMapper>()
             .AddSingleton<IMapper<BlueDto, Blue>, BlueMapper>()
             .AddSingleton<IMapper<DolarWesternUnionDto, DolarWesternUnionInfo>, DolarWesternUnionMapper>()
-            .AddSingleton<IMapper<DolarCryptoFeesDto, DolarCryptoFees>, DolarCrpyoFeesMapper>();
+            .AddSingleton<IMapper<DolarCryptoFeesDto, DolarCryptoFees>, DolarCrpyoFeesMapper>()
+            .AddSingleton<IMapper<DolarAppDto, DolarAppInfo>, DolarAppMapper>();
 
     private static IServiceCollection RegisterDeserializers(this IServiceCollection serviceCollection)
         => serviceCollection
@@ -82,5 +86,6 @@ public static class DataAccessRegistrar
             .AddSingleton<IJsonDeserializer<DolarWesternUnionDto>, JsonToDolarWesternUnionDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<IEnumerable<DolarCryptoFeesDto>>, JsonToDolarCryptoFeesDtoDeserializer>()
             .AddSingleton<IJsonDeserializer<IEnumerable<DolarCryptoCurrencyGrossPriceDto>>, JsonToDolarCryptoCurrencyGrossPriceDto>()
+            .AddSingleton<IJsonDeserializer<DolarAppDto>, JsonToDolarAppDtoDeserializer>()
             .AddSingleton<IJsonValueReader, JsonValueReader>();
 }
