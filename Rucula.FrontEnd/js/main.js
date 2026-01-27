@@ -1,6 +1,8 @@
 ﻿import getBondParameters from "./bond-parameters.js";
 import getCryptoParameters from "./crypto-parameters.js";
 import getWUParameters from "./wu-parameters.js";
+import getDolarAppParameters from "./dolarapp-parameters.js";
+
 import { notifyMessage, removeDownloadingPackagesIndicator } from "./notification.js";
 
 addEventListener("load", async () => {
@@ -35,9 +37,10 @@ async function StartShowOptions() {
     const titulosPublicosParameters = getBondParameters();
     const wuParameters = getWUParameters();
     const cryptoParameters = getCryptoParameters();
+    const dolaAppParameters = getDolarAppParameters();
 
     const service = await getRuculaService();
-    await service.StartShowOptions(titulosPublicosParameters, wuParameters, cryptoParameters);
+    await service.StartShowOptions(titulosPublicosParameters, wuParameters, cryptoParameters, dolaAppParameters);
 }
 
 async function getRuculaService() {
