@@ -14,5 +14,6 @@ internal sealed class SaveParametersConfigurationMapping(IConfigurationBehaviorP
             .MapValue(p => p.Bonds).ToSaveParametersJs()
             .MapValue(p => p.Cryptos).ToSaveParametersJs()
             .MapValue(p => p.WesternUnion).ToSaveParametersJs()
+            .MapValue(p => p.DolarApp).ToSaveParametersJs()
             .Data;
 }

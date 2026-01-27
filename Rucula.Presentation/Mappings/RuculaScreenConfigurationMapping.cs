@@ -1,4 +1,5 @@
 ﻿using Rucula.Presentation.ActionBinders;
+using Rucula.Presentation.ActionBinders.Constants.ActionParameterKeys;
 using Rucula.Presentation.Presenters;
 using Rucula.Presentation.ViewModels;
 using Vitraux;
@@ -14,7 +15,13 @@ internal sealed class RuculaScreenConfigurationMapping(
     public ModelMappingData ConfigureMapping(IModelMapper<RuculaScreenViewModel> modelMapper)
         => modelMapper
             .MapActionAsync(ruculaScreenPresenter.ShowOptions).FromInputs.ById("refresh-button").On("click")
-            .MapActionAsync<IRuculaValidateParametersActionBinderAsync>().FromInputs.ByQuery("[data-input-parameter]").On("input").AddRuculaParameters()
+            .MapActionAsync<IRuculaValidateParametersActionBinderAsync>().FromInputs.ByQuery("[data-input-parameter]").On("input")
+                .AddParameter(BondCommissionActionParameterKeys.PurchasePercentage).FromParamInputs.ById(InputParameterIds.BondPurchaseInputParameterId)
+                .AddParameter(BondCommissionActionParameterKeys.SalePercentage).FromParamInputs.ById(InputParameterIds.BondSaleInputParameterId)
+                .AddParameter(BondCommissionActionParameterKeys.WithdrawalPercentage).FromParamInputs.ById(InputParameterIds.BondWithdrawalInputParameterId)
+                .AddParameter(CryptoActionParameterKeys.TradingVolume).FromParamInputs.ById(InputParameterIds.CryptoVolumeInputParameterId)
+                .AddParameter(WesternUnionActionParameterKeys.AmountToSend).FromParamInputs.ById(InputParameterIds.WesternUnionVolumeInputParameterId)
+                .AddParameter(DolarAppActionParameterKeys.Volume).FromParamInputs.ById(InputParameterIds.DolarAppVolumeInputParameterId)
             .MapValue(vm => vm.IsRunning)
                 .ToElements.ById("loading-indicator").ToAttribute("data-inline-block")
                 .ToElements.ByQuery("[data-input-parameter]").ToAttribute("disabled")

@@ -55,8 +55,9 @@ internal sealed class ParametersPresenter(
         var bondParameters = UpdateBondParametersViewModel(parameters.BondCommissions);
         var cryptoParameters = UpdateCryptoParametersViewModel(parameters.CryptoParameters);
         var wuParameters = UpdateWesternUnionParametersViewModel(parameters.WesternUnionParameters);
+        var dolarAppParameters = UpdateDolarAppParametersViewModel(parameters.DolarAppParameters);
 
-        return new SaveParametersViewModel(bondParameters, cryptoParameters, wuParameters);
+        return new(bondParameters, cryptoParameters, wuParameters, dolarAppParameters);
     }
 
     private static BondParametersViewModel UpdateBondParametersViewModel(BondCommissions bondCommissions)
