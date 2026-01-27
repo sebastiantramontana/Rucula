@@ -22,8 +22,9 @@ internal sealed class RuculaStarterPresenter(
         var bondParameters = ResolveParameters(initialParameters.BondCommissions, BondCommissions.Default);
         var cryptoParameters = ResolveParameters(initialParameters.CryptoParameters, DolarCryptoParameters.Default);
         var wuParameters = ResolveParameters(initialParameters.WesternUnionParameters, WesternUnionParameters.Default);
+        var dolarAppParameters = ResolveParameters(initialParameters.DolarAppParameters, DolarAppParameters.Default);
 
-        parametersRepository.StoreParameters(Result<OptionParameters>.Success(new(bondParameters, cryptoParameters, wuParameters)), ParametersAreDirty);
+        parametersRepository.StoreParameters(Result<OptionParameters>.Success(new(bondParameters, cryptoParameters, wuParameters, dolarAppParameters)), ParametersAreDirty);
 
         var bondParamsTask = parametersPresenter.ShowBondParameters(bondParameters);
         var cryptoParamsTask = parametersPresenter.ShowCryptoParameters(cryptoParameters);
