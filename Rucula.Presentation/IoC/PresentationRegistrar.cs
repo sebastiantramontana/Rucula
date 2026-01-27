@@ -45,6 +45,7 @@ public static class PresentationRegistrar
             .AddSingleton<IBondsPresenter, BondsPresenter>()
             .AddSingleton<ICryptosPresenter, CryptosPresenter>()
             .AddSingleton<IWesternUnionPresenter, WesternUnionPresenter>()
+            .AddSingleton<IDolarAppPresenter, DolarAppPresenter>()
             .AddSingleton<IWinningOptionPresenter, WinningOptionPresenter>()
             .AddSingleton<INotifier, NotifyProgressPresenter>()
             .AddSingleton<IParametersPresenter, ParametersPresenter>();

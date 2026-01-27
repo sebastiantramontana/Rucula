@@ -12,7 +12,7 @@ internal sealed class RuculaValidateParametersActionBinderAsync(IParametersPrese
     {
         const bool ParametersAreDirty = true;
 
-        var parsedParams = parser.Parse(parameters, BondCommissions.Range, DolarCryptoParameters.Range, WesternUnionParameters.Range);
+        var parsedParams = parser.Parse(parameters, BondCommissions.Range, DolarCryptoParameters.Range, WesternUnionParameters.Range, DolarAppParameters.Range);
         parametersRepository.StoreParameters(parsedParams, ParametersAreDirty);
 
         return presenter.UpdateUIStateByParameters(parsedParams, ParametersAreDirty);
