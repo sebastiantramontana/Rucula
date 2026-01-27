@@ -5,5 +5,5 @@ namespace Rucula.WebAssembly.Parameters;
 
 internal interface IParametersJSObjectConverter
 {
-    OptionalOptionParameters GetParameters(JSObject? bondCommissionsJSObject, JSObject? westernUnionParametersJSObject, JSObject? dolarCryptoParametersJSObject);
+    OptionalOptionParameters GetParameters(JSObject? bondCommissionsJSObject, JSObject? westernUnionParametersJSObject, JSObject? dolarCryptoParametersJSObject, JSObject? dolarAppParametersJSObject);
 }

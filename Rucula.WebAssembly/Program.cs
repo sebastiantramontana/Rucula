@@ -47,7 +47,7 @@ public partial class Program
     }
 
     [JSExport]
-    public static async Task StartShowOptions(JSObject? bondCommissionsJSObject, JSObject? westernUnionParametersJSObject, JSObject? dolarCryptoParametersJSObject)
+    public static async Task StartShowOptions(JSObject? bondCommissionsJSObject, JSObject? westernUnionParametersJSObject, JSObject? dolarCryptoParametersJSObject, JSObject? dolarAppParametersJSObject)
     {
         try
         {
@@ -55,7 +55,7 @@ public partial class Program
             await AwaitToDependencies();
 
             var _parametersConverter = _serviceProvider.GetRequiredService<IParametersJSObjectConverter>();
-            var parameters = _parametersConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject);
+            var parameters = _parametersConverter.GetParameters(bondCommissionsJSObject, westernUnionParametersJSObject, dolarCryptoParametersJSObject, dolarAppParametersJSObject);
             var starter = _serviceProvider.GetRequiredService<IRuculaStarterPresenter>();
 
             await starter.Start(parameters);
