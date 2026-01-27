@@ -4,7 +4,7 @@ using Rucula.Domain.Entities.Parameters;
 
 namespace Rucula.Domain.Implementations;
 
-internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProvider) : IWesternUnionService
+internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProvider, IDolarNetCalculator dolarNetCalculator) : IWesternUnionService
 {
     public async Task<Optional<DolarWesternUnion>> GetDolarWesternUnion(WesternUnionParameters parameters, Action<Optional<DolarWesternUnion>> notifyFunc)
     {
@@ -13,14 +13,14 @@ internal sealed class WesternUnionService(IWesternUnionProvider westernUnionProv
 
         if (info.HasValue)
         {
-            var netPrice = CalculateNetPrice(info.Value.GrossPrice, info.Value.Fees, parameters);
-            wu = Optional<DolarWesternUnion>.Sure(new(info.Value.GrossPrice, netPrice, info.Value.Fees));
+            var netPrice = CalculateNetPrice(info.Value.GrossPrice, info.Value.FixedFee, parameters);
+            wu = Optional<DolarWesternUnion>.Sure(new(info.Value.GrossPrice, netPrice, info.Value.FixedFee));
         }
 
         notifyFunc.Invoke(wu);
         return wu;
     }
 
-    private static double CalculateNetPrice(double grossPrice, double fees, WesternUnionParameters parameters)
-        => (parameters.AmountToSend * grossPrice) / (parameters.AmountToSend + fees);
+    private double CalculateNetPrice(double grossPrice, double fixedFee, WesternUnionParameters parameters)
+        => dolarNetCalculator.CalculateByFixedFee(grossPrice, parameters.AmountToSend, fixedFee);
 }

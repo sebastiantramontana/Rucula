@@ -11,5 +11,6 @@ public static class DomainRegistrar
             .AddSingleton<ITitulosService, TitulosService>()
             .AddSingleton<IWesternUnionService, WesternUnionService>()
             .AddSingleton<IDolarCryptoService, DolarCryptoService>()
-            .AddSingleton<IDolarCryptoMaxPriceService, DolarCryptoMaxPriceService>();
+            .AddSingleton<IDolarCryptoMaxPriceService, DolarCryptoMaxPriceService>()
+            .AddSingleton<IDolarNetCalculator, DolarNetCalculator>();
 }
