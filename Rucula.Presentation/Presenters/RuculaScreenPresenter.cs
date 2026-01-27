@@ -14,6 +14,7 @@ internal sealed class RuculaScreenPresenter(
     IWesternUnionPresenter westernUnionPresenter,
     ICryptosPresenter cryptosPresenter,
     IBluePresenter bluePresenter,
+    IDolarAppPresenter dolarAppPresenter,
     IParametersProvider parametersProvider,
     IViewUpdater<RuculaScreenViewModel> viewUpdater) : IRuculaScreenPresenter
 {
@@ -47,7 +48,8 @@ internal sealed class RuculaScreenPresenter(
             CreateFireForgetCallback<IEnumerable<TituloIsin>>(bondsPresenter.ShowBonds),
             CreateFireForgetCallback<Optional<Blue>>(bluePresenter.ShowBlue),
             CreateFireForgetCallback<Optional<DolarWesternUnion>>(westernUnionPresenter.ShowWesternUnion),
-            CreateFireForgetCallback<IEnumerable<DolarCryptoPrices>>(cryptosPresenter.ShowCryptos));
+            CreateFireForgetCallback<IEnumerable<DolarCryptoPrices>>(cryptosPresenter.ShowCryptos),
+            CreateFireForgetCallback<Optional<DolarApp>>(dolarAppPresenter.ShowDolarApp));
 
     private static Action<T> CreateFireForgetCallback<T>(Func<T, Task> forgottenAsyncFunc)
         => (obj) => _ = forgottenAsyncFunc(obj);

@@ -6,6 +6,6 @@ internal sealed record class WesternUnionViewModel(double? GrossPrice, double? N
 {
     internal static WesternUnionViewModel FromEntity(Optional<DolarWesternUnion> dolarWesternUnion)
         => dolarWesternUnion.HasValue
-            ? new(dolarWesternUnion.Value.GrossPrice, dolarWesternUnion.Value.NetPrice, dolarWesternUnion.Value.Fees)
+            ? new(dolarWesternUnion.Value.GrossPrice, dolarWesternUnion.Value.NetPrice, dolarWesternUnion.Value.FixedFee)
             : new(null, null, null);
 }
