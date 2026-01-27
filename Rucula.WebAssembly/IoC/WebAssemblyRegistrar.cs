@@ -12,5 +12,6 @@ public static class WebAssemblyRegistrar
             .AddSingleton<IJSObjectConverter<BondCommissions>, BondCommissionsJSObjectConverter>()
             .AddSingleton<IJSObjectConverter<WesternUnionParameters>, WesternUnionParametersJSObjectConverter>()
             .AddSingleton<IJSObjectConverter<DolarCryptoParameters>, DolarCryptoParametersJSObjectConverter>()
+            .AddSingleton<IJSObjectConverter<DolarAppParameters>, DolarAppParametersJSObjectConverter>()
             .AddSingleton<IParametersJSObjectConverter, ParametersJSObjectConverter>();
 }

@@ -17,6 +17,7 @@ public sealed class BestOptionServiceMock : IBestOptionService
         optionCallbacks.OnCrypto.Invoke(_optionInfo.RankingCryptos);
         optionCallbacks.OnBlue.Invoke(_optionInfo.Blue);
         optionCallbacks.OnWesternUnion.Invoke(_optionInfo.DolarWesternUnion);
+        optionCallbacks.OnDolarApp.Invoke(_optionInfo.DolarApp);
 
         return Task.CompletedTask;
     }

@@ -61,6 +61,7 @@ public static class PresentationRegistrar
                 .AddViewModelConfiguration<CryptosViewModel, CryptosConfigurationMapping>()
                 .AddViewModelConfiguration<BlueViewModel, BlueConfigurationMapping>()
                 .AddViewModelConfiguration<WesternUnionViewModel, WesternUnionConfigurationMapping>()
+                .AddViewModelConfiguration<DolarAppViewModel, DolarAppConfigurationMapping>()
                 .AddViewModelConfiguration<NotifyProgressViewModel, NotifyProgressConfigurationMapping>()
                 .AddViewModelConfiguration<BondParameterValuesViewModel, BondParametersConfigurationMapping>()
                 .AddViewModelConfiguration<CryptoParameterValuesViewModel, CryptoParametersConfigurationMapping>()

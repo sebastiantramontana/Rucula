@@ -10,6 +10,11 @@
     "hasValue": false,
     "isEmpty": true
   },
+  "dolarApp": {
+    "value": null,
+    "hasValue": false,
+    "isEmpty": true
+  },
   "rankingTitulos": [],
   "winningOption": {
     "name": "No hay ganador",

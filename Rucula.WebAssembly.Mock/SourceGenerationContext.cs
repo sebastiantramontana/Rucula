@@ -28,6 +28,7 @@ namespace Rucula.WebAssembly;
 [JsonSerializable(typeof(Optional<DolarCryptoNetPrice>))]
 [JsonSerializable(typeof(DolarCryptoNetPrice))]
 [JsonSerializable(typeof(Blockchain))]
+[JsonSerializable(typeof(DolarApp))]
 public partial class SourceGenerationContext : JsonSerializerContext
 {
     private static JsonSerializerOptions? _ruculaOptions = null;
@@ -40,6 +41,7 @@ public partial class SourceGenerationContext : JsonSerializerContext
         options.Converters.Add(new OptionalJsonConverter<double>(Default.Double));
         options.Converters.Add(new OptionalJsonConverter<DolarWesternUnion>(Default.DolarWesternUnion));
         options.Converters.Add(new OptionalJsonConverter<DolarCryptoNetPrice>(Default.DolarCryptoNetPrice));
+        options.Converters.Add(new OptionalJsonConverter<DolarApp>(Default.DolarApp));
 
         return options;
     }

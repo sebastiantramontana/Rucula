@@ -56,11 +56,11 @@ public partial class Program
     }
 
     [JSExport]
-    public static async Task StartShowOptions(JSObject? bondCommissions, JSObject? westernUnionParameters, JSObject? dolarCryptoParameters)
+    public static async Task StartShowOptions(JSObject? bondCommissions, JSObject? westernUnionParameters, JSObject? dolarCryptoParameters, JSObject? dolarAppParameters)
     {
         await Awaiter.KeepAwaiting(() => _isInitializationFinished);
 
-        var initialParameters = ConvertParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters);
+        var initialParameters = ConvertParameters(bondCommissions, westernUnionParameters, dolarCryptoParameters, dolarAppParameters);
         ShowParameters(initialParameters);
 
         await Awaiter.AwaitToDependencyNotNull(() => _navigationManager);
@@ -83,7 +83,7 @@ public partial class Program
         await _starter.Start(initialParameters);
     }
 
-    private static OptionalOptionParameters ConvertParameters(JSObject? bondCommissions, JSObject? westernUnionParameters, JSObject? dolarCryptoParameters)
+    private static OptionalOptionParameters ConvertParameters(JSObject? bondCommissions, JSObject? westernUnionParameters, JSObject? dolarCryptoParameters, JSObject? dolarAppParameters)
         => new(
            bondCommissions is null
                 ? Optional<BondCommissions>.Empty
@@ -96,7 +96,10 @@ public partial class Program
                 : Optional<DolarCryptoParameters>.Sure(new(dolarCryptoParameters.GetPropertyAsDouble("volume"))),
             westernUnionParameters is null
                 ? Optional<WesternUnionParameters>.Empty
-                : Optional<WesternUnionParameters>.Sure(new(westernUnionParameters.GetPropertyAsDouble("amountToSend")))
+                : Optional<WesternUnionParameters>.Sure(new(westernUnionParameters.GetPropertyAsDouble("amountToSend"))),
+            dolarAppParameters is null
+                ? Optional<DolarAppParameters>.Empty
+                : Optional<DolarAppParameters>.Sure(new(dolarAppParameters.GetPropertyAsDouble("volume")))
             );
 
     private static void ShowParameters(OptionalOptionParameters parameters)

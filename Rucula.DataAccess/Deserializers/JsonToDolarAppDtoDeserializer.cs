@@ -10,9 +10,12 @@ internal sealed class JsonToDolarAppDtoDeserializer(IJsonValueReader valueReader
 
     public Optional<DolarAppDto> Deserialize(JsonNode? node)
     {
-        var grossPrice = GetNodeValue<double>(node, BidProperty);
+        var array = node?.AsArray();
+        var firstNode = array?[0];
+
+        var grossPrice = GetNodeValue<string>(firstNode, BidProperty);
         return grossPrice.HasValue
-            ? Optional<DolarAppDto>.Sure(new(grossPrice.Value))
+            ? Optional<DolarAppDto>.Sure(new(double.Parse(grossPrice.Value)))
             : Optional<DolarAppDto>.Empty;
     }
 

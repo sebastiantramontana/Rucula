@@ -423,7 +423,16 @@
     "value": {
       "grossPrice": 850,
       "netPrice": 820,
-      "fees": 11.30
+      "fixedFee": 11.30
+    },
+    "hasValue": true,
+    "isEmpty": false
+  },
+  "dolarApp": {
+    "value": {
+      "grossPrice": 1500,
+      "netPrice": 1456,
+      "fixedFee": 3
     },
     "hasValue": true,
     "isEmpty": false

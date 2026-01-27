@@ -29,14 +29,14 @@ internal class Program
 
         _notifier = services.GetRequiredService<INotifier>();
 
-        return GetOptionsFromService(services, new(1, 1, 1), new(20200), new(10000));
+        return GetOptionsFromService(services, new(1, 1, 1), new(20200), new(10000), new(15000));
     }
 
-    private static Task GetOptionsFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters)
+    private static Task GetOptionsFromService(IServiceProvider serviceProvider, BondCommissions bondCommissions, WesternUnionParameters westernUnionParameters, DolarCryptoParameters dolarCryptoParameters, DolarAppParameters dolarAppParameters)
     {
         var service = serviceProvider.GetRequiredService<IBestOptionService>();
-        var parameters = new OptionParameters(bondCommissions, dolarCryptoParameters, westernUnionParameters);
-        var callbacks = new OptionCallbacks(OnWinningOption, OnBonds, OnBlue, OnWesternUnion, OnCryptos);
+        var parameters = new OptionParameters(bondCommissions, dolarCryptoParameters, westernUnionParameters, dolarAppParameters);
+        var callbacks = new OptionCallbacks(OnWinningOption, OnBonds, OnBlue, OnWesternUnion, OnCryptos, OnDolarApp);
 
         return service.ProcessOptions(parameters, callbacks);
     }
@@ -83,6 +83,10 @@ internal class Program
 
     private static void OnWesternUnion(Optional<DolarWesternUnion> wu)
         => _ = _notifier.Notify($"WU: {GetStringFromOptional(wu, emptyString)}{Environment.NewLine}");
+
+    private static void OnDolarApp(Optional<DolarApp> dolarApp)
+        => _ = _notifier.Notify($"DolarApp: {GetStringFromOptional(dolarApp, emptyString)}{Environment.NewLine}");
+
 
     private static string Columnize(Optional<DolarCryptoNetPrice> optionalValue)
         => Columnize(GetStringFromOptional(optionalValue, value => FormatPrice(value.NetPrice), string.Empty));
