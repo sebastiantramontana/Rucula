@@ -1,0 +1,19 @@
+.bg-dolarapp {
+    background-color: rgb(34, 208, 129);
+}
+
+.bg-dolarapp-odd {
+    background-color: rgb(37, 230, 143);
+}
+
+.bg-dolarapp-even {
+    background-color: rgb(29, 179, 111);
+}
+
+#dolarapp-panel:has(#commissions-dolarapp-checkbox:checked) #dolarapp-panel-fees {
+    max-height: fit-content;
+}
+
+#dolarapp-panel:has(#commissions-dolarapp-checkbox:checked) {
+    height: fit-content;
+}
