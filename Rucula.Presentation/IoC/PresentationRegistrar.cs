@@ -64,6 +64,7 @@ public static class PresentationRegistrar
                 .AddViewModelConfiguration<BondParameterValuesViewModel, BondParametersConfigurationMapping>()
                 .AddViewModelConfiguration<CryptoParameterValuesViewModel, CryptoParametersConfigurationMapping>()
                 .AddViewModelConfiguration<WesternUnionParameterValuesViewModel, WesternUnionParametersConfigurationMapping>()
+                .AddViewModelConfiguration<DolarAppParameterValuesViewModel, DolarAppParametersConfigurationMapping>()
                 .AddViewModel<RuculaScreenViewModel>()
                     .AddConfiguration<RuculaScreenConfigurationMapping>()
                     .AddActionParameterBinderAsync<RuculaValidateParametersActionBinderAsync>()

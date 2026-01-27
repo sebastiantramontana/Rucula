@@ -7,4 +7,5 @@ internal static class InputParameterIds
     internal const string BondWithdrawalInputParameterId = "commission-porcentage-withdrawal-bond";
     internal const string CryptoVolumeInputParameterId = "trading-volume-crypto";
     internal const string WesternUnionVolumeInputParameterId = "amount-to-send-wu";
+    internal const string DolarAppVolumeInputParameterId = "volume-dolarapp";
 }
