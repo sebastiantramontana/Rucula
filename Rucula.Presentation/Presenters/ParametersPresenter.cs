@@ -11,7 +11,8 @@ internal sealed class ParametersPresenter(
     IViewUpdater<RuculaScreenViewModel> validateViewUpdater,
     IViewUpdater<BondParameterValuesViewModel> bondParameterViewUpdater,
     IViewUpdater<CryptoParameterValuesViewModel> cryptoParameterViewUpdater,
-    IViewUpdater<WesternUnionParameterValuesViewModel> WesternUnionParameterViewUpdater) : IParametersPresenter
+    IViewUpdater<WesternUnionParameterValuesViewModel> westernUnionParameterViewUpdater,
+    IViewUpdater<DolarAppParameterValuesViewModel> dolarAppParameterViewUpdater) : IParametersPresenter
 {
     public Task SaveParameters(Result<OptionParameters> parameters)
     {
@@ -40,7 +41,13 @@ internal sealed class ParametersPresenter(
     public Task ShowWesternUnionParameters(WesternUnionParameters wuParameters)
     {
         var wuViewModel = UpdateWesternUnionParametersViewModel(wuParameters);
-        return WesternUnionParameterViewUpdater.Update(wuViewModel.Values);
+        return westernUnionParameterViewUpdater.Update(wuViewModel.Values);
+    }
+
+    public Task ShowDolarAppParameters(DolarAppParameters dolarAppParameters)
+    {
+        var dolarAppViewModel = UpdateDolarAppParametersViewModel(dolarAppParameters);
+        return dolarAppParameterViewUpdater.Update(dolarAppViewModel.Values);
     }
 
     private static SaveParametersViewModel UpdateParametersViewModel(OptionParameters parameters)
@@ -67,6 +74,12 @@ internal sealed class ParametersPresenter(
     private static WesternUnionParametersViewModel UpdateWesternUnionParametersViewModel(WesternUnionParameters westernUnionParameters)
     {
         var parameterValues = new WesternUnionParameterValuesViewModel(westernUnionParameters.AmountToSend, WesternUnionParameters.Range.Min, WesternUnionParameters.Range.Max);
+        return new(parameterValues);
+    }
+
+    private static DolarAppParametersViewModel UpdateDolarAppParametersViewModel(DolarAppParameters dolarAppParameters)
+    {
+        var parameterValues = new DolarAppParameterValuesViewModel(dolarAppParameters.Volume, DolarAppParameters.Range.Min, DolarAppParameters.Range.Max);
         return new(parameterValues);
     }
 }

@@ -29,9 +29,11 @@ internal sealed class RuculaStarterPresenter(
         var bondParamsTask = parametersPresenter.ShowBondParameters(bondParameters);
         var cryptoParamsTask = parametersPresenter.ShowCryptoParameters(cryptoParameters);
         var wuParamsTask = parametersPresenter.ShowWesternUnionParameters(wuParameters);
+        var dolarAppTask = parametersPresenter.ShowDolarAppParameters(dolarAppParameters);
+
         var startOptionTask = screenPresenter.ShowOptions(viewModel);
 
-        return Task.WhenAll(notifierTask, bondParamsTask, cryptoParamsTask, wuParamsTask, startOptionTask);
+        return Task.WhenAll(notifierTask, bondParamsTask, cryptoParamsTask, wuParamsTask, dolarAppTask, startOptionTask);
     }
 
     private static T ResolveParameters<T>(Optional<T> optionalParameters, T defaultParameters)

@@ -10,4 +10,5 @@ internal interface IParametersPresenter
     Task ShowBondParameters(BondCommissions bondCommissions);
     Task ShowCryptoParameters(DolarCryptoParameters cryptoParameters);
     Task ShowWesternUnionParameters(WesternUnionParameters wuParameters);
+    Task ShowDolarAppParameters(DolarAppParameters dolarAppParameters);
 }
