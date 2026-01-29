@@ -3,7 +3,7 @@
 internal sealed class DolarAppFetcher(IHttpReader httpReader) : IDolarAppFetcher
 {
     private const string ReaderKey = "DolarApp";
-    private const string Url = "https://api.dolarapp.com/v1/tickers?currencies=ARS";
+    private const string Url = "https://ruculaproxycors-cqdccfanbbexh5hb.brazilsouth-01.azurewebsites.net/api/ProxyCors?code=4taHWnlKbpqwMTufEJ-UAWqKhepOL7pUuDRz8v_20-hdAzFuhuJLHQ==&url=https%3A%2F%2Fapi.dolarapp.com%2Fv1%2Ftickers%3Fcurrencies%3DARS";
 
     public async Task<string> Fetch()
     {

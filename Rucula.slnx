@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="PruebaConsola/PruebaConsola.csproj" />
-  <Project Path="Rucula.Application/Rucula.Application.csproj" Id="59496a0c-80bf-4d24-9a1e-19a94574d5de" />
+  <Project Path="Rucula.Application/Rucula.Application.csproj" />
+  <Project Path="Rucula.Azure.Functions/Rucula.Azure.Functions.csproj" Id="c793a9f1-c027-4847-8ff7-66737107e6eb" />
   <Project Path="Rucula.DataAccess/Rucula.DataAccess.csproj" />
   <Project Path="Rucula.Domain.Abstractions/Rucula.Domain.Abstractions.csproj" />
   <Project Path="Rucula.Domain.Entities/Rucula.Domain.Entities.csproj" />
