@@ -109,6 +109,8 @@ Task("Css")
 		CopyFiles("../Rucula.Frontend/css/titulos-publicos.css", "../dist/css/");
 		CopyFiles("../Rucula.Frontend/css/wu.css", "../dist/css/");
 		CopyFiles("../Rucula.Frontend/css/crypto.css", "../dist/css/");
+		CopyFiles("../Rucula.Frontend/css/dolarapp.css", "../dist/css/");
+
 		RemoveTailwindCdn("../dist/index.html");
 });
 
