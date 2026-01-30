@@ -2,7 +2,7 @@
 
 public sealed record class DolarCryptoParameters(double TradingVolume)
 {
-    private const double DefaultTradingVolume = 1000.0;
+    private const double DefaultTradingVolume = 2000.0;
     private const double VolumeLowRange = 100.0;
     private const double VolumeHiRange = 10000.0;
 
