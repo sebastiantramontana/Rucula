@@ -10,26 +10,6 @@ public class ProxyCors(IHttpClientFactory httpClientFactory)
 
     [Function(nameof(ProxyCors))]
     public Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "get", "options")] HttpRequestData req)
-        => TryRespondPreflightByOptionsMethod(req) ?? RespondUrlProxy(req);
-
-    private static Task<HttpResponseData>? TryRespondPreflightByOptionsMethod(HttpRequestData req)
-    {
-        Task<HttpResponseData>? preflightTask = null;
-
-        if (req.Method.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
-        {
-            var preflight = req.CreateResponse(HttpStatusCode.OK);
-            preflight.Headers.Add("Access-Control-Allow-Origin", "*");
-            preflight.Headers.Add("Access-Control-Allow-Methods", "GET,OPTIONS");
-            preflight.Headers.Add("Access-Control-Allow-Headers", "Content-Type,Authorization,x-functions-key");
-
-            preflightTask = Task.FromResult(preflight);
-        }
-
-        return preflightTask;
-    }
-
-    private Task<HttpResponseData> RespondUrlProxy(HttpRequestData req)
         => TryRespondUrlParameterMissing(req) ?? RequestToUrlTarget(req);
 
     private async Task<HttpResponseData> RequestToUrlTarget(HttpRequestData req)
@@ -58,6 +38,10 @@ public class ProxyCors(IHttpClientFactory httpClientFactory)
     private static async Task<HttpResponseData> CreateOkResponseWithTargetContent(HttpRequestData req, HttpContent httpTargetContent)
     {
         var response = req.CreateResponse(HttpStatusCode.OK);
+
+        response.Headers.Add("Access-Control-Allow-Origin", "*");
+        response.Headers.Add("Access-Control-Allow-Methods", "GET,OPTIONS");
+        response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,Authorization,x-functions-key");
 
         AddNoCacheHeaders(response);
         AddContentType(response);
