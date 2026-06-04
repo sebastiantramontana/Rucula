@@ -25,7 +25,7 @@ jobs:
           with:
             script-path: ./Publish/build.cake
         - name: Crear artifact
-          uses: actions/upload-artifact@v4
+          uses: actions/upload-artifact@v7
           with:
             name: artifact-build
             path: ./dist
@@ -46,7 +46,7 @@ jobs:
         - name: Clean tailwindcss
           run: npx @tailwindcss/cli -i ./Rucula.FrontEnd/css/styles.css -o ./dist/css/styles.css --minify
         - name: Crear artifact
-          uses: actions/upload-artifact@v4
+          uses: actions/upload-artifact@v7
           with:
             name: artifact-tailwindcss
             path: ./dist
