@@ -1,0 +1,38 @@
+name: Netlify Deploy
+on:
+  workflow_run:
+    workflows: ["Android"]
+    types:
+    - completed
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+        - name: Set up Node.js
+          uses: actions/setup-node@v6
+          with:
+            node-version: '22'
+
+        - name: Download final website 
+          uses: dawidd6/action-download-artifact@v9
+          with:
+            workflow: main.yaml
+            workflow_conclusion: success
+            commit: ${{ github.event.workflow_run.head_sha }}
+            name: final-website-dist
+            path: ./dist
+
+        - name: Download android APK
+          uses: dawidd6/action-download-artifact@v9
+          with:
+            workflow: android.yaml
+            run_id: ${{ github.event.workflow_run.id }}
+            name: android-release-apk
+            path: ./dist/mobile/android
+
+        - name: Deploy to Netlify
+          env:
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          run: npx netlify-cli deploy --prod --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN" --dir=./dist

@@ -1,4 +1,4 @@
-name: Rucula
+name: Main
 on:
   push:
     branches:
@@ -17,7 +17,7 @@ jobs:
         - name: Setup .NET
           uses: actions/setup-dotnet@v5
           with:
-            dotnet-version: 10.0.x
+            dotnet-version: 10.x.x
         - name: Install wasm-tools workload
           run: dotnet workload install wasm-tools
         - name: Run the Cake script
@@ -40,7 +40,7 @@ jobs:
         - name: Set up Node.js
           uses: actions/setup-node@v6
           with:
-            node-version: '20'
+            node-version: '22'
         - name: Install dependencies
           run: npm install
         - name: Clean tailwindcss
@@ -64,8 +64,9 @@ jobs:
           with:
             name: artifact-tailwindcss
             path: ./dist
-        - name: Deploy to Netlify
-          env:
-            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          run: npx netlify-cli deploy --prod --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN" --dir=./dist
+        - name: Upload web final artifact
+          uses: actions/upload-artifact@v7
+          with:
+            name: final-website-dist
+            path: ./dist
+            retention-days: 1

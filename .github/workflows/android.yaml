@@ -1,0 +1,64 @@
+name: Android
+on:
+  workflow_run:
+    workflows: ["Main"]
+    types:
+    - completed
+
+jobs:
+  build-android:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Download website artifact
+        uses: dawidd6/action-download-artifact@v9
+        with:
+          workflow: main.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: final-website-dist
+          path: ./dist
+
+      - name: Remove compressed WASM artifacts
+        run: |
+          find ./dist/_framework/ -name "*.gz" -delete
+          find ./dist/_framework/ -name "*.br" -delete
+
+      - name: Capacitor Sync
+        run: npx cap sync android
+
+      - name: Build Release APK
+        working-directory: android
+        run: ./gradlew assembleRelease
+
+      - name: Create APK directory
+        run: mkdir -p ./dist/mobile/android
+
+      - name: Copy APK
+        run: |
+          cp android/app/build/outputs/apk/release/*.apk \
+            ./dist/mobile/android/rucula.apk
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-release-apk
+          path: ./dist/mobile/android/rucula.apk
+          retention-days: 1
+

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Rucula</string>
+    <string name="title_activity_main">Rucula</string>
+    <string name="package_name">ar.rucula.app</string>
+    <string name="custom_url_scheme">ar.rucula.app</string>
+</resources>
