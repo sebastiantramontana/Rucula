@@ -43,9 +43,45 @@ jobs:
       - name: Capacitor Sync
         run: npx cap sync android
 
+      - name: Restore keystore
+        working-directory: android
+        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > app/rucula-release.jks
+
+      - name: Verify keystore
+        working-directory: android
+        run: ls -la app
+
+      - name: Verify keystore content
+        working-directory: android
+        run: |
+          keytool -list -keystore app/rucula-release.jks \
+          -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"
+
+      - name: Show signing environment
+        working-directory: android
+        run: |
+          echo "KEYSTORE=$ANDROID_KEYSTORE_FILE"
+          echo "ALIAS=$ANDROID_KEY_ALIAS"
+        env:
+          ANDROID_KEYSTORE_FILE: app/rucula-release.jks
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+
+      - name: Make gradlew executable
+        working-directory: android
+        run: chmod +x gradlew
+
       - name: Build Release APK
         working-directory: android
+        env:
+          ANDROID_KEYSTORE_FILE: rucula-release.jks
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew assembleRelease
+
+      - name: Show APKs
+        working-directory: android
+        run: find app/build/outputs/apk -name "*.apk"
 
       - name: Create APK directory
         run: mkdir -p ./dist/mobile/android
