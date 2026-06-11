@@ -28,7 +28,7 @@ jobs:
           java-version: 21
 
       - name: Download website artifact
-        uses: dawidd6/action-download-artifact@v9
+        uses: dawidd6/action-download-artifact@v21
         with:
           workflow: main.yml
           run_id: ${{ github.event.workflow_run.id }}

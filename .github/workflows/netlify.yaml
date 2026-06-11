@@ -15,7 +15,7 @@ jobs:
             node-version: '22'
 
         - name: Download final website 
-          uses: dawidd6/action-download-artifact@v9
+          uses: dawidd6/action-download-artifact@v21
           with:
             workflow: main.yaml
             workflow_conclusion: success
@@ -24,7 +24,7 @@ jobs:
             path: ./dist
 
         - name: Download android APK
-          uses: dawidd6/action-download-artifact@v9
+          uses: dawidd6/action-download-artifact@v21
           with:
             workflow: android.yaml
             run_id: ${{ github.event.workflow_run.id }}
